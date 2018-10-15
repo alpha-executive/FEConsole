@@ -1,0 +1,9 @@
+C:\WorkSpace\PlayGround\startnetcore\utility\bin\Debug\netstandard2.0\utility.deps.json
+C:\WorkSpace\PlayGround\startnetcore\utility\bin\Debug\netstandard2.0\utility.dll
+C:\WorkSpace\PlayGround\startnetcore\utility\bin\Debug\netstandard2.0\utility.pdb
+C:\WorkSpace\PlayGround\startnetcore\utility\obj\Debug\netstandard2.0\utility.csprojAssemblyReference.cache
+C:\WorkSpace\PlayGround\startnetcore\utility\obj\Debug\netstandard2.0\utility.csproj.CoreCompileInputs.cache
+C:\WorkSpace\PlayGround\startnetcore\utility\obj\Debug\netstandard2.0\utility.AssemblyInfoInputs.cache
+C:\WorkSpace\PlayGround\startnetcore\utility\obj\Debug\netstandard2.0\utility.AssemblyInfo.cs
+C:\WorkSpace\PlayGround\startnetcore\utility\obj\Debug\netstandard2.0\utility.dll
+C:\WorkSpace\PlayGround\startnetcore\utility\obj\Debug\netstandard2.0\utility.pdb
