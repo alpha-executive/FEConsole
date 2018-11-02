@@ -1,0 +1,12 @@
+{
+    "For_Loop": {
+        "prefix": "for",
+        "scope": "javascript,typescript",
+        "body": [
+          "for (const ${2:element} of ${1:array}) {",
+          "\t$0",
+          "}"
+        ],
+        "description": "For Loop"
+    }
+}

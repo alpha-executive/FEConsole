@@ -1,0 +1,6 @@
+{
+    "ConnectionStrings": {
+      "sqlServerDb": "Server=localhost;Database=netcoretest;User Id=xpressionsa;Password=password;",
+      "sqliteDb" : "Data Source=ferepository.db"
+    }
+}

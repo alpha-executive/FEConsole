@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "testconsole"
+		},
+		{
+			"path": "FE.Creator.ObjectRepository"
 		}
 	],
 	"settings": {}
