@@ -2,6 +2,7 @@ C:\WorkSpace\PlayGround\startnetcore\testconsole\obj\Debug\netcoreapp2.1\testcon
 C:\WorkSpace\PlayGround\startnetcore\testconsole\obj\Debug\netcoreapp2.1\testconsole.csproj.CoreCompileInputs.cache
 C:\WorkSpace\PlayGround\startnetcore\testconsole\obj\Debug\netcoreapp2.1\testconsole.AssemblyInfoInputs.cache
 C:\WorkSpace\PlayGround\startnetcore\testconsole\obj\Debug\netcoreapp2.1\testconsole.AssemblyInfo.cs
+C:\WorkSpace\PlayGround\startnetcore\testconsole\bin\Debug\netcoreapp2.1\appsettings.json
 C:\WorkSpace\PlayGround\startnetcore\testconsole\bin\Debug\netcoreapp2.1\testconsole.deps.json
 C:\WorkSpace\PlayGround\startnetcore\testconsole\bin\Debug\netcoreapp2.1\testconsole.runtimeconfig.json
 C:\WorkSpace\PlayGround\startnetcore\testconsole\bin\Debug\netcoreapp2.1\testconsole.runtimeconfig.dev.json

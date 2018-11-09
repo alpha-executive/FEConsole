@@ -7,7 +7,7 @@ using testconsole;
 
 namespace testconsole.Migrations
 {
-    [DbContext(typeof(UseInfoDBContext))]
+    [DbContext(typeof(UserInfoDBContext))]
     partial class UseInfoDBContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

@@ -4,13 +4,13 @@ using testconsole.EntityModels;
 
 namespace testconsole
 {
-    public class UseInfoDBContext:DbContext
+    public class UserInfoDBContext:DbContext
     {
          public virtual DbSet<UserInfo> users {get;set;}
          public virtual DbSet<Student>  students {get;set;}
 
-        public UseInfoDBContext(){}
-        public UseInfoDBContext(DbContextOptions<UseInfoDBContext> options):base(options){}
+        public UserInfoDBContext(){}
+        public UserInfoDBContext(DbContextOptions<UserInfoDBContext> options):base(options){}
         
 
 
@@ -34,6 +34,7 @@ namespace testconsole
             modelBuilder.Entity<UserInfo>()
                         .Property(p=>p.UserName)
                         .IsRequired();
+
         }
 
         

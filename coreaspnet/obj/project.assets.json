@@ -11848,11 +11848,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\WorkSpace\\PlayGround\\startnetcore\\coreaspnet\\coreaspnet.csproj",
+      "projectUniqueName": "C:\\WorkSpace\\PlayGround\\startnetcore\\coreaspnet\\coreaspnet.csproj",
       "projectName": "coreaspnet",
-      "projectPath": "c:\\WorkSpace\\PlayGround\\startnetcore\\coreaspnet\\coreaspnet.csproj",
+      "projectPath": "C:\\WorkSpace\\PlayGround\\startnetcore\\coreaspnet\\coreaspnet.csproj",
       "packagesPath": "C:\\Users\\yujiez\\.nuget\\packages\\",
-      "outputPath": "c:\\WorkSpace\\PlayGround\\startnetcore\\coreaspnet\\obj\\",
+      "outputPath": "C:\\WorkSpace\\PlayGround\\startnetcore\\coreaspnet\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -11869,8 +11869,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "c:\\WorkSpace\\PlayGround\\startnetcore\\utility\\utility.csproj": {
-              "projectPath": "c:\\WorkSpace\\PlayGround\\startnetcore\\utility\\utility.csproj"
+            "C:\\WorkSpace\\PlayGround\\startnetcore\\utility\\utility.csproj": {
+              "projectPath": "C:\\WorkSpace\\PlayGround\\startnetcore\\utility\\utility.csproj"
             }
           }
         }

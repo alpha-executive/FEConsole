@@ -8,7 +8,7 @@ using testconsole;
 
 namespace testconsole.Migrations
 {
-    [DbContext(typeof(UseInfoDBContext))]
+    [DbContext(typeof(UserInfoDBContext))]
     [Migration("20181101074606_InitalCreate")]
     partial class InitalCreate
     {
