@@ -54,6 +54,7 @@ namespace testconsole {
                 .UseSqlServer (config.GetConnectionString ("sqlServerDb"))
                 .Options;
             using (UserInfoDBContext context = new UserInfoDBContext (options)) {
+                context.Database.EnsureCreated();
                 command (context);
             }
         }
