@@ -176,28 +176,30 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\yujiez\\.nuget\\packages\\": {},
+    "C:\\Users\\alpha\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\WorkSpace\\PlayGround\\startnetcore\\utility\\utility.csproj",
+      "projectUniqueName": "c:\\Work\\GitWork\\netcorestart\\utility\\utility.csproj",
       "projectName": "utility",
-      "projectPath": "C:\\WorkSpace\\PlayGround\\startnetcore\\utility\\utility.csproj",
-      "packagesPath": "C:\\Users\\yujiez\\.nuget\\packages\\",
-      "outputPath": "C:\\WorkSpace\\PlayGround\\startnetcore\\utility\\obj\\",
+      "projectPath": "c:\\Work\\GitWork\\netcorestart\\utility\\utility.csproj",
+      "packagesPath": "C:\\Users\\alpha\\.nuget\\packages\\",
+      "outputPath": "c:\\Work\\GitWork\\netcorestart\\utility\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\yujiez\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\alpha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

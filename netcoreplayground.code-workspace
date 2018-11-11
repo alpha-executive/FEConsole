@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "FE.Creator.ObjectRepository"
+		},
+		{
+			"path": "xtest"
 		}
 	],
 	"settings": {}

@@ -87,6 +87,18 @@
           "build/netcoreapp2.0/Microsoft.EntityFrameworkCore.Design.props": {}
         }
       },
+      "Microsoft.EntityFrameworkCore.InMemory/2.1.4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "2.1.4"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.InMemory.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.InMemory.dll": {}
+        }
+      },
       "Microsoft.EntityFrameworkCore.Relational/2.1.4": {
         "type": "package",
         "dependencies": {
@@ -1249,6 +1261,25 @@
         "compile": {
           "ref/netstandard1.3/System.Threading.Tasks.dll": {}
         }
+      },
+      "FE.Creator.ObjectRepository/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.InMemory": "2.1.4",
+          "Microsoft.EntityFrameworkCore.Relational": "2.1.4",
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.1.4",
+          "Microsoft.EntityFrameworkCore.Sqlite": "2.1.4",
+          "Microsoft.Extensions.Configuration": "2.1.1",
+          "Microsoft.Extensions.Configuration.Json": "2.1.1",
+          "Microsoft.Extensions.Logging.Console": "2.1.1"
+        },
+        "compile": {
+          "bin/placeholder/FE.Creator.ObjectRepository.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FE.Creator.ObjectRepository.dll": {}
+        }
       }
     }
   },
@@ -1393,6 +1424,18 @@
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.xml",
         "microsoft.entityframeworkcore.design.2.1.4.nupkg.sha512",
         "microsoft.entityframeworkcore.design.nuspec"
+      ]
+    },
+    "Microsoft.EntityFrameworkCore.InMemory/2.1.4": {
+      "sha512": "VFyAQ9qnlVV2Y9vZ8Wk4p659jKZHgvy/Qdo/kwQXnZGzSwdj1eFTD02h9e4+79SrhTGqBxPQRpMVlfdLe2BD6A==",
+      "type": "package",
+      "path": "microsoft.entityframeworkcore.inmemory/2.1.4",
+      "files": [
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.EntityFrameworkCore.InMemory.dll",
+        "lib/netstandard2.0/Microsoft.EntityFrameworkCore.InMemory.xml",
+        "microsoft.entityframeworkcore.inmemory.2.1.4.nupkg.sha512",
+        "microsoft.entityframeworkcore.inmemory.nuspec"
       ]
     },
     "Microsoft.EntityFrameworkCore.Relational/2.1.4": {
@@ -4192,11 +4235,17 @@
         "system.threading.tasks.4.0.11.nupkg.sha512",
         "system.threading.tasks.nuspec"
       ]
+    },
+    "FE.Creator.ObjectRepository/1.0.0": {
+      "type": "project",
+      "path": "../FE.Creator.ObjectRepository/FE.Creator.ObjectRepository.csproj",
+      "msbuildProject": "../FE.Creator.ObjectRepository/FE.Creator.ObjectRepository.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
       "DotNet.NLog.NetCore >= 2.1.2",
+      "FE.Creator.ObjectRepository >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 2.1.4",
       "Microsoft.EntityFrameworkCore.Design >= 2.1.4",
       "Microsoft.EntityFrameworkCore.Relational >= 2.1.4",
@@ -4213,33 +4262,39 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\yujiez\\.nuget\\packages\\": {},
+    "C:\\Users\\alpha\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.1",
     "restore": {
-      "projectUniqueName": "c:\\WorkSpace\\PlayGround\\startnetcore\\testconsole\\testconsole.csproj",
+      "projectUniqueName": "C:\\Work\\GitWork\\netcorestart\\testconsole\\testconsole.csproj",
       "projectName": "testconsole",
-      "projectPath": "c:\\WorkSpace\\PlayGround\\startnetcore\\testconsole\\testconsole.csproj",
-      "packagesPath": "C:\\Users\\yujiez\\.nuget\\packages\\",
-      "outputPath": "c:\\WorkSpace\\PlayGround\\startnetcore\\testconsole\\obj\\",
+      "projectPath": "C:\\Work\\GitWork\\netcorestart\\testconsole\\testconsole.csproj",
+      "packagesPath": "C:\\Users\\alpha\\.nuget\\packages\\",
+      "outputPath": "C:\\Work\\GitWork\\netcorestart\\testconsole\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\yujiez\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\alpha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Work\\GitWork\\netcorestart\\FE.Creator.ObjectRepository\\FE.Creator.ObjectRepository.csproj": {
+              "projectPath": "C:\\Work\\GitWork\\netcorestart\\FE.Creator.ObjectRepository\\FE.Creator.ObjectRepository.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

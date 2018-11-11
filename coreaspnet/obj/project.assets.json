@@ -11837,40 +11837,43 @@
       "Microsoft.AspNetCore.App >= 2.1.1",
       "Microsoft.AspNetCore.Razor.Design >= 2.1.2",
       "Microsoft.EntityFrameworkCore.Sqlite >= 2.1.4",
+      "Microsoft.Extensions.Logging.Console >= 2.1.1",
       "Microsoft.NETCore.App >= 2.1.0",
       "utility >= 1.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\yujiez\\.nuget\\packages\\": {},
+    "C:\\Users\\alpha\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\WorkSpace\\PlayGround\\startnetcore\\coreaspnet\\coreaspnet.csproj",
+      "projectUniqueName": "c:\\Work\\GitWork\\netcorestart\\coreaspnet\\coreaspnet.csproj",
       "projectName": "coreaspnet",
-      "projectPath": "C:\\WorkSpace\\PlayGround\\startnetcore\\coreaspnet\\coreaspnet.csproj",
-      "packagesPath": "C:\\Users\\yujiez\\.nuget\\packages\\",
-      "outputPath": "C:\\WorkSpace\\PlayGround\\startnetcore\\coreaspnet\\obj\\",
+      "projectPath": "c:\\Work\\GitWork\\netcorestart\\coreaspnet\\coreaspnet.csproj",
+      "packagesPath": "C:\\Users\\alpha\\.nuget\\packages\\",
+      "outputPath": "c:\\Work\\GitWork\\netcorestart\\coreaspnet\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\yujiez\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\alpha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\WorkSpace\\PlayGround\\startnetcore\\utility\\utility.csproj": {
-              "projectPath": "C:\\WorkSpace\\PlayGround\\startnetcore\\utility\\utility.csproj"
+            "c:\\Work\\GitWork\\netcorestart\\utility\\utility.csproj": {
+              "projectPath": "c:\\Work\\GitWork\\netcorestart\\utility\\utility.csproj"
             }
           }
         }
@@ -11898,6 +11901,10 @@
           "Microsoft.EntityFrameworkCore.Sqlite": {
             "target": "Package",
             "version": "[2.1.4, )"
+          },
+          "Microsoft.Extensions.Logging.Console": {
+            "target": "Package",
+            "version": "[2.1.1, )"
           },
           "Microsoft.NETCore.App": {
             "target": "Package",

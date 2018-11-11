@@ -15,6 +15,9 @@ using Polly;
 using testconsole.EntityModels;
 
 namespace testconsole {
+    using FE.Creator.ObjectRepository;
+    using FE.Creator.ObjectRepository.EntityModels;
+    using FE.Creator.ObjectRepository.ServiceModels;
     using Microsoft.Extensions.Configuration;
     using testconsole.EntityModels;
     using testconsole.mathlib;
@@ -198,8 +201,83 @@ namespace testconsole {
             Console.WriteLine ("Email: " + user.Email);
         }
 
+        public static void CreateObjectTest()
+        {
+            IObjectService service = new DefaultObjectService();
+            ServiceObject svObject = new ServiceObject();
+            svObject.ObjectName = "Peter";
+            svObject.ObjectOwner = "Admin";
+            svObject.OnlyUpdateProperties = false;
+            svObject.UpdatedBy = "Admin";
+            svObject.CreatedBy = "Admin";
+
+            var objDef = service.GetAllObjectDefinitions()
+                            .Where(od=>od.ObjectDefinitionName.Equals("Person"))
+                            .FirstOrDefault();
+                            
+            if(objDef != null){
+                svObject.ObjectDefinitionId = objDef.ObjectDefinitionID;
+            }
+            
+
+             Console.WriteLine("ObjectDefintionID = " + svObject.ObjectDefinitionId);
+            svObject.Properties.Add(new ObjectKeyValuePair()
+            {
+                KeyName = "Person Name",
+                Value = new PrimeObjectField()
+                {
+                    PrimeDataType = PrimeFieldDataType.String,
+                    Value = "Peter, Robert"
+                }
+            });
+            svObject.Properties.Add(new ObjectKeyValuePair()
+            {
+                KeyName = "Person Sex",
+                Value = new SingleSelectionField()
+                {
+                    SelectedItemID = 5
+                }
+            });
+            svObject.Properties.Add(new ObjectKeyValuePair()
+            {
+                KeyName = "Person AGE",
+                Value = new PrimeObjectField()
+                {
+                    PrimeDataType = PrimeFieldDataType.Integer,
+                    Value = 30
+                }
+            });
+            svObject.Properties.Add(new ObjectKeyValuePair()
+            {
+                KeyName = "Person Image",
+                Value = new ObjectFileField()
+                {
+                    FileCRC = "10001001",
+                    FileExtension = ".docx",
+                    FileFullPath = "c:\\location.docx",
+                    FileName = "location.docx",
+                    FileUrl = "http://www.url.com",
+                    FileSize = 10,
+                    Created = DateTime.Now,
+                    Updated = DateTime.Now
+                }
+            });
+
+            svObject.Properties.Add(new ObjectKeyValuePair()
+            {
+                KeyName = "Person Manager",
+                Value = new ObjectReferenceField()
+                {
+                    ReferedGeneralObjectID = 1
+                }
+            });
+
+            int objId = service.CreateORUpdateGeneralObject(svObject);
+
+        }
+
         static void Main (string[] args) {
-            string sqlConStr = "Server=localhost;Database=xpressiondb;User Id=xpressionsa;Password=password;";
+            /* string sqlConStr = "Server=localhost;Database=xpressiondb;User Id=xpressionsa;Password=password;";
 
             Console.WriteLine (string.Format ("{0} + {1} = {2}", 1, 1, Calculator.Sum (1, 1)));
             Console.WriteLine ("Hello World!");
@@ -226,7 +304,9 @@ namespace testconsole {
 
             ConnectionResiliency ();
             Console.WriteLine ("Users after the Transaction Resilency:");
-            QuerySqlServerEntity ();
+            QuerySqlServerEntity (); */
+
+            CreateObjectTest();
         }
     }
 }

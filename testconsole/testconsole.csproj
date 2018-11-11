@@ -34,4 +34,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
      </Content>
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FE.Creator.ObjectRepository\FE.Creator.ObjectRepository.csproj" />
+  </ItemGroup>
 </Project>

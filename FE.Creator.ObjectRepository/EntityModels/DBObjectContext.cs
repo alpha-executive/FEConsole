@@ -4,6 +4,7 @@ namespace FE.Creator.ObjectRepository.EntityModels
 {
     public abstract class DBObjectContext : DbContext
     {   
+        
         internal DbSet<GeneralObjectDefinition> GeneralObjectDefinitions { get; set; }
         internal DbSet<GeneralObjectDefinitionGroup> GeneralObjectDefinitionGroups { get; set; }
 
@@ -19,11 +20,36 @@ namespace FE.Creator.ObjectRepository.EntityModels
         
         protected IConfiguration GetAppConfigure(){
             var config = new ConfigurationBuilder()
-                        .AddJsonFile("appconfig.json")
+                        .AddJsonFile("appsettings.json")
                         .Build();
 
             return config;
         }
 
+        protected  override void  OnModelCreating(ModelBuilder modelBuilder){
+            //define self reference group.
+            modelBuilder.Entity<GeneralObjectDefinitionGroup>()
+                .HasOne(o => o.ParentGroup)
+                .WithMany(o => o.ChildrenGroups)
+                .HasForeignKey("ParentGroupID");
+
+            modelBuilder.Entity<GeneralObjectDefinitionSelectItem>()
+                        .Property(p=>p.GeneralObjectDefinitionSelectItemID)
+                        .ValueGeneratedOnAdd();
+            
+            modelBuilder.Entity<GeneralObjectField>()
+            .HasOne(g=>g.GeneralObject)
+            .WithMany(o=>o.GeneralObjectFields)
+            .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<FileGeneralObjectField>();
+            modelBuilder.Entity<GeneralObjectReferenceField>();
+            modelBuilder.Entity<ObjRefObjectDefinitionField>();
+            modelBuilder.Entity<PrimeGeneralObjectField>();
+            modelBuilder.Entity<PrimeObjectDefintionField>();
+            modelBuilder.Entity<SingleSelectionDefinitionField>();
+            modelBuilder.Entity<SingleSelectionGeneralObjectField>();
+
+        }
     }
 }

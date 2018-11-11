@@ -7,3 +7,12 @@ C:\WorkSpace\PlayGround\startnetcore\utility\obj\Debug\netstandard2.0\utility.As
 C:\WorkSpace\PlayGround\startnetcore\utility\obj\Debug\netstandard2.0\utility.AssemblyInfo.cs
 C:\WorkSpace\PlayGround\startnetcore\utility\obj\Debug\netstandard2.0\utility.dll
 C:\WorkSpace\PlayGround\startnetcore\utility\obj\Debug\netstandard2.0\utility.pdb
+C:\Work\GitWork\netcorestart\utility\bin\Debug\netstandard2.0\utility.deps.json
+C:\Work\GitWork\netcorestart\utility\bin\Debug\netstandard2.0\utility.dll
+C:\Work\GitWork\netcorestart\utility\bin\Debug\netstandard2.0\utility.pdb
+C:\Work\GitWork\netcorestart\utility\obj\Debug\netstandard2.0\utility.csprojAssemblyReference.cache
+C:\Work\GitWork\netcorestart\utility\obj\Debug\netstandard2.0\utility.csproj.CoreCompileInputs.cache
+C:\Work\GitWork\netcorestart\utility\obj\Debug\netstandard2.0\utility.AssemblyInfoInputs.cache
+C:\Work\GitWork\netcorestart\utility\obj\Debug\netstandard2.0\utility.AssemblyInfo.cs
+C:\Work\GitWork\netcorestart\utility\obj\Debug\netstandard2.0\utility.dll
+C:\Work\GitWork\netcorestart\utility\obj\Debug\netstandard2.0\utility.pdb

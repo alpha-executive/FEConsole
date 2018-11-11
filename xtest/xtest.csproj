@@ -13,7 +13,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\testconsole\testconsole.csproj" />
+    <ProjectReference Include="..\FE.Creator.ObjectRepository\FE.Creator.ObjectRepository.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="appsettings.json">
+       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 </Project>
