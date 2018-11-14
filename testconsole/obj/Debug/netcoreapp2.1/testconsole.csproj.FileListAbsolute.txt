@@ -25,3 +25,6 @@ C:\Work\GitWork\netcorestart\testconsole\obj\Debug\netcoreapp2.1\testconsole.pdb
 C:\Work\GitWork\netcorestart\testconsole\bin\Debug\netcoreapp2.1\FE.Creator.ObjectRepository.dll
 C:\Work\GitWork\netcorestart\testconsole\bin\Debug\netcoreapp2.1\FE.Creator.ObjectRepository.pdb
 C:\Work\GitWork\netcorestart\testconsole\obj\Debug\netcoreapp2.1\testconsole.csproj.CopyComplete
+C:\WorkSpace\PlayGround\startnetcore\testconsole\bin\Debug\netcoreapp2.1\FE.Creator.ObjectRepository.dll
+C:\WorkSpace\PlayGround\startnetcore\testconsole\bin\Debug\netcoreapp2.1\FE.Creator.ObjectRepository.pdb
+C:\WorkSpace\PlayGround\startnetcore\testconsole\obj\Debug\netcoreapp2.1\testconsole.csproj.CopyComplete

@@ -4262,37 +4262,35 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\alpha\\.nuget\\packages\\": {},
+    "C:\\Users\\yujiez\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.1",
     "restore": {
-      "projectUniqueName": "C:\\Work\\GitWork\\netcorestart\\testconsole\\testconsole.csproj",
+      "projectUniqueName": "C:\\WorkSpace\\PlayGround\\startnetcore\\testconsole\\testconsole.csproj",
       "projectName": "testconsole",
-      "projectPath": "C:\\Work\\GitWork\\netcorestart\\testconsole\\testconsole.csproj",
-      "packagesPath": "C:\\Users\\alpha\\.nuget\\packages\\",
-      "outputPath": "C:\\Work\\GitWork\\netcorestart\\testconsole\\obj\\",
+      "projectPath": "C:\\WorkSpace\\PlayGround\\startnetcore\\testconsole\\testconsole.csproj",
+      "packagesPath": "C:\\Users\\yujiez\\.nuget\\packages\\",
+      "outputPath": "C:\\WorkSpace\\PlayGround\\startnetcore\\testconsole\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\alpha\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\yujiez\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Work\\GitWork\\netcorestart\\FE.Creator.ObjectRepository\\FE.Creator.ObjectRepository.csproj": {
-              "projectPath": "C:\\Work\\GitWork\\netcorestart\\FE.Creator.ObjectRepository\\FE.Creator.ObjectRepository.csproj"
+            "C:\\WorkSpace\\PlayGround\\startnetcore\\FE.Creator.ObjectRepository\\FE.Creator.ObjectRepository.csproj": {
+              "projectPath": "C:\\WorkSpace\\PlayGround\\startnetcore\\FE.Creator.ObjectRepository\\FE.Creator.ObjectRepository.csproj"
             }
           }
         }

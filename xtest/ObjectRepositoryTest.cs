@@ -8,7 +8,8 @@ using Xunit;
 
 namespace xtest {
     public class ObjectRepositoryTest {
-        [Fact]
+         [Fact]
+         [Trait("Priority","0")]
         public void CreateObjectDefGroupTest () {
             IObjectService service = new DefaultObjectService ();
 
@@ -28,6 +29,7 @@ namespace xtest {
         }
 
         [Fact]
+         [Trait("Priority","1")]
         public void CreateObjectDefinitionTest()
         {
             IObjectService service = new DefaultObjectService();
@@ -105,6 +107,7 @@ namespace xtest {
         }
 
         [Fact]
+         [Trait("Priority","3")]
          public void GetObjectDefinitionByGroupTest()
         {
             IObjectService service = new DefaultObjectService();
@@ -115,6 +118,7 @@ namespace xtest {
         }
 
         [Fact]
+        [Trait("Priority","4")]
         public void CreateObjectTest()
         {
             IObjectService service = new DefaultObjectService();
@@ -195,9 +199,10 @@ namespace xtest {
                    "Person Manager"
             }, null);
 
-            var currObj = objects.Where(o=>o.ObjectName.Equals("Peter")).FirstOrDefault();
+            var currObj = objects != null ? objects.Where(o=>o.ObjectName.Equals("Peter")).FirstOrDefault()
+                        :  null;
 
-            if(currObj != null){
+            if(currObj == null){
                 int objId = service.CreateORUpdateGeneralObject(svObject);
             }
 
@@ -205,6 +210,7 @@ namespace xtest {
         }
 
          [Fact]
+         [Trait("Priority","5")]
         public void GetObjectTest()
         {
             IObjectService service = new DefaultObjectService();
@@ -249,7 +255,8 @@ namespace xtest {
             Assert.Equal(obj.GetPropertyValue<ObjectReferenceField>("Person Manager").ReferedGeneralObjectID, 1);
         }
 
-      /*  [Fact]
+        [Fact]
+        [Trait("Priority","6")]
          public void UpdateObjectTest()
         {
             IObjectService service = new DefaultObjectService();
@@ -293,7 +300,7 @@ namespace xtest {
             Assert.Equal(serviceobject.GetPropertyValue<ObjectFileField>("Person Image").FileName, "location-update.docx");
         }
 
-        [Fact]
+       /* [Fact]
           public void SoftDeleteObjectTest()
         {
             IObjectService service = new DefaultObjectService();
@@ -301,9 +308,15 @@ namespace xtest {
             int objectId = service.SoftDeleteServiceObject(svObject.ObjectID, "Tester");
             Assert.Equal(objectId, svObject.ObjectID);
             Assert.Equal(service.GetGeneralObjectCount(svObject.ObjectDefinitionId, null), 0);
-        }
-
-        [Fact]
+        } 
+        */
+       /*  [Fact]
+        public void DeleteSvcObjectTest(){
+            IObjectService service = new DefaultObjectService();
+            ServiceObject svObject = service.GetAllSerivceObjects(service.GetAllObjectDefinitions()[0].ObjectDefinitionID, null, null)[0];
+            service.DeleteServiceObject(svObject.ObjectID);
+        } */
+       /* [Fact]
         public void DeleteObjectFieldTest()
         {
             IObjectService service = new DefaultObjectService();
@@ -331,8 +344,9 @@ namespace xtest {
 
             service.DeleteObjectDefinitionField(4);
         }
-
-        [Fact]
+ */
+       /*   [Fact]
+          [Trait("Priority","7")]
         public void DeleteObjectDefinitionTest()
         {
             IObjectService service = new DefaultObjectService();
@@ -345,7 +359,7 @@ namespace xtest {
             var obj = objects[0];
             Assert.NotNull(obj.GetPropertyValue<SingleSelectionField>("Person Sex"));
             service.DeleteObjectDefinition(definitionId);
-        } */
+        }   */
 
     }
 }

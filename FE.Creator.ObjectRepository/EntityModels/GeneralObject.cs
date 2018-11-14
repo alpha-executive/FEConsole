@@ -11,7 +11,7 @@ namespace FE.Creator.ObjectRepository.EntityModels
     {
         public GeneralObject()
         {
-            this.GeneralObjectFields = new HashSet<GeneralObjectField>();
+            //this.GeneralObjectFields = new HashSet<GeneralObjectField>();
         }
         public int GeneralObjectID { get; set; }
 
@@ -36,6 +36,6 @@ namespace FE.Creator.ObjectRepository.EntityModels
 
         internal virtual GeneralObjectDefinition GeneralObjectDefinition { get; set; }
 
-        internal virtual ICollection<GeneralObjectField> GeneralObjectFields { get; set; }
+        internal virtual ICollection<GeneralObjectField> GeneralObjectFields { get; set; } = new List<GeneralObjectField>();
     }
 }

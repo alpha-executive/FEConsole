@@ -276,6 +276,47 @@ namespace testconsole {
 
         }
 
+        static void UpdateServiceObject()
+        {
+            IObjectService service = new DefaultObjectService();
+            ServiceObject svObject = service.GetAllSerivceObjects(service.GetAllObjectDefinitions()[0].ObjectDefinitionID, null, null)[0];
+            svObject.OnlyUpdateProperties = true;
+
+            svObject.Properties.Add(new ObjectKeyValuePair()
+            {
+                KeyName = "Person Name",
+                Value = new PrimeObjectField()
+                {
+                    PrimeDataType = PrimeFieldDataType.String,
+                    Value = "Peter, Robert - Updated"
+                }
+            });
+
+            svObject.Properties.Add(new ObjectKeyValuePair()
+            {
+                KeyName = "Person Image",
+                Value = new ObjectFileField()
+                {
+                    FileCRC = "10001001",
+                    FileExtension = ".docx",
+                    FileFullPath = "c:\\location-update.docx",
+                    FileName = "location-update.docx",
+                    FileUrl = "http://www.url.com",
+                    FileSize = 10,
+                    Created = DateTime.Now,
+                    Updated = DateTime.Now
+                }
+            });
+
+            int objectId = service.CreateORUpdateGeneralObject(svObject);
+            var serviceobject = service.GetServiceObjectById(objectId, new string[]
+             {
+                "Person Name",
+                "Person Image"
+             }, null);
+
+        }
+
         static void Main (string[] args) {
             /* string sqlConStr = "Server=localhost;Database=xpressiondb;User Id=xpressionsa;Password=password;";
 

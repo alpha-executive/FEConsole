@@ -11,8 +11,9 @@ namespace FE.Creator.ObjectRepository.EntityModels
 {
    internal class EntityContextFactory
     {
+        protected static readonly string DEFAULT_DATABASE_PROVIDER = "sqlserver";
         internal static DBObjectContext GetDBObjectContext(){
-            return GetDBObjectContext(string.Empty, null);
+            return GetDBObjectContext(DEFAULT_DATABASE_PROVIDER, null);
         }
 
         internal static DBObjectContext GetDBObjectContext(string dbProvider, DbContextOptions options)

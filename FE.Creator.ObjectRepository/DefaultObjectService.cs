@@ -602,11 +602,6 @@ namespace FE.Creator.ObjectRepository
             }
             using (var dbContext = EntityContextFactory.GetDBObjectContext())
             {
-                var fieldList = dbContext.GeneralObjectFields
-                            .Include(g=>(g as PrimeGeneralObjectField).GeneralObjectDefinitionField)
-                            .Include(g=>(g as FileGeneralObjectField).GeneralObjectDefinitionField)
-                            .Include(g=>(g as GeneralObjectReferenceField).GeneralObjectDefinitionField);
-
                 var objectList = dbContext.GeneralObjects.Where(o => o.GeneralObjectDefinitionID == ObjDefId 
                                                                                 && o.IsDeleted == false
                                                                                 && (!requestContext.IsDataCurrentUserOnly
@@ -614,6 +609,7 @@ namespace FE.Creator.ObjectRepository
                                                                                    )
                                                              )
                                                             .Include(g=>g.GeneralObjectFields)
+                                                                .ThenInclude(f=>f.GeneralObjectDefinitionField)
                                                             .ToList();
 
                 logger.LogDebug("objectList.count : " + objectList.Count);
@@ -739,7 +735,7 @@ namespace FE.Creator.ObjectRepository
                                                        )
                                              )
                                             .Include(o => o.GeneralObjectFields)
-                                            .Include(o => o.GeneralObjectFields.Select(f => f.GeneralObjectDefinitionField))
+                                            .ThenInclude(f => f.GeneralObjectDefinitionField)
                                             .ToList();
 
                 svsObjects = ObjectConverter.ConvertToServiceObjectList(objectList, properties);
@@ -774,7 +770,8 @@ namespace FE.Creator.ObjectRepository
                                                         || requestContext.RequestUser == o.ObjectOwner
                                                        )
                                                 )
-                                            .Include(o => o.GeneralObjectFields.Select(f => f.GeneralObjectDefinitionField))
+                                            .Include(o => o.GeneralObjectFields)
+                                            .ThenInclude(f => f.GeneralObjectDefinitionField)
                                             .OrderByDescending(o => o.Created)
                                             .Skip(skipCount)
                                             .Take(pageSize)
@@ -1049,7 +1046,8 @@ namespace FE.Creator.ObjectRepository
                 {
                     var objectDefinition = dboContext.GeneralObjectDefinitions
                                                      .Include(f => f.GeneralObjectDefinitionFields)
-                                                     .Include(o => o.GeneralObjects.Select(f=>f.GeneralObjectFields))
+                                                     .Include(o => o.GeneralObjects)
+                                                     .ThenInclude(f=>f.GeneralObjectFields)
                                                      .Where(d => d.GeneralObjectDefinitionID == objectDefinitionId)
                                                      .FirstOrDefault();
 
