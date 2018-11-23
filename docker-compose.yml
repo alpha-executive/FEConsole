@@ -2,7 +2,7 @@ version: '2.1'
 
 services:
   startnetcore:
-    image: startnetcore
+    image: FE.Creator.PCenter
     build: .
     ports:
       - 3000:3000

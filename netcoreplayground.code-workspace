@@ -1,16 +1,7 @@
 {
 	"folders": [
 		{
-			"path": "coreaspnet"
-		},
-		{
-			"path": "testconsole"
-		},
-		{
-			"path": "FE.Creator.ObjectRepository"
-		},
-		{
-			"path": "xtest"
+			"path": "."
 		}
 	],
 	"settings": {}
