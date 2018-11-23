@@ -41,8 +41,6 @@ namespace coreaspnet
             services.AddSingleton(typeof(IObjectService), typeof(DefaultObjectService));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
-            services.AddTransient<ITagHelperComponent, AddressTagHelperComponent>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
