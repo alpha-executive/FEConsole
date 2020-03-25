@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Serilog;
+using Serilog.Events;
+using Serilog.Sinks.SystemConsole.Themes;
+using Microsoft.AspNetCore.Hosting;
 
 namespace coreaspnet
 {
@@ -15,16 +13,72 @@ namespace coreaspnet
     {
         public static void Main(string[] args)
         {
-            var host = CreateWebHostBuilder(args).Build();
-            using(var scope = host.Services.CreateScope()){
-                var servieProvider = scope.ServiceProvider;
-            }
+            //var logger = NLog.Web.NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
+            
+            try
+            {
+                 Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+                .MinimumLevel.Override("System", LogEventLevel.Warning)
+                .MinimumLevel.Override("Microsoft.AspNetCore.Authentication", LogEventLevel.Information)
+                .Enrich.FromLogContext()
+                // uncomment to write to Azure diagnostics stream
+                //.WriteTo.File(
+                //    @"D:\home\LogFiles\Application\identityserver.txt",
+                //    fileSizeLimitBytes: 1_000_000,
+                //    rollOnFileSizeLimit: true,
+                //    shared: true,
+                //    flushToDiskInterval: TimeSpan.FromSeconds(1))
+                .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}", theme: AnsiConsoleTheme.Literate)
+                .CreateLogger();
 
-            host.Run();
+                Log.Logger.Debug("Starting Web Application ...");
+
+                var host = CreateHostBuilder(args).Build();
+               /*  using(var scope = host.Services.CreateScope()){
+                    var servieProvider = scope.ServiceProvider;
+                } */
+            
+                host.Run();
+            }
+            catch (System.Exception ex)
+            {
+                Log.Logger.Fatal(ex, "Unexpected Error Cause application stoped!");
+                throw;
+            }
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+        public static IHostBuilder CreateHostBuilder(string[] args){
+          /*   var configBuilder = new ConfigurationBuilder()
+            .AddEnvironmentVariables("ASPNETCORE_")
+            .Build(); */
+/* 
+           return  WebHost.CreateDefaultBuilder(args)
+                .UseConfiguration(config)
+                .UseStartup<Startup>()
+                .ConfigureLogging(logging=>{
+                    logging.ClearProviders();
+                    logging.AddConsole();
+                    logging.SetMinimumLevel(LogLevel.Trace);
+                });
+               //.UseNLog(); */
+
+            var builtConfig = new ConfigurationBuilder()
+            .AddEnvironmentVariables("ASPNETCORE_")
+            .AddJsonFile("appsettings.json")
+            .Build();
+
+            return Host.CreateDefaultBuilder(args)
+                .UseSerilog()
+                .ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    config.AddConfiguration(builtConfig);
+                })
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
     }
+}
 }

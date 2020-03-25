@@ -1,0 +1,1556 @@
+2019-01-04 15:04:56.9331 Info Message Template Auto Format enabled
+2019-01-04 15:04:56.9331 Info Loading assembly: NLog.Web.AspNetCore
+2019-01-04 15:04:56.9811 Info Adding target File Target[allfile]
+2019-01-04 15:04:56.9811 Info Adding target File Target[ownFile-web]
+2019-01-04 15:04:56.9811 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2019-01-04 15:04:57.0020 Info Found 45 configuration items
+2019-01-04 15:05:18.6689 Info Logger closing down...
+2019-01-04 15:05:18.6689 Info Closing old configuration.
+2019-01-04 15:05:18.6822 Info Logger has been closed down.
+2019-01-04 15:05:18.6822 Info Shutting down logging...
+2019-01-04 15:05:18.6822 Info Logger has been shut down.
+2019-01-04 15:13:46.6082 Info Message Template Auto Format enabled
+2019-01-04 15:13:46.6082 Info Loading assembly: NLog.Web.AspNetCore
+2019-01-04 15:13:46.6555 Info Adding target File Target[allfile]
+2019-01-04 15:13:46.6555 Info Adding target File Target[ownFile-web]
+2019-01-04 15:13:46.6555 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2019-01-04 15:13:46.6713 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: ownFile-web
+2019-01-04 15:13:46.6713 Info Found 44 configuration items
+2019-01-04 15:17:52.5679 Info Logger closing down...
+2019-01-04 15:17:52.5679 Info Closing old configuration.
+2019-01-04 15:17:52.5805 Info Logger has been closed down.
+2019-01-04 15:17:52.5805 Info Shutting down logging...
+2019-01-04 15:17:52.5805 Info Logger has been shut down.
+2019-01-04 15:18:03.3682 Info Message Template Auto Format enabled
+2019-01-04 15:18:03.3747 Info Loading assembly: NLog.Web.AspNetCore
+2019-01-04 15:18:03.4125 Info Adding target File Target[filelog]
+2019-01-04 15:18:03.4125 Info Adding target Console Target[consolelog]
+2019-01-04 15:18:03.4209 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2019-01-04 15:18:03.4354 Info Found 36 configuration items
+2019-01-04 15:18:18.1276 Info Logger closing down...
+2019-01-04 15:18:18.1276 Info Closing old configuration.
+2019-01-04 15:18:18.1417 Info Logger has been closed down.
+2019-01-04 15:18:18.1417 Info Shutting down logging...
+2019-01-04 15:18:18.1417 Info Logger has been shut down.
+2019-01-04 15:18:56.0844 Info Message Template Auto Format enabled
+2019-01-04 15:18:56.0911 Info Loading assembly: NLog.Web.AspNetCore
+2019-01-04 15:18:56.1320 Info Adding target File Target[filelog]
+2019-01-04 15:18:56.1320 Info Adding target Console Target[consolelog]
+2019-01-04 15:18:56.1393 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2019-01-04 15:18:56.1562 Info Found 36 configuration items
+2019-01-04 15:19:40.5056 Info Logger closing down...
+2019-01-04 15:19:40.5056 Info Closing old configuration.
+2019-01-04 15:19:40.5151 Info Logger has been closed down.
+2019-01-04 15:19:40.5151 Info Shutting down logging...
+2019-01-04 15:19:40.5151 Info Logger has been shut down.
+2019-01-04 15:20:38.3733 Info Message Template Auto Format enabled
+2019-01-04 15:20:38.3733 Info Loading assembly: NLog.Web.AspNetCore
+2019-01-04 15:20:38.4168 Info Adding target File Target[filelog]
+2019-01-04 15:20:38.4168 Info Adding target Console Target[consolelog]
+2019-01-04 15:20:38.4245 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2019-01-04 15:20:38.4409 Info Found 36 configuration items
+2019-08-29 11:31:39.2886 Info Message Template Auto Format enabled
+2019-08-29 11:31:39.2886 Info Loading assembly: NLog.Web.AspNetCore
+2019-08-29 11:31:39.3405 Info Adding target File Target[filelog]
+2019-08-29 11:31:39.3405 Info Adding target Console Target[consolelog]
+2019-08-29 11:31:39.3477 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2019-08-29 11:31:39.3477 Info Found 36 configuration items
+2019-08-29 11:53:44.0360 Info Logger closing down...
+2019-08-29 11:53:44.0360 Info Closing old configuration.
+2019-08-29 11:53:44.0641 Info Logger has been closed down.
+2019-08-29 11:53:44.0641 Info Shutting down logging...
+2019-08-29 11:53:44.0641 Info Logger has been shut down.
+2020-02-17 16:56:15.8674 Info Message Template Auto Format enabled
+2020-02-17 16:56:15.8674 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-17 16:56:15.9678 Info Adding target File Target[filelog]
+2020-02-17 16:56:15.9678 Info Adding target Console Target[consolelog]
+2020-02-17 16:56:15.9768 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-17 16:56:15.9961 Info Found 36 configuration items
+2020-02-19 22:02:03.0338 Info Logger closing down...
+2020-02-19 22:02:03.0338 Info Closing old configuration.
+2020-02-19 22:02:03.0561 Info Logger has been closed down.
+2020-02-19 22:02:03.0586 Info Shutting down logging...
+2020-02-19 22:02:03.0586 Info Logger has been shut down.
+2020-02-19 22:02:21.4710 Info Message Template Auto Format enabled
+2020-02-19 22:02:21.4710 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-19 22:02:21.5154 Info Adding target File Target[filelog]
+2020-02-19 22:02:21.5154 Info Adding target Console Target[consolelog]
+2020-02-19 22:02:21.5154 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-19 22:02:21.5369 Info Found 36 configuration items
+2020-02-19 22:06:55.6352 Info Logger closing down...
+2020-02-19 22:06:55.6352 Info Closing old configuration.
+2020-02-19 22:06:55.6617 Info Logger has been closed down.
+2020-02-19 22:06:55.6617 Info Shutting down logging...
+2020-02-19 22:06:55.6617 Info Logger has been shut down.
+2020-02-19 22:07:01.7982 Info Message Template Auto Format enabled
+2020-02-19 22:07:01.7982 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-19 22:07:01.8442 Info Adding target File Target[filelog]
+2020-02-19 22:07:01.8442 Info Adding target Console Target[consolelog]
+2020-02-19 22:07:01.8442 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-19 22:07:01.8663 Info Found 36 configuration items
+2020-02-19 22:31:07.2392 Info Logger closing down...
+2020-02-19 22:31:07.2392 Info Closing old configuration.
+2020-02-19 22:31:07.2628 Info Logger has been closed down.
+2020-02-19 22:31:07.2628 Info Shutting down logging...
+2020-02-19 22:31:07.2628 Info Logger has been shut down.
+2020-02-20 21:50:04.3797 Info Message Template Auto Format enabled
+2020-02-20 21:50:04.3797 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-20 21:50:04.4344 Info Adding target File Target[filelog]
+2020-02-20 21:50:04.4344 Info Adding target Console Target[consolelog]
+2020-02-20 21:50:04.4421 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-20 21:50:04.4572 Info Found 36 configuration items
+2020-02-20 21:54:00.3854 Info Logger closing down...
+2020-02-20 21:54:00.3854 Info Closing old configuration.
+2020-02-20 21:54:00.4040 Info Logger has been closed down.
+2020-02-20 21:54:00.4040 Info Shutting down logging...
+2020-02-20 21:54:00.4085 Info Logger has been shut down.
+2020-02-20 21:54:13.8190 Info Message Template Auto Format enabled
+2020-02-20 21:54:13.8190 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-20 21:54:13.8700 Info Adding target File Target[filelog]
+2020-02-20 21:54:13.8700 Info Adding target Console Target[consolelog]
+2020-02-20 21:54:13.8813 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-20 21:54:13.8981 Info Found 36 configuration items
+2020-02-20 22:31:31.3152 Info Logger closing down...
+2020-02-20 22:31:31.3182 Info Closing old configuration.
+2020-02-20 22:31:31.3413 Info Logger has been closed down.
+2020-02-20 22:31:31.3413 Info Shutting down logging...
+2020-02-20 22:31:31.3413 Info Logger has been shut down.
+2020-02-20 22:32:24.9336 Info Message Template Auto Format enabled
+2020-02-20 22:32:24.9336 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-20 22:32:24.9791 Info Adding target File Target[filelog]
+2020-02-20 22:32:24.9791 Info Adding target Console Target[consolelog]
+2020-02-20 22:32:24.9791 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-20 22:32:25.0021 Info Found 36 configuration items
+2020-02-20 22:46:06.5471 Info Logger closing down...
+2020-02-20 22:46:06.5471 Info Closing old configuration.
+2020-02-20 22:46:06.5699 Info Logger has been closed down.
+2020-02-20 22:46:06.5714 Info Shutting down logging...
+2020-02-20 22:46:06.5714 Info Logger has been shut down.
+2020-02-20 22:46:14.0969 Info Message Template Auto Format enabled
+2020-02-20 22:46:14.1046 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-20 22:46:14.1433 Info Adding target File Target[filelog]
+2020-02-20 22:46:14.1433 Info Adding target Console Target[consolelog]
+2020-02-20 22:46:14.1510 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-20 22:46:14.1661 Info Found 36 configuration items
+2020-02-20 22:46:33.9966 Info Logger closing down...
+2020-02-20 22:46:33.9966 Info Closing old configuration.
+2020-02-20 22:46:34.0191 Info Logger has been closed down.
+2020-02-20 22:46:34.0191 Info Shutting down logging...
+2020-02-20 22:46:34.0238 Info Logger has been shut down.
+2020-02-20 22:47:54.8268 Info Message Template Auto Format enabled
+2020-02-20 22:47:54.8268 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-20 22:47:54.8754 Info Adding target File Target[filelog]
+2020-02-20 22:47:54.8754 Info Adding target Console Target[consolelog]
+2020-02-20 22:47:54.8835 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-20 22:47:54.8995 Info Found 36 configuration items
+2020-02-20 22:54:16.5298 Info Logger closing down...
+2020-02-20 22:54:16.5298 Info Closing old configuration.
+2020-02-20 22:54:16.5533 Info Logger has been closed down.
+2020-02-20 22:54:16.5533 Info Shutting down logging...
+2020-02-20 22:54:16.5533 Info Logger has been shut down.
+2020-02-20 22:54:20.9609 Info Message Template Auto Format enabled
+2020-02-20 22:54:20.9681 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-20 22:54:21.0102 Info Adding target File Target[filelog]
+2020-02-20 22:54:21.0102 Info Adding target Console Target[consolelog]
+2020-02-20 22:54:21.0102 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-20 22:54:21.0331 Info Found 36 configuration items
+2020-02-20 22:55:05.8616 Info Logger closing down...
+2020-02-20 22:55:05.8616 Info Closing old configuration.
+2020-02-20 22:55:05.8864 Info Logger has been closed down.
+2020-02-20 22:55:05.8864 Info Shutting down logging...
+2020-02-20 22:55:05.8864 Info Logger has been shut down.
+2020-02-21 09:58:54.2407 Info Message Template Auto Format enabled
+2020-02-21 09:58:54.2849 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-21 09:58:54.5184 Info Adding target File Target[filelog]
+2020-02-21 09:58:54.5234 Info Adding target Console Target[consolelog]
+2020-02-21 09:58:54.5234 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-21 09:58:54.5594 Info Found 36 configuration items
+2020-02-21 11:00:29.9430 Info Logger closing down...
+2020-02-21 11:00:29.9430 Info Closing old configuration.
+2020-02-21 11:00:30.0301 Info Logger has been closed down.
+2020-02-21 11:00:30.0301 Info Shutting down logging...
+2020-02-21 11:00:30.0347 Info Logger has been shut down.
+2020-02-21 11:01:13.2146 Info Message Template Auto Format enabled
+2020-02-21 11:01:13.2211 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-21 11:01:13.2596 Info Adding target File Target[filelog]
+2020-02-21 11:01:13.2596 Info Adding target Console Target[consolelog]
+2020-02-21 11:01:13.2596 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-21 11:01:13.2823 Info Found 36 configuration items
+2020-02-21 11:05:36.2799 Info Logger closing down...
+2020-02-21 11:05:36.2799 Info Closing old configuration.
+2020-02-21 11:05:36.3012 Info Logger has been closed down.
+2020-02-21 11:05:36.3012 Info Shutting down logging...
+2020-02-21 11:05:36.3012 Info Logger has been shut down.
+2020-02-21 11:05:42.6486 Info Message Template Auto Format enabled
+2020-02-21 11:05:42.6486 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-21 11:05:42.7048 Info Adding target File Target[filelog]
+2020-02-21 11:05:42.7065 Info Adding target Console Target[consolelog]
+2020-02-21 11:05:42.7065 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-21 11:05:42.7331 Info Found 36 configuration items
+2020-02-21 22:04:52.7091 Info Logger closing down...
+2020-02-21 22:04:52.7091 Info Closing old configuration.
+2020-02-21 22:04:52.7385 Info Logger has been closed down.
+2020-02-21 22:04:52.7405 Info Shutting down logging...
+2020-02-21 22:04:52.7405 Info Logger has been shut down.
+2020-02-21 22:05:33.3100 Info Message Template Auto Format enabled
+2020-02-21 22:05:33.3100 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-21 22:05:33.3640 Info Adding target File Target[filelog]
+2020-02-21 22:05:33.3654 Info Adding target Console Target[consolelog]
+2020-02-21 22:05:33.3654 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-21 22:05:33.3873 Info Found 36 configuration items
+2020-02-21 22:18:46.3563 Info Logger closing down...
+2020-02-21 22:18:46.3563 Info Closing old configuration.
+2020-02-21 22:18:46.3747 Info Logger has been closed down.
+2020-02-21 22:18:46.3747 Info Shutting down logging...
+2020-02-21 22:18:46.3747 Info Logger has been shut down.
+2020-02-21 22:18:52.9973 Info Message Template Auto Format enabled
+2020-02-21 22:18:52.9973 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-21 22:18:53.0459 Info Adding target File Target[filelog]
+2020-02-21 22:18:53.0459 Info Adding target Console Target[consolelog]
+2020-02-21 22:18:53.0459 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-21 22:18:53.0704 Info Found 36 configuration items
+2020-02-21 22:20:08.1932 Info Shutting down logging...
+2020-02-21 22:20:08.2260 Info Logger has been shut down.
+2020-02-21 22:22:03.4609 Info Message Template Auto Format enabled
+2020-02-21 22:22:03.4695 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-21 22:22:03.5800 Info Adding target File Target[filelog]
+2020-02-21 22:22:03.5800 Info Adding target Console Target[consolelog]
+2020-02-21 22:22:03.5942 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-21 22:22:03.6226 Info Found 36 configuration items
+2020-02-21 22:31:59.7080 Info Message Template Auto Format enabled
+2020-02-21 22:31:59.7080 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-21 22:31:59.8110 Info Adding target File Target[filelog]
+2020-02-21 22:31:59.8110 Info Adding target Console Target[consolelog]
+2020-02-21 22:31:59.8230 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-21 22:31:59.8431 Info Found 36 configuration items
+2020-02-21 23:27:31.3090 Info Message Template Auto Format enabled
+2020-02-21 23:27:31.3235 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-21 23:27:31.4437 Info Adding target File Target[filelog]
+2020-02-21 23:27:31.4437 Info Adding target Console Target[consolelog]
+2020-02-21 23:27:31.4604 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-21 23:27:31.5016 Info Found 36 configuration items
+2020-02-21 23:28:32.1690 Info Message Template Auto Format enabled
+2020-02-21 23:28:32.1767 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-21 23:28:32.2597 Info Adding target File Target[filelog]
+2020-02-21 23:28:32.2597 Info Adding target Console Target[consolelog]
+2020-02-21 23:28:32.2677 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-21 23:28:32.2902 Info Found 36 configuration items
+2020-02-21 23:29:06.6081 Info Message Template Auto Format enabled
+2020-02-21 23:29:06.6181 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-21 23:29:06.6974 Info Adding target File Target[filelog]
+2020-02-21 23:29:06.6974 Info Adding target Console Target[consolelog]
+2020-02-21 23:29:06.7083 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-21 23:29:06.7258 Info Found 36 configuration items
+2020-02-21 23:29:53.2051 Info Message Template Auto Format enabled
+2020-02-21 23:29:53.2125 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-21 23:29:53.2847 Info Adding target File Target[filelog]
+2020-02-21 23:29:53.2847 Info Adding target Console Target[consolelog]
+2020-02-21 23:29:53.2847 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-21 23:29:53.3108 Info Found 36 configuration items
+2020-02-21 23:33:05.5828 Info Message Template Auto Format enabled
+2020-02-21 23:33:05.5903 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-21 23:33:05.6771 Info Adding target File Target[filelog]
+2020-02-21 23:33:05.6771 Info Adding target Console Target[consolelog]
+2020-02-21 23:33:05.6771 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-21 23:33:05.7058 Info Found 36 configuration items
+2020-02-21 23:34:31.0936 Info Message Template Auto Format enabled
+2020-02-21 23:34:31.1041 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-21 23:34:31.1993 Info Adding target File Target[filelog]
+2020-02-21 23:34:31.1993 Info Adding target Console Target[consolelog]
+2020-02-21 23:34:31.2116 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-21 23:34:31.2363 Info Found 36 configuration items
+2020-02-21 23:37:46.3892 Info Message Template Auto Format enabled
+2020-02-21 23:37:46.3892 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-21 23:37:46.4676 Info Adding target File Target[filelog]
+2020-02-21 23:37:46.4676 Info Adding target Console Target[consolelog]
+2020-02-21 23:37:46.4791 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-21 23:37:46.4948 Info Found 36 configuration items
+2020-02-21 23:40:39.6546 Info Message Template Auto Format enabled
+2020-02-21 23:40:39.6546 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-21 23:40:39.7350 Info Adding target File Target[filelog]
+2020-02-21 23:40:39.7350 Info Adding target Console Target[consolelog]
+2020-02-21 23:40:39.7451 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-21 23:40:39.7661 Info Found 36 configuration items
+2020-02-21 23:45:36.2955 Info Message Template Auto Format enabled
+2020-02-21 23:45:36.2955 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-21 23:45:36.3866 Info Adding target File Target[filelog]
+2020-02-21 23:45:36.3866 Info Adding target Console Target[consolelog]
+2020-02-21 23:45:36.3866 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-21 23:45:36.4180 Info Found 36 configuration items
+2020-02-21 23:48:26.8605 Info Message Template Auto Format enabled
+2020-02-21 23:48:26.8605 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-21 23:48:27.0486 Info Adding target File Target[filelog]
+2020-02-21 23:48:27.0486 Info Adding target Console Target[consolelog]
+2020-02-21 23:48:27.0628 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-21 23:48:27.0915 Info Found 36 configuration items
+2020-02-21 23:51:52.7743 Info Message Template Auto Format enabled
+2020-02-21 23:51:52.7885 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-21 23:51:52.9585 Info Adding target File Target[filelog]
+2020-02-21 23:51:52.9585 Info Adding target Console Target[consolelog]
+2020-02-21 23:51:52.9690 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-21 23:51:52.9852 Info Found 36 configuration items
+2020-02-22 15:28:36.6414 Info Message Template Auto Format enabled
+2020-02-22 15:28:36.6529 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-22 15:28:36.7693 Info Adding target File Target[filelog]
+2020-02-22 15:28:36.7693 Info Adding target Console Target[consolelog]
+2020-02-22 15:28:36.7832 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-22 15:28:36.8152 Info Found 36 configuration items
+2020-02-22 15:44:49.3622 Info Message Template Auto Format enabled
+2020-02-22 15:44:49.3738 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-22 15:44:49.5722 Info Adding target File Target[filelog]
+2020-02-22 15:44:49.5791 Info Adding target Console Target[consolelog]
+2020-02-22 15:44:49.5931 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-22 15:44:49.6336 Info Found 36 configuration items
+2020-02-22 15:47:36.5092 Info Message Template Auto Format enabled
+2020-02-22 15:47:36.5193 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-22 15:47:36.6693 Info Adding target File Target[filelog]
+2020-02-22 15:47:36.6693 Info Adding target Console Target[consolelog]
+2020-02-22 15:47:36.6884 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-22 15:47:36.7213 Info Found 36 configuration items
+2020-02-22 15:50:09.1807 Info Message Template Auto Format enabled
+2020-02-22 15:50:09.1895 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-22 15:50:09.3281 Info Adding target File Target[filelog]
+2020-02-22 15:50:09.3281 Info Adding target Console Target[consolelog]
+2020-02-22 15:50:09.3405 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-22 15:50:09.3662 Info Found 36 configuration items
+2020-02-22 15:52:30.1969 Info Message Template Auto Format enabled
+2020-02-22 15:52:30.2054 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-22 15:52:30.3128 Info Adding target File Target[filelog]
+2020-02-22 15:52:30.3128 Info Adding target Console Target[consolelog]
+2020-02-22 15:52:30.3251 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-22 15:52:30.3516 Info Found 36 configuration items
+2020-02-22 15:54:00.6011 Info Message Template Auto Format enabled
+2020-02-22 15:54:00.6094 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-22 15:54:00.7199 Info Adding target File Target[filelog]
+2020-02-22 15:54:00.7199 Info Adding target Console Target[consolelog]
+2020-02-22 15:54:00.7199 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-22 15:54:00.7765 Info Found 36 configuration items
+2020-02-22 15:57:10.2844 Info Message Template Auto Format enabled
+2020-02-22 15:57:10.2844 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-22 15:57:10.3326 Info Adding target File Target[filelog]
+2020-02-22 15:57:10.3326 Info Adding target Console Target[consolelog]
+2020-02-22 15:57:10.3401 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-22 15:57:10.3401 Info Found 36 configuration items
+2020-02-22 15:59:02.0706 Info Logger closing down...
+2020-02-22 15:59:02.0706 Info Closing old configuration.
+2020-02-22 15:59:02.0932 Info Logger has been closed down.
+2020-02-22 15:59:02.0932 Info Shutting down logging...
+2020-02-22 15:59:02.0932 Info Logger has been shut down.
+2020-02-22 20:53:29.7461 Info Message Template Auto Format enabled
+2020-02-22 20:53:29.7526 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-22 20:53:29.7907 Info Adding target File Target[filelog]
+2020-02-22 20:53:29.7907 Info Adding target Console Target[consolelog]
+2020-02-22 20:53:29.7981 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-22 20:53:29.7981 Info Found 36 configuration items
+2020-02-24 09:28:10.9313 Info Shutting down logging...
+2020-02-24 09:28:10.9804 Info Logger has been shut down.
+2020-02-24 13:22:09.3728 Info Message Template Auto Format enabled
+2020-02-24 13:22:09.3988 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-24 13:22:09.5517 Info Adding target File Target[filelog]
+2020-02-24 13:22:09.5568 Info Adding target Console Target[consolelog]
+2020-02-24 13:22:09.5760 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-24 13:22:09.6065 Info Found 36 configuration items
+2020-02-24 13:22:17.9063 Info Logger closing down...
+2020-02-24 13:22:17.9063 Info Closing old configuration.
+2020-02-24 13:22:17.9527 Info Logger has been closed down.
+2020-02-24 13:22:17.9527 Info Shutting down logging...
+2020-02-24 13:22:17.9527 Info Logger has been shut down.
+2020-02-24 13:32:52.5867 Info Message Template Auto Format enabled
+2020-02-24 13:32:52.5867 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-24 13:32:52.6315 Info Adding target File Target[filelog]
+2020-02-24 13:32:52.6315 Info Adding target Console Target[consolelog]
+2020-02-24 13:32:52.6389 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-24 13:32:52.6535 Info Found 36 configuration items
+2020-02-24 14:02:17.9519 Info Logger closing down...
+2020-02-24 14:02:17.9519 Info Closing old configuration.
+2020-02-24 14:02:17.9968 Info Logger has been closed down.
+2020-02-24 14:02:17.9991 Info Shutting down logging...
+2020-02-24 14:02:17.9991 Info Logger has been shut down.
+2020-02-24 14:02:25.4140 Info Message Template Auto Format enabled
+2020-02-24 14:02:25.4140 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-24 14:02:25.4598 Info Adding target File Target[filelog]
+2020-02-24 14:02:25.4598 Info Adding target Console Target[consolelog]
+2020-02-24 14:02:25.4598 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-24 14:02:25.4821 Info Found 36 configuration items
+2020-02-27 17:08:36.7050 Info Message Template Auto Format enabled
+2020-02-27 17:08:36.7239 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-27 17:08:36.8242 Info Adding target File Target[filelog]
+2020-02-27 17:08:36.8280 Info Adding target Console Target[consolelog]
+2020-02-27 17:08:36.8432 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-02-27 17:08:36.8757 Info Found 36 configuration items
+2020-03-02 14:04:43.9833 Info Shutting down logging...
+2020-03-02 14:04:44.0359 Info Logger has been shut down.
+2020-03-02 21:00:51.9528 Info Message Template Auto Format enabled
+2020-03-02 21:00:51.9648 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-02 21:00:52.0263 Info Adding target File Target[filelog]
+2020-03-02 21:00:52.0263 Info Adding target Console Target[consolelog]
+2020-03-02 21:00:52.0362 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-02 21:00:52.0569 Info Found 36 configuration items
+2020-03-03 21:51:57.6523 Info Logger closing down...
+2020-03-03 21:51:57.6523 Info Closing old configuration.
+2020-03-03 21:51:57.6798 Info Logger has been closed down.
+2020-03-03 21:51:57.6798 Info Shutting down logging...
+2020-03-03 21:51:57.6798 Info Logger has been shut down.
+2020-03-03 21:53:00.4619 Info Message Template Auto Format enabled
+2020-03-03 21:53:00.4769 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-03 21:53:00.5514 Info Adding target File Target[filelog]
+2020-03-03 21:53:00.5514 Info Adding target Console Target[consolelog]
+2020-03-03 21:53:00.5514 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-03 21:53:00.5845 Info Found 36 configuration items
+2020-03-03 22:08:26.2049 Info Logger closing down...
+2020-03-03 22:08:26.2049 Info Closing old configuration.
+2020-03-03 22:08:26.2595 Info Logger has been closed down.
+2020-03-03 22:08:26.2595 Info Shutting down logging...
+2020-03-03 22:08:26.2674 Info Logger has been shut down.
+2020-03-03 22:08:38.7054 Info Message Template Auto Format enabled
+2020-03-03 22:08:38.7121 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-03 22:08:38.7503 Info Adding target File Target[filelog]
+2020-03-03 22:08:38.7503 Info Adding target Console Target[consolelog]
+2020-03-03 22:08:38.7503 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-03 22:08:38.7713 Info Found 36 configuration items
+2020-03-03 22:23:00.3225 Info Logger closing down...
+2020-03-03 22:23:00.3225 Info Closing old configuration.
+2020-03-03 22:23:00.3796 Info Logger has been closed down.
+2020-03-03 22:23:00.3796 Info Shutting down logging...
+2020-03-03 22:23:00.3796 Info Logger has been shut down.
+2020-03-03 22:23:26.5058 Info Message Template Auto Format enabled
+2020-03-03 22:23:26.5058 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-03 22:23:26.5511 Info Adding target File Target[filelog]
+2020-03-03 22:23:26.5511 Info Adding target Console Target[consolelog]
+2020-03-03 22:23:26.5511 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-03 22:23:26.5719 Info Found 36 configuration items
+2020-03-03 22:26:58.2997 Info Logger closing down...
+2020-03-03 22:26:58.2997 Info Closing old configuration.
+2020-03-03 22:26:58.3527 Info Logger has been closed down.
+2020-03-03 22:26:58.3527 Info Shutting down logging...
+2020-03-03 22:26:58.3527 Info Logger has been shut down.
+2020-03-03 22:27:21.6902 Info Message Template Auto Format enabled
+2020-03-03 22:27:21.6902 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-03 22:27:21.7833 Info Adding target File Target[filelog]
+2020-03-03 22:27:21.7833 Info Adding target Console Target[consolelog]
+2020-03-03 22:27:21.8047 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-03 22:27:21.8512 Info Found 36 configuration items
+2020-03-03 22:44:19.0457 Info Shutting down logging...
+2020-03-03 22:44:19.0770 Info Logger has been shut down.
+2020-03-04 18:40:51.0766 Info Message Template Auto Format enabled
+2020-03-04 18:40:51.0863 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-04 18:40:51.1341 Info Adding target File Target[filelog]
+2020-03-04 18:40:51.1341 Info Adding target Console Target[consolelog]
+2020-03-04 18:40:51.1341 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-04 18:40:51.1568 Info Found 36 configuration items
+2020-03-04 19:30:27.7090 Info Logger closing down...
+2020-03-04 19:30:27.7121 Info Closing old configuration.
+2020-03-04 19:30:27.7321 Info Logger has been closed down.
+2020-03-04 19:30:27.7321 Info Shutting down logging...
+2020-03-04 19:30:27.7321 Info Logger has been shut down.
+2020-03-04 19:31:12.3481 Info Message Template Auto Format enabled
+2020-03-04 19:31:12.3550 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-04 19:31:12.3968 Info Adding target File Target[filelog]
+2020-03-04 19:31:12.3985 Info Adding target Console Target[consolelog]
+2020-03-04 19:31:12.3985 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-04 19:31:12.4188 Info Found 36 configuration items
+2020-03-04 19:36:15.7937 Info Logger closing down...
+2020-03-04 19:36:15.7937 Info Closing old configuration.
+2020-03-04 19:36:15.8121 Info Logger has been closed down.
+2020-03-04 19:36:15.8121 Info Shutting down logging...
+2020-03-04 19:36:15.8121 Info Logger has been shut down.
+2020-03-04 19:36:35.4938 Info Message Template Auto Format enabled
+2020-03-04 19:36:35.4938 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-04 19:36:35.5362 Info Adding target File Target[filelog]
+2020-03-04 19:36:35.5362 Info Adding target Console Target[consolelog]
+2020-03-04 19:36:35.5439 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-04 19:36:35.5439 Info Found 36 configuration items
+2020-03-04 19:37:40.9442 Info Logger closing down...
+2020-03-04 19:37:40.9442 Info Closing old configuration.
+2020-03-04 19:37:40.9606 Info Logger has been closed down.
+2020-03-04 19:37:40.9606 Info Shutting down logging...
+2020-03-04 19:37:40.9606 Info Logger has been shut down.
+2020-03-04 19:37:47.7612 Info Message Template Auto Format enabled
+2020-03-04 19:37:47.7683 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-04 19:37:47.8060 Info Adding target File Target[filelog]
+2020-03-04 19:37:47.8074 Info Adding target Console Target[consolelog]
+2020-03-04 19:37:47.8074 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-04 19:37:47.8279 Info Found 36 configuration items
+2020-03-04 19:56:02.8268 Info Logger closing down...
+2020-03-04 19:56:02.8268 Info Closing old configuration.
+2020-03-04 19:56:02.8542 Info Logger has been closed down.
+2020-03-04 19:56:02.8542 Info Shutting down logging...
+2020-03-04 19:56:02.8542 Info Logger has been shut down.
+2020-03-04 19:56:31.5219 Info Message Template Auto Format enabled
+2020-03-04 19:56:31.5219 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-04 19:56:31.5654 Info Adding target File Target[filelog]
+2020-03-04 19:56:31.5654 Info Adding target Console Target[consolelog]
+2020-03-04 19:56:31.5654 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-04 19:56:31.5880 Info Found 36 configuration items
+2020-03-04 20:17:42.4389 Info Logger closing down...
+2020-03-04 20:17:42.4410 Info Closing old configuration.
+2020-03-04 20:17:42.4410 Info Logger has been closed down.
+2020-03-04 20:17:42.4555 Info Shutting down logging...
+2020-03-04 20:17:42.4555 Info Logger has been shut down.
+2020-03-04 20:17:57.6640 Info Message Template Auto Format enabled
+2020-03-04 20:17:57.6640 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-04 20:17:57.7072 Info Adding target File Target[filelog]
+2020-03-04 20:17:57.7089 Info Adding target Console Target[consolelog]
+2020-03-04 20:17:57.7154 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-04 20:17:57.7154 Info Found 36 configuration items
+2020-03-04 20:21:22.0474 Info Logger closing down...
+2020-03-04 20:21:22.0474 Info Closing old configuration.
+2020-03-04 20:21:22.0649 Info Logger has been closed down.
+2020-03-04 20:21:22.0649 Info Shutting down logging...
+2020-03-04 20:21:22.0649 Info Logger has been shut down.
+2020-03-04 20:21:43.8501 Info Message Template Auto Format enabled
+2020-03-04 20:21:43.8563 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-04 20:21:43.8924 Info Adding target File Target[filelog]
+2020-03-04 20:21:43.8924 Info Adding target Console Target[consolelog]
+2020-03-04 20:21:43.8924 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-04 20:21:43.9130 Info Found 36 configuration items
+2020-03-04 20:23:05.0699 Info Logger closing down...
+2020-03-04 20:23:05.0699 Info Closing old configuration.
+2020-03-04 20:23:05.0917 Info Logger has been closed down.
+2020-03-04 20:23:05.0917 Info Shutting down logging...
+2020-03-04 20:23:05.0917 Info Logger has been shut down.
+2020-03-04 20:23:16.6537 Info Message Template Auto Format enabled
+2020-03-04 20:23:16.6600 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-04 20:23:16.6953 Info Adding target File Target[filelog]
+2020-03-04 20:23:16.6953 Info Adding target Console Target[consolelog]
+2020-03-04 20:23:16.6953 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-04 20:23:16.7161 Info Found 36 configuration items
+2020-03-04 20:24:13.5511 Info Logger closing down...
+2020-03-04 20:24:13.5511 Info Closing old configuration.
+2020-03-04 20:24:13.5670 Info Logger has been closed down.
+2020-03-04 20:24:13.5670 Info Shutting down logging...
+2020-03-04 20:24:13.5670 Info Logger has been shut down.
+2020-03-04 20:24:27.1293 Info Message Template Auto Format enabled
+2020-03-04 20:24:27.1293 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-04 20:24:27.1761 Info Adding target File Target[filelog]
+2020-03-04 20:24:27.1761 Info Adding target Console Target[consolelog]
+2020-03-04 20:24:27.1906 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-04 20:24:27.2106 Info Found 36 configuration items
+2020-03-04 22:53:47.5870 Info Logger closing down...
+2020-03-04 22:53:47.5904 Info Closing old configuration.
+2020-03-04 22:53:47.6064 Info Logger has been closed down.
+2020-03-04 22:53:47.6064 Info Shutting down logging...
+2020-03-04 22:53:47.6064 Info Logger has been shut down.
+2020-03-04 23:01:29.3683 Info Message Template Auto Format enabled
+2020-03-04 23:01:29.3754 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-04 23:01:29.4427 Info Adding target File Target[filelog]
+2020-03-04 23:01:29.4427 Info Adding target Console Target[consolelog]
+2020-03-04 23:01:29.4535 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-04 23:01:29.4715 Info Found 36 configuration items
+2020-03-04 23:04:45.0790 Info Message Template Auto Format enabled
+2020-03-04 23:04:45.0790 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-04 23:04:45.1559 Info Adding target File Target[filelog]
+2020-03-04 23:04:45.1559 Info Adding target Console Target[consolelog]
+2020-03-04 23:04:45.1559 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-04 23:04:45.1798 Info Found 36 configuration items
+2020-03-05 14:27:08.3010 Info Message Template Auto Format enabled
+2020-03-05 14:27:08.3213 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-05 14:27:08.3811 Info Adding target File Target[filelog]
+2020-03-05 14:27:08.3811 Info Adding target Console Target[consolelog]
+2020-03-05 14:27:08.3811 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-05 14:27:08.4067 Info Found 36 configuration items
+2020-03-05 14:41:46.8519 Info Logger closing down...
+2020-03-05 14:41:46.8519 Info Closing old configuration.
+2020-03-05 14:41:46.8725 Info Logger has been closed down.
+2020-03-05 14:41:46.8725 Info Shutting down logging...
+2020-03-05 14:41:46.8725 Info Logger has been shut down.
+2020-03-05 14:42:11.5470 Info Message Template Auto Format enabled
+2020-03-05 14:42:11.5539 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-05 14:42:11.5937 Info Adding target File Target[filelog]
+2020-03-05 14:42:11.5954 Info Adding target Console Target[consolelog]
+2020-03-05 14:42:11.5954 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-05 14:42:11.6179 Info Found 36 configuration items
+2020-03-05 14:45:31.0501 Info Logger closing down...
+2020-03-05 14:45:31.0525 Info Closing old configuration.
+2020-03-05 14:45:31.0755 Info Logger has been closed down.
+2020-03-05 14:45:31.0755 Info Shutting down logging...
+2020-03-05 14:45:31.0755 Info Logger has been shut down.
+2020-03-05 14:45:36.2048 Info Message Template Auto Format enabled
+2020-03-05 14:45:36.2128 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-05 14:45:36.2559 Info Adding target File Target[filelog]
+2020-03-05 14:45:36.2559 Info Adding target Console Target[consolelog]
+2020-03-05 14:45:36.2559 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-05 14:45:36.2815 Info Found 36 configuration items
+2020-03-05 19:32:23.9763 Info Logger closing down...
+2020-03-05 19:32:23.9763 Info Closing old configuration.
+2020-03-05 19:32:23.9991 Info Logger has been closed down.
+2020-03-05 19:32:23.9991 Info Shutting down logging...
+2020-03-05 19:32:23.9991 Info Logger has been shut down.
+2020-03-05 19:32:37.4380 Info Message Template Auto Format enabled
+2020-03-05 19:32:37.4380 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-05 19:32:37.4857 Info Adding target File Target[filelog]
+2020-03-05 19:32:37.4857 Info Adding target Console Target[consolelog]
+2020-03-05 19:32:37.4938 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-05 19:32:37.5079 Info Found 36 configuration items
+2020-03-05 20:36:30.7404 Info Logger closing down...
+2020-03-05 20:36:30.7435 Info Closing old configuration.
+2020-03-05 20:36:30.7743 Info Logger has been closed down.
+2020-03-05 20:36:30.7743 Info Shutting down logging...
+2020-03-05 20:36:30.7743 Info Logger has been shut down.
+2020-03-05 20:37:32.4644 Info Message Template Auto Format enabled
+2020-03-05 20:37:32.4644 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-05 20:37:32.5135 Info Adding target File Target[filelog]
+2020-03-05 20:37:32.5135 Info Adding target Console Target[consolelog]
+2020-03-05 20:37:32.5135 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-05 20:37:32.5377 Info Found 36 configuration items
+2020-03-05 20:45:09.3849 Info Logger closing down...
+2020-03-05 20:45:09.3870 Info Closing old configuration.
+2020-03-05 20:45:09.3870 Info Logger has been closed down.
+2020-03-05 20:45:09.3870 Info Shutting down logging...
+2020-03-05 20:45:09.4027 Info Logger has been shut down.
+2020-03-05 20:45:18.4603 Info Message Template Auto Format enabled
+2020-03-05 20:45:18.4668 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-05 20:45:18.5038 Info Adding target File Target[filelog]
+2020-03-05 20:45:18.5038 Info Adding target Console Target[consolelog]
+2020-03-05 20:45:18.5038 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-05 20:45:18.5247 Info Found 36 configuration items
+2020-03-06 10:16:57.0319 Info Logger closing down...
+2020-03-06 10:16:57.0319 Info Closing old configuration.
+2020-03-06 10:16:57.0543 Info Logger has been closed down.
+2020-03-06 10:16:57.0543 Info Shutting down logging...
+2020-03-06 10:16:57.0579 Info Logger has been shut down.
+2020-03-06 10:17:06.3601 Info Message Template Auto Format enabled
+2020-03-06 10:17:06.3601 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-06 10:17:06.4084 Info Adding target File Target[filelog]
+2020-03-06 10:17:06.4084 Info Adding target Console Target[consolelog]
+2020-03-06 10:17:06.4084 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-06 10:17:06.4302 Info Found 36 configuration items
+2020-03-06 11:51:46.6168 Info Logger closing down...
+2020-03-06 11:51:46.6168 Info Closing old configuration.
+2020-03-06 11:51:46.6379 Info Logger has been closed down.
+2020-03-06 11:51:46.6379 Info Shutting down logging...
+2020-03-06 11:51:46.6379 Info Logger has been shut down.
+2020-03-06 11:52:33.9059 Info Message Template Auto Format enabled
+2020-03-06 11:52:33.9124 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-06 11:52:33.9504 Info Adding target File Target[filelog]
+2020-03-06 11:52:33.9504 Info Adding target Console Target[consolelog]
+2020-03-06 11:52:33.9504 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-06 11:52:33.9736 Info Found 36 configuration items
+2020-03-06 12:01:23.5238 Info Logger closing down...
+2020-03-06 12:01:23.5238 Info Closing old configuration.
+2020-03-06 12:01:23.5415 Info Logger has been closed down.
+2020-03-06 12:01:23.5415 Info Shutting down logging...
+2020-03-06 12:01:23.5415 Info Logger has been shut down.
+2020-03-06 12:01:39.3285 Info Message Template Auto Format enabled
+2020-03-06 12:01:39.3350 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-06 12:01:39.3725 Info Adding target File Target[filelog]
+2020-03-06 12:01:39.3725 Info Adding target Console Target[consolelog]
+2020-03-06 12:01:39.3725 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-06 12:01:39.3952 Info Found 36 configuration items
+2020-03-06 12:07:31.4231 Info Logger closing down...
+2020-03-06 12:07:31.4231 Info Closing old configuration.
+2020-03-06 12:07:31.4401 Info Logger has been closed down.
+2020-03-06 12:07:31.4401 Info Shutting down logging...
+2020-03-06 12:07:31.4401 Info Logger has been shut down.
+2020-03-06 12:07:51.0773 Info Message Template Auto Format enabled
+2020-03-06 12:07:51.0773 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-06 12:07:51.1286 Info Adding target File Target[filelog]
+2020-03-06 12:07:51.1286 Info Adding target Console Target[consolelog]
+2020-03-06 12:07:51.1367 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-06 12:07:51.1514 Info Found 36 configuration items
+2020-03-06 12:11:01.0254 Info Logger closing down...
+2020-03-06 12:11:01.0254 Info Closing old configuration.
+2020-03-06 12:11:01.0254 Info Logger has been closed down.
+2020-03-06 12:11:01.0254 Info Shutting down logging...
+2020-03-06 12:11:01.0254 Info Logger has been shut down.
+2020-03-06 12:11:11.0074 Info Message Template Auto Format enabled
+2020-03-06 12:11:11.0138 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-06 12:11:11.0531 Info Adding target File Target[filelog]
+2020-03-06 12:11:11.0531 Info Adding target Console Target[consolelog]
+2020-03-06 12:11:11.0611 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-06 12:11:11.0756 Info Found 36 configuration items
+2020-03-06 12:16:24.4632 Info Logger closing down...
+2020-03-06 12:16:24.4632 Info Closing old configuration.
+2020-03-06 12:16:24.4795 Info Logger has been closed down.
+2020-03-06 12:16:24.4795 Info Shutting down logging...
+2020-03-06 12:16:24.4824 Info Logger has been shut down.
+2020-03-06 12:16:36.1414 Info Message Template Auto Format enabled
+2020-03-06 12:16:36.1414 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-06 12:16:36.1842 Info Adding target File Target[filelog]
+2020-03-06 12:16:36.1842 Info Adding target Console Target[consolelog]
+2020-03-06 12:16:36.1842 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-06 12:16:36.2058 Info Found 36 configuration items
+2020-03-06 12:17:17.7757 Info Logger closing down...
+2020-03-06 12:17:17.7757 Info Closing old configuration.
+2020-03-06 12:17:17.7910 Info Logger has been closed down.
+2020-03-06 12:17:17.7910 Info Shutting down logging...
+2020-03-06 12:17:17.7910 Info Logger has been shut down.
+2020-03-06 12:17:28.6097 Info Message Template Auto Format enabled
+2020-03-06 12:17:28.6097 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-06 12:17:28.6528 Info Adding target File Target[filelog]
+2020-03-06 12:17:28.6528 Info Adding target Console Target[consolelog]
+2020-03-06 12:17:28.6528 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-06 12:17:28.6746 Info Found 36 configuration items
+2020-03-06 14:13:35.1851 Info Logger closing down...
+2020-03-06 14:13:35.1851 Info Closing old configuration.
+2020-03-06 14:13:35.2059 Info Logger has been closed down.
+2020-03-06 14:13:35.2059 Info Shutting down logging...
+2020-03-06 14:13:35.2059 Info Logger has been shut down.
+2020-03-06 14:14:20.3319 Info Message Template Auto Format enabled
+2020-03-06 14:14:20.3319 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-06 14:14:20.3728 Info Adding target File Target[filelog]
+2020-03-06 14:14:20.3728 Info Adding target Console Target[consolelog]
+2020-03-06 14:14:20.3816 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-06 14:14:20.3959 Info Found 36 configuration items
+2020-03-06 15:31:48.1710 Info Logger closing down...
+2020-03-06 15:31:48.1710 Info Closing old configuration.
+2020-03-06 15:31:48.1710 Info Logger has been closed down.
+2020-03-06 15:31:48.1902 Info Shutting down logging...
+2020-03-06 15:31:48.1902 Info Logger has been shut down.
+2020-03-06 15:31:56.6213 Info Message Template Auto Format enabled
+2020-03-06 15:31:56.6291 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-06 15:31:56.6727 Info Adding target File Target[filelog]
+2020-03-06 15:31:56.6727 Info Adding target Console Target[consolelog]
+2020-03-06 15:31:56.6727 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-06 15:31:56.6989 Info Found 36 configuration items
+2020-03-06 18:28:01.1753 Info Logger closing down...
+2020-03-06 18:28:01.1774 Info Closing old configuration.
+2020-03-06 18:28:01.1960 Info Logger has been closed down.
+2020-03-06 18:28:01.1960 Info Shutting down logging...
+2020-03-06 18:28:01.1960 Info Logger has been shut down.
+2020-03-06 18:46:32.7652 Info Message Template Auto Format enabled
+2020-03-06 18:46:32.7652 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-06 18:46:32.8085 Info Adding target File Target[filelog]
+2020-03-06 18:46:32.8098 Info Adding target Console Target[consolelog]
+2020-03-06 18:46:32.8098 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-06 18:46:32.8308 Info Found 36 configuration items
+2020-03-06 18:51:39.7715 Info Logger closing down...
+2020-03-06 18:51:39.7715 Info Closing old configuration.
+2020-03-06 18:51:39.7908 Info Logger has been closed down.
+2020-03-06 18:51:39.7908 Info Shutting down logging...
+2020-03-06 18:51:39.7908 Info Logger has been shut down.
+2020-03-06 18:51:56.0634 Info Message Template Auto Format enabled
+2020-03-06 18:51:56.0634 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-06 18:51:56.1101 Info Adding target File Target[filelog]
+2020-03-06 18:51:56.1101 Info Adding target Console Target[consolelog]
+2020-03-06 18:51:56.1101 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-06 18:51:56.1327 Info Found 36 configuration items
+2020-03-06 19:40:29.2220 Info Logger closing down...
+2020-03-06 19:40:29.2220 Info Closing old configuration.
+2020-03-06 19:40:29.2465 Info Logger has been closed down.
+2020-03-06 19:40:29.2465 Info Shutting down logging...
+2020-03-06 19:40:29.2465 Info Logger has been shut down.
+2020-03-06 19:42:21.1272 Info Message Template Auto Format enabled
+2020-03-06 19:42:21.1272 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-06 19:42:21.1878 Info Adding target File Target[filelog]
+2020-03-06 19:42:21.1893 Info Adding target Console Target[consolelog]
+2020-03-06 19:42:21.1893 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-06 19:42:21.2117 Info Found 36 configuration items
+2020-03-06 20:03:26.6530 Info Message Template Auto Format enabled
+2020-03-06 20:03:26.6530 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-06 20:03:26.6996 Info Adding target File Target[filelog]
+2020-03-06 20:03:26.6996 Info Adding target Console Target[consolelog]
+2020-03-06 20:03:26.6996 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-06 20:03:26.7248 Info Found 36 configuration items
+2020-03-07 16:07:24.3032 Info Logger closing down...
+2020-03-07 16:07:24.3032 Info Closing old configuration.
+2020-03-07 16:07:24.3388 Info Logger has been closed down.
+2020-03-07 16:07:24.3409 Info Shutting down logging...
+2020-03-07 16:07:24.3409 Info Logger has been shut down.
+2020-03-07 16:07:39.5653 Info Message Template Auto Format enabled
+2020-03-07 16:07:39.5653 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-07 16:07:39.6256 Info Adding target File Target[filelog]
+2020-03-07 16:07:39.6256 Info Adding target Console Target[consolelog]
+2020-03-07 16:07:39.6256 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-07 16:07:39.6464 Info Found 36 configuration items
+2020-03-07 16:16:09.4669 Info Logger closing down...
+2020-03-07 16:16:09.4669 Info Closing old configuration.
+2020-03-07 16:16:09.5073 Info Logger has been closed down.
+2020-03-07 16:16:09.5073 Info Shutting down logging...
+2020-03-07 16:16:09.5144 Info Logger has been shut down.
+2020-03-07 16:16:20.6620 Info Message Template Auto Format enabled
+2020-03-07 16:16:20.6620 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-07 16:16:20.7203 Info Adding target File Target[filelog]
+2020-03-07 16:16:20.7203 Info Adding target Console Target[consolelog]
+2020-03-07 16:16:20.7203 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-07 16:16:20.7431 Info Found 36 configuration items
+2020-03-07 16:18:10.3865 Info Logger closing down...
+2020-03-07 16:18:10.3904 Info Closing old configuration.
+2020-03-07 16:18:10.4228 Info Logger has been closed down.
+2020-03-07 16:18:10.4228 Info Shutting down logging...
+2020-03-07 16:18:10.4228 Info Logger has been shut down.
+2020-03-07 16:18:21.8870 Info Message Template Auto Format enabled
+2020-03-07 16:18:21.8870 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-07 16:18:21.9353 Info Adding target File Target[filelog]
+2020-03-07 16:18:21.9353 Info Adding target Console Target[consolelog]
+2020-03-07 16:18:21.9353 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-07 16:18:21.9585 Info Found 36 configuration items
+2020-03-08 22:17:00.8953 Info Logger closing down...
+2020-03-08 22:17:00.8953 Info Closing old configuration.
+2020-03-08 22:17:00.9333 Info Logger has been closed down.
+2020-03-08 22:17:00.9358 Info Shutting down logging...
+2020-03-08 22:17:00.9358 Info Logger has been shut down.
+2020-03-08 22:17:18.1744 Info Message Template Auto Format enabled
+2020-03-08 22:17:18.1744 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-08 22:17:18.2168 Info Adding target File Target[filelog]
+2020-03-08 22:17:18.2168 Info Adding target Console Target[consolelog]
+2020-03-08 22:17:18.2168 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-08 22:17:18.2382 Info Found 36 configuration items
+2020-03-09 14:33:57.0042 Info Logger closing down...
+2020-03-09 14:33:57.0066 Info Closing old configuration.
+2020-03-09 14:33:57.0278 Info Logger has been closed down.
+2020-03-09 14:33:57.0278 Info Shutting down logging...
+2020-03-09 14:33:57.0278 Info Logger has been shut down.
+2020-03-09 14:56:22.5244 Info Message Template Auto Format enabled
+2020-03-09 14:56:22.5244 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-09 14:56:22.5812 Info Adding target File Target[filelog]
+2020-03-09 14:56:22.5812 Info Adding target Console Target[consolelog]
+2020-03-09 14:56:22.5812 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-09 14:56:22.6089 Info Found 36 configuration items
+2020-03-09 15:10:18.6600 Info Logger closing down...
+2020-03-09 15:10:18.6633 Info Closing old configuration.
+2020-03-09 15:10:18.6833 Info Logger has been closed down.
+2020-03-09 15:10:18.6833 Info Shutting down logging...
+2020-03-09 15:10:18.6833 Info Logger has been shut down.
+2020-03-09 15:10:29.6866 Info Message Template Auto Format enabled
+2020-03-09 15:10:29.6866 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-09 15:10:29.7374 Info Adding target File Target[filelog]
+2020-03-09 15:10:29.7374 Info Adding target Console Target[consolelog]
+2020-03-09 15:10:29.7457 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-09 15:10:29.7659 Info Found 36 configuration items
+2020-03-09 18:24:18.1701 Info Logger closing down...
+2020-03-09 18:24:18.1701 Info Closing old configuration.
+2020-03-09 18:24:18.1974 Info Logger has been closed down.
+2020-03-09 18:24:18.1974 Info Shutting down logging...
+2020-03-09 18:24:18.1974 Info Logger has been shut down.
+2020-03-09 18:24:33.1573 Info Message Template Auto Format enabled
+2020-03-09 18:24:33.1573 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-09 18:24:33.2105 Info Adding target File Target[filelog]
+2020-03-09 18:24:33.2105 Info Adding target Console Target[consolelog]
+2020-03-09 18:24:33.2182 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-09 18:24:33.2358 Info Found 36 configuration items
+2020-03-10 10:37:15.7288 Info Logger closing down...
+2020-03-10 10:37:15.7288 Info Closing old configuration.
+2020-03-10 10:37:15.7489 Info Logger has been closed down.
+2020-03-10 10:37:15.7489 Info Shutting down logging...
+2020-03-10 10:37:15.7489 Info Logger has been shut down.
+2020-03-10 10:38:35.0716 Info Message Template Auto Format enabled
+2020-03-10 10:38:35.0716 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-10 10:38:35.1239 Info Adding target File Target[filelog]
+2020-03-10 10:38:35.1239 Info Adding target Console Target[consolelog]
+2020-03-10 10:38:35.1321 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-10 10:38:35.1485 Info Found 36 configuration items
+2020-03-13 15:25:03.9969 Info Logger closing down...
+2020-03-13 15:25:04.0660 Info Closing old configuration.
+2020-03-13 15:25:04.3676 Info Logger has been closed down.
+2020-03-13 15:25:04.3984 Info Shutting down logging...
+2020-03-13 15:25:04.4083 Info Logger has been shut down.
+2020-03-14 20:11:26.6191 Info Message Template Auto Format enabled
+2020-03-14 20:11:26.6365 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-14 20:11:26.7318 Info Adding target File Target[filelog]
+2020-03-14 20:11:26.7318 Info Adding target Console Target[consolelog]
+2020-03-14 20:11:26.7441 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-14 20:11:26.7669 Info Found 36 configuration items
+2020-03-14 23:09:06.7762 Info Logger closing down...
+2020-03-14 23:09:06.7762 Info Closing old configuration.
+2020-03-14 23:09:06.8156 Info Logger has been closed down.
+2020-03-14 23:09:06.8156 Info Shutting down logging...
+2020-03-14 23:09:06.8156 Info Logger has been shut down.
+2020-03-14 23:11:03.1592 Info Message Template Auto Format enabled
+2020-03-14 23:11:03.1592 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-14 23:11:03.2171 Info Adding target File Target[filelog]
+2020-03-14 23:11:03.2171 Info Adding target Console Target[consolelog]
+2020-03-14 23:11:03.2258 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-14 23:11:03.2411 Info Found 36 configuration items
+2020-03-14 23:12:56.6682 Info Logger closing down...
+2020-03-14 23:12:56.6723 Info Closing old configuration.
+2020-03-14 23:12:56.7009 Info Logger has been closed down.
+2020-03-14 23:12:56.7009 Info Shutting down logging...
+2020-03-14 23:12:56.7054 Info Logger has been shut down.
+2020-03-14 23:13:43.5666 Info Message Template Auto Format enabled
+2020-03-14 23:13:43.5666 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-14 23:13:43.6125 Info Adding target File Target[filelog]
+2020-03-14 23:13:43.6125 Info Adding target Console Target[consolelog]
+2020-03-14 23:13:43.6125 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-14 23:13:43.6359 Info Found 36 configuration items
+2020-03-14 23:19:32.9855 Info Logger closing down...
+2020-03-14 23:19:32.9855 Info Closing old configuration.
+2020-03-14 23:19:33.0456 Info Logger has been closed down.
+2020-03-14 23:19:33.0493 Info Shutting down logging...
+2020-03-14 23:19:33.0493 Info Logger has been shut down.
+2020-03-14 23:19:43.6565 Info Message Template Auto Format enabled
+2020-03-14 23:19:43.6565 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-14 23:19:43.7234 Info Adding target File Target[filelog]
+2020-03-14 23:19:43.7234 Info Adding target Console Target[consolelog]
+2020-03-14 23:19:43.7365 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-14 23:19:43.7709 Info Found 36 configuration items
+2020-03-14 23:20:32.0370 Info Logger closing down...
+2020-03-14 23:20:32.0370 Info Closing old configuration.
+2020-03-14 23:20:32.0665 Info Logger has been closed down.
+2020-03-14 23:20:32.0665 Info Shutting down logging...
+2020-03-14 23:20:32.0665 Info Logger has been shut down.
+2020-03-15 12:00:52.6441 Info Message Template Auto Format enabled
+2020-03-15 12:00:52.6441 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 12:00:52.6984 Info Adding target File Target[filelog]
+2020-03-15 12:00:52.6984 Info Adding target Console Target[consolelog]
+2020-03-15 12:00:52.7058 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 12:00:52.7203 Info Found 36 configuration items
+2020-03-15 12:01:28.0023 Info Logger closing down...
+2020-03-15 12:01:28.0023 Info Closing old configuration.
+2020-03-15 12:01:28.0414 Info Logger has been closed down.
+2020-03-15 12:01:28.0414 Info Shutting down logging...
+2020-03-15 12:01:28.0414 Info Logger has been shut down.
+2020-03-15 12:29:25.7889 Info Message Template Auto Format enabled
+2020-03-15 12:29:25.7889 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 12:29:25.8318 Info Adding target File Target[filelog]
+2020-03-15 12:29:25.8318 Info Adding target Console Target[consolelog]
+2020-03-15 12:29:25.8318 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 12:29:25.8539 Info Found 36 configuration items
+2020-03-15 12:30:25.7472 Info Logger closing down...
+2020-03-15 12:30:25.7472 Info Closing old configuration.
+2020-03-15 12:30:25.7661 Info Logger has been closed down.
+2020-03-15 12:30:25.7674 Info Shutting down logging...
+2020-03-15 12:30:25.7674 Info Logger has been shut down.
+2020-03-15 12:32:37.0588 Info Message Template Auto Format enabled
+2020-03-15 12:32:37.0665 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 12:32:37.1135 Info Adding target File Target[filelog]
+2020-03-15 12:32:37.1135 Info Adding target Console Target[consolelog]
+2020-03-15 12:32:37.1135 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 12:32:37.1397 Info Found 36 configuration items
+2020-03-15 12:37:23.3976 Info Logger closing down...
+2020-03-15 12:37:23.3976 Info Closing old configuration.
+2020-03-15 12:37:23.4569 Info Logger has been closed down.
+2020-03-15 12:37:23.4569 Info Shutting down logging...
+2020-03-15 12:37:23.4569 Info Logger has been shut down.
+2020-03-15 12:37:34.9888 Info Message Template Auto Format enabled
+2020-03-15 12:37:34.9888 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 12:37:35.0590 Info Adding target File Target[filelog]
+2020-03-15 12:37:35.0590 Info Adding target Console Target[consolelog]
+2020-03-15 12:37:35.0685 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 12:37:35.0915 Info Found 36 configuration items
+2020-03-15 12:38:09.1387 Info Logger closing down...
+2020-03-15 12:38:09.1435 Info Closing old configuration.
+2020-03-15 12:38:09.1796 Info Logger has been closed down.
+2020-03-15 12:38:09.1796 Info Shutting down logging...
+2020-03-15 12:38:09.1796 Info Logger has been shut down.
+2020-03-15 12:39:03.9843 Info Message Template Auto Format enabled
+2020-03-15 12:39:03.9915 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 12:39:04.0312 Info Adding target File Target[filelog]
+2020-03-15 12:39:04.0327 Info Adding target Console Target[consolelog]
+2020-03-15 12:39:04.0327 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 12:39:04.0590 Info Found 36 configuration items
+2020-03-15 12:39:23.9938 Info Logger closing down...
+2020-03-15 12:39:23.9938 Info Closing old configuration.
+2020-03-15 12:39:24.0513 Info Logger has been closed down.
+2020-03-15 12:39:24.0513 Info Shutting down logging...
+2020-03-15 12:39:24.0513 Info Logger has been shut down.
+2020-03-15 12:40:26.2406 Info Message Template Auto Format enabled
+2020-03-15 12:40:26.2406 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 12:40:26.2824 Info Adding target File Target[filelog]
+2020-03-15 12:40:26.2824 Info Adding target Console Target[consolelog]
+2020-03-15 12:40:26.2824 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 12:40:26.3205 Info Found 36 configuration items
+2020-03-15 13:00:45.8678 Info Logger closing down...
+2020-03-15 13:00:45.8678 Info Closing old configuration.
+2020-03-15 13:00:45.8973 Info Logger has been closed down.
+2020-03-15 13:00:45.8973 Info Shutting down logging...
+2020-03-15 13:00:45.8973 Info Logger has been shut down.
+2020-03-15 13:01:02.5214 Info Message Template Auto Format enabled
+2020-03-15 13:01:02.5214 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 13:01:02.5687 Info Adding target File Target[filelog]
+2020-03-15 13:01:02.5687 Info Adding target Console Target[consolelog]
+2020-03-15 13:01:02.5687 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 13:01:02.5913 Info Found 36 configuration items
+2020-03-15 13:01:27.5771 Info Logger closing down...
+2020-03-15 13:01:27.5817 Info Closing old configuration.
+2020-03-15 13:01:27.6110 Info Logger has been closed down.
+2020-03-15 13:01:27.6110 Info Shutting down logging...
+2020-03-15 13:01:27.6110 Info Logger has been shut down.
+2020-03-15 13:02:39.7522 Info Message Template Auto Format enabled
+2020-03-15 13:02:39.7522 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 13:02:39.8073 Info Adding target File Target[filelog]
+2020-03-15 13:02:39.8073 Info Adding target Console Target[consolelog]
+2020-03-15 13:02:39.8259 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 13:02:39.8514 Info Found 36 configuration items
+2020-03-15 13:03:02.5585 Info Logger closing down...
+2020-03-15 13:03:02.5585 Info Closing old configuration.
+2020-03-15 13:03:02.5988 Info Logger has been closed down.
+2020-03-15 13:03:02.5988 Info Shutting down logging...
+2020-03-15 13:03:02.5988 Info Logger has been shut down.
+2020-03-15 13:04:28.4949 Info Message Template Auto Format enabled
+2020-03-15 13:04:28.5016 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 13:04:28.5406 Info Adding target File Target[filelog]
+2020-03-15 13:04:28.5406 Info Adding target Console Target[consolelog]
+2020-03-15 13:04:28.5481 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 13:04:28.5481 Info Found 36 configuration items
+2020-03-15 13:05:06.8045 Info Logger closing down...
+2020-03-15 13:05:06.8045 Info Closing old configuration.
+2020-03-15 13:05:06.8451 Info Logger has been closed down.
+2020-03-15 13:05:06.8451 Info Shutting down logging...
+2020-03-15 13:05:06.8451 Info Logger has been shut down.
+2020-03-15 13:05:33.9242 Info Message Template Auto Format enabled
+2020-03-15 13:05:33.9242 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 13:05:33.9690 Info Adding target File Target[filelog]
+2020-03-15 13:05:33.9690 Info Adding target Console Target[consolelog]
+2020-03-15 13:05:33.9690 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 13:05:33.9910 Info Found 36 configuration items
+2020-03-15 13:09:40.8341 Info Logger closing down...
+2020-03-15 13:09:40.8341 Info Closing old configuration.
+2020-03-15 13:09:40.8688 Info Logger has been closed down.
+2020-03-15 13:09:40.8688 Info Shutting down logging...
+2020-03-15 13:09:40.8688 Info Logger has been shut down.
+2020-03-15 13:09:50.9501 Info Message Template Auto Format enabled
+2020-03-15 13:09:50.9566 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 13:09:50.9948 Info Adding target File Target[filelog]
+2020-03-15 13:09:50.9948 Info Adding target Console Target[consolelog]
+2020-03-15 13:09:51.0022 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 13:09:51.0169 Info Found 36 configuration items
+2020-03-15 13:11:36.8929 Info Logger closing down...
+2020-03-15 13:11:36.8929 Info Closing old configuration.
+2020-03-15 13:11:36.9138 Info Logger has been closed down.
+2020-03-15 13:11:36.9138 Info Shutting down logging...
+2020-03-15 13:11:36.9138 Info Logger has been shut down.
+2020-03-15 13:12:29.6932 Info Message Template Auto Format enabled
+2020-03-15 13:12:29.6932 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 13:12:29.7381 Info Adding target File Target[filelog]
+2020-03-15 13:12:29.7381 Info Adding target Console Target[consolelog]
+2020-03-15 13:12:29.7381 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 13:12:29.7603 Info Found 36 configuration items
+2020-03-15 13:21:39.1067 Info Logger closing down...
+2020-03-15 13:21:39.1101 Info Closing old configuration.
+2020-03-15 13:21:39.1447 Info Logger has been closed down.
+2020-03-15 13:21:39.1447 Info Shutting down logging...
+2020-03-15 13:21:39.1447 Info Logger has been shut down.
+2020-03-15 14:21:54.1566 Info Message Template Auto Format enabled
+2020-03-15 14:21:54.1627 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 14:21:54.1988 Info Adding target File Target[filelog]
+2020-03-15 14:21:54.1988 Info Adding target Console Target[consolelog]
+2020-03-15 14:21:54.2059 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 14:21:54.2197 Info Found 36 configuration items
+2020-03-15 14:22:21.0580 Info Logger closing down...
+2020-03-15 14:22:21.0637 Info Closing old configuration.
+2020-03-15 14:22:21.1011 Info Logger has been closed down.
+2020-03-15 14:22:21.1011 Info Shutting down logging...
+2020-03-15 14:22:21.1011 Info Logger has been shut down.
+2020-03-15 14:24:55.8981 Info Message Template Auto Format enabled
+2020-03-15 14:24:55.8981 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 14:24:55.9403 Info Adding target File Target[filelog]
+2020-03-15 14:24:55.9403 Info Adding target Console Target[consolelog]
+2020-03-15 14:24:55.9403 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 14:24:55.9614 Info Found 36 configuration items
+2020-03-15 14:25:14.7452 Info Logger closing down...
+2020-03-15 14:25:14.7452 Info Closing old configuration.
+2020-03-15 14:25:14.7599 Info Logger has been closed down.
+2020-03-15 14:25:14.7599 Info Shutting down logging...
+2020-03-15 14:25:14.7599 Info Logger has been shut down.
+2020-03-15 14:27:43.9217 Info Message Template Auto Format enabled
+2020-03-15 14:27:43.9278 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 14:27:43.9646 Info Adding target File Target[filelog]
+2020-03-15 14:27:43.9646 Info Adding target Console Target[consolelog]
+2020-03-15 14:27:43.9717 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 14:27:43.9857 Info Found 36 configuration items
+2020-03-15 14:29:21.5276 Info Logger closing down...
+2020-03-15 14:29:21.5276 Info Closing old configuration.
+2020-03-15 14:29:21.5635 Info Logger has been closed down.
+2020-03-15 14:29:21.5635 Info Shutting down logging...
+2020-03-15 14:29:21.5635 Info Logger has been shut down.
+2020-03-15 14:29:45.1319 Info Message Template Auto Format enabled
+2020-03-15 14:29:45.1319 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 14:29:45.1908 Info Adding target File Target[filelog]
+2020-03-15 14:29:45.1908 Info Adding target Console Target[consolelog]
+2020-03-15 14:29:45.1908 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 14:29:45.2126 Info Found 36 configuration items
+2020-03-15 14:30:43.0897 Info Logger closing down...
+2020-03-15 14:30:43.0897 Info Closing old configuration.
+2020-03-15 14:30:43.1280 Info Logger has been closed down.
+2020-03-15 14:30:43.1280 Info Shutting down logging...
+2020-03-15 14:30:43.1280 Info Logger has been shut down.
+2020-03-15 14:31:16.2150 Info Message Template Auto Format enabled
+2020-03-15 14:31:16.2211 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 14:31:16.2574 Info Adding target File Target[filelog]
+2020-03-15 14:31:16.2574 Info Adding target Console Target[consolelog]
+2020-03-15 14:31:16.2574 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 14:31:16.2881 Info Found 36 configuration items
+2020-03-15 14:33:42.5245 Info Logger closing down...
+2020-03-15 14:33:42.5245 Info Closing old configuration.
+2020-03-15 14:33:42.5811 Info Logger has been closed down.
+2020-03-15 14:33:42.5811 Info Shutting down logging...
+2020-03-15 14:33:42.5811 Info Logger has been shut down.
+2020-03-15 14:33:58.1341 Info Message Template Auto Format enabled
+2020-03-15 14:33:58.1341 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 14:33:58.1759 Info Adding target File Target[filelog]
+2020-03-15 14:33:58.1759 Info Adding target Console Target[consolelog]
+2020-03-15 14:33:58.1759 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 14:33:58.2179 Info Found 36 configuration items
+2020-03-15 14:35:04.1786 Info Logger closing down...
+2020-03-15 14:35:04.1786 Info Closing old configuration.
+2020-03-15 14:35:04.1974 Info Logger has been closed down.
+2020-03-15 14:35:04.1974 Info Shutting down logging...
+2020-03-15 14:35:04.1974 Info Logger has been shut down.
+2020-03-15 14:36:10.5794 Info Message Template Auto Format enabled
+2020-03-15 14:36:10.5794 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 14:36:10.6214 Info Adding target File Target[filelog]
+2020-03-15 14:36:10.6214 Info Adding target Console Target[consolelog]
+2020-03-15 14:36:10.6286 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 14:36:10.6428 Info Found 36 configuration items
+2020-03-15 14:57:13.9633 Info Logger closing down...
+2020-03-15 14:57:13.9633 Info Closing old configuration.
+2020-03-15 14:57:13.9998 Info Logger has been closed down.
+2020-03-15 14:57:14.0021 Info Shutting down logging...
+2020-03-15 14:57:14.0021 Info Logger has been shut down.
+2020-03-15 14:57:28.3297 Info Message Template Auto Format enabled
+2020-03-15 14:57:28.3297 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 14:57:28.3720 Info Adding target File Target[filelog]
+2020-03-15 14:57:28.3720 Info Adding target Console Target[consolelog]
+2020-03-15 14:57:28.3792 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 14:57:28.3931 Info Found 36 configuration items
+2020-03-15 15:00:35.4382 Info Logger closing down...
+2020-03-15 15:00:35.4382 Info Closing old configuration.
+2020-03-15 15:00:35.4786 Info Logger has been closed down.
+2020-03-15 15:00:35.4786 Info Shutting down logging...
+2020-03-15 15:00:35.4786 Info Logger has been shut down.
+2020-03-15 15:03:16.0890 Info Message Template Auto Format enabled
+2020-03-15 15:03:16.0951 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 15:03:16.1463 Info Adding target File Target[filelog]
+2020-03-15 15:03:16.1463 Info Adding target Console Target[consolelog]
+2020-03-15 15:03:16.1637 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 15:03:16.1880 Info Found 36 configuration items
+2020-03-15 15:28:37.0236 Info Logger closing down...
+2020-03-15 15:28:37.0236 Info Closing old configuration.
+2020-03-15 15:28:37.0771 Info Logger has been closed down.
+2020-03-15 15:28:37.0806 Info Shutting down logging...
+2020-03-15 15:28:37.0806 Info Logger has been shut down.
+2020-03-15 15:30:05.4713 Info Message Template Auto Format enabled
+2020-03-15 15:30:05.4713 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 15:30:05.5136 Info Adding target File Target[filelog]
+2020-03-15 15:30:05.5136 Info Adding target Console Target[consolelog]
+2020-03-15 15:30:05.5207 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 15:30:05.5345 Info Found 36 configuration items
+2020-03-15 15:32:14.5747 Info Logger closing down...
+2020-03-15 15:32:14.5784 Info Closing old configuration.
+2020-03-15 15:32:14.6109 Info Logger has been closed down.
+2020-03-15 15:32:14.6109 Info Shutting down logging...
+2020-03-15 15:32:14.6109 Info Logger has been shut down.
+2020-03-15 15:35:42.3019 Info Message Template Auto Format enabled
+2020-03-15 15:35:42.3019 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 15:35:42.3582 Info Adding target File Target[filelog]
+2020-03-15 15:35:42.3633 Info Adding target Console Target[consolelog]
+2020-03-15 15:35:42.3780 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 15:35:42.4043 Info Found 36 configuration items
+2020-03-15 15:45:28.7762 Info Logger closing down...
+2020-03-15 15:45:28.7818 Info Closing old configuration.
+2020-03-15 15:45:28.8304 Info Logger has been closed down.
+2020-03-15 15:45:28.8304 Info Shutting down logging...
+2020-03-15 15:45:28.8304 Info Logger has been shut down.
+2020-03-15 15:46:39.6122 Info Message Template Auto Format enabled
+2020-03-15 15:46:39.6122 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 15:46:39.6558 Info Adding target File Target[filelog]
+2020-03-15 15:46:39.6572 Info Adding target Console Target[consolelog]
+2020-03-15 15:46:39.6572 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 15:46:39.6777 Info Found 36 configuration items
+2020-03-15 15:59:54.9558 Info Logger closing down...
+2020-03-15 15:59:54.9558 Info Closing old configuration.
+2020-03-15 15:59:54.9937 Info Logger has been closed down.
+2020-03-15 15:59:54.9937 Info Shutting down logging...
+2020-03-15 15:59:54.9937 Info Logger has been shut down.
+2020-03-15 16:00:07.4935 Info Message Template Auto Format enabled
+2020-03-15 16:00:07.5011 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 16:00:07.5539 Info Adding target File Target[filelog]
+2020-03-15 16:00:07.5539 Info Adding target Console Target[consolelog]
+2020-03-15 16:00:07.5671 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 16:00:07.5880 Info Found 36 configuration items
+2020-03-15 16:01:40.7102 Info Logger closing down...
+2020-03-15 16:01:40.7102 Info Closing old configuration.
+2020-03-15 16:01:40.7676 Info Logger has been closed down.
+2020-03-15 16:01:40.7676 Info Shutting down logging...
+2020-03-15 16:01:40.7676 Info Logger has been shut down.
+2020-03-15 16:02:42.6826 Info Message Template Auto Format enabled
+2020-03-15 16:02:42.6909 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 16:02:42.7452 Info Adding target File Target[filelog]
+2020-03-15 16:02:42.7452 Info Adding target Console Target[consolelog]
+2020-03-15 16:02:42.7532 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 16:02:42.7685 Info Found 36 configuration items
+2020-03-15 21:24:29.7549 Info Message Template Auto Format enabled
+2020-03-15 21:24:29.7549 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 21:24:29.8148 Info Adding target File Target[filelog]
+2020-03-15 21:24:29.8148 Info Adding target Console Target[consolelog]
+2020-03-15 21:24:29.8148 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 21:24:29.8388 Info Found 36 configuration items
+2020-03-15 21:32:31.7641 Info Message Template Auto Format enabled
+2020-03-15 21:32:31.7707 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 21:32:31.8075 Info Adding target File Target[filelog]
+2020-03-15 21:32:31.8075 Info Adding target Console Target[consolelog]
+2020-03-15 21:32:31.8151 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 21:32:31.8293 Info Found 36 configuration items
+2020-03-15 21:35:20.3540 Info Logger closing down...
+2020-03-15 21:35:20.3540 Info Closing old configuration.
+2020-03-15 21:35:20.3748 Info Logger has been closed down.
+2020-03-15 21:35:20.3760 Info Shutting down logging...
+2020-03-15 21:35:20.3760 Info Logger has been shut down.
+2020-03-15 21:35:39.0725 Info Message Template Auto Format enabled
+2020-03-15 21:35:39.0975 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 21:35:39.2991 Info Adding target File Target[filelog]
+2020-03-15 21:35:39.2991 Info Adding target Console Target[consolelog]
+2020-03-15 21:35:39.3267 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 21:35:39.3805 Info Found 36 configuration items
+2020-03-15 23:06:50.4277 Info Message Template Auto Format enabled
+2020-03-15 23:06:50.4490 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 23:06:50.5351 Info Adding target File Target[filelog]
+2020-03-15 23:06:50.5351 Info Adding target Console Target[consolelog]
+2020-03-15 23:06:50.5351 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 23:06:50.5612 Info Found 36 configuration items
+2020-03-15 23:29:54.6328 Info Message Template Auto Format enabled
+2020-03-15 23:29:54.6495 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 23:29:54.7325 Info Adding target File Target[filelog]
+2020-03-15 23:29:54.7343 Info Adding target Console Target[consolelog]
+2020-03-15 23:29:54.7343 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 23:29:54.7565 Info Found 36 configuration items
+2020-03-15 23:51:50.6765 Info Message Template Auto Format enabled
+2020-03-15 23:51:50.6765 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 23:51:50.7511 Info Adding target File Target[filelog]
+2020-03-15 23:51:50.7511 Info Adding target Console Target[consolelog]
+2020-03-15 23:51:50.7511 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 23:51:50.7814 Info Found 36 configuration items
+2020-03-15 23:55:46.1479 Info Message Template Auto Format enabled
+2020-03-15 23:55:46.1615 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 23:55:46.3013 Info Adding target File Target[filelog]
+2020-03-15 23:55:46.3013 Info Adding target Console Target[consolelog]
+2020-03-15 23:55:46.3142 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 23:55:46.3344 Info Found 36 configuration items
+2020-03-15 23:58:10.5787 Info Message Template Auto Format enabled
+2020-03-15 23:58:10.5787 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-15 23:58:10.6541 Info Adding target File Target[filelog]
+2020-03-15 23:58:10.6541 Info Adding target Console Target[consolelog]
+2020-03-15 23:58:10.6656 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-15 23:58:10.6867 Info Found 36 configuration items
+2020-03-16 00:11:48.2849 Info Message Template Auto Format enabled
+2020-03-16 00:11:48.2849 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-16 00:11:48.3275 Info Adding target File Target[filelog]
+2020-03-16 00:11:48.3289 Info Adding target Console Target[consolelog]
+2020-03-16 00:11:48.3289 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-16 00:11:48.3489 Info Found 36 configuration items
+2020-03-16 14:32:43.4449 Info Logger closing down...
+2020-03-16 14:32:43.4449 Info Closing old configuration.
+2020-03-16 14:32:43.5128 Info Logger has been closed down.
+2020-03-16 14:32:43.5128 Info Shutting down logging...
+2020-03-16 14:32:43.5213 Info Logger has been shut down.
+2020-03-16 14:33:24.1630 Info Message Template Auto Format enabled
+2020-03-16 14:33:24.1630 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-16 14:33:24.2234 Info Adding target File Target[filelog]
+2020-03-16 14:33:24.2234 Info Adding target Console Target[consolelog]
+2020-03-16 14:33:24.2234 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-16 14:33:24.2447 Info Found 36 configuration items
+2020-03-16 15:01:36.6810 Info Logger closing down...
+2020-03-16 15:01:36.6810 Info Closing old configuration.
+2020-03-16 15:01:36.7154 Info Logger has been closed down.
+2020-03-16 15:01:36.7175 Info Shutting down logging...
+2020-03-16 15:01:36.7175 Info Logger has been shut down.
+2020-03-16 15:01:55.4540 Info Message Template Auto Format enabled
+2020-03-16 15:01:55.4540 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-16 15:01:55.4970 Info Adding target File Target[filelog]
+2020-03-16 15:01:55.4983 Info Adding target Console Target[consolelog]
+2020-03-16 15:01:55.4983 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-16 15:01:55.5183 Info Found 36 configuration items
+2020-03-16 15:03:12.8570 Info Logger closing down...
+2020-03-16 15:03:12.8606 Info Closing old configuration.
+2020-03-16 15:03:12.8974 Info Logger has been closed down.
+2020-03-16 15:03:12.8974 Info Shutting down logging...
+2020-03-16 15:03:12.8974 Info Logger has been shut down.
+2020-03-16 15:43:47.3967 Info Message Template Auto Format enabled
+2020-03-16 15:43:47.3967 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-16 15:43:47.4393 Info Adding target File Target[filelog]
+2020-03-16 15:43:47.4393 Info Adding target Console Target[consolelog]
+2020-03-16 15:43:47.4393 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-16 15:43:47.4605 Info Found 36 configuration items
+2020-03-16 21:31:54.0982 Info Logger closing down...
+2020-03-16 21:31:54.0982 Info Closing old configuration.
+2020-03-16 21:31:54.1189 Info Logger has been closed down.
+2020-03-16 21:31:54.1189 Info Shutting down logging...
+2020-03-16 21:31:54.1189 Info Logger has been shut down.
+2020-03-16 21:35:14.6158 Info Message Template Auto Format enabled
+2020-03-16 21:35:14.6220 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-16 21:35:14.6603 Info Adding target File Target[filelog]
+2020-03-16 21:35:14.6603 Info Adding target Console Target[consolelog]
+2020-03-16 21:35:14.6682 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-16 21:35:14.6834 Info Found 36 configuration items
+2020-03-16 21:38:14.7138 Info Logger closing down...
+2020-03-16 21:38:14.7138 Info Closing old configuration.
+2020-03-16 21:38:14.7296 Info Logger has been closed down.
+2020-03-16 21:38:14.7296 Info Shutting down logging...
+2020-03-16 21:38:14.7296 Info Logger has been shut down.
+2020-03-16 21:40:10.4992 Info Message Template Auto Format enabled
+2020-03-16 21:40:10.4992 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-16 21:40:10.5445 Info Adding target File Target[filelog]
+2020-03-16 21:40:10.5445 Info Adding target Console Target[consolelog]
+2020-03-16 21:40:10.5445 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-16 21:40:10.5671 Info Found 36 configuration items
+2020-03-16 21:42:06.6008 Info Logger closing down...
+2020-03-16 21:42:06.6023 Info Closing old configuration.
+2020-03-16 21:42:06.6023 Info Logger has been closed down.
+2020-03-16 21:42:06.6023 Info Shutting down logging...
+2020-03-16 21:42:06.6188 Info Logger has been shut down.
+2020-03-16 21:49:03.5733 Info Message Template Auto Format enabled
+2020-03-16 21:49:03.5733 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-16 21:49:03.6186 Info Adding target File Target[filelog]
+2020-03-16 21:49:03.6186 Info Adding target Console Target[consolelog]
+2020-03-16 21:49:03.6186 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-16 21:49:03.6416 Info Found 36 configuration items
+2020-03-16 21:50:50.6208 Info Logger closing down...
+2020-03-16 21:50:50.6208 Info Closing old configuration.
+2020-03-16 21:50:50.6387 Info Logger has been closed down.
+2020-03-16 21:50:50.6387 Info Shutting down logging...
+2020-03-16 21:50:50.6387 Info Logger has been shut down.
+2020-03-16 21:52:28.8615 Info Message Template Auto Format enabled
+2020-03-16 21:52:28.8731 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-16 21:52:28.9364 Info Adding target File Target[filelog]
+2020-03-16 21:52:28.9364 Info Adding target Console Target[consolelog]
+2020-03-16 21:52:28.9493 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-16 21:52:28.9673 Info Found 36 configuration items
+2020-03-16 22:14:07.0544 Info Message Template Auto Format enabled
+2020-03-16 22:14:07.0611 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-16 22:14:07.1139 Info Adding target File Target[filelog]
+2020-03-16 22:14:07.1139 Info Adding target Console Target[consolelog]
+2020-03-16 22:14:07.1213 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-16 22:14:07.1365 Info Found 36 configuration items
+2020-03-16 22:16:40.0614 Info Message Template Auto Format enabled
+2020-03-16 22:16:40.0614 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-16 22:16:40.1225 Info Adding target File Target[filelog]
+2020-03-16 22:16:40.1225 Info Adding target Console Target[consolelog]
+2020-03-16 22:16:40.1225 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-16 22:16:40.1466 Info Found 36 configuration items
+2020-03-16 22:23:11.1872 Info Message Template Auto Format enabled
+2020-03-16 22:23:11.1872 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-16 22:23:11.2690 Info Adding target File Target[filelog]
+2020-03-16 22:23:11.2690 Info Adding target Console Target[consolelog]
+2020-03-16 22:23:11.2784 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-16 22:23:11.3015 Info Found 36 configuration items
+2020-03-16 22:28:41.2149 Info Message Template Auto Format enabled
+2020-03-16 22:28:41.2149 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-16 22:28:41.2759 Info Adding target File Target[filelog]
+2020-03-16 22:28:41.2759 Info Adding target Console Target[consolelog]
+2020-03-16 22:28:41.2759 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-16 22:28:41.3012 Info Found 36 configuration items
+2020-03-16 22:37:05.7950 Info Message Template Auto Format enabled
+2020-03-16 22:37:05.7950 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-16 22:37:05.8382 Info Adding target File Target[filelog]
+2020-03-16 22:37:05.8382 Info Adding target Console Target[consolelog]
+2020-03-16 22:37:05.8382 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-16 22:37:05.8605 Info Found 36 configuration items
+2020-03-16 22:43:32.7511 Info Logger closing down...
+2020-03-16 22:43:32.7511 Info Closing old configuration.
+2020-03-16 22:43:32.7798 Info Logger has been closed down.
+2020-03-16 22:43:32.7798 Info Shutting down logging...
+2020-03-16 22:43:32.7798 Info Logger has been shut down.
+2020-03-16 22:43:40.5678 Info Message Template Auto Format enabled
+2020-03-16 22:43:40.5743 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-16 22:43:40.6309 Info Adding target File Target[filelog]
+2020-03-16 22:43:40.6309 Info Adding target Console Target[consolelog]
+2020-03-16 22:43:40.6385 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-16 22:43:40.6532 Info Found 36 configuration items
+2020-03-17 10:39:43.7760 Info Message Template Auto Format enabled
+2020-03-17 10:39:43.7760 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-17 10:39:43.8534 Info Adding target File Target[filelog]
+2020-03-17 10:39:43.8534 Info Adding target Console Target[consolelog]
+2020-03-17 10:39:43.8748 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-17 10:39:43.9042 Info Found 36 configuration items
+2020-03-17 10:46:18.6895 Info Message Template Auto Format enabled
+2020-03-17 10:46:18.6967 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-17 10:46:18.7500 Info Adding target File Target[filelog]
+2020-03-17 10:46:18.7500 Info Adding target Console Target[consolelog]
+2020-03-17 10:46:18.7500 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-17 10:46:18.7735 Info Found 36 configuration items
+2020-03-17 10:51:02.3628 Info Message Template Auto Format enabled
+2020-03-17 10:51:02.3710 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-17 10:51:02.4257 Info Adding target File Target[filelog]
+2020-03-17 10:51:02.4257 Info Adding target Console Target[consolelog]
+2020-03-17 10:51:02.4328 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-17 10:51:02.4478 Info Found 36 configuration items
+2020-03-17 11:06:07.5982 Info Message Template Auto Format enabled
+2020-03-17 11:06:07.6056 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-17 11:06:07.6636 Info Adding target File Target[filelog]
+2020-03-17 11:06:07.6650 Info Adding target Console Target[consolelog]
+2020-03-17 11:06:07.6650 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-17 11:06:07.6877 Info Found 36 configuration items
+2020-03-17 11:21:40.4245 Info Message Template Auto Format enabled
+2020-03-17 11:21:40.4309 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-17 11:21:40.4696 Info Adding target File Target[filelog]
+2020-03-17 11:21:40.4696 Info Adding target Console Target[consolelog]
+2020-03-17 11:21:40.4770 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-17 11:21:40.4770 Info Found 36 configuration items
+2020-03-17 11:26:31.5560 Info Logger closing down...
+2020-03-17 11:26:31.5560 Info Closing old configuration.
+2020-03-17 11:26:31.6141 Info Logger has been closed down.
+2020-03-17 11:26:31.6141 Info Shutting down logging...
+2020-03-17 11:26:31.6220 Info Logger has been shut down.
+2020-03-17 12:12:51.9905 Info Message Template Auto Format enabled
+2020-03-17 12:12:51.9970 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-17 12:12:52.0381 Info Adding target File Target[filelog]
+2020-03-17 12:12:52.0381 Info Adding target Console Target[consolelog]
+2020-03-17 12:12:52.0466 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-17 12:12:52.0617 Info Found 36 configuration items
+2020-03-17 12:38:54.6310 Info Logger closing down...
+2020-03-17 12:38:54.6310 Info Closing old configuration.
+2020-03-17 12:38:54.6490 Info Logger has been closed down.
+2020-03-17 12:38:54.6505 Info Shutting down logging...
+2020-03-17 12:38:54.6505 Info Logger has been shut down.
+2020-03-17 12:41:08.3817 Info Message Template Auto Format enabled
+2020-03-17 12:41:08.3887 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-17 12:41:08.4294 Info Adding target File Target[filelog]
+2020-03-17 12:41:08.4308 Info Adding target Console Target[consolelog]
+2020-03-17 12:41:08.4308 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-17 12:41:08.4506 Info Found 36 configuration items
+2020-03-17 14:21:46.5173 Info Shutting down logging...
+2020-03-17 14:21:46.5571 Info Logger has been shut down.
+2020-03-17 14:40:38.6138 Info Message Template Auto Format enabled
+2020-03-17 14:40:38.6206 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-17 14:40:38.7099 Info Adding target File Target[filelog]
+2020-03-17 14:40:38.7099 Info Adding target Console Target[consolelog]
+2020-03-17 14:40:38.7099 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-17 14:40:38.7385 Info Found 36 configuration items
+2020-03-17 15:10:53.8776 Info Message Template Auto Format enabled
+2020-03-17 15:10:53.8838 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-17 15:10:53.9227 Info Adding target File Target[filelog]
+2020-03-17 15:10:53.9227 Info Adding target Console Target[consolelog]
+2020-03-17 15:10:53.9301 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-17 15:10:53.9451 Info Found 36 configuration items
+2020-03-17 15:50:45.2526 Info Logger closing down...
+2020-03-17 15:50:45.2526 Info Closing old configuration.
+2020-03-17 15:50:45.2752 Info Logger has been closed down.
+2020-03-17 15:50:45.2766 Info Shutting down logging...
+2020-03-17 15:50:45.2766 Info Logger has been shut down.
+2020-03-17 15:52:12.2196 Info Message Template Auto Format enabled
+2020-03-17 15:52:12.2196 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-17 15:52:12.2624 Info Adding target File Target[filelog]
+2020-03-17 15:52:12.2624 Info Adding target Console Target[consolelog]
+2020-03-17 15:52:12.2624 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-17 15:52:12.2851 Info Found 36 configuration items
+2020-03-17 15:52:34.3827 Info Logger closing down...
+2020-03-17 15:52:34.3827 Info Closing old configuration.
+2020-03-17 15:52:34.3994 Info Logger has been closed down.
+2020-03-17 15:52:34.3994 Info Shutting down logging...
+2020-03-17 15:52:34.4018 Info Logger has been shut down.
+2020-03-17 15:53:38.2646 Info Message Template Auto Format enabled
+2020-03-17 15:53:38.2646 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-17 15:53:38.3091 Info Adding target File Target[filelog]
+2020-03-17 15:53:38.3091 Info Adding target Console Target[consolelog]
+2020-03-17 15:53:38.3091 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-17 15:53:38.3330 Info Found 36 configuration items
+2020-03-17 15:56:11.1056 Info Logger closing down...
+2020-03-17 15:56:11.1056 Info Closing old configuration.
+2020-03-17 15:56:11.1229 Info Logger has been closed down.
+2020-03-17 15:56:11.1229 Info Shutting down logging...
+2020-03-17 15:56:11.1229 Info Logger has been shut down.
+2020-03-17 16:02:07.6537 Info Message Template Auto Format enabled
+2020-03-17 16:02:07.6537 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-17 16:02:07.6972 Info Adding target File Target[filelog]
+2020-03-17 16:02:07.6972 Info Adding target Console Target[consolelog]
+2020-03-17 16:02:07.6972 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-17 16:02:07.7201 Info Found 36 configuration items
+2020-03-17 16:06:01.7940 Info Logger closing down...
+2020-03-17 16:06:01.7940 Info Closing old configuration.
+2020-03-17 16:06:01.8111 Info Logger has been closed down.
+2020-03-17 16:06:01.8111 Info Shutting down logging...
+2020-03-17 16:06:01.8111 Info Logger has been shut down.
+2020-03-17 16:11:56.4389 Info Message Template Auto Format enabled
+2020-03-17 16:11:56.4389 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-17 16:11:56.4846 Info Adding target File Target[filelog]
+2020-03-17 16:11:56.4846 Info Adding target Console Target[consolelog]
+2020-03-17 16:11:56.4920 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-17 16:11:56.4920 Info Found 36 configuration items
+2020-03-17 16:19:45.4336 Info Logger closing down...
+2020-03-17 16:19:45.4336 Info Closing old configuration.
+2020-03-17 16:19:45.4596 Info Logger has been closed down.
+2020-03-17 16:19:45.4611 Info Shutting down logging...
+2020-03-17 16:19:45.4611 Info Logger has been shut down.
+2020-03-17 16:20:19.3991 Info Message Template Auto Format enabled
+2020-03-17 16:20:19.3991 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-17 16:20:19.4434 Info Adding target File Target[filelog]
+2020-03-17 16:20:19.4434 Info Adding target Console Target[consolelog]
+2020-03-17 16:20:19.4510 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-17 16:20:19.4657 Info Found 36 configuration items
+2020-03-17 16:22:21.1906 Info Logger closing down...
+2020-03-17 16:22:21.1906 Info Closing old configuration.
+2020-03-17 16:22:21.2178 Info Logger has been closed down.
+2020-03-17 16:22:21.2178 Info Shutting down logging...
+2020-03-17 16:22:21.2178 Info Logger has been shut down.
+2020-03-17 16:22:55.3200 Info Message Template Auto Format enabled
+2020-03-17 16:22:55.3200 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-17 16:22:55.3845 Info Adding target File Target[filelog]
+2020-03-17 16:22:55.3845 Info Adding target Console Target[consolelog]
+2020-03-17 16:22:55.3845 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-17 16:22:55.4190 Info Found 36 configuration items
+2020-03-17 16:38:12.7057 Info Logger closing down...
+2020-03-17 16:38:12.7057 Info Closing old configuration.
+2020-03-17 16:38:12.7324 Info Logger has been closed down.
+2020-03-17 16:38:12.7324 Info Shutting down logging...
+2020-03-17 16:38:12.7324 Info Logger has been shut down.
+2020-03-17 16:57:16.9074 Info Message Template Auto Format enabled
+2020-03-17 16:57:16.9143 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-17 16:57:16.9554 Info Adding target File Target[filelog]
+2020-03-17 16:57:16.9554 Info Adding target Console Target[consolelog]
+2020-03-17 16:57:16.9640 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-17 16:57:16.9799 Info Found 36 configuration items
+2020-03-17 17:07:04.3819 Info Logger closing down...
+2020-03-17 17:07:04.3836 Info Closing old configuration.
+2020-03-17 17:07:04.3836 Info Logger has been closed down.
+2020-03-17 17:07:04.3836 Info Shutting down logging...
+2020-03-17 17:07:04.4001 Info Logger has been shut down.
+2020-03-17 17:07:22.1761 Info Message Template Auto Format enabled
+2020-03-17 17:07:22.1837 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-17 17:07:22.2287 Info Adding target File Target[filelog]
+2020-03-17 17:07:22.2287 Info Adding target Console Target[consolelog]
+2020-03-17 17:07:22.2287 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-17 17:07:22.2547 Info Found 36 configuration items
+2020-03-17 17:25:45.6404 Info Shutting down logging...
+2020-03-17 17:25:45.6864 Info Logger has been shut down.
+2020-03-17 17:35:35.8533 Info Message Template Auto Format enabled
+2020-03-17 17:35:35.8533 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-17 17:35:35.9022 Info Adding target File Target[filelog]
+2020-03-17 17:35:35.9022 Info Adding target Console Target[consolelog]
+2020-03-17 17:35:35.9109 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-17 17:35:35.9246 Info Found 36 configuration items
+2020-03-17 17:36:41.4225 Info Logger closing down...
+2020-03-17 17:36:41.4255 Info Closing old configuration.
+2020-03-17 17:36:41.4578 Info Logger has been closed down.
+2020-03-17 17:36:41.4578 Info Shutting down logging...
+2020-03-17 17:36:41.4578 Info Logger has been shut down.
+2020-03-17 17:39:42.3216 Info Message Template Auto Format enabled
+2020-03-17 17:39:42.3216 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-17 17:39:42.3750 Info Adding target File Target[filelog]
+2020-03-17 17:39:42.3750 Info Adding target Console Target[consolelog]
+2020-03-17 17:39:42.3854 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-17 17:39:42.4049 Info Found 36 configuration items
+2020-03-18 16:49:07.6857 Info Logger closing down...
+2020-03-18 16:49:07.6857 Info Closing old configuration.
+2020-03-18 16:49:07.7097 Info Logger has been closed down.
+2020-03-18 16:49:07.7097 Info Shutting down logging...
+2020-03-18 16:49:07.7097 Info Logger has been shut down.
+2020-03-19 22:13:46.3434 Info Message Template Auto Format enabled
+2020-03-19 22:13:46.3580 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-19 22:13:46.4687 Info Adding target File Target[filelog]
+2020-03-19 22:13:46.4712 Info Adding target Console Target[consolelog]
+2020-03-19 22:13:46.4712 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-19 22:13:46.5051 Info Found 36 configuration items
+2020-03-20 09:19:34.6344 Info Message Template Auto Format enabled
+2020-03-20 09:19:34.6427 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-20 09:19:34.7077 Info Adding target File Target[filelog]
+2020-03-20 09:19:34.7077 Info Adding target Console Target[consolelog]
+2020-03-20 09:19:34.7196 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-20 09:19:34.7403 Info Found 36 configuration items
+2020-03-20 11:39:01.4381 Info Message Template Auto Format enabled
+2020-03-20 11:39:01.4381 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-20 11:39:01.4974 Info Adding target File Target[filelog]
+2020-03-20 11:39:01.4983 Info Adding target Console Target[consolelog]
+2020-03-20 11:39:01.4983 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp3.1\nlog.config...
+2020-03-20 11:39:01.5151 Info Found 36 configuration items
+2020-03-20 11:39:04.4161 Info Logger closing down...
+2020-03-20 11:39:04.4201 Info Closing old configuration.
+2020-03-20 11:39:04.4465 Info Logger has been closed down.
+2020-03-20 13:58:07.4776 Info Message Template Auto Format enabled
+2020-03-20 13:58:07.4850 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-20 13:58:07.5472 Info Adding target File Target[filelog]
+2020-03-20 13:58:07.5472 Info Adding target Console Target[consolelog]
+2020-03-20 13:58:07.5472 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-20 13:58:07.5738 Info Found 36 configuration items
+2020-03-20 14:03:45.3082 Info Message Template Auto Format enabled
+2020-03-20 14:03:45.3203 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-20 14:03:45.4220 Info Adding target File Target[filelog]
+2020-03-20 14:03:45.4220 Info Adding target Console Target[consolelog]
+2020-03-20 14:03:45.4220 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-20 14:03:45.4743 Info Found 36 configuration items
+2020-03-20 14:05:22.9779 Info Message Template Auto Format enabled
+2020-03-20 14:05:22.9959 Info Loading assembly: NLog.Web.AspNetCore
+2020-03-20 14:05:23.0661 Info Adding target File Target[filelog]
+2020-03-20 14:05:23.0661 Info Adding target Console Target[consolelog]
+2020-03-20 14:05:23.0661 Info Configured from an XML element in C:\WorkSpace\PlayGround\startnetcore\FE.Creator.PCenter\bin\Debug\netcoreapp2.1\nlog.config...
+2020-03-20 14:05:23.0883 Info Found 36 configuration items

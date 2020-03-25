@@ -1,57 +1,115 @@
-﻿<!DOCTYPE html>
-<html>
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using FE.Creator.PCenter.CutomProvider;
+@using FE.Creator.PCenter
+@inject IHtmlLocalizer<SharedLangResource> SharedResource
+<!DOCTYPE html>
+<htm lang="en"l>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - coreaspnet</title>
+    <title>@ViewData["Title"]</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+    <link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css">
+    <link rel="stylesheet" type="text/css" href="css/coreui-icons-brand.min.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">coreaspnet</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+    <div class="loader"></div>
+    <div id="pagecontainer">
+            <!--HEADER-->
+    <div class="header">
+      <div class="bg-color">
+        <header id="main-header">
+          
+          <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+                <a class="navbar-brand" href="#">FE<span class="logo-dec">TECH</span>HUB</a>
+              </div>
+              <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                  <li class="active"><a href="#main-header">@SharedResource["Home"]</a></li>
+                  <li class=""><a href="#feature">@SharedResource["Feature"]</a></li>
+                  <li class=""><a href="#service">@SharedResource["FEConsole"]</a></li>
+                  <li class=""><a href="#donate"><i class="fa fa-heart red"></i> @SharedResource["Donate"]</a></li>
+                  <li class=""><a href="#contact">@SharedResource["Contact Us"]</a></li>
+                  @if(Context.IsUserLogin()){
+                    <li class="">
+                        <a href="/home/logout"><i class="fa fa-user"></i> @SharedResource["Logout"]</a>
+                    </li>
+                  }
                 </ul>
+              </div>
+            </div>
+          </nav>
+          
+        </header>
+       
+        <div class="wrapper">
+          <div class="container">
+            <div class="row">
+              <div class="banner-info text-center wow fadeIn delay-05s">
+                @if(Context.IsUserLogin())
+                {
+                  <h1 class="bnr-title">@SharedResource["Welcome <span>{0}</span>!", Context.GetLoginUserDisplayName()]</h1>
+                }
+                <h2 class="bnr-sub-title">@SharedResource["The Platform for Creative IT System!!"]</h2>
+                <p class="bnr-para">@SharedResource["The FETECH provides individuals and organizations with commercially-free, scalable and easy to use IT Systems like FEConsole that will bring people extra share of all that make them happiest!"]</p>
+                <h1 class="bnr-title">@SharedResource["FEConsole Version 1.0 is Now General Available!"]</h1>
+                <div class="brn-btn">
+                  <a href="#download" class="btn btn-download">@SharedResource["Download now!"]</a>
+                  <a href="/home/livepreview" class="btn btn-more">@SharedResource["Live Preview"]</a>
+                </div>
+                <div class="overlay-detail">
+                  <a href="#feature"><i class="fa fa-angle-down"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ HEADER-->
+        @RenderBody()
+
+     <partial name="_CookieConsentPartial" />
+     <footer id="footer" class="ft-color">
+        <div class="container">
+            <div class="row">
+              <div class="credits text-center">
+                <p style="color:#be9e21;">@SharedResource["Copyright"] &copy; FETECH @DateTime.Now.Year </p>
+                  <!--
+                  All the links in the footer should remain intact.
+                  You can delete the links only if you purchased the pro version.
+                  Licensing information: https://bootstrapmade.com/license/
+                  Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Baker
+                  -->
+                  <p>Designed by <a href="https://bootstrapmade.com/" style="color:#67696c;">BootstrapMade</a></p>
+              </div>
             </div>
         </div>
-    </nav>
-
-    <partial name="_CookieConsentPartial" />
-
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2018 - coreaspnet</p>
-        </footer>
+      </footer>
     </div>
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
     <environment exclude="Development">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
@@ -66,9 +124,11 @@
                 crossorigin="anonymous"
                 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
         </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
-
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/jquery.bxslider.min.js"></script>
+    <script src="js/custom.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
-</html>
+</htm>

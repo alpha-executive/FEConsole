@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="FE Home" xml:space="preserve">
+    <value>FE平台</value>
+  </data>
+  <data name="Full Functionality" xml:space="preserve">
+    <value>功能齐全</value>
+  </data>
+  <data name="Industry standard application with full functionality provided, each functionality is well designed and aimed to solve the target problem of individuals and organizations." xml:space="preserve">
+    <value>提供功能齐全的业界标准应用，每一个应用都经过精心设计，用来解决组织或个人所遇到的行业问题。</value>
+  </data>
+  <data name="Multi-Language" xml:space="preserve">
+    <value>多语言支持</value>
+  </data>
+  <data name="Multi-language is supported in all the applications get from this platform, simplified chinese and english are supported by default." xml:space="preserve">
+    <value>平台提供的所有应用都提供多语言支持，默认支持简体中文和英文。</value>
+  </data>
+  <data name="Free of Charge" xml:space="preserve">
+    <value>永久免费</value>
+  </data>
+  <data name="All the IT Systems get from this application is free of charge, both for individuals and organizations, just follow the license agreement attached for the specific application." xml:space="preserve">
+    <value>在本平台获取的任何系统都可以免费使用，但请接受指定系统所提供的授权协议。</value>
+  </data>
+  <data name="The FEConsole Application" xml:space="preserve">
+    <value>FEConsole应用程序</value>
+  </data>
+  <data name="FEConsole is a easy to use web application, it is in purpose of protecting and organizing your personal information, valuable memories, knowlege in one place! FEConsole is also a greate helper for those who are willing to learn and improve themself all their lives." xml:space="preserve">
+    <value>FEConsole是一个易用的网络应用程序，这个应用可以帮助您在同一个平台集中管理和保护您的个人信息，长久保存珍贵的记忆和知识点！对于有志于持久学习来提升自身素质的朋友，FEConsole是一款不可或缺的帮手。</value>
+  </data>
+  <data name="Create Post" xml:space="preserve">
+    <value>发帖子</value>
+  </data>
+  <data name="Speak out to the public" xml:space="preserve">
+    <value>向公众表达您的观点。</value>
+  </data>
+  <data name="Manage Image" xml:space="preserve">
+    <value>管理图片</value>
+  </data>
+  <data name="Manage and share images you love most" xml:space="preserve">
+    <value>合理管理并向大家晒一下您最中意的照片。</value>
+  </data>
+  <data name="Manage E-Book" xml:space="preserve">
+    <value>管理电子书</value>
+  </data>
+  <data name="Share and Manage your most faivorated books" xml:space="preserve">
+    <value>管理和分享您最喜爱的书。</value>
+  </data>
+  <data name="Manage Files" xml:space="preserve">
+    <value>管理文件</value>
+  </data>
+  <data name="Secure and Manage your important files" xml:space="preserve">
+    <value>管理和保护您的重要文件。</value>
+  </data>
+  <data name="Track Task" xml:space="preserve">
+    <value>追踪个人任务</value>
+  </data>
+  <data name="Track the status of your personal tasks" xml:space="preserve">
+    <value>制定和追踪您的个人任务。</value>
+  </data>
+  <data name="Explore More..." xml:space="preserve">
+    <value>探索更多...</value>
+  </data>
+  <data name="&lt;a href='#download' class='label label-warning'&gt;Download&lt;/a&gt; or &lt;a href='/home/livepreview' class='label label-warning'&gt;Live Preview&lt;/a&gt; to find more amazing features" xml:space="preserve">
+    <value>&lt;a href='#download' class='label label-warning'&gt;下载&lt;/a&gt;或&lt;a href='/home/livepreview' class='label label-warning'&gt;在线体验&lt;/a&gt;以查看更多实用功能。</value>
+  </data>
+  <data name="Get The FEConsole that is right for you" xml:space="preserve">
+    <value>获取适合您的FEConsole版本</value>
+  </data>
+  <data name="Supported on Windows, Linux and MacOS" xml:space="preserve">
+    <value>支持Windows, Linux和MacOS等操作系统</value>
+  </data>
+  <data name="Quick start and easy deploy" xml:space="preserve">
+    <value>容易部署，快速上手</value>
+  </data>
+  <data name="Run on Local and Cloud" xml:space="preserve">
+    <value>可以在本地或云环境中运行</value>
+  </data>
+  <data name="Free and Open Source" xml:space="preserve">
+    <value>开源免费</value>
+  </data>
+  <data name="Running on the .NET Core" xml:space="preserve">
+    <value>基于.NET Core平台运行</value>
+  </data>
+  <data name="Download" xml:space="preserve">
+    <value>立即下载</value>
+  </data>
+  <data name="Supported on Windows" xml:space="preserve">
+    <value>支持Windows系统</value>
+  </data>
+  <data name="All features available" xml:space="preserve">
+    <value>所有功能都可用</value>
+  </data>
+  <data name="Easy to deploy on IIS" xml:space="preserve">
+    <value>容易在IIS上部署</value>
+  </data>
+  <data name="Running on the .NET Framework" xml:space="preserve">
+    <value>基于.NET Framework平台</value>
+  </data>
+  <data name="Quick start" xml:space="preserve">
+    <value>快速启动容易上手</value>
+  </data>
+  <data name="Container based" xml:space="preserve">
+    <value>基于容器技术</value>
+  </data>
+  <data name="Running on the Docker container" xml:space="preserve">
+    <value>在Docker容器中运行</value>
+  </data>
+   <data name="Keep in touch with us" xml:space="preserve">
+    <value>联系我们</value>
+  </data>
+   <data name="Please contact us if you want further technical support about the application on this platform." xml:space="preserve">
+    <value>对于本平台上的任意系统应用，如果您想进一步得到专业的技术支持，请联系我们。</value>
+  </data>
+   <data name="Beijing, China" xml:space="preserve">
+    <value>中国北京</value>
+  </data>
+   <data name="Send" xml:space="preserve">
+    <value>发送</value>
+  </data>
+   <data name="Power the Platform with your Donation" xml:space="preserve">
+    <value>助力平台成长</value>
+  </data>
+  <data name="Your donation helps The FETECH ensure its community-driven software remains available to users at absolutely no cost. &lt;br /&gt; Thank you in advance for your generosity!" xml:space="preserve">
+    <value>热切希望您能捐赠FETECH平台，您的捐赠是我们这个社区驱动的组织为用户持续提供永久免费软件的动力。&lt;br/&gt; 提前感谢您的慷慨！</value>
+  </data>
+  <data name="Alipay" xml:space="preserve">
+    <value>支付宝</value>
+  </data>
+  <data name="WeChat" xml:space="preserve">
+    <value>微信</value>
+  </data>
+  <data name="PayPal" xml:space="preserve">
+    <value>PayPal</value>
+  </data>
+  <data name="Scan the BR code with Wechat" xml:space="preserve">
+    <value>用微信扫描二维码</value>
+  </data>
+  <data name="Scan the BR code with Alipay" xml:space="preserve">
+    <value>用支付宝扫描二维码</value>
+  </data>
+  <data name="&lt;input type='text' class='form-control' id='subject' name='Subject' placeholder='Subject' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject' /&gt;" xml:space="preserve">
+    <value>&lt;input type='text' class='form-control' id='subject' name='Subject' placeholder='标题' data-rule='minlen:4' data-msg='请输入8个字以上的标题' /&gt;</value>
+  </data>
+  <data name="&lt;textarea class='form-control' id='message' name='Message' rows='5' data-rule='required' data-msg='Please write something for us' placeholder='Message'&gt;&lt;/textarea&gt;" xml:space="preserve">
+    <value>&lt;textarea class='form-control' id='message' name='消息内容' rows='5' data-rule='required' data-msg='请写下您要发送的内容'' placeholder='消息内容'&gt;&lt;/textarea&gt;</value>
+  </data>
+  <data name="Sign-in to send message" xml:space="preserve">
+    <value>登陆后发送消息</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>通知</value>
+  </data>
+  <data name="Your message has been sent!" xml:space="preserve">
+    <value>您的信息已发送！</value>
+  </data>
+  <data name="We are sorry, something error happened, please try again later." xml:space="preserve">
+    <value>很抱歉，系统出错了，稍候请重试！</value>
+  </data>
+</root>

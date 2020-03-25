@@ -1,98 +1,249 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model FE.Creator.PCenter.Models.ContactMessage
+@using Microsoft.AspNetCore.Mvc.Localization
+@using FE.Creator.PCenter
+@using FE.Creator.PCenter.CutomProvider;
+@inject IHtmlLocalizer<SharedLangResource> ResourceString
+@inject IViewLocalizer IndexPageResource
+@{
+    ViewData["Title"] = ResourceString["FE Home"];
 }
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
-    <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <img src="~/images/banner1.svg" alt="ASP.NET" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Learn how to build ASP.NET apps that can run anywhere.
-                    <a  class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409">
-                        Learn More
-                    </a>
-                    
-                </p>
+    <!---->
+    <section id="feature" class="section-padding wow fadeInUp delay-05s">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="service-item text-center">
+              <h3><span><i class="fa fa-cubes red"></i> </span>@IndexPageResource["Full Functionality"]</h3>
+              <p>@IndexPageResource["Industry standard application with full functionality provided, each functionality is well designed and aimed to solve the target problem of individuals and organizations."]</p>
             </div>
-        </div>
-        <div class="item">
-            <img src="~/images/banner2.svg" alt="Visual Studio" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    There are powerful new features in Visual Studio for building modern web apps.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="service-item text-center">
+              <h3><span><i class="fa fa-language blue"></i> </span>@IndexPageResource["Multi-Language"]</h3>
+              <p>@IndexPageResource["Multi-language is supported in all the applications get from this platform, simplified chinese and english are supported by default."]</p>
             </div>
-        </div>
-        <div class="item">
-            <img src="~/images/banner3.svg" alt="Microsoft Azure" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Learn how Microsoft's Azure cloud platform allows you to build, deploy, and scale web apps.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525027&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="service-item text-center">
+              <h3><span><i class="fa fa-money yellow"></i> </span>@IndexPageResource["Free of Charge"]</h3>
+              <p>@IndexPageResource["All the IT Systems get from this application is free of charge, both for individuals and organizations, just follow the license agreement attached for the specific application."]</p>
             </div>
+          </div>
         </div>
-    </div>
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div>
+      </div>
+    </section>
+    <!---->
+    <!---->
+    <section id="service" class="section-padding wow fadeInUp delay-05s">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2 class="service-title pad-bt15 text-center">@IndexPageResource["The FEConsole Application"]</h2>
+            <p class="sub-title pad-bt15 text-center">@IndexPageResource["FEConsole is a easy to use web application, it is in purpose of protecting and organizing your personal information, valuable memories, knowlege in one place! FEConsole is also a greate helper for those who are willing to learn and improve themself all their lives."]</p>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="wrap-item">
+              <h3><span><i class="fa fa-comments blue"></i> </span>@IndexPageResource["Create Post"]</h3>
+              <p>@IndexPageResource["Speak out to the public"]</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="wrap-item">
+              <h3><span><i class="fa fa-image green"></i> </span>@IndexPageResource["Manage Image"]</h3>
+              <p>@IndexPageResource["Manage and share images you love most"]</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="wrap-item">
+              <h3><span><i class="fa fa-book red"></i> </span>@IndexPageResource["Manage E-Book"]</h3>
+              <p>@IndexPageResource["Share and Manage your most faivorated books"]</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="wrap-item">
+              <h3><span><i class="fa fa-folder blue"></i> </span>@IndexPageResource["Manage Files"]</h3>
+              <p>@IndexPageResource["Secure and Manage your important files"]</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="wrap-item">
+              <h3><span><i class="fa fa-bar-chart green"></i> </span>@IndexPageResource["Track Task"]</h3>
+              <p>@IndexPageResource["Track the status of your personal tasks"]</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="wrap-item">
+              <h3><span><i class="fa fa-hand-o-right red"></i> </span>@IndexPageResource["Explore More..."]</h3>
+              <p>@IndexPageResource["<a href='#download' class='label label-warning'>Download</a> or <a href='/home/livepreview' class='label label-warning'>Live Preview</a> to find more amazing features"]</p>
+            </div>
+          </div>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+        <!---->
+    <section id="download" class="section-padding wow fadeInUp delay-05s">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+             <h2 class="service-title pad-bt15 text-center">@IndexPageResource["Get The FEConsole that is right for you"]</h2>
+              <hr class="bottom-line">
+          </div>
+           <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="service-item">
+              <h3><span class="text-primary">D</span>otnet Core</h3>
+              <ul>
+                <li><i class="glyphicon glyphicon-ok primary"></i> @IndexPageResource["Supported on Windows, Linux and MacOS"]</li>
+                <li><i class="glyphicon glyphicon-ok primary"></i> @IndexPageResource["Quick start and easy deploy"]</li>
+                <li><i class="glyphicon glyphicon-ok primary"></i> @IndexPageResource["Run on Local and Cloud"]</li>
+                <li><i class="glyphicon glyphicon-ok primary"></i> @IndexPageResource["Free and Open Source"]</li>
+                <li><i class="glyphicon glyphicon-ok primary"></i> @IndexPageResource["Running on the .NET Core"]</li>
+              </ul>
+              <a href="/home/download/dotnetcore" class="btn btn-primary white-bg">@IndexPageResource["Download"]</a>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="service-item">
+              <h3><span class="text-info">D</span>otnet Framework</h3>
+               <ul class="text-left">
+                <li><i class="glyphicon glyphicon-star-empty info"></i> @IndexPageResource["Supported on Windows"]</li>
+                <li><i class="glyphicon glyphicon-star-empty info"></i> @IndexPageResource["All features available"]</li>
+                <li><i class="glyphicon glyphicon-star-empty info"></i> @IndexPageResource["Easy to deploy on IIS"]</li>
+                <li><i class="glyphicon glyphicon-star-empty info"></i> @IndexPageResource["Run on Local and Cloud"]</li>
+                <li><i class="glyphicon glyphicon-star-empty info"></i> @IndexPageResource["Free and Open Source"]</li>
+                <li><i class="glyphicon glyphicon-star-empty info"></i> @IndexPageResource["Running on the .NET Framework"]</li>
+              </ul>
+              <a href="/home/download/dotnet" class="btn btn-info white-bg">@IndexPageResource["Download"]</a>
+            </div>
+          </div>
+         
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="service-item">
+              <h3><span class="text-warning">D</span>ocker</h3>
+               <ul class="text-left">
+                <li><i class="glyphicon glyphicon-flag warning"></i> @IndexPageResource["Supported on Windows, Linux and MacOS"]</li>
+                <li><i class="glyphicon glyphicon-flag warning"></i> @IndexPageResource["Quick start"]</li>
+                <li><i class="glyphicon glyphicon-flag warning"></i> @IndexPageResource["Container based"]</li>
+                <li><i class="glyphicon glyphicon-flag warning"></i> @IndexPageResource["Free and Open Source"]</li>
+                <li><i class="glyphicon glyphicon-flag warning"></i> @IndexPageResource["Running on the Docker container"]</li>
+              </ul>
+              <a href="/home/download/docker" class="btn btn-warning white-bg">@IndexPageResource["Download"]</a>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="row">
-    <div class="col-md-3">
-        <h2>Application uses</h2>
-        <ul>
-            <li>Sample pages using ASP.NET Core MVC</li>
-            <li>Theming using <a href="https://go.microsoft.com/fwlink/?LinkID=398939">Bootstrap</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>How to</h2>
-        <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=398600">Add a Controller and View</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699315">Manage User Secrets using Secret Manager.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699316">Use logging to log a message.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699317">Add packages using NuGet.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699319">Target development, staging or production environment.</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>Overview</h2>
-        <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=518008">Conceptual overview of what is ASP.NET Core</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699320">Fundamentals of ASP.NET Core such as Startup and middleware.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=398602">Working with Data</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=398603">Security</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=699321">Client side development</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=699322">Develop on different platforms</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=699323">Read more on the documentation site</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>Run &amp; Deploy</h2>
-        <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=517851">Run your app</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=517853">Run tools such as EF migrations and more</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=398609">Publish to Microsoft Azure Web Apps</a></li>
-        </ul>
-    </div>
-</div>
-<script>
-    AlertMessage();
-</script>
+
+    <!---->
+    <section id="donate" class="section-padding wow">
+      <div class="container">
+        <div class="row mainwindow wow flipInY delay-05s">
+          <div class="col-md-12 text-center">
+            <h2 class="service-title pad-bt15">@IndexPageResource["Power the Platform with your Donation"]</h2>
+            <p class="sub-title pad-bt15">@IndexPageResource["Your donation helps The FETECH ensure its community-driven software remains available to users at absolutely no cost. <br /> Thank you in advance for your generosity!"]</p>
+            <hr class="bottom-line">
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12 padding-right-zero mr-btn-15 text-center">
+              <button class="btn btn-warning donate-item btndonate alipay"><i class="cib-alipay "></i> @IndexPageResource["Alipay"]</button>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12 padding-right-zero mr-btn-15 text-center">
+            <button class="btn btn-success donate-item btndonate wechatpay"><i class="cib-wechat"></i> @IndexPageResource["WeChat"]</button>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12 padding-right-zero mr-btn-15 text-center">
+            <a class="btn btn-primary donate-item" href="/Home/PaypalPay"><i class="cib-cc-paypal"></i> @IndexPageResource["PayPal"]</a>
+          </div>
+        </div>
+        <!-- Modal -->
+        <div class="row wow flipInY delay-05s paybarcode invisible-item">
+          <div class="col-md-12 text-center">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title wechatpay">@IndexPageResource["Scan the BR code with Wechat"]</h5>
+                  <h5 class="modal-title alipay">@IndexPageResource["Scan the BR code with Alipay"]</h5>
+                  <button type="button" class="close btndonate" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="/Home/PayImage/wechatpay" class="img-responsive center-block wechatpay"> 
+                    <img src="Home/PayImage/alipay" class="img-responsive center-block alipay"> 
+                </div>
+              </div>
+            </div>
+              
+          </div>
+        </div>
+      </div>
+    </section>
+    <!---->
+    
+    <section id="contact" class="section-padding wow fadeInUp delay-05s">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <h2 class="service-title pad-bt15">@IndexPageResource["Keep in touch with us"]</h2>
+            <p class="sub-title pad-bt15">@IndexPageResource["Please contact us if you want further technical support about the application on this platform."]</p>
+            <hr class="bottom-line">
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="loction-info">
+              <p><i class="fa fa-map-marker fa-fw pull-left fa-2x"></i> @IndexPageResource["Beijing, China"]</p>
+              <p><i class="fa fa-envelope-o fa-fw pull-left fa-2x"></i> alpha_executive@126.com</p>
+              <p><i class="fa fa-envelope-o fa-fw pull-left fa-2x"></i> alpha_executive@hotmail.com</p>
+              <p><i class="fa fa-weixin fa-fw pull-left fa-2x"></i> ksfounder</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="contact-form">
+              <div id="errormessage"></div>
+              <div id="successalert" class="alert alert-success alert-dismissible hide" role="alert">
+                <strong>@IndexPageResource["Info"]</strong> @IndexPageResource["Your message has been sent!"]
+                <button type="button" class="close btnclosealert">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div id="failedalert" class="alert alert-danger alert-dismissible hide" role="alert">
+                <strong>@IndexPageResource["Warning"]</strong> @IndexPageResource["We are sorry, something error happened, please try again later."]
+                <button type="button" class="close btnclosealert">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <form asp-action="SendMessage" asp-controller="Home" method="post" role="form" class="contactForm">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    @IndexPageResource["<input type='text' class='form-control' id='subject' name='Subject' placeholder='Subject' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject' />"]
+                    <div class="validation"></div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                     @IndexPageResource["<textarea class='form-control' id='message' name='Message' rows='5' data-rule='required' data-msg='Please write something for us' placeholder='Message'></textarea>"]
+                    <div class="validation"></div>
+                  </div>
+                  @if(Context.IsUserLogin()){
+                      <button id="btnsendmessage" class="btn btn-primary btn-submit">@IndexPageResource["Send"]</button>
+                  }
+                </div>
+              </form>
+               @if (!User.Identity.IsAuthenticated) {
+                <form asp-controller="Home" asp-action="Login"  method="post">
+                      <div class="form-group">
+                          <input type="hidden" name="returnUrl" id="returnUrl"  value="/#contact" />
+                          <span><i class="fa fa-warning warning"></i> @IndexPageResource["Sign-in to send message"]</span>
+                          <button class="btn btn-submit"><i class="fa fa-wechat primary"></i></button>
+                          <button type="submit" class="btn btn-submit" name="provider" value="Microsoft"><i class="fa fa-windows primary"></i></button>
+                          <button type="submit" class="btn btn-submit" name="provider" value="Google"><i class="fa fa-google primary"></i></button>
+                    </div>
+                </form>
+               }
+            </div> 
+        </div>
+      </div>
+      </div>
+    </section>
+    <!---->
