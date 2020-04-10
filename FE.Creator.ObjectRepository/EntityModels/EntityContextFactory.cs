@@ -11,9 +11,11 @@ namespace FE.Creator.ObjectRepository.EntityModels
 {
    internal class EntityContextFactory
     {
-        protected static readonly string DEFAULT_DATABASE_PROVIDER = "sqlserver";
+        protected static readonly string DEFAULT_DATABASE_PROVIDER = "sqlite";
         internal static DBObjectContext GetDBObjectContext(){
-            return GetDBObjectContext(DEFAULT_DATABASE_PROVIDER, null);
+            var configuredDBProvider = DBObjectContext.GetConfiguredDBProvider();
+            return GetDBObjectContext(string.IsNullOrEmpty(configuredDBProvider) ?
+                DEFAULT_DATABASE_PROVIDER : configuredDBProvider, null);
         }
 
         internal static DBObjectContext GetDBObjectContext(string dbProvider, DbContextOptions options)
@@ -36,21 +38,23 @@ namespace FE.Creator.ObjectRepository.EntityModels
                     else{
                         return new MySqlDbObjectContext();
                     }
-                case "inmemory":
-                    if(options != null)
-                    {
-                        return new InMemoryDbObjectContext((DbContextOptions<InMemoryDbObjectContext>)options);
-                    }
-                    else{
-                        return new InMemoryDbObjectContext();
-                    }
-                default:
-                     if(options != null)
+                case "sqlserver":
+                    if (options != null)
                     {
                         return new SQLServerDbObjectContext((DbContextOptions<SQLServerDbObjectContext>)options);
                     }
-                    else{
+                    else
+                    {
                         return new SQLServerDbObjectContext();
+                    }
+                default:
+                    if (options != null)
+                    {
+                        return new InMemoryDbObjectContext((DbContextOptions<InMemoryDbObjectContext>)options);
+                    }
+                    else
+                    {
+                        return new InMemoryDbObjectContext();
                     }
             }
         }

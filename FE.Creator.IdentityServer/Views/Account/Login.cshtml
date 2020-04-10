@@ -1,0 +1,132 @@
+﻿@model LoginViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@using FE.Creator.IdentityServer
+@inject IHtmlLocalizer<SharedLangResource> SharedResource
+@{
+    Tuple<string, string> GetProviderIconName(string provider)
+    {
+        string iconName = "user";
+        string btnName = "external";
+        if (!string.IsNullOrEmpty(provider))
+        {
+            switch (provider.ToLower())
+            {
+                case "microsoft":
+                    iconName = "windows";
+                    btnName = "microsoft";
+                    break;
+                case "google":
+                    iconName = "google";
+                    btnName = "google";
+                    break;
+                case "github":
+                    iconName = "github";
+                    btnName = "github";
+                    break;
+                default:
+                    iconName = "user";
+                    btnName = "external";
+                    break;
+            }
+        }
+
+        return new Tuple<string, string>(iconName, btnName);
+    }
+}
+<div class="login-box">
+    <div class="box-header bg-success">
+        <div class="login-logo">
+            <a href="#" class="logo">
+                <i class="fa fa-paper-plane-o text-red"></i>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>FE</b>TECHHUB</span>
+            </a>
+        </div>
+    </div>
+    <!-- /.login-logo -->
+
+    <div class="login-box-body">
+        <partial name="_ValidationSummary" />
+        @if (Model.EnableLocalLogin)
+        {
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form asp-route="Login">
+                        <input type="hidden" asp-for="ReturnUrl" />
+                        <div class="form-group has-feedback">
+                            <label asp-for="Username">@SharedResource["Login Name or Email"]</label>
+                            <input class="form-control" placeholder='@SharedResource["Login Name or Email"]' asp-for="Username" autofocus>
+                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label asp-for="Password">@SharedResource["Password"]</label>
+                            <input type="password" class="form-control" placeholder="@SharedResource["Password"]" asp-for="Password" autocomplete="off">
+                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                        </div>
+                        @if (Model.AllowRememberLogin)
+                        {
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="checkbox icheck">
+                                        <input asp-for="RememberLogin">
+                                        <strong>@SharedResource["Remember My Login"]</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div class="row">
+                            <!-- /.col -->
+                            <div class="col-xs-12">
+                                <div class="form-group text-center">
+                                    <button name="button" value="login" class="btn btn-success">@SharedResource["Login"]</button>
+                                    <button name="button" value="cancel" class="btn btn-default">@SharedResource["Cancel"]</button>
+                                    <a href='@Url.Action("Register", new { returnUrl = Model.ReturnUrl })' class="btn btn-default">@SharedResource["Register"]</a>
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        }
+
+
+        <!-- /.social-auth-links -->
+        @if (Model.VisibleExternalProviders.Any())
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">@SharedResource["External Login"]</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="social-auth-links text-center">
+                        @foreach (var provider in Model.VisibleExternalProviders)
+                        {
+                            var btnStyle = GetProviderIconName(provider.DisplayName);
+                            <a class="btn btn-block btn-social btn-@btnStyle.Item2 btn-flat"
+                               asp-controller="External"
+                               asp-action="Challenge"
+                               asp-route-provider="@provider.AuthenticationScheme"
+                               asp-route-returnUrl="@Model.ReturnUrl">
+                                <i class="fa fa-@btnStyle.Item1"></i>@SharedResource["Login with {0} Account", @provider.DisplayName]
+                            </a>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+        @if (!Model.EnableLocalLogin && !Model.VisibleExternalProviders.Any())
+        {
+            <div class="alert alert-warning">
+                <strong>@SharedResource["Invalid login request"]</strong>
+                @SharedResource["There are no login schemes configured for this client."]
+            </div>
+        }
+    </div>
+
+</div>
+
+
+@section Scripts {
+    <script type="text/javascript" src="~/js/app.js"></script>
+}

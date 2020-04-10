@@ -18,14 +18,23 @@ namespace FE.Creator.ObjectRepository.EntityModels
         internal DBObjectContext(){}
         internal DBObjectContext(DbContextOptions options):base(options){} 
         
-        protected IConfiguration GetAppConfigure(){
+        protected static IConfiguration GetAppConfigure(){
             var config = new ConfigurationBuilder()
                         .AddJsonFile("appsettings.json")
                         .Build();
 
             return config;
         }
+        internal static string GetConfiguredDBProvider()
+        {
+            var config = GetAppConfigure();
+            if(config != null)
+            {
+                return config["SiteSettings:databaseprovider"];
+            }
 
+            return string.Empty;
+        }
         protected  override void  OnModelCreating(ModelBuilder modelBuilder){
             //define self reference group.
             modelBuilder.Entity<GeneralObjectDefinitionGroup>()

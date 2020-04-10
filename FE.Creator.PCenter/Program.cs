@@ -41,6 +41,8 @@ namespace coreaspnet
                 } */
             
                 host.Run();
+                Log.Logger.Debug("Web Application Started!");
+
             }
             catch (System.Exception ex)
             {
@@ -50,23 +52,9 @@ namespace coreaspnet
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args){
-          /*   var configBuilder = new ConfigurationBuilder()
-            .AddEnvironmentVariables("ASPNETCORE_")
-            .Build(); */
-/* 
-           return  WebHost.CreateDefaultBuilder(args)
-                .UseConfiguration(config)
-                .UseStartup<Startup>()
-                .ConfigureLogging(logging=>{
-                    logging.ClearProviders();
-                    logging.AddConsole();
-                    logging.SetMinimumLevel(LogLevel.Trace);
-                });
-               //.UseNLog(); */
-
             var builtConfig = new ConfigurationBuilder()
             .AddEnvironmentVariables("ASPNETCORE_")
-            .AddJsonFile("appsettings.json")
+            //.AddJsonFile("appsettings.json")
             .Build();
 
             return Host.CreateDefaultBuilder(args)

@@ -9,7 +9,7 @@ namespace FE.Creator.ObjectRepository.EntityModels
         public SqliteDbObjectContext(DbContextOptions<SqliteDbObjectContext> options):base(options){}
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){
-            var config = GetAppConfigure();
+            var config = DBObjectContext.GetAppConfigure();
             optionsBuilder.UseSqlite(config.GetConnectionString("sqliteDb"));
         }
     }

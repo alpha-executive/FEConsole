@@ -126,11 +126,10 @@
   <data name="Welcome &lt;span&gt;{0}&lt;/span&gt;!" xml:space="preserve">
     <value>欢迎{0}!</value>
   </data>
-  
-   <data name="Feature" xml:space="preserve">
+  <data name="Feature" xml:space="preserve">
     <value>特色</value>
   </data>
-   <data name="FEConsole" xml:space="preserve">
+  <data name="FEConsole" xml:space="preserve">
     <value>FEConsole</value>
   </data>
   <data name="Contact Us" xml:space="preserve">
@@ -139,22 +138,22 @@
   <data name="Donate" xml:space="preserve">
     <value>捐赠</value>
   </data>
-   <data name="The Platform for Creative IT System!!" xml:space="preserve">
+  <data name="The Platform for Creative IT System!!" xml:space="preserve">
     <value>为创新、有趣的IT系统打造的平台</value>
   </data>
-   <data name="The FETECH provides individuals and organizations with commercially-free, scalable and easy to use IT Systems like FEConsole that will bring people extra share of all that make them happiest!" xml:space="preserve">
+  <data name="The FETECH provides individuals and organizations with commercially-free, scalable and easy to use IT Systems like FEConsole that will bring people extra share of all that make them happiest!" xml:space="preserve">
     <value>FETECH为个人和组织机构提供商业免费、功能可扩展、稳定易用的IT系统，比如FEConsole应用系统。相信这些系统一定能为用户的幸福生活增添一笔亮丽的色彩！</value>
   </data>
-   <data name="FEConsole Version 1.0 is Now General Available!" xml:space="preserve">
+  <data name="FEConsole Version 1.0 is Now General Available!" xml:space="preserve">
     <value>FEConsole 1.0版本成功发布！</value>
   </data>
-   <data name="Download now!" xml:space="preserve">
+  <data name="Download now!" xml:space="preserve">
     <value>即刻下载！</value>
   </data>
   <data name="We use cookies to ensure you get the best experience on our website." xml:space="preserve">
     <value>为了提供最好的体验，我们需要使用您浏览器的Cookie功能。</value>
   </data>
-   <data name="Accept" xml:space="preserve">
+  <data name="Accept" xml:space="preserve">
     <value>同意</value>
   </data>
   <data name="Live Preview" xml:space="preserve">
@@ -163,7 +162,25 @@
   <data name="Logout" xml:space="preserve">
     <value>注销</value>
   </data>
+  <data name="Login" xml:space="preserve">
+    <value>登录</value>
+  </data>
   <data name="Copyright" xml:space="preserve">
     <value>版权所有</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>出错啦</value>
+  </data>
+  <data name="&lt;strong&gt;Development environment should not be enabled in deployed applications&lt;/strong&gt;, as it can result in sensitive information from exceptions being displayed to end users. For local debugging, development environment can be enabled by setting the &lt;strong&gt;ASPNETCORE_ENVIRONMENT&lt;/strong&gt; environment variable to &lt;strong&gt;Development&lt;/strong&gt;, and restarting the application." xml:space="preserve">
+    <value>&lt;strong&gt;应用程序没有发布为开发模式&lt;/strong&gt;, 因为那样会把系统敏感信息暴露给终端，如果是本地调试，请在&lt;strong&gt;开发模式&lt;/strong&gt;中设置 &lt;strong&gt;ASPNETCORE_ENVIRONMENT&lt;/strong&gt;环境变量, 然后重启应用。</value>
+  </data>
+  <data name="Development Mode" xml:space="preserve">
+    <value>开发模式</value>
+  </data>
+  <data name="error occurred while processing your request." xml:space="preserve">
+    <value>系统在处理请求时候出错。</value>
+  </data>
+  <data name="Swapping to &lt;strong&gt;Development&lt;/strong&gt; environment will display more detailed information about the error that occurred." xml:space="preserve">
+    <value>切换到&lt;strong&gt;开发&lt;/strong&gt;环境查看更详细的错误。</value>
   </data>
 </root>

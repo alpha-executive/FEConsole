@@ -3,7 +3,7 @@
 @using FE.Creator.PCenter
 @inject IHtmlLocalizer<SharedLangResource> SharedResource
 <!DOCTYPE html>
-<htm lang="en"l>
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -52,6 +52,14 @@
                   @if(Context.IsUserLogin()){
                     <li class="">
                         <a href="/home/logout"><i class="fa fa-user"></i> @SharedResource["Logout"]</a>
+                    </li>
+                  }
+                  else {
+                    <li>
+                      <form asp-controller="Home" asp-action="Login"  method="post">
+                        <input type="hidden" name="returnUrl" id="returnUrl"  value="/" />
+                        <button type="submit" class="btn-login"><i class="fa fa-sign-in"></i> @SharedResource["Login"]</button>
+                      </form>
                     </li>
                   }
                 </ul>
@@ -131,4 +139,4 @@
     <script src="js/custom.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
-</htm>
+</html>

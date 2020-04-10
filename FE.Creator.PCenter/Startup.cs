@@ -34,12 +34,12 @@ namespace coreaspnet
         public void ConfigureServices(IServiceCollection services)
         {
             //var logger = _loggerFactory.CreateLogger<Startup>();
-            services.Configure<CookiePolicyOptions>(options =>
+          /*   services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
+                options.MinimumSameSitePolicy = SameSiteMode.None; 
+            }); */
 
             //XSRF support in angular
             services.AddAntiforgery(options=> options.HeaderName = XSRF_TOKEN);
@@ -71,7 +71,7 @@ namespace coreaspnet
             services.AddAccessTokenManagement()
             .ConfigureBackchannelHttpClient(client =>
             {
-                client.Timeout = TimeSpan.FromSeconds(30);
+                client.Timeout = TimeSpan.FromSeconds(60);
             });
 
 
@@ -147,7 +147,7 @@ namespace coreaspnet
                 app.UseHsts();
             }
 
-            var supportedCultures = new[]
+            /*var supportedCultures = new[]
             {
                 new CultureInfo("en"),
                 new CultureInfo("zh"),
@@ -160,7 +160,7 @@ namespace coreaspnet
                 SupportedCultures = supportedCultures,
                 // UI strings that we have localized.
                 SupportedUICultures = supportedCultures
-            });
+            });*/
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -183,7 +183,7 @@ namespace coreaspnet
                     // and Angular uses it by default.
                     var tokens = antiforgery.GetAndStoreTokens(context);
                     context.Response.Cookies.Append(CLIENT_XSRF_TOKEN_KEY, tokens.RequestToken, 
-                        new CookieOptions() { HttpOnly = false,  IsEssential = true });
+                        new CookieOptions() { HttpOnly = false,  IsEssential = true, Secure = false });
                 }
 
                 return next(context);

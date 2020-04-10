@@ -193,8 +193,8 @@
           <div class="col-md-6 col-sm-6 col-xs-12">
             <div class="loction-info">
               <p><i class="fa fa-map-marker fa-fw pull-left fa-2x"></i> @IndexPageResource["Beijing, China"]</p>
-              <p><i class="fa fa-envelope-o fa-fw pull-left fa-2x"></i> alpha_executive@126.com</p>
-              <p><i class="fa fa-envelope-o fa-fw pull-left fa-2x"></i> alpha_executive@hotmail.com</p>
+              <p><a href="mailto:alpha_executive@126.com"><i class="fa fa-envelope-o fa-fw pull-left fa-2x"></i> alpha_executive@126.com</a></p>
+              <p><a href="mailto:alpha_executive@hotmail.com"><i class="fa fa-envelope-o fa-fw pull-left fa-2x"></i> alpha_executive@hotmail.com</a></p>
               <p><i class="fa fa-weixin fa-fw pull-left fa-2x"></i> ksfounder</p>
             </div>
           </div>
@@ -230,14 +230,12 @@
                   }
                 </div>
               </form>
-               @if (!User.Identity.IsAuthenticated) {
+               @if (!Context.IsUserLogin()) {
                 <form asp-controller="Home" asp-action="Login"  method="post">
                       <div class="form-group">
                           <input type="hidden" name="returnUrl" id="returnUrl"  value="/#contact" />
                           <span><i class="fa fa-warning warning"></i> @IndexPageResource["Sign-in to send message"]</span>
-                          <button class="btn btn-submit"><i class="fa fa-wechat primary"></i></button>
-                          <button type="submit" class="btn btn-submit" name="provider" value="Microsoft"><i class="fa fa-windows primary"></i></button>
-                          <button type="submit" class="btn btn-submit" name="provider" value="Google"><i class="fa fa-google primary"></i></button>
+                          <button type="submit" class="btn btn-submit"><i class="fa fa-sign-in primary"></i> @ResourceString["Login"]</button>
                     </div>
                 </form>
                }

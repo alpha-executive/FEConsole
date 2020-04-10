@@ -1,0 +1,9 @@
+@model RedirectViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@using FE.Creator.IdentityServer
+@inject IHtmlLocalizer<SharedLangResource> SharedResource
+<h1>@SharedResource["You are now being returned to the application."]</h1>
+<p>@SharedResource["Once complete, you may close this tab"]</p>
+
+<meta http-equiv="refresh" content="0;url=@Model.RedirectUrl" data-url="@Model.RedirectUrl">
+<script src="~/js/signin-redirect.js"></script>

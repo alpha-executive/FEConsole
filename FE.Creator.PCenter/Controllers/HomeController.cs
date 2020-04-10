@@ -28,7 +28,7 @@ namespace FE.Creator.PCenter {
         /* 
                 private readonly SignInManager<IdentityUser> _signInManager;
                 private readonly UserManager<IdentityUser> _userManager; */
-        private readonly ILogger logger;
+        private readonly ILogger<HomeController> logger;
         public HomeController (ApplicationPartManager appPartManager,
             IConfiguration configuration,
             /*     SignInManager<IdentityUser> signInManager,
@@ -97,8 +97,8 @@ namespace FE.Creator.PCenter {
                 UriBuilder builder = new UriBuilder (downloadUrl);
 
                 WebClient client = new WebClient ();
-                byte[] downloadData = await client.DownloadDataTaskAsync (builder.Uri);
-                result = new FileContentResult (downloadData, "application/octet-stream");
+                var downloadStream =  await client.OpenReadTaskAsync(builder.Uri);
+                result = new FileStreamResult(downloadStream, "application/octet-stream");
                 result.FileDownloadName = $"feconsole-{feconsoleVersion}-{producttype}.zip";
             } catch (Exception ex) {
                 throw ex;

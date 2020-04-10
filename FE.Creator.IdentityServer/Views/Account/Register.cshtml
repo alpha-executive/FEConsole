@@ -1,0 +1,75 @@
+﻿@model FE.Creator.IdentityServer.Models.RegisterViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@using FE.Creator.IdentityServer
+@inject IHtmlLocalizer<SharedLangResource> SharedResource
+@{
+    ViewBag.Title = "Register";
+}
+
+<div class="login-box">
+    <div class="box-header bg-success">
+        <div class="login-logo">
+            <a href="#" class="logo">
+                <i class="fa fa-paper-plane-o text-red"></i>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>FE</b>TECHHUB</span>
+            </a>
+        </div>
+    </div>
+    <div class="register-box-body">
+        <partial name="_ValidationSummary" />
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="ReturnUrl" />
+            <div class="form-group has-feedback">
+                <label for="UserName">
+                    @SharedResource["User Name"]
+                </label>
+                <input name="UserName" id="UserName" type="text" class="form-control" placeholder='@SharedResource["User Name"]'>
+                <span class="fa fa-user form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <label for="Email">
+                    @SharedResource["Email"]
+                </label>
+                <input name="Email" id="Email" type="email" class="form-control" placeholder="@SharedResource["Email"]">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <label for="Password">
+                    @SharedResource["Password"]
+                </label>
+                <input name="Password" id="Password" type="password" class="form-control" placeholder='@SharedResource["Password"]'>
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <label for="Password2">
+                    @SharedResource["Retype password"]
+                </label>
+                <input id="ConfirmPassword" name="ConfirmPassword" type="password" class="form-control" placeholder="@SharedResource["Retype password"]">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <div class="checkbox icheck">
+                    <input  asp-for="AggreeContract"> @SharedResource["Allow the register Term"]
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <button type="submit" class="btn btn-success btn-block btn-flat"><i class="glyphicon glyphicon-log-in"></i> @SharedResource["Register"]</button>
+                </div>
+            </div>
+        }
+        <div class="row">
+            <div class="col-xs-12 margin">
+                <div class="form-group has-feedback pull-right">
+                    <a href="@Url.Action("Login", new { returnUrl = Model.ReturnUrl })" class="text-center">@SharedResource["Already A memeber"]</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript" src="~/js/app.js"></script>
+}

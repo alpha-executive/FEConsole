@@ -1,0 +1,46 @@
+﻿@model ErrorViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@using FE.Creator.IdentityServer
+@inject IHtmlLocalizer<SharedLangResource> SharedResource
+@{
+    var error = Model?.Error?.Error;
+    var errorDescription = Model?.Error?.ErrorDescription;
+    var request_id = Model?.Error?.RequestId;
+}
+<div class="panel margin">
+    <div class="panel-body">
+        <div class="error-page">
+            <div class="page-header">
+                <h1>Error</h1>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="alert alert-danger">
+                        @SharedResource["Sorry, there was an error"]
+
+                        @if (error != null)
+                        {
+                            <strong>
+                                <em>
+                                    : @error
+                                </em>
+                            </strong>
+
+                            if (errorDescription != null)
+                            {
+                                <div>@errorDescription</div>
+                            }
+                        }
+                    </div>
+
+                    @if (request_id != null)
+                    {
+                        <div class="request-id">@SharedResource["Request Id:{0}", @request_id]</div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

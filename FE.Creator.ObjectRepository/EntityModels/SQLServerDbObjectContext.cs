@@ -16,7 +16,7 @@ namespace FE.Creator.ObjectRepository.EntityModels
         public SQLServerDbObjectContext(DbContextOptions<SQLServerDbObjectContext> options):base(options){}
          protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            var config = GetAppConfigure();
+            var config = DBObjectContext.GetAppConfigure();
             options
                 .UseLoggerFactory(loggerFactory)
                 .UseSqlServer(config.GetConnectionString("sqlServerDb"));

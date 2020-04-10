@@ -1,0 +1,27 @@
+﻿@model LogoutViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@using FE.Creator.IdentityServer
+@inject IHtmlLocalizer<SharedLangResource> SharedResource
+<div class="panel margin">
+    <div class="panel-body">
+        <div class="logout-page">
+            <div class="page-header">
+                <h1>Logout</h1>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <p>@SharedResource["Would you like to logout of FETECHHUB Identity Server?"]</p>
+                    <form asp-action="Logout">
+                        <input type="hidden" name="logoutId" value="@Model.LogoutId" />
+                        <fieldset>
+                            <div class="form-group">
+                                <button class="btn btn-primary">@SharedResource["Yes"]</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
