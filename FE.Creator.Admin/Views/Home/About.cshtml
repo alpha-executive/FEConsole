@@ -1,0 +1,90 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<AppLang> AppLangResource
+@{
+    ViewBag.Title = AppLangResource["ABOUT_TITLE"];
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-header text-center">
+                <h2>@AppLangResource["ABOUT_WHYFECONSOLE"]</h2>
+            </div>
+            <div class="box-body box-profile">
+                <p>
+                    @AppLangResource["ABOUT_WHYDESC"]
+                </p>
+            </div>
+            <!-- /.box-body -->
+        </div>
+
+    </div>
+</div>
+
+<!-- License -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-header center">
+                <i class="fa fa-fw fa-balance-scale"></i> @AppLangResource["ABOUT_LICENSE"]
+            </div>
+            <div class="box-body">
+                <div>@AppLangResource["ABOUT_APP_LICENSE"] <label class="label label-warning"><i class="fa fa-fw fa-balance-scale"></i> LGPL License</label></div>
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <th>@AppLangResource["ABOUT_COMPONENT_NAME"]</th>
+                            <th style="width:20%;">@AppLangResource["ABOUT_COMPONENT_VERSION"]</th>
+                            <th style="width:20%;">@AppLangResource["ABOUT_COMPONENT_LICENSE"]</th>
+                        </tr>
+                        <tr>
+                            <td>AdminLTE</td>
+                            <td>V2.3.6</td>
+                            <td>
+                                <div><span class="label label-primary"><i class="fa fa-fw fa-balance-scale"></i> MIT</span></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>CKEditor</td>
+                            <td>V4</td>
+                            <td>
+                                <div><span class="label label-primary"><i class="fa fa-fw fa-balance-scale"></i> LGPL</span></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--About the Author-->
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">@AppLangResource["ABOUT_THE_AUTHOR"]</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <strong><i class="fa fa-book margin-r-5"></i> @AppLangResource["ABOUT_INTRODUCTION"]</strong>
+                <p class="text-muted">
+                    @AppLangResource["ABOUT_INTRO_CONTENT"]
+                </p>
+                <hr>
+                <strong><i class="fa fa-map-marker margin-r-5"></i> @AppLangResource["ABOUT_LOCATION"]</strong>
+                <p class="text-muted"> @AppLangResource["ABOUT_LOC_CONTENT"]</p>
+                <hr>
+                <strong><i class="fa fa-comments margin-r-5"></i> @AppLangResource["ABOUT_CONTACT_INFO"]</strong>
+                <p>
+                    <span class="label label-primary"><i class="fa fa-envelope-o margin-r-5"></i> alpha_executive@126.com</span>
+                    <span class="label label-info"><i class="fa fa-linkedin margin-r-5"></i> alphateam.zhang@gmail.com</span>
+                    <span class="label label-success"><i class="fa fa-weixin margin-r-5"></i> ksfounder</span>
+                </p>
+                <hr>
+                <strong><i class="fa fa-file-text-o margin-r-5"></i> @AppLangResource["ABOUT_NOTES"]</strong>
+                <p class="text-muted">@AppLangResource["ABOUT_NOTES_CONTENT"]</p>
+            </div>
+            <!-- /.box-body -->
+        </div>
+    </div>
+</div>

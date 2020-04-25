@@ -1,14 +1,17 @@
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using FE.Creator.Cryptography;
+using FE.Creator.FEConsole.Shared.Models.FileStorage;
 using FE.Creator.FEConsole.Shared.Services.Cryptography;
 using FE.Creator.FEConsole.Shared.Services.FileStorage;
 using FE.Creator.FEConsoleAPI.MVCExtension;
 using FE.Creator.FileStorage;
 using FE.Creator.ObjectRepository;
+using IdentityModel.AspNetCore.AccessTokenManagement;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -20,6 +23,7 @@ namespace FE.Creator.FEConsoleAPI
 {
     public class Startup
     {
+        private static readonly string FEAPIAllowSpecificOrigins = "_FEAPIAllowSpecificOrigins";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -39,13 +43,53 @@ namespace FE.Creator.FEConsoleAPI
                         ? configuredPath :
                                 Path.Combine(Environment.CurrentDirectory, configuredPath);
                 var fileProvider = new FileSystemStorageProvider(rootFileDirectory);
-                var fileStorageService = new DefaultFileStorageService(fileProvider);
+
+                string widthConfig = Configuration["SiteSettings:FileStorageService:Thumbinal:Width"] ?? "260";
+                string heighConfig = Configuration["SiteSettings:FileStorageService:Thumbinal:Height"] ?? "260";
+                ThumbinalConfig thumbinalConfig = new ThumbinalConfig()
+                {
+                    Width = int.Parse(widthConfig),
+                    Height = int.Parse(heighConfig)
+                };
+
+                var resxFileProvider = new EmbededResourceStorageProvider();
+                var fileStorageService = new DefaultFileStorageService(fileProvider,
+                    thumbinalConfig);
+                fileStorageService.AddStorageProvider(resxFileProvider);
 
                 return fileStorageService;
             });
             services.AddSingleton<IObjectService>(new DefaultObjectService());
             services.AddSingleton<IRSACryptographyService>(CryptographyServiceFactory.RSACryptoService);
             services.AddSingleton<ISymmetricCryptographyService>(CryptographyServiceFactory.SymmetricCryptoService);
+            services.AddSingleton<ISHAService>(CryptographyServiceFactory.SHAService);
+
+            services.AddCors(options =>
+            {
+                List<string> cors = new List<string>();
+                Configuration.Bind("SiteSettings:CORS", cors);
+                options.AddPolicy(name: FEAPIAllowSpecificOrigins,
+                                  builder =>
+                                  {
+                                      builder
+                                        .AllowAnyMethod()
+                                        .AllowAnyHeader()
+                                        .WithOrigins(cors.ToArray());
+                                  });
+            });
+
+            services.AddAuthentication("Bearer")
+             .AddJwtBearer("Bearer", options =>
+             {
+                 options.Authority = Configuration.GetSection("Authentication:IdentityServer")
+                                   .GetValue<string>("Url");
+                 options.RequireHttpsMetadata = true;
+
+                 options.Audience = "feconsoleapi";
+             });
+
+            //memory cache.
+            services.AddMemoryCache();
 
             services.AddControllers(options=>{
                             options.InputFormatters.Insert(0, new ObjectDefintionFormatter());
@@ -86,11 +130,19 @@ namespace FE.Creator.FEConsoleAPI
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            else
+            {
+                app.UseExceptionHandler("/Error");
+                app.UseHsts();
+            }
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
+            app.UseCors(FEAPIAllowSpecificOrigins);
+
+
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseOpenApi();
@@ -98,7 +150,8 @@ namespace FE.Creator.FEConsoleAPI
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllers()
+                         .RequireAuthorization();
             });
         }
     }

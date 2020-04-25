@@ -1,4 +1,5 @@
-﻿using FE.Creator.FEConsole.Shared.Models.FileStorage;
+﻿using FE.Creator.FEConsole.Shared.Models;
+using FE.Creator.FEConsole.Shared.Models.FileStorage;
 using FE.Creator.FEConsole.Shared.Services.FileStorage;
 using FE.Creator.FEConsoleAPI.MVCExtension;
 using FE.Creator.FEConsoleAPI.Utilities;
@@ -17,6 +18,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace FE.Creator.FEConsoleAPI.ApiControllers
 {
@@ -31,9 +33,7 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
     ///       {id}: required string id.
     ///       delete a file with given file {id}. 
     /// </summary>
-    [Route("api/[controller]")]
-    [ApiController]
-    public class FilesController : ControllerBase
+    public class FilesController : FEAPIBaseController
     {
         private static readonly FormOptions _defaultFormOptions = new FormOptions();
         IFileStorageService storageService = null;
@@ -44,7 +44,8 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
 
         public FilesController(IFileStorageService storageService,
             IConfiguration _configuration,
-            ILogger<FilesController> logger)
+            ILogger<FilesController> logger,
+            IServiceProvider provider) : base(provider)
         {
             this.storageService = storageService;
             this.mConfiguration = _configuration;
@@ -63,50 +64,85 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
             }
             return "application/octet-stream";
         }
+        private string GetFileFriendlyName(string uniqueFileName, string usrProvidedFName)
+        {
+            if (string.IsNullOrEmpty(usrProvidedFName))
+            {
+                var finfo = storageService.GetStoredFileInfo(uniqueFileName);
+                return finfo != null ? finfo.FileFriendlyName
+                        : usrProvidedFName;
+            }
 
+            return !string.IsNullOrEmpty(usrProvidedFName) ? HttpUtility.UrlEncode(usrProvidedFName)
+                : usrProvidedFName;
+        }
+        private string GetFileFormat(string fileFriendlyName)
+        {
+            return string.IsNullOrEmpty(fileFriendlyName) ? "unknown" 
+                : Path.GetExtension(fileFriendlyName);
+        }
         /// <summary>
         /// GET /api/Files/DownloadFile/{0}/{1}/
         /// </summary>
-        /// <param name="fileUniqueName"></param>
+        /// <param name="uniqueFileName"></param>
         /// <param name="fileDisplayName"></param>
         /// <param name="thumbinal"></param>
         /// <returns></returns>
-        [Route("[action]/{fileUniqueName}/{fileDisplayName?}")]
+        [Route("[action]/{uniqueFileName}/{fileDisplayName?}")]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         // GET: api/Files
-        public async Task<FileResult> DownloadFile(string fileUniqueName, string fileDisplayName = null, bool thumbinal = false)
+        public async Task<FileResult> DownloadFile(string uniqueFileName, string fileDisplayName = null, bool thumbinal = false)
         {
             logger.LogDebug("Start DownloadFile");
             FileResult result = null;
-            
+
+            string fileFriendlyName = GetFileFriendlyName(uniqueFileName, fileDisplayName);
             if (thumbinal)
             {
                 logger.LogDebug("get thumbinal image");
-                result = await this.GetFileThumbinal(fileUniqueName, fileDisplayName);
+                result = await this.GetFileThumbinal(uniqueFileName, fileFriendlyName);
             }
             else
             {
                 logger.LogDebug("get original file content");
-                result = await this.GetFileContent(fileUniqueName, fileDisplayName);
+                result = GetStreamFileContent(uniqueFileName, fileDisplayName);
             }
             
             logger.LogDebug("End DownloadFile");
             return result;
         }
-        [Route("[action]/{fileUniqueName}/{fileDisplayName}")]
+        [Route("[action]/{uniqueFileName}/{fileDisplayName?}")]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public FileResult DownloadLargeFile(string fileUniqueName, string fileDisplayName)
+        public FileResult DownloadStreamingFile(string uniqueFileName, string fileDisplayName=null)
         {
-            var stream =  storageService.GetFileContentStream(fileUniqueName);
+            return GetStreamFileContent(uniqueFileName,
+                fileDisplayName);
+        }
+
+        [Route("[action]/{uniqueFileName}/{fileDisplayName?}")]
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<FileResult> DownloadContentFile(string uniqueFileName, string fileDisplayName = null)
+        {
+            return await GetFileContent(uniqueFileName,
+                fileDisplayName);
+        }
+
+        private FileResult GetStreamFileContent(string fileUniqueName, string fileDisplayName)
+        {
+            string fileFriendlyName = GetFileFriendlyName(fileUniqueName, fileDisplayName);
+            var stream = storageService.GetFileContentStream(fileUniqueName);
 
             return File(stream, getContentType(null),
-                fileDisplayName?? "download.bin");
+               fileFriendlyName ?? "download.bin");
         }
-        private async Task<FileResult> GetFileContent(string fileUniqueName, string fileDisplayName = null)
+
+        private async Task<FileResult> GetFileContent(string fileUniqueName, string fileDisplayName)
         {
             logger.LogDebug("Start GetFileContent");
             FileResult result = null;
@@ -136,8 +172,10 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
             if(content != null)
             {
                 logger.LogDebug("found content on server storage.");
-                result = new FileContentResult(content, getContentType(".png"));
-                result.FileDownloadName = string.IsNullOrEmpty(fileDisplayName) ? "file_thumb.png" : fileDisplayName;
+                string format = GetFileFormat(fileDisplayName);
+                result = new FileContentResult(content, getContentType(format));
+                result.FileDownloadName = string.IsNullOrEmpty(fileDisplayName) ? "file_thumb.bin" 
+                                                : Path.GetFileNameWithoutExtension(fileDisplayName) + ".bin";
             }
 
             logger.LogDebug("End GetFileThumbinal");
@@ -204,15 +242,17 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
                             var extension = Path.GetExtension(contentDisposition.FileName.Value);
                             long fileSizeLimit = long.Parse(mConfiguration["SiteSettings:FileUpload:FileSizeLimit"]);
                             FileStorageInfo info =
-                                await storageService.SaveFileAsync(section.Body, extension, thumbinal);
+                                await storageService.SaveFileAsync(section.Body, extension, thumbinal, trustedFileNameForDisplay);
 
                             logger.LogDebug("file save path : " + info.FileUri);
                             //FileHelper.ProcessStreamedFile(section, contentDisposition,
                             //     _permittedExtensions, fileSizeLimit);
+                           
                             files.Add(new ObjectFileField()
                             {
                                 FileName = trustedFileNameForDisplay,
-                                FileFullPath = info.FileUri,
+                                //FileFullPath = info.FileUri,
+
                                 FileUrl = string.Format("/api/Files/DownloadFile/{0}/{1}", info.FileUniqueName, WebUtility.UrlEncode(trustedFileNameForDisplay)),
                                 FileExtension = extension,
                                 Updated = info.LastUpdated,
@@ -234,7 +274,7 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
                 }
 
                 //return the action result.
-                ActionResult result = forContent ? this.Ok(new { uploaded = 1, fileName = files[0].FileName, url = files[0].FileUrl })
+                ActionResult result = forContent ? this.Ok(new UploadFile() { uploaded = 1, fileName = files[0].FileName, url = files[0].FileUrl })
                             : this.Ok(new { status = "success", files = files });
 
                 logger.LogDebug("End FileController Post");

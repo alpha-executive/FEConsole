@@ -15,15 +15,16 @@ using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using FE.Creator.FEConsole.Shared.Models;
+using System.Net.Http;
+using System.Net;
+using FE.Creator.FEConsole.Shared.Services.FileStorage;
+using Microsoft.Extensions.Configuration;
 
 namespace FE.Creator.FEConsoleAPI.ApiControllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class LicenseController : ControllerBase
+    public class LicenseController : FEAPIBaseController
     {
         private static string SYS_RSA_PUBLIC_KEY = "BgIAAACkAABSU0ExAAQAAAEAAQBPkHSfs7Ukfng9Dz4EZZ1bDw5wCo4zKglQDlzOx01/b69bvLqxg2COkfKpegMJH8uDSGd8fvSSBKoWFu1RGnTomNUMHB7FRrbDAYQ0VAyUNfUcrZps8YlqgAjFGt3pF5GSoT7vGVVt3dKaRinvcPmlF3mk9qM/DHtqPfp4oA2Hqw==";
-        private static string SYS_DEFAULT_LANGUAGE = "en-US";
         private static string SYS_LANG_CHINESE = "zh-CN";
         private static string SYS_LANG_ENGLISH = "en-US";
         private static string SYS_DEFAULT_DATEFORMAT = "MM/dd/yyyy";
@@ -32,34 +33,44 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
         private static string SYS_PUBLISHER_URL = "http://localhost";
         private static string SYS_EMPTY_LICENSE_FILE = @"<?xml version=""1.0"" encoding=""utf-8""?><license></license>";
         IObjectService objectService = null;
+        IFileStorageService storageService = null;
         IRSACryptographyService cryptoGraphysvc = null;
         ISymmetricCryptographyService symmetricCryptoService = null;
-
-        private readonly ILogger logger = null;
+        protected IConfiguration configuration;
+        private readonly ILogger<LicenseController> logger = null;
 
         MemoryCache licenseCache = new MemoryCache(new MemoryCacheOptions() {
+         SizeLimit = 1024000
         });
 
 
         public LicenseController(IObjectService objectService,
             IRSACryptographyService cryptographysvc,
             ISymmetricCryptographyService symmetricCryptoService,
-            ILogger logger)
+            IFileStorageService storageService,
+            IConfiguration configuration,
+            ILogger<LicenseController> logger,
+            IServiceProvider provider) : base(provider)
         {
             this.objectService = objectService;
             this.cryptoGraphysvc = cryptographysvc;
             this.symmetricCryptoService = symmetricCryptoService;
             this.logger = logger;
+            this.storageService = storageService;
+            this.configuration = configuration;
         }
 
         private string ReadResourceContent(string path)
         {
             logger.LogDebug("Start ReadResourceContent");
             logger.LogDebug(string.Format("path: {0}", path));
-            using (StreamReader reader = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(path)))
+            string resourceFile = string.Format("resx://{0}/{1}", typeof(LicenseController).Assembly.FullName, path);
+            
+            using (StreamReader reader = new StreamReader(storageService.OpenFileContentStream(resourceFile)))
             {
                 logger.LogDebug("End ReadResourceContent");
-                return reader != null ? reader.ReadToEnd() : string.Empty;
+                return reader != null ? reader.ReadToEnd() 
+                            : string.Empty;
             }
         }
 
@@ -142,7 +153,7 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
             return null;
         }
 
-       private void ResolveEntity(int groupId, XElement entity)
+       private async Task ResolveEntity(int groupId, XElement entity)
         {
             logger.LogDebug("Start ResolveEntity");
             ObjectDefinition definition = new ObjectDefinition();
@@ -150,8 +161,9 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
             definition.ObjectDefinitionKey = entity.Attribute("key").Value;
             definition.ObjectDefinitionGroupID = groupId;
             definition.ObjectDefinitionName = entity.Attribute("name").Value;
-            definition.ObjectOwner = User.Identity.Name;
-            definition.UpdatedBy = User.Identity.Name;
+            var requestUser = await GetLoginUser();
+            definition.ObjectOwner = requestUser;
+            definition.UpdatedBy = requestUser;
 
             var currentObjectDefinition = this.objectService.GetObjectDefinitionByName(definition.ObjectDefinitionName);
             definition.IsFeildsUpdateOnly = currentObjectDefinition != null;
@@ -230,16 +242,16 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
 
             return findObjDef.ObjectDefinitionID;
         }
-        private void UpdateSystemConfig(string license)
+        private async Task UpdateSystemConfig(string license)
         {
             logger.LogDebug("Start UpdateSystemConfig");
-
+            var requestUser = await GetLoginUser();
             ServiceObject svObject = new ServiceObject();
             svObject.ObjectName = "FE Configuration";
             svObject.ObjectOwner = User.Identity.Name;
             svObject.OnlyUpdateProperties = false;
-            svObject.UpdatedBy = User.Identity.Name;
-            svObject.CreatedBy = User.Identity.Name;
+            svObject.UpdatedBy = requestUser;
+            svObject.CreatedBy = requestUser;
             svObject.ObjectDefinitionId = GetAppObjectDefintionIdByName("AppConfig");
 
             logger.LogDebug(string.Format("svObject.ObjectName = {0}", svObject.ObjectName));
@@ -338,10 +350,10 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
             logger.LogDebug("End UpdateSystemConfig");
         }
 
-        private void RegistApplication(string license)
+        private async Task RegistApplication(string license)
         {
             logger.LogDebug("Start RegistApplication");
-            string licenseMap = ReadResourceContent("FE.Creator.Admin.Config.Module.LicenseMaps.xml");
+            string licenseMap = ReadResourceContent("FE.Creator.FEConsoleAPI.Config.Module.LicenseMaps.xml");
             logger.LogDebug(string.Format("licenseMap = {0}", licenseMap));
             XDocument document = XDocument.Parse(licenseMap);
             var files = from f in document.Descendants("module")
@@ -358,7 +370,7 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
                 ProcessConfig(configureContent);
             }
 
-            UpdateSystemConfig(license);
+            await UpdateSystemConfig(license);
             logger.LogDebug("End RegistApplication");
         }
         
@@ -381,20 +393,19 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
 
         private XDocument getCachedLicense()
         {
-            XDocument license = licenseCache.Get("license") as XDocument;
-            if(license == null)
+           var license = licenseCache.GetOrCreate<XDocument>("license", entry=>
             {
-                logger.LogDebug("License is not in Cache, try in the DB.");
+                entry.SetSlidingExpiration(TimeSpan.FromHours(1));
+               
                 string licenseContent = LoadLicenseFromConfig();
-                license = XDocument.Load(new StringReader(licenseContent));
+                var lic = XDocument.Load(new StringReader(licenseContent));
 
-                if (license != null)
-                {
-                    logger.LogDebug(String.Format("get license from DB: {0}", license));
-                    //licenseCache.Add("license", license, DateTimeOffset.MaxValue);
-                }
-            }
+                entry.SetSize(licenseContent.Length);
+                logger.LogDebug(String.Format("get license from DB: {0}", lic));
 
+                return lic;
+            });
+          
             return license;
         }
 
@@ -416,39 +427,40 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
         }
 
         [HttpPost]
+        [RequestSizeLimit(1024000)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult> Post(IFormFile formFile)
+        public async Task<ActionResult> Post(IFormFile licenseFile)
         {
             logger.LogDebug("Start LicenseController.Post");
-            // Check if the request contains multipart/form-data. 
-            /*if (!Request.Content.IsMimeMultipartContent("form-data"))
+            if(licenseFile != null 
+                && licenseFile.Length > 0)
             {
-                logger.LogError("Unsupported media type");
-                return BadRequest("Unsupported media type");
-            }
-            */
-          /*  var filesReadToProvider = await Request.Content.ReadAsMultipartAsync();
-            if(filesReadToProvider.Contents.Count > 0)
-            {
-                var stream = filesReadToProvider.Contents[0];
-                var fileBytes = await stream.ReadAsByteArrayAsync();
-                string license = System.Text.UTF8Encoding.UTF8.GetString(fileBytes);
-
-                logger.LogDebug(string.Format("license : {0}", license));
-                if (IsValidLicense(license))
+                using (MemoryStream stream = new MemoryStream())
                 {
-                    RegistApplication(license);
+                    await licenseFile.CopyToAsync(stream);
+                    string license = System.Text.UTF8Encoding.UTF8.GetString(stream.ToArray());
+                    logger.LogDebug(string.Format("license : {0}", license));
+                    if (IsValidLicense(license))
+                    {
+                        await RegistApplication(license);
+                    }
+                    else
+                    {
+                        logger.LogError("License file is not valid");
+                    }
                 }
-            }*/
+            }
+
             logger.LogDebug("End LicenseController.Post");
             return this.Ok();
         }
 
+        [Route("[action]")]
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<LicensedModule>), StatusCodes.Status200OK)]
-        public async Task<ActionResult<IEnumerable<LicensedModule>>> GetLicenseRegisterList()
+        public async Task<ActionResult<IEnumerable<LicensedModule>>> RegisterList()
         {
-            string licenseMap = ReadResourceContent("FE.Creator.Admin.Config.Module.LicenseMaps.xml");
+            string licenseMap = ReadResourceContent("FE.Creator.FEConsoleAPI.Config.Module.LicenseMaps.xml");
             XDocument document = XDocument.Parse(licenseMap);
             var files = (from f in document.Descendants("module")
                         select new LicensedModule
@@ -464,5 +476,42 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
 
             return this.Ok(await Task.FromResult<IEnumerable<LicensedModule>>(files));
         }
+    
+        [Route("[action]")]
+        [HttpGet]
+        [ProducesResponseType(typeof(FileResult), StatusCodes.Status200OK)]
+        public FileResult DownloadLicense()
+        {
+            string licenseMap = ReadResourceContent("FE.Creator.FEConsoleAPI.Config.Module.LicenseMaps.xml");
+            logger.LogDebug(string.Format("licenseMap = {0}", licenseMap));
+            XDocument document = XDocument.Parse(licenseMap);
+            var modules = from f in document.Descendants("module")
+                        select new XElement("moudle", f.Attribute("licenseId").Value);
+
+            XDocument licenseDocument = new XDocument();
+
+            XElement grandListElement = new XElement("grantlist", modules.ToArray());
+            grandListElement.Add(new XAttribute("expireddate", DateTime.Now.AddYears(1).ToString("yyyy/MM/dd")));
+            grandListElement.Add(new XAttribute("version", "1.0.0.0"));
+
+            byte[] signedData = cryptoGraphysvc.HashAndSignBytes(Encoding.UTF8.GetBytes(grandListElement.ToString()),
+                    configuration["SiteSettings:PrivateKey"]);
+            var productKeyElment = new XElement("productkey",
+                    Convert.ToBase64String(signedData));
+
+            XElement rootElment = new XElement("license", 
+                        grandListElement, 
+                        productKeyElment);
+            licenseDocument.Add(rootElment);
+
+
+            string license = licenseDocument.ToString();
+            var licenseFile = new FileContentResult(Encoding.UTF8.GetBytes(license)
+                , "application/xml");
+            licenseFile.FileDownloadName = "license.lic";
+
+            return licenseFile;
+        }
+
     }
 }

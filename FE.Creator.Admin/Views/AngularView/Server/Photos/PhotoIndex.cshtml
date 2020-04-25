@@ -1,0 +1,208 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<AppLang> AppLangResource
+@{
+    ViewBag.Title = AppLangResource["IMAGEMGR_TITLE"];
+}
+<div class="row">
+    <div class="col-md-12" ng-app="ngObjectRepository" ng-controller="ImagesController as ctrl" ng-cloak>
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                <li class="active" ng-click="ctrl.switchTab(false)"><a aria-expanded="true" href="#allimages" data-toggle="tab">@AppLangResource["IMAGEMGR_IMAGES"]</a></li>
+                <li ng-click="ctrl.switchTab(true)"><a aria-expanded="false" href="#album" data-toggle="tab">@AppLangResource["IMAGEMGR_ALBUM"]</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="allimages">
+                    <div class="btn-group margin-bottom">
+                        <button type="button" class="btn btn-success" ng-click="ctrl.createOrEditImage(null)"><i class="fa fa-plus"></i></button>
+                        <button type="button" class="btn btn-success" type="file" multiple ngf-select="ctrl.importImages($files, $invalidFiles)" ngf-max-size="20MB"><i class="fa fa-upload"></i></button>
+                    </div>
+                    <div class="row" ng-if="ctrl.displayMode ==='imageImport'">
+                        @await Html.PartialAsync("~/Views/AngularView/Client/Photos/ImportImages.cshtml")
+                    </div>
+                    <div class="row" ng-if="ctrl.displayMode ==='imageEdit'">
+                        @await Html.PartialAsync("~/Views/AngularView/Client/Photos/ImageEditing.cshtml")
+                    </div>
+                    <div class="row" ng-if="ctrl.displayMode ==='imageList'">
+                        @await Html.PartialAsync("~/Views/AngularView/Client/Photos/ImageList.cshtml")
+                    </div>
+                    <div class="footer" ng-if="ctrl.pager.pages.length > 0 && ctrl.displayMode == 'imageList'">
+                        @await Html.PartialAsync("~/Views/AngularView/Client/Common/Pager.cshtml")
+                    </div>
+                </div>
+
+                <!-- /.tab-pane -->
+                <div class="tab-pane" id="album">
+                    <div class="btn-group margin-bottom" ng-show="ctrl.displayMode == 'albumList'">
+                        <button type="button" class="btn btn-success" ng-click="ctrl.createOrEditImagealbum(null)"><i class="fa fa-plus"></i></button>
+                    </div>
+                    <div class="row" ng-show="ctrl.currentalbum != null && ctrl.displayMode != 'imageSelectionList'">
+                        <div class="col-md-12">
+                            <div class="btn-group margin-bottom">
+                                <button type="button" class="btn btn-success pull-left" ng-click="ctrl.addImages2album()"><i class="fa fa-ellipsis-h"></i> </button>
+                                <button type="button" class="btn btn-success" type="file" multiple ngf-select="ctrl.importImages($files, $invalidFiles)" ngf-max-size="20MB"><i class="fa fa-upload"></i></button>
+                            </div>
+                            <ol class="breadcrumb site-navpath pull-right">
+                                <li><a ng-click="ctrl.switchTab(true)" href="javascript:void(0);"><i class="fa fa-home text-warning"></i> @AppLangResource["IMAGEMGR_ALBUMS"]</a></li>
+                                <li class="active">
+                                    <a href="javascript:void(0);" ng-switch="ctrl.currentalbum.properties.imageCategoryType.value">
+                                        <i class="fa fa-file-powerpoint-o text-warning" ng-switch-when="2"></i>
+                                        <i class="fa fa-file-image-o text-success" ng-switch-when="3"></i>
+                                        <i class="fa fa-th text-primary" ng-switch-default></i> {{ctrl.currentalbum.objectName}}
+                                    </a>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="row" ng-if="ctrl.displayMode ==='albumImageImport'">
+                        @await Html.PartialAsync("~/Views/AngularView/Client/Photos/ImportImages.cshtml")
+                    </div>
+                    <div class="row" ng-if="ctrl.displayMode == 'imageSelectionList'">
+                        <div class="col-md-12">
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <div class="mailbox-controls">
+                                        <div class="btn-group">
+                                            <button class="btn btn-box-tool" type="button" ng-click="ctrl.saveSelectedImagesToAlbum()">
+                                                <i class="fa fa-save text-green"></i> @AppLangResource["COMMON_BTN_CONFIRM"]</button>
+                                                <button class="btn btn-box-tool" type="button" ng-click="ctrl.cancelAlbumImageSelection()"><i class="fa fa-save text-green"></i> @AppLangResource["COMMON_BTN_CANCEL"]</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                    @await Html.PartialAsync("~/Views/AngularView/Client/Common/Progress.cshtml")
+                                    <div class="row image-selection">
+                                        <div class="col-md-3 text-center" ng-repeat="selImage in ctrl.selectionImages" ng-class="{'image-selected': selImage.selected}" ng-click="selImage.selected = !selImage.selected">
+                                            <img ng-src="{{selImage.properties.imageFile.fileUrl + '?thumbinal=true' | fullUrl}}" alt="User Image">
+                                            <a class="users-list-name" href="javascript:void(0);"><i ng-if="selImage.selected" class="fa fa-check-square-o text-green"></i> {{selImage.objectName}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-footer text-center" ng-if="ctrl.selectionImages.length % ctrl.pageSize == 0">
+                                    <a class="uppercase" href="javascript:void(0)" ng-click="ctrl.loadMoreSelectionImages(ctrl.currentalbum)">@AppLangResource["IMAGEMGR_VIEW_MORE_IMGS"]</a>
+                                </div>
+                                <div class="box-footer">
+                                    <div class="mailbox-controls">
+                                        <div class="btn-group">
+                                            <button class="btn btn-box-tool" type="button" ng-click="ctrl.saveSelectedImagesToAlbum()">
+                                                <i class="fa fa-save text-green"></i> @AppLangResource["COMMON_BTN_CONFIRM"]</button>
+                                                <button class="btn btn-box-tool" type="button" ng-click="ctrl.cancelAlbumImageSelection()"><i class="fa fa-save text-green"></i> @AppLangResource["COMMON_BTN_CANCEL"]</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" ng-if="ctrl.displayMode ==='albumEdit'">
+                        <div class="col-md-12">
+                            <div class="box box-primary">
+                                <div class="box-body">
+                                    <form class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2">
+                                                <i class="fa fa-tag"></i> @AppLangResource["IMAGEMGR_LBL_NAME"]</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" ng-model="ctrl.editingalbumObject.objectName" auto-focus />
+                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2">
+                                                <i class="fa fa-navicon"></i> @AppLangResource["IMAGEMGR_LBL_TYPE"]</label>
+                                                <div class="col-sm-10">
+                                                    <select tabindex="-1" class="form-control select2 select2-hidden-accessible" style="width: 100%;" ng-model="ctrl.editingalbumObject.properties.imageCategoryType.value" convert-to-number>
+                                                        <option ng-repeat="opt in ctrl.albumTypes" value="{{opt.typeValue}}">{{opt.typeName}}</option>
+                                                    </select>
+                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2">
+                                                <i class="fa  fa-share-alt"></i> @AppLangResource["IMAGEMGR_LBL_SHARED"]
+                                            </label>
+                                            <div class="col-sm-10">
+                                                <div class="form-control">
+                                                    <input type="radio" ng-model="ctrl.editingalbumObject.properties.categorySharedLevel.value" ng-value="0" ng-checked="ctrl.editingalbumObject.properties.categorySharedLevel.value == 0" /> @AppLangResource["IMAGEMGR_RDO_PRIVATE"]
+                                                    <input type="radio" ng-model="ctrl.editingalbumObject.properties.categorySharedLevel.value" ng-value="1" ng-checked="ctrl.editingalbumObject.properties.categorySharedLevel.value == 1" /> @AppLangResource["IMAGEMGR_RDO_SHARED"]
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <ul class="list-inline">
+                                            <li class="pull-right">
+                                                <button class="btn btn-box-tool" type="button" ng-click="ctrl.saveEditingalbum()">
+                                                    <i class="fa fa-save"></i> @AppLangResource["COMMON_BTN_SAVE"]</button>
+                                                    <button class="btn btn-box-tool" type="button" ng-click="ctrl.canceEditingalbum()"><i class="fa fa-close "></i> @AppLangResource["COMMON_BTN_CANCEL"]</button>
+                                            </li>
+                                        </ul>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" ng-if="ctrl.displayMode ==='albumImageEdit'">
+                        @await Html.PartialAsync("~/Views/AngularView/Client/Photos/ImageEditing.cshtml")
+                    </div>
+                    <div class="row" ng-if="ctrl.displayMode ==='albumList'">
+                        <div class="col-md-12">
+                            <ul class="mailbox-attachments clearfix">
+                                <li ng-repeat="album in ctrl.albums">
+                                    <a class="mailbox-attachment-icon album-icon" href="javascript:void(0);" ng-click="ctrl.onalbumDbClick(album)" ng-switch="album.properties.imageCategoryType.value">
+                                        <i class="fa fa-file-powerpoint-o text-warning" ng-switch-when="2"></i>
+                                        <i class="fa fa-file-image-o text-success" ng-switch-when="3"></i>
+                                        <i class="fa fa-th text-primary" ng-switch-default></i>
+                                    </a>
+                                    <div class="mailbox-attachment-info">
+                                        <a class="mailbox-attachment-name ng-binding" href="javascript:void(0);">{{album.objectName}}</a>
+                                        <span class="mailbox-attachment-size ng-binding">
+                                        </span>
+                                        <span class="mailbox-attachment-size">
+                                            <button class="btn btn-default btn-xs pull-right" type="button" ng-click="ctrl.createOrEditImagealbum(album)"><i class="fa fa-pencil"></i></button>
+                                            <button class="btn btn-default btn-xs pull-right" type="button" ng-click="ctrl.deletealbum(album)"><i class="fa fa-trash"></i></button>
+                                        </span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row" ng-if="ctrl.displayMode ==='standardImageList'">
+                        @await Html.PartialAsync("~/Views/AngularView/Client/Photos/ImageList.cshtml")
+                        <div class="box-footer text-center" ng-if="(ctrl.currentalbum.viewIndex - 1) * ctrl.pageSize < ctrl.images.length">
+                            <a class="uppercase" href="javascript:void(0)" ng-click="ctrl.loadMoreAlbumImages()">@AppLangResource["IMAGEMGR_VIEW_MORE_IMGS"]</a>
+                        </div>
+                    </div>
+                    <!--end ng-if="ctrl.displayMode ==='standardImageList'"-->
+                    <div class="row" ng-if="ctrl.displayMode ==='carouselSlideImageshow' && ctrl.images.length > 0">
+                        <div class="col-md-12">
+                            <div class="carousel slide" id="carousel-image-view" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carousel-image-view" ng-repeat="img in ctrl.images" data-slide-to="{{$index}}" ng-class="{'active': $index == 0}"></li>
+                                </ol>
+                                <div class="carousel-inner">
+                                    <div class="item" ng-repeat="img in ctrl.images" ng-class="{'active': $index == 0}">
+                                        <img alt="{{img.objectName}}" ng-src="{{img.properties.imageFile.fileUrl | fullUrl}}">
+                                        <div class="carousel-caption">
+                                            {{img.properties.imageDesc.value}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="left carousel-control" href="#carousel-image-view" data-slide="prev">
+                                    <span class="fa fa-angle-left prev-to-right"></span>
+                                </a>
+                                <a class="right carousel-control" href="#carousel-image-view" data-slide="next">
+                                    <span class="fa fa-angle-right"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" ng-if="ctrl.displayMode == 'walterFlowImageShow' && ctrl.images.length > 0">
+                        <div class="col-md-12">
+                            @await Html.PartialAsync("~/Views/AngularView/Client/Photos/WaterfallImageShow.cshtml")
+                        </div>
+                    </div>
+                </div>
+                <!-- /.tab-pane -->
+            </div>
+            <!-- /.tab-content -->
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="~/js/imagescontroller.js"></script>
+}

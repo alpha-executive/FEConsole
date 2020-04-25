@@ -1,0 +1,58 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<AppLang> AppLangResource
+@{
+    ViewBag.Title = AppLangResource["APPEVENT_TITLE"];
+}
+<div class="row ng-cloak" ng-app="ngObjectRepository" ng-controller="SystemEventController as ctrl">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title"><i class="fa fa-bell-o"></i> @AppLangResource["EVENT_APP_EVENT_LIST"]</h3>
+        </div>
+        <div class="box-body">
+            <ul class="products-list product-list-in-box">
+                <li class="item" ng-repeat="evt in ctrl.appEvents">
+                    <div class="product-info">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <span class="label label-danger" ng-if="evt.properties.eventLevel.value == 0">
+                                    <i class="fa fa-times-circle"></i> @AppLangResource["APPEVENT_ERROR_LEVEL_ERROR"]</span>
+                                    <span class="label label-warning" ng-if="evt.properties.eventLevel.value == 1">
+                                        <i class="fa fa-warning"></i> @AppLangResource["APPEVENT_ERROR_LEVEL_WARNING"]</span>
+                                        <span class="label label-primary" ng-if="evt.properties.eventLevel.value == 2">
+                                            <i class="fa fa-info-circle"></i> @AppLangResource["APPEVENT_ERROR_LEVEL_INFO"]</span>
+                                            <span class="product-title">
+                                                {{evt.properties.eventTitle.value}}
+                                            </span>
+                            </div>
+                            <div class="col-md-3">
+                                <span class="product-description">
+                                    {{evt.properties.eventDetails.value}}
+                                </span>
+                            </div>
+                            <div class="col-md-3">
+                                <span class="text-muted" ng-if="evt.properties.eventDateTime.value != null"><i class="fa fa-clock-o"></i> {{evt.properties.eventDateTime.value}}</span>
+                                <button class="btn btn-box-tool" type="button" ng-click="ctrl.eventDelete(evt)"><i class="fa fa-trash text-red"></i> @AppLangResource["COMMON_BTN_DELETE"]</button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!-- /.item -->
+            </ul>
+
+        </div>
+        <div class="box-footer">
+            <div class="col-md-12 content-center">
+                <ul class="pagination pagination-sm no-margin">
+                    <li><a href="javascript:void(0);" ng-click="ctrl.onPageClick(1)" ng-class="{disabled: ctrl.pager.disabledFirstPage}">«</a></li>
+                    <li ng-repeat="page in ctrl.pager.pages" ng-class="{'active':ctrl.pager.currentPage === page}">
+                        <a href="javascript:void(0);" ng-click="ctrl.onPageClick(page)">{{page}}</a>
+                    </li>
+                    <li><a href="javascript:void(0);" ng-click="ctrl.onPageClick(ctrl.pager.totalPages)" ng-class="{disabled:ctrl.pager.disabledLastPage}">»</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript" src="~/js/systemevent.js"></script>
+}

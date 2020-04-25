@@ -63,7 +63,7 @@ namespace FE.Creator.IdentityServer
                 .AddInMemoryIdentityResources(Config.Ids)
                 .AddInMemoryApiResources(Config.Apis)
                 .AddInMemoryClients(Config
-                                        .Clients(Configuration.GetSection("Authentication:IdentityServer:Clients")))
+                .Clients(Configuration.GetSection("Authentication:IdentityServer:Clients")))
                 //.AddInMemoryClients (section)
                 .AddAspNetIdentity<ApplicationUser>();
 

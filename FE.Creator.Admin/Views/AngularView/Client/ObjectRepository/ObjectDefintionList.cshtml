@@ -1,0 +1,43 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<AppLang> AppLangResource
+<div class="col-md-4" ng-repeat="def in ObjectDefintions">
+    <div class="box box-success collapsed-box">
+        <div class="box-header with-border">
+            <h3 class="box-title"><i class="fa fa-table"></i>  {{def.objectDefinitionName}}</h3>
+            <div class="box-tools pull-right">
+                <a href="/objdefs/{{groupId}}/{{def.objectDefinitionID}}/edit" class="btn btn-box-tool">
+                    <i class="fa fa-edit"></i> @AppLangResource["COMMON_BTN_EDIT"]
+                </a>
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-expand"></i>
+                </button>
+            </div>
+            <!-- /.box-tools -->
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body" style="display: none;">
+            <ul class="nav nav-pills nav-stacked">
+                <li ng-repeat="fld in def.objectFields">
+                    <a href="#">
+                        <i class="fa fa-columns"></i> {{fld.objectDefinitionFieldName}}
+                        <span class="label label-primary pull-right">{{fld | fieldTypeNameFilter}}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+            <div class="box-tools">
+                <button class="btn btn-box-tool" ng-click="deleteObjectDefintion(def.objectDefinitionID)">
+                    <i class="fa fa-trash"></i> @AppLangResource["COMMON_BTN_DELETE"]
+                </button>
+                <a href="/objdefs/{{groupId}}/{{def.objectDefinitionID}}/edit" class="btn btn-box-tool">
+                    <i class="fa fa-edit"></i> @AppLangResource["COMMON_BTN_EDIT"]
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-4">
+    <a class="btn btn-social-icon btn-success" href="/objdefs/{{groupId}}/-1/edit"><i class="fa fa-plus"></i></a>
+</div>

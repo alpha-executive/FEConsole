@@ -8,22 +8,27 @@ using FE.Creator.ObjectRepository.EntityModels;
 using Microsoft.EntityFrameworkCore;
 using FE.Creator.ObjectRepository.Utils;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Console;
 
 namespace FE.Creator.ObjectRepository
 {
     public class DefaultObjectService : IObjectService
     {
         private static object SyncRoot = new object();
-        private static readonly LoggerFactory loggerFactory = new LoggerFactory(new []{
-            new ConsoleLoggerProvider((category,level)=> LogLevel.Information == level, true)
+        private static ILoggerFactory loggerFactory = LoggerFactory.Create(builder =>
+        {
+            builder
+                .AddFilter("Microsoft", LogLevel.Warning)
+                .AddFilter("System", LogLevel.Warning)
+                .AddFilter("LoggingConsoleApp.Program", LogLevel.Debug)
+                .AddConsole();
         });
-        private static ILogger logger = loggerFactory.CreateLogger("ObjectRepository");
+        private static readonly ILogger logger = loggerFactory.CreateLogger<DefaultObjectService>();
 
         /*
             MAKE SURE THE DATABASE BEEN CREATED IN CONSTURTOR.
          */
-        public DefaultObjectService(){
+        public DefaultObjectService()
+        {
             using(var dbContext = EntityContextFactory.GetDBObjectContext()){
                 dbContext.Database.EnsureCreated();
             }
@@ -484,8 +489,9 @@ namespace FE.Creator.ObjectRepository
             using (DBObjectContext dboContext = EntityContextFactory.GetDBObjectContext())
             {
                 var objDefList = dboContext.GeneralObjectDefinitions
-                    .Where(g => g.IsDeleted == false)
                     .Include(d => d.GeneralObjectDefinitionFields)
+                    .AsEnumerable()
+                    .Where(g => g.IsDeleted == false)
                     .ToList();
 
                 LoadSelctionItems(dboContext, objDefList);
@@ -513,11 +519,13 @@ namespace FE.Creator.ObjectRepository
             using (DBObjectContext dboContext = EntityContextFactory.GetDBObjectContext())
             {
                 IQueryable<GeneralObjectDefinition> query = dboContext.GeneralObjectDefinitions
+                    .Include(d => d.GeneralObjectDefinitionFields)
+                    .AsEnumerable()
                     .Where(g => g.IsDeleted == false 
                             && g.GeneralObjectDefinitionGroupID == GroupId
                             && (!requestContext.IsDataCurrentUserOnly
                             || requestContext.RequestUser == g.ObjectOwner))
-                    .Include(d => d.GeneralObjectDefinitionFields);
+                    .AsQueryable();
 
                 retObjList = ExecuteObjectDefinitionQuery(dboContext, GroupId, query);
             }
@@ -558,12 +566,13 @@ namespace FE.Creator.ObjectRepository
             using (DBObjectContext dboContext = EntityContextFactory.GetDBObjectContext())
             {
                 var query = dboContext.GeneralObjectDefinitions
+                    .Include(d => d.GeneralObjectDefinitionFields)
+                    .AsEnumerable()
                     .Where(g => g.IsDeleted == false 
                         && g.GeneralObjectDefinitionGroupID != GroupId
                         && (!requestContext.IsDataCurrentUserOnly
                             || requestContext.RequestUser == g.ObjectOwner)
-                      )
-                    .Include(d => d.GeneralObjectDefinitionFields);
+                      ).AsQueryable();
 
                 retObjList = ExecuteObjectDefinitionQuery(dboContext, GroupId, query);
             }
@@ -577,7 +586,7 @@ namespace FE.Creator.ObjectRepository
             logger.LogDebug("objDefList.count : " + objDefList.Count);
             foreach (var objDef in objDefList)
             {
-                foreach (var field in objDef.GeneralObjectDefinitionFields)
+                foreach (var field in objDef.GeneralObjectDefinitionFields.AsEnumerable())
                 {
                     if (field is SingleSelectionDefinitionField)
                     {
@@ -602,15 +611,18 @@ namespace FE.Creator.ObjectRepository
             }
             using (var dbContext = EntityContextFactory.GetDBObjectContext())
             {
-                var objectList = dbContext.GeneralObjects.Where(o => o.GeneralObjectDefinitionID == ObjDefId 
+                var objectList = dbContext.GeneralObjects
+                                            .Include(g => g.GeneralObjectFields)
+                                            .ThenInclude(f => f.GeneralObjectDefinitionField)
+                                            .AsEnumerable()
+                                            .Where(o => o.GeneralObjectDefinitionID == ObjDefId 
                                                                                 && o.IsDeleted == false
                                                                                 && (!requestContext.IsDataCurrentUserOnly
                                                                                         || requestContext.RequestUser == o.ObjectOwner
                                                                                    )
                                                              )
-                                                            .Include(g=>g.GeneralObjectFields)
-                                                                .ThenInclude(f=>f.GeneralObjectDefinitionField)
-                                                            .ToList();
+                                                           
+                                            .ToList();
 
                 logger.LogDebug("objectList.count : " + objectList.Count);
                 svsObjects = ObjectConverter.ConvertToServiceObjectList(objectList, properties);
@@ -635,6 +647,7 @@ namespace FE.Creator.ObjectRepository
             using (var dbContext = EntityContextFactory.GetDBObjectContext())
             {
                 var objectCount = dbContext.GeneralObjects
+                                           .AsEnumerable()
                                            .Where(o => o.GeneralObjectDefinitionID == ObjDefId 
                                                 && o.IsDeleted == false
                                                 && (!requestContext.IsDataCurrentUserOnly
@@ -655,8 +668,9 @@ namespace FE.Creator.ObjectRepository
             using (DBObjectContext dboContext = EntityContextFactory.GetDBObjectContext())
             {
                 var objDefList = dboContext.GeneralObjectDefinitions
-                                 .Where(d => d.GeneralObjectDefinitionID == objDefId)
                                  .Include(d => d.GeneralObjectDefinitionFields)
+                                 .AsEnumerable()
+                                 .Where(d => d.GeneralObjectDefinitionID == objDefId)
                                  .ToList();
                 if (objDefList.Count > 0)
                 {
@@ -677,7 +691,7 @@ namespace FE.Creator.ObjectRepository
             logger.LogDebug("Start GetObjectDefinitionCount");
             using (DBObjectContext dboContext = EntityContextFactory.GetDBObjectContext())
             {
-                var objDefCount = dboContext.GeneralObjectDefinitions
+                var objDefCount = dboContext.GeneralObjectDefinitions.AsEnumerable()
                                  .Where(g=>g.IsDeleted == false)
                                  .Count();
                 logger.LogDebug("objDefCount = " + objDefCount);
@@ -694,9 +708,10 @@ namespace FE.Creator.ObjectRepository
             using (DBObjectContext dboContext = EntityContextFactory.GetDBObjectContext())
             {
                 var objDefList = dboContext.GeneralObjectDefinitions
-                                            .Where(g=>g.IsDeleted == false)
                                             .Include(d => d.GeneralObjectDefinitionFields)
-                                            .OrderBy(o=>o.GeneralObjectDefinitionName)
+                                            .OrderBy(o => o.GeneralObjectDefinitionName)
+                                            .AsEnumerable()
+                                            .Where(g=>g.IsDeleted == false)
                                             .Skip(skipCount)
                                             .Take(pageSize)
                                             .ToList();
@@ -729,13 +744,14 @@ namespace FE.Creator.ObjectRepository
             using (var dbContext = EntityContextFactory.GetDBObjectContext())
             {
                 var objectList = dbContext.GeneralObjects
+                                            .Include(o => o.GeneralObjectFields)
+                                            .ThenInclude(f => f.GeneralObjectDefinitionField)
+                                            .AsEnumerable()
                                             .Where(o => o.GeneralObjectID == objectId
                                                 && (!requestContext.IsDataCurrentUserOnly
                                                         || requestContext.RequestUser == o.ObjectOwner
                                                        )
                                              )
-                                            .Include(o => o.GeneralObjectFields)
-                                            .ThenInclude(f => f.GeneralObjectDefinitionField)
                                             .ToList();
 
                 svsObjects = ObjectConverter.ConvertToServiceObjectList(objectList, properties);
@@ -764,15 +780,16 @@ namespace FE.Creator.ObjectRepository
             using (var dbContext = EntityContextFactory.GetDBObjectContext())
             {
                 var objectList = dbContext.GeneralObjects
+                                            .Include(o => o.GeneralObjectFields)
+                                            .ThenInclude(f => f.GeneralObjectDefinitionField)
+                                            .OrderByDescending(o => o.Created)
+                                            .AsEnumerable()
                                             .Where(o => o.GeneralObjectDefinitionID == ObjDefId 
                                                     && o.IsDeleted == false
                                                     && (!requestContext.IsDataCurrentUserOnly
                                                         || requestContext.RequestUser == o.ObjectOwner
                                                        )
-                                                )
-                                            .Include(o => o.GeneralObjectFields)
-                                            .ThenInclude(f => f.GeneralObjectDefinitionField)
-                                            .OrderByDescending(o => o.Created)
+                                             )
                                             .Skip(skipCount)
                                             .Take(pageSize)
                                             .ToList();
@@ -794,7 +811,7 @@ namespace FE.Creator.ObjectRepository
             {
                 using (DBObjectContext dboContext = EntityContextFactory.GetDBObjectContext())
                 {
-                    var objDef = dboContext.GeneralObjectDefinitions
+                    var objDef = dboContext.GeneralObjectDefinitions.AsEnumerable()
                                      .Where(d => d.GeneralObjectDefinitionID == objDefId)
                                      .FirstOrDefault();
 
@@ -821,7 +838,7 @@ namespace FE.Creator.ObjectRepository
             {
                 using (DBObjectContext dboContext = EntityContextFactory.GetDBObjectContext())
                 {
-                    var obj = dboContext.GeneralObjects
+                    var obj = dboContext.GeneralObjects.AsEnumerable()
                                             .Where(o => o.GeneralObjectID == objectId)
                                             .FirstOrDefault();
 
@@ -848,9 +865,10 @@ namespace FE.Creator.ObjectRepository
             using (DBObjectContext dboContext = EntityContextFactory.GetDBObjectContext())
             {
                 var objDefGroupList = dboContext.GeneralObjectDefinitionGroups
-                         .Where(g=>g.IsDeleted == false)
                         .Include(g => g.ParentGroup)
                         .Include(g => g.ChildrenGroups)
+                        .AsEnumerable()
+                        .Where(g=>g.IsDeleted == false)
                         .ToList()
                         .FindAll(s=> parentGroupId.HasValue ? s.ParentGroup != null && s.ParentGroup.GeneralObjectDefinitionGroupID == parentGroupId.Value : s.ParentGroup == null);
 
@@ -872,9 +890,10 @@ namespace FE.Creator.ObjectRepository
             using (DBObjectContext dboContext = EntityContextFactory.GetDBObjectContext())
             {
                 var objDefGroupList = dboContext.GeneralObjectDefinitionGroups
-                         .Where(g => g.GeneralObjectDefinitionGroupID == defId)
                         .Include(g => g.ParentGroup)
                         .Include(g => g.ChildrenGroups)
+                        .AsEnumerable()
+                        .Where(g => g.GeneralObjectDefinitionGroupID == defId)
                         .ToList();
                 objList = ObjectConverter.Convert2ObjectDefinitionGroupList(objDefGroupList);
 
@@ -892,9 +911,10 @@ namespace FE.Creator.ObjectRepository
                 using (DBObjectContext dboContext = EntityContextFactory.GetDBObjectContext())
                 {
                     var objDefGroup = dboContext.GeneralObjectDefinitionGroups
+                             .Include(g => g.ParentGroup)
+                             .Include(g => g.ChildrenGroups)
+                             .AsEnumerable()
                              .Where(g => g.GeneralObjectDefinitionGroupID == objGroup.GroupID)
-                            .Include(g => g.ParentGroup)
-                            .Include(g => g.ChildrenGroups)
                             .FirstOrDefault();
 
                     logger.LogDebug(string.Format("objDefGroup == null ? {0}", objDefGroup == null));
@@ -938,9 +958,10 @@ namespace FE.Creator.ObjectRepository
                 using (DBObjectContext dboContext = EntityContextFactory.GetDBObjectContext())
                 {
                     var objDefGroup = dboContext.GeneralObjectDefinitionGroups
-                             .Where(g => g.GeneralObjectDefinitionGroupID == defId)
                             .Include(g => g.ParentGroup)
                             .Include(g => g.ChildrenGroups)
+                            .AsEnumerable()
+                            .Where(g => g.GeneralObjectDefinitionGroupID == defId)
                             .FirstOrDefault();
 
                     logger.LogDebug(string.Format("objDefGroup != null ? {0}", objDefGroup != null));
@@ -964,8 +985,9 @@ namespace FE.Creator.ObjectRepository
                 using (DBObjectContext dboContext = EntityContextFactory.GetDBObjectContext())
                 {
                     var generalObject = dboContext.GeneralObjects
-                                                .Where(o => o.GeneralObjectID == serviceObjectId)
                                                 .Include(f => f.GeneralObjectFields)
+                                                .AsEnumerable()
+                                                .Where(o => o.GeneralObjectID == serviceObjectId)
                                                 .FirstOrDefault();
                     logger.LogDebug(string.Format("generalObject != null ? {0}", generalObject != null));
                     if(generalObject != null)
@@ -1010,6 +1032,7 @@ namespace FE.Creator.ObjectRepository
                 {
                     var objFields = dboContext.GeneralObjectFields
                                              .Include(f => f.GeneralObjectDefinitionField)
+                                             .AsEnumerable()
                                              .Where(f => f.GeneralObjectDefinitionFieldID == fieldDefinitionId)
                                              .ToList();
 
@@ -1048,6 +1071,7 @@ namespace FE.Creator.ObjectRepository
                                                      .Include(f => f.GeneralObjectDefinitionFields)
                                                      .Include(o => o.GeneralObjects)
                                                      .ThenInclude(f=>f.GeneralObjectFields)
+                                                     .AsEnumerable()
                                                      .Where(d => d.GeneralObjectDefinitionID == objectDefinitionId)
                                                      .FirstOrDefault();
 
@@ -1106,7 +1130,8 @@ namespace FE.Creator.ObjectRepository
             {
                 using (DBObjectContext dboContext = EntityContextFactory.GetDBObjectContext())
                 {
-                    var selectionItem =  dboContext.GeneralObjectDefinitionSelectItems.Find(selectionItemId);
+                    var selectionItem =  dboContext.GeneralObjectDefinitionSelectItems
+                                                    .Find(selectionItemId);
 
                     logger.LogDebug(string.Format("selectionItem != null ? {0}", selectionItem != null));
                     if (selectionItem != null)
@@ -1125,7 +1150,7 @@ namespace FE.Creator.ObjectRepository
             logger.LogDebug("Start IsObjectDefinitionGroupExists");
             using (DBObjectContext dboContext = EntityContextFactory.GetDBObjectContext())
             {
-                var groupCount = dboContext.GeneralObjectDefinitionGroups
+                var groupCount = dboContext.GeneralObjectDefinitionGroups.ToList()
                          .Where(g => g.IsDeleted == false && g.GeneralObjectDefinitionGroupName.Equals(groupName, StringComparison.InvariantCultureIgnoreCase))
                          .Count();
 
@@ -1141,9 +1166,10 @@ namespace FE.Creator.ObjectRepository
             using (DBObjectContext dboContext = EntityContextFactory.GetDBObjectContext())
             {
                 var objDefGroupList = dboContext.GeneralObjectDefinitionGroups
-                         .Where(g => g.IsDeleted == false && g.GeneralObjectDefinitionGroupName.Equals(groupName, StringComparison.InvariantCultureIgnoreCase))
                          .Include(g => g.ParentGroup)
                          .Include(g => g.ChildrenGroups)
+                         .AsEnumerable()
+                         .Where(g => g.IsDeleted == false && g.GeneralObjectDefinitionGroupName.Equals(groupName, StringComparison.InvariantCultureIgnoreCase))
                          .ToList();
 
                 var objList = ObjectConverter.Convert2ObjectDefinitionGroupList(objDefGroupList);
@@ -1161,9 +1187,10 @@ namespace FE.Creator.ObjectRepository
             using (DBObjectContext dboContext = EntityContextFactory.GetDBObjectContext())
             {
                 var objDefList = dboContext.GeneralObjectDefinitions
-                                 .Where(d => d.GeneralObjectDefinitionName.Equals(definitionName, StringComparison.InvariantCultureIgnoreCase))
-                                 .Include(d => d.GeneralObjectDefinitionFields)
-                                 .ToList();
+                                  .Include(d => d.GeneralObjectDefinitionFields)
+                                  .AsEnumerable()
+                                  .Where(d => d.GeneralObjectDefinitionName.Equals(definitionName, StringComparison.InvariantCultureIgnoreCase))
+                                  .ToList();
                 logger.LogDebug("objDefList.Count = " + objDefList.Count);
                 if (objDefList.Count > 0)
                 {

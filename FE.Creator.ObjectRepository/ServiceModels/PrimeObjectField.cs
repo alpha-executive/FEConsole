@@ -17,17 +17,11 @@ namespace FE.Creator.ObjectRepository.ServiceModels
         private object ConvertToTypeValue(Type type, string value)
         {
             TypeConverter typeConverter = TypeDescriptor.GetConverter(type);
-            object propValue = typeConverter.ConvertFromString(this.Value.ToString());
+            object propValue = typeConverter.ConvertFromString(value);
 
             return propValue;
         }
         public T GetStrongTypeValue<T>(){
-
-            if(typeof(T) == typeof(string))
-            {
-                return (T)this.Value;
-            }
-
             return this.Value == null ? default(T) : 
                 (T)ConvertToTypeValue(typeof(T), this.Value.ToString());
         }

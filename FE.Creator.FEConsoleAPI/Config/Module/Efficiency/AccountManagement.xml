@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config group="FESystem" name="AccountManagement" displayName="Account Management" key="FE_SYS_ACCOUNT_MANAGEMENT" licenseId ="5849EA67-3126-4765-AB80-87E9C9442774" version="1.0">
+  <entity name="AccountRecord" key="FE_SYS_Account">
+    <properties>
+      <property name="accountDesc" key="FE_COL_ACCOUNT_DESC" type="String" displayOrder="1"></property>
+      <property name="accountType" key="FE_COL_ACCOUNT_TYPE" type="Integer" displayOrder="2"></property>
+      <property name="accountNumber" key="FE_COL_ACCONT_NUMBER" type="String" displayOrder="3"></property>
+      <property name="accountPassword" key="FE_COL_ACCOUNT_PASSWORD" type="String" displayOrder="4"></property>
+    </properties>
+  </entity>
+</config>

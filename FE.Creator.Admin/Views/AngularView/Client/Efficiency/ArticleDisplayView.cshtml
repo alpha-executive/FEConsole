@@ -1,0 +1,34 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<AppLang> AppLangResource
+<div class="mailbox-read-info">
+    <h3 class="text-center"><i class="fa fa-file-text-o text-warning"></i> {{ctrl.currentViewArticle.objectName}}</h3>
+</div>
+<h5>
+    <span class="label label-primary"><i class="fa fa-clock-o"></i> {{ctrl.currentViewArticle.created}}</span>
+    <span class="label label-warning" ng-if="ctrl.currentViewArticle.properties.articleSharedLevel.value == 1">
+        <i class="fa fa-shared"></i> @AppLangResource["POST_LBL_SHARED"]
+    </span>
+    <span class="label label-success" ng-if="ctrl.currentViewArticle.properties.isOriginal.value == 1">
+        <i class="fa fa-user"></i> @AppLangResource["POST_LBL_ORIGINAL"]
+    </span>
+    <button class="btn btn-box-tool pull-right" type="button" ng-click="ctrl.return2List()">
+        <i class="fa fa-reply"></i> @AppLangResource["POST_BTN_RETURN_TO_LIST"]
+    </button>
+    <button class="btn btn-box-tool pull-right" type="button" onclick="window.print();">
+        <i class="fa fa-print"></i> @AppLangResource["POST_BTN_PRINT"]
+    </button>
+    <button class="btn btn-box-tool pull-right" type="button" ng-click="ctrl.createOrEditArticle(ctrl.currentViewArticle)"><i class="fa fa-pencil"></i> @AppLangResource["POST_BTN_EDIT"]</button>
+</h5>
+<div class="callout bg-gray-light article-read-message">
+    <p ng-bind="ctrl.currentViewArticle.properties.articleDesc.value"></p>
+</div>
+<div class="article-read-message" ng-bind-html="ctrl.currentViewArticle.properties.articleContent.value"></div>
+<div class="box-footer text-center">
+    <button class="btn" type="button" ng-click="ctrl.createOrEditArticle(ctrl.currentViewArticle)">
+        <i class="fa fa-pencil"></i> @AppLangResource["POST_BTN_EDIT"]
+    </button>
+    <button class="btn" type="button" onclick="window.print();">
+        <i class="fa fa-print"></i> @AppLangResource["POST_BTN_PRINT"]
+    </button>
+    <button class="btn" type="button" ng-click="ctrl.return2List()"><i class="fa fa-reply"></i> @AppLangResource["POST_BTN_RETURN_TO_LIST"]</button>
+</div>

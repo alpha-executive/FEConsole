@@ -1,0 +1,164 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<AppLang> AppLangResource
+@{
+    ViewBag.Title = AppLangResource["POST_TITLE"];
+}
+<div class="row" ng-app="ngObjectRepository" ng-init="CurrentArticleId ='@Model'">
+    <div class="col-md-12" ng-controller="ArticleController as ctrl" ng-init="ctrl.init(CurrentArticleId)">
+        <div class="box box-primary">
+            <div class="box-header with-border" ng-if="ctrl.displayMode != 'articleView'">
+                <ul class="nav navbar-nav">
+                    <!-- Messages: style can be found in dropdown.less-->
+                    <li class="messages-menu" ng-class="{'tab-active' : ctrl.currentArticleGroup == null}">
+                        <a href="javascript:void(0);" ng-click="ctrl.switchArticleGroup(null)">
+                            <i class="fa fa-lightbulb-o"></i>
+                            @AppLangResource["POST_ALL_POSTS"]
+                        </a>
+                    </li>
+                    <!-- Tasks: style can be found in dropdown.less -->
+                    <li class="tasks-menu" ng-repeat="group in ctrl.articlegroups" ng-class="{'tab-active' : group.objectID == ctrl.currentArticleGroup.objectID}">
+                        <a href="javascript:void(0);" ng-click="ctrl.switchArticleGroup(group)">
+                            <i class="fa fa-star-o"></i>
+                            {{group.objectName}}
+                        </a>
+                    </li>
+                </ul>
+                <div class="box-tools" ng-if="ctrl.displayMode == 'articleList'">
+                    <button class="btn btn-box-tool" type="button" ng-click="ctrl.createOrEditArticle(null)">
+                        <i class="fa fa-plus text-green"></i> @AppLangResource["POST_NEW_POST"]
+                    </button>
+                    <button class="btn btn-box-tool" type="button" ng-click="ctrl.createOrEditArticleGroup(null)">
+                        <i class="fa fa-plus text-primary"></i> @AppLangResource["POST_ADD_GROUP"]
+                    </button>
+                    <button class="btn btn-box-tool" type="button" ng-if="ctrl.currentArticleGroup != null" ng-click="ctrl.createOrEditArticleGroup(ctrl.currentArticleGroup)">
+                        <i class="fa fa-pencil text-blue"></i> @AppLangResource["POST_EDIT_GROUP"]
+                    </button>
+                    <button class="btn btn-box-tool" type="button" ng-if="ctrl.currentArticleGroup != null" ng-click="ctrl.deleteArticleGroup(ctrl.currentArticleGroup)">
+                        <i class="fa fa-trash text-red"></i> @AppLangResource["POST_DELETE_GROUP"]
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="box" ng-if="ctrl.displayMode == 'groupEditing'">
+                    <div class="box-body">
+                        <div class="input-group">
+                            <input class="form-control" type="text" placeholder="New Group..." ng-model="ctrl.currentArticleGroup.objectName">
+                            <div class="input-group-btn">
+                                <button class="btn btn-primary btn-flat btn-xm" id="add-new-event" type="button" ng-click="ctrl.saveArticleGroup()"><i class="fa fa-save"></i></button>
+                                <button class="btn btn-primary btn-flat btn-xm" id="cancel-new-event" type="button" ng-click="ctrl.cancelArticleGroupEditing()"><i class="fa fa-close"></i></button>
+                            </div>
+                            <!-- /btn-group -->
+                        </div>
+                    </div>
+                </div>
+                <div class="box" ng-if="ctrl.displayMode == 'articleEditing'">
+                    <div class="box-body">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">
+                                    <i class="fa fa-tag"></i> @AppLangResource["POST_LBL_TITLE"]</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" ng-model="ctrl.currentEditingArticle.objectName" />
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button class="btn btn-warning" type="file" ngf-select="ctrl.uploadFiles($file, $invalidFiles,ctrl.currentEditingArticle.properties.articleImage)" ngf-max-size="10MB">
+                                        <i class="fa fa-upload"></i> @AppLangResource["POST_BTN_UPLOAD_IMG"] <i class="fa fa - refresh fa - spin text - green" ng-if="ctrl.f.showprogress"></i>
+
+                                    </button><span class="message">{{ctrl.errorMsg}}</span>
+                                    <br />
+                                    <br />
+                                    <div class="info-box" ng-if="ctrl.currentEditingArticle.properties.articleImage.fileName != null">
+                                        <a class="info-box-icon bg-aqua" href="{{ctrl.currentEditingArticle.properties.articleImage.fileUrl}}"><i class="fa fa-cloud-download"></i></a>
+                                        <div class="info-box-content text-black">
+                                            <span class="info-box-text">{{ ctrl.currentEditingArticle.properties.articleImage.fileName }}</span>
+                                            <span class="info-box-number">{{ctrl.currentEditingArticle.properties.articleImage.fileSize}} KB</span>
+                                            <span class="info-box-text">SHA: {{ctrl.currentEditingArticle.properties.articleImage.fileCRC}}</span>
+                                        </div>
+                                        <!-- /.info-box-content -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2">
+                                    <i class="fa fa-commenting"></i> @AppLangResource["POST_LBL_INTRODUCTION"]
+                                </label>
+                                <div class="col-md-10">
+                                    <textarea id="articleDesc" class="form-control" ng-model="ctrl.currentEditingArticle.properties.articleDesc.value" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label class="control-label col-sm-4">
+                                        <i class="fa fa-share-alt"></i> @AppLangResource["POST_LBL_SHARED"]
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <div class="form-control">
+                                            <input type="radio" ng-model="ctrl.currentEditingArticle.properties.articleSharedLevel.value" ng-value="0" ng-checked="ctrl.currentEditingArticle.properties.articleSharedLevel.value == 0" /> @AppLangResource["POST_RDO_PRIVATE"]
+                                            <input type="radio" ng-model="ctrl.currentEditingArticle.properties.articleSharedLevel.value" ng-value="1" ng-checked="ctrl.currentEditingArticle.properties.articleSharedLevel.value == 1" /> @AppLangResource["POST_RDO_SHARED"]
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="control-label col-sm-4">
+                                        <i class="fa  fa-legal"></i> @AppLangResource["POST_LBL_ISORIGINAL"]
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <div class="form-control">
+                                            <input type="radio" ng-model="ctrl.currentEditingArticle.properties.isOriginal.value" ng-value="0" ng-checked="ctrl.currentEditingArticle.properties.isOriginal.value == 0" /> @AppLangResource["POST_RDO_YES"]
+                                            <input type="radio" ng-model="ctrl.currentEditingArticle.properties.isOriginal.value" ng-value="1" ng-checked="ctrl.currentEditingArticle.properties.isOriginal.value == 1" /> @AppLangResource["POST_RDO_NO"]
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group margin-bottom">
+                                <label class="control-label col-md-2">
+                                    <i class="fa fa-envelope-o"></i> @AppLangResource["POST_LBL_CONTENT"]
+                                </label>
+                                <div class="col-md-10">
+                                    <textarea id="articleEditor" ng-bind-html="ctrl.currentEditingArticle.properties.articleContent.value"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12 text-center">
+                                    <button class="btn btn-success" type="button" ng-click="ctrl.saveArticle()">
+                                        <i class="fa fa-save"></i> @AppLangResource["COMMON_BTN_SAVE"]</button>
+                                        <button class="btn btn-default" type="button" ng-click="ctrl.cancelArticleEditing()">
+                                            <i class="fa fa-close "></i> @AppLangResource["COMMON_BTN_CANCEL"]</button>
+                                            <button class="btn btn-primary" type="button" ng-click="ctrl.viewArticle(ctrl.currentEditingArticle)">
+                                                <i class="fa fa-search"></i> @AppLangResource["COMMON_BTN_PREVIEW"]</button>
+                                                <button class="btn btn-warning" type="button" ng-click="ctrl.return2List()"><i class="fa fa-reply"></i> @AppLangResource["POST_BTN_RETURN_TO_LIST"]</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <script type="text/javascript">
+                        jQuery(window).bind('beforeunload', function () {
+                            return "@AppLangResource["LEAVING_PAGE_WARN"]";
+                        });
+                    </script>
+                </div>
+                <div class="row" ng-if="ctrl.displayMode == 'articleList'">
+                    <div class="col-md-12">
+                        @await Html.PartialAsync("~/Views/AngularView/Client/Efficiency/ArticleList.cshtml")
+                    </div>
+                </div>
+                <div class="row" ng-if="ctrl.displayMode == 'articleView'">
+                    <div class="col-md-12 printcontainer">
+                        @await Html.PartialAsync("~/Views/AngularView/Client/Efficiency/ArticleDisplayView.cshtml")
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer" ng-if="ctrl.displayMode == 'articleList' && ctrl.pager.totalPages > 1">
+                @await Html.PartialAsync("~/Views/AngularView/Client/Common/Pager.cshtml")
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript" src="~/js/apputilities.js"></script>
+    <script type="text/javascript" src="~/js/articlecontroller.js"></script>
+    <script type="text/javascript" src="~/lib/adminlte-2.3.6/plugins/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js"></script>
+}

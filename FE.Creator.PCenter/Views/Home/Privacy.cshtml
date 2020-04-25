@@ -1,0 +1,9 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using FE.Creator.PCenter
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+@inject IHtmlLocalizer<SharedLangResource> ResourceString
+<h1>@ViewData["Title"]</h1>
+
+<p>@ResourceString["Use this page to detail your site's privacy policy."]</p>

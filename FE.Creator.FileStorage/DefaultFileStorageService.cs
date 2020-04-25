@@ -16,12 +16,15 @@ namespace FE.Creator.FileStorage
     {
         private Dictionary<Type, IFileStorageProvider> storageProviders = new Dictionary<Type, IFileStorageProvider>();
         IFileStorageProvider defaultProvider = null;
-        public DefaultFileStorageService(IFileStorageProvider defaultProvider)
+        ThumbinalConfig thumbinalConfig = null;
+        public DefaultFileStorageService(IFileStorageProvider defaultProvider,
+            ThumbinalConfig thumbinalConfig)
         {
             if (defaultProvider == null)
                 throw new ArgumentNullException(nameof(defaultProvider));
 
             this.defaultProvider = defaultProvider;
+            this.thumbinalConfig = thumbinalConfig;
             AddStorageProvider(defaultProvider);
             EnsureDBCreated();
         }
@@ -80,9 +83,14 @@ namespace FE.Creator.FileStorage
             }
         }
 
-        private Stream OpenFileContent(string fileFullName)
+        public Stream OpenFileContentStream(string fileFullName)
         {
             IFileStorageProvider provider = GetFileStorageProvider(fileFullName);
+            if (provider == null)
+            {
+                throw new ArgumentException(nameof(provider) + " of the file storage service is null");
+            }
+
             return provider
                         .OpenFileStream(fileFullName);
         }
@@ -100,13 +108,22 @@ namespace FE.Creator.FileStorage
             return provider;
         }
 
-        private async Task<byte[]> DownloadFileContentAsync(string fileFullName)
+        public async Task<byte[]> DownloadFileContentAsync(string fileFullName)
         {
             IFileStorageProvider provider = GetFileStorageProvider(fileFullName);
+
+            if(provider == null)
+            {
+                throw new ArgumentException(nameof(provider) + " of the file storage service is null");
+            }
             return await provider
                         .DownloadFileAsync(fileFullName);
         }
-        private async Task<FileStorageInfo> SaveFileContent(Stream stream, string uniqueFileName, string format, bool createThumbinal)
+        private async Task<FileStorageInfo> SaveFileContent(Stream stream, 
+            string uniqueFileName, 
+            string format, 
+            bool createThumbinal,
+            string fileFriendlyName)
         {
             if (defaultProvider == null)
                 throw new ArgumentException(nameof(defaultProvider) + " is null");
@@ -119,27 +136,32 @@ namespace FE.Creator.FileStorage
                 {
                     thumbinalFileName = await SimpleFileThumbinalGenerator.CreateThumbnail(defaultProvider,
                         format,
-                        260,
-                        260,
+                        thumbinalConfig.Width,
+                        thumbinalConfig.Height,
                         fileStream);
                 }
             }
             string fileCrc = string.Empty;
+            long streamLength = 0;
             using (var fileStream = defaultProvider.OpenFileStream(fileFullName))
             {
                 fileCrc = CalculateCRC(fileStream);
+                streamLength = stream.CanSeek ? stream.Length
+                : fileStream.Length;
             }
 
-            return StoreFileInfo(stream.Length,
+            return StoreFileInfo(streamLength,
                uniqueFileName,
                fileCrc,
                fileFullName,
-               thumbinalFileName);
+               thumbinalFileName,
+               fileFriendlyName);
         }
         private async Task<FileStorageInfo> SaveFileContent(byte[] fileContents,
                 string uniqueFileName,
                 string format,
-                bool createThumbinal)
+                bool createThumbinal,
+                string fileFriendlyName)
         {
             if (defaultProvider == null)
                 throw new ArgumentException(nameof(defaultProvider) + " is null");
@@ -151,8 +173,8 @@ namespace FE.Creator.FileStorage
             {
                 fileThumbinalFullName = await SimpleFileThumbinalGenerator.CreateThumbnail(defaultProvider,
                     format,
-                    260,
-                    260,
+                    thumbinalConfig.Width,
+                    thumbinalConfig.Height,
                     fileContents);
             }
 
@@ -160,10 +182,16 @@ namespace FE.Creator.FileStorage
                 uniqueFileName, 
                 fileCrc, 
                 fileFullName, 
-                fileThumbinalFullName);
+                fileThumbinalFullName,
+                fileFriendlyName);
         }
 
-        private FileStorageInfo StoreFileInfo(long fileSize, string uniqueFileName, string fileCrc, string fileFullName, string fileThumbinalFullName)
+        private FileStorageInfo StoreFileInfo(long fileSize,
+            string uniqueFileName,
+            string fileCrc, 
+            string fileFullName,
+            string fileThumbinalFullName,
+            string fileFriendlyName)
         {
             StoredFile indexInfo = new StoredFile();
             indexInfo.fileUniqueName = uniqueFileName;
@@ -171,6 +199,7 @@ namespace FE.Creator.FileStorage
             indexInfo.fileCRC = fileCrc;
             indexInfo.fileSize = fileSize;
             indexInfo.fileThumbinalFullName = fileThumbinalFullName;
+            indexInfo.fileFriendlyName = fileFriendlyName;
 
             //indexInfo.fileThumbinalFullName = await defaultProvider.UploadFileAsync();
             saveLocalFileIndex(indexInfo);
@@ -182,7 +211,8 @@ namespace FE.Creator.FileStorage
                 Creation = DateTime.Now,
                 LastUpdated = DateTime.Now,
                 Size = fileSize,
-                CRC = fileCrc
+                CRC = fileCrc,
+                FileFriendlyName = fileFriendlyName
             };
         }
 
@@ -232,7 +262,7 @@ namespace FE.Creator.FileStorage
 
             var fileFullName = fileInfo.fileFullName;
 
-            return OpenFileContent(fileFullName);
+            return OpenFileContentStream(fileFullName);
         }
 
         public async Task<byte[]> GetFileContentAsync(string uniqueFileName)
@@ -247,14 +277,14 @@ namespace FE.Creator.FileStorage
             return await DownloadFileContentAsync(fileFullName);
         }
 
-        public async Task<FileStorageInfo> SaveFileAsync(byte[] fileContents, string fileExtension, bool createThumbnial = false)
+        public async Task<FileStorageInfo> SaveFileAsync(byte[] fileContents, string fileExtension, bool createThumbnial = false, string fileFriendlyName = null)
         {
-            string fileName = Path.GetRandomFileName();
-            // string path = Path.Combine(StoreRoot, DateTime.Now.ToString("yyyyMMdd"), fileName);
+            string fileName = fileFriendlyName ?? Path.GetRandomFileName();
             FileStorageInfo storageInfo = await SaveFileContent(fileContents, 
                 fileName, 
                 fileExtension.ToLower(), 
-                createThumbnial);
+                createThumbnial,
+                fileFriendlyName);
             
             return storageInfo;
         }
@@ -276,14 +306,15 @@ namespace FE.Creator.FileStorage
             return await DownloadFileContentAsync(fileFullName);
         }
 
-        public async Task<FileStorageInfo> SaveFileAsync(Stream stream, string fileExtension, bool createThumbnial = false)
+        public async Task<FileStorageInfo> SaveFileAsync(Stream stream, string fileExtension, bool createThumbnial = false, string fileFriendlyName = null)
         {
-            string fileName = Path.GetRandomFileName();
+            string uniqueFileName = Path.GetRandomFileName();
             // string path = Path.Combine(StoreRoot, DateTime.Now.ToString("yyyyMMdd"), fileName);
             FileStorageInfo storageInfo = await SaveFileContent(stream,
-                fileName,
+                uniqueFileName,
                 fileExtension.ToLower(),
-                createThumbnial);
+                createThumbnial,
+                fileFriendlyName);
 
             return storageInfo;
         }

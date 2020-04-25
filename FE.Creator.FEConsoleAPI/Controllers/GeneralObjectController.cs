@@ -12,6 +12,7 @@ namespace FE.Creator.FEConsoleAPI.Controllers
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Configuration;
     using Microsoft.AspNetCore.Http;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// API for service objects
@@ -56,16 +57,15 @@ namespace FE.Creator.FEConsoleAPI.Controllers
     ///        {id}, required service object id
     ///       
     /// </summary>
-    [Route("api/[controller]")]
-    [ApiController]
-    public class GeneralObjectController : ControllerBase
+    public class GeneralObjectController : FEAPIBaseController
     {
         IObjectService objectService = null;
-        ILogger logger = null;
+        ILogger<GeneralObjectController> logger = null;
         readonly IConfiguration _configuration;
         public GeneralObjectController(IObjectService objectService,
             IConfiguration configuration,
-            ILogger logger)
+            ILogger<GeneralObjectController> logger,
+            IServiceProvider provider) : base(provider)
         {
             this.objectService = objectService;
             this.logger = logger;
@@ -121,7 +121,7 @@ namespace FE.Creator.FEConsoleAPI.Controllers
                     new ServiceRequestContext()
                     {
                         IsDataCurrentUserOnly = bool.Parse(_configuration["SiteSettings:IsDataForLoginUserOnly"]),
-                        RequestUser = User.Identity.Name,
+                        RequestUser = await GetLoginUser(),
                         UserSenstiveForSharedData = false
                     },
                     parameters,
@@ -141,7 +141,7 @@ namespace FE.Creator.FEConsoleAPI.Controllers
         /// </summary>
         /// <param name="definitionname"></param>
         /// <returns></returns>
-        [Route("CountObjects/{definitionname}")]
+        [Route("[action]/{definitionname}")]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -152,7 +152,7 @@ namespace FE.Creator.FEConsoleAPI.Controllers
 
             if (findObjDef != null)
             {
-                int findObjectsCount = await this.CountObjects(findObjDef.ObjectDefinitionID);
+                int findObjectsCount = await this.CountObjectsById(findObjDef.ObjectDefinitionID);
                 logger.LogDebug("findObjectsCount : " + findObjectsCount);
 
                 return Ok(findObjectsCount);
@@ -171,11 +171,11 @@ namespace FE.Creator.FEConsoleAPI.Controllers
         /// <param name="id">the id of the object definition</param>
         /// <param name="filters"></param>
         /// <returns></returns>
-        [Route("CountObjects/{id}/{filters?}")]
+        [Route("[action]/{id:int}/{filters?}")]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<int> CountObjects(int id, string filters = null) {
+        public async Task<int> CountObjectsById(int id, string filters=null) {
             int count = 0;
 
             logger.LogDebug("Start CountObjects");
@@ -186,7 +186,7 @@ namespace FE.Creator.FEConsoleAPI.Controllers
                     new ServiceRequestContext()
                     {
                         IsDataCurrentUserOnly = bool.Parse(_configuration["SiteSettings:IsDataForLoginUserOnly"]),
-                        RequestUser = User.Identity.Name,
+                        RequestUser = await GetLoginUser(),
                         UserSenstiveForSharedData = false
                     });
             }
@@ -205,7 +205,7 @@ namespace FE.Creator.FEConsoleAPI.Controllers
                      new ServiceRequestContext()
                      {
                          IsDataCurrentUserOnly = bool.Parse(_configuration["SiteSettings:IsDataForLoginUserOnly"]),
-                         RequestUser = User.Identity.Name,
+                         RequestUser = await GetLoginUser(),
                          UserSenstiveForSharedData = false
                      });
 
@@ -323,7 +323,7 @@ namespace FE.Creator.FEConsoleAPI.Controllers
         /// <summary>
         ///     GET: api/GeneralObject/FindServiceObjects/{id}/parameters?pageIndex=xxx&pageSize=xxx
         /// </summary>
-        [Route("FindServiceObjects/{id}/{parameters?}")]
+        [Route("FindServiceObjects/{id:int}/{parameters?}")]
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<ServiceObject>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -333,7 +333,7 @@ namespace FE.Creator.FEConsoleAPI.Controllers
                 new ServiceRequestContext()
                 {
                     IsDataCurrentUserOnly = bool.Parse(_configuration["SiteSettings:IsDataForLoginUserOnly"]),
-                    RequestUser = User.Identity.Name,
+                    RequestUser = await GetLoginUser(),
                     UserSenstiveForSharedData = false
                 },
                 parameters, 
@@ -348,11 +348,11 @@ namespace FE.Creator.FEConsoleAPI.Controllers
         /// <param name="id"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        [Route("FindServiceObject/{id}/{parameters?}")]
+        [Route("FindServiceObject/{id:int}/{parameters?}")]
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<ServiceObject>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<ServiceObject> FindServiceObject(int id, string parameters = null)
+        public async Task<ActionResult<ServiceObject>> FindServiceObject(int id, string parameters = null)
         {
             logger.LogDebug("Start FindServiceObject");
             var obj = objectService.GetServiceObjectById(id, 
@@ -361,7 +361,7 @@ namespace FE.Creator.FEConsoleAPI.Controllers
                     new ServiceRequestContext()
                     {
                         IsDataCurrentUserOnly = bool.Parse(_configuration["SiteSettings:IsDataForLoginUserOnly"]),
-                        RequestUser = User.Identity.Name,
+                        RequestUser = await GetLoginUser(),
                         UserSenstiveForSharedData = false
                     });
           
@@ -410,9 +410,9 @@ namespace FE.Creator.FEConsoleAPI.Controllers
         /// <returns></returns>
         [Route("FindServiceObjectsByFilter/{definitionname}/{parameters?}")]
         [HttpGet]
-        [ProducesResponseType(typeof(ServiceObject), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<ServiceObject>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<ServiceObject>> FindServiceObjectsByFilter(string definitionname, string parameters = null, int? pageIndex = 1, int? pageSize = int.MaxValue, string filters = null)
+        public async Task<ActionResult<IEnumerable<ServiceObject>>> FindServiceObjectsByFilter(string definitionname, string parameters = null, int? pageIndex = 1, int? pageSize = int.MaxValue, string filters = null)
         {
             logger.LogDebug("Start FindServiceObjectsByFilter");
             var findObjDef = FindObjectDefinitionByName(definitionname);
@@ -424,7 +424,7 @@ namespace FE.Creator.FEConsoleAPI.Controllers
                     new ServiceRequestContext()
                     {
                         IsDataCurrentUserOnly = bool.Parse(_configuration["SiteSettings:IsDataForLoginUserOnly"]),
-                        RequestUser = User.Identity.Name,
+                        RequestUser = await GetLoginUser(),
                         UserSenstiveForSharedData = false
                     },
                     parameters,
@@ -451,9 +451,9 @@ namespace FE.Creator.FEConsoleAPI.Controllers
         /// <returns></returns>
         [Route("FindSysObjectsByFilter/{definitionname}/{parameters?}")]
         [HttpGet]
-        [ProducesResponseType(typeof(ServiceObject), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<ServiceObject>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<ServiceObject>> FindSysObjectsByFilter(string definitionname, string parameters = null, int? pageIndex = 1, int? pageSize = int.MaxValue, string filters = null)
+        public async Task<ActionResult<IEnumerable<ServiceObject>>> FindSysObjectsByFilter(string definitionname, string parameters = null, int? pageIndex = 1, int? pageSize = int.MaxValue, string filters = null)
         {
             logger.LogDebug("Start FindServiceObjectsByFilter");
             var findObjDef = FindObjectDefinitionByName(definitionname);
@@ -493,37 +493,47 @@ namespace FE.Creator.FEConsoleAPI.Controllers
             for(int i=0; i<svcObject.Properties.Count; i++)
             {
                 ObjectKeyValuePair property = svcObject.Properties[i];
+               
                 var defField = (from f in objDef.ObjectFields
                                 where f.ObjectDefinitionFieldName.Equals(property.KeyName, StringComparison.InvariantCultureIgnoreCase)
                                 select f).FirstOrDefault();
                 if(defField != null)
                 {
+                    ServiceObjectField fieldValue = null;
                     switch (defField.GeneralObjectDefinitionFiledType)
                     {
                         case GeneralObjectDefinitionFieldType.PrimeType:
-                            if(!(property.Value is PrimeObjectField))
+                            fieldValue = JsonConvert.DeserializeObject<PrimeObjectField>(property.Value.ToString());
+                            if (fieldValue == null)
                             {
                                 removedProperties.Add(property);
                             }
-                            ((PrimeObjectField)property.Value).PrimeDataType = ((PrimeDefinitionField)defField).PrimeDataType;
+                            ((PrimeObjectField)fieldValue).PrimeDataType = ((PrimeDefinitionField)defField).PrimeDataType;
+                            property.Value = fieldValue;
                             break;
                         case GeneralObjectDefinitionFieldType.File:
-                            if (!(property.Value is ObjectFileField))
+                            fieldValue = JsonConvert.DeserializeObject<ObjectFileField>(property.Value.ToString());
+                            if (fieldValue == null)
                             {
                                 removedProperties.Add(property);
                             }
+                            property.Value = fieldValue;
                             break;
                         case GeneralObjectDefinitionFieldType.ObjectReference:
-                            if (!(property.Value is ObjectReferenceField))
+                            fieldValue = JsonConvert.DeserializeObject<ObjectReferenceField>(property.Value.ToString());
+                            if (fieldValue == null)
                             {
                                 removedProperties.Add(property);
                             }
+                            property.Value = fieldValue;
                             break;
                         case GeneralObjectDefinitionFieldType.SingleSelection:
-                            if (!(property.Value is SingleSelectionField))
+                            fieldValue = JsonConvert.DeserializeObject<SingleSelectionField>(property.Value.ToString());
+                            if (fieldValue == null)
                             {
                                 removedProperties.Add(property);
                             }
+                            property.Value = fieldValue;
                             break;
                         default:
                             //not supported yet.
@@ -546,20 +556,22 @@ namespace FE.Creator.FEConsoleAPI.Controllers
             logger.LogDebug("End EnsureServiceProperties");
         }
 
-        private ServiceObject InsertOrUpdateServiceObject(ServiceObject value, bool isUpdate)
+        private async Task<ServiceObject> InsertOrUpdateServiceObject(ServiceObject value, bool isUpdate)
         {
             logger.LogDebug("Start InsertOrUpdateServiceObject");
             if (value != null)
             {
                 //only for create
+                var requestUserId = await GetLoginUser();
+                var requestUserName = await GetUserFriendlyName();
                 if (!isUpdate)
                 {
                     logger.LogDebug("create new object");
-                    value.CreatedBy = User.Identity.Name;
-                    value.ObjectOwner = User.Identity.Name;
+                    value.CreatedBy = requestUserName;
+                    value.ObjectOwner = requestUserId;
                 }
            
-                value.UpdatedBy = User.Identity.Name;
+                value.UpdatedBy = requestUserName;
                 EnsureServiceProperties(value);
                 int objectId = objectService.CreateORUpdateGeneralObject(value);
                 logger.LogDebug("new object id : " + objectId);
@@ -571,7 +583,7 @@ namespace FE.Creator.FEConsoleAPI.Controllers
                    new ServiceRequestContext()
                    {
                        IsDataCurrentUserOnly = bool.Parse(_configuration["SiteSettings:IsDataForLoginUserOnly"]),
-                       RequestUser = User.Identity.Name,
+                       RequestUser = requestUserId,
                        UserSenstiveForSharedData = false
                    });
             }
@@ -585,10 +597,10 @@ namespace FE.Creator.FEConsoleAPI.Controllers
         /// </summary>
         [HttpPost]
         [ProducesResponseType(typeof(ServiceObject), StatusCodes.Status201Created)]
-        public ActionResult<ServiceObject> Post([FromBody]ServiceObject value)
+        public async Task<ActionResult<ServiceObject>> Post([FromBody]ServiceObject value)
         {
             logger.LogDebug("Start GeneralObjectController.Post");
-            ServiceObject postResult = InsertOrUpdateServiceObject(value, false);
+            ServiceObject postResult = await InsertOrUpdateServiceObject(value, false);
 
             logger.LogDebug("End GeneralObjectController.Post");
             return this.CreatedAtAction(nameof(FindServiceObject), new { id = postResult.ObjectID }, postResult);
@@ -599,12 +611,13 @@ namespace FE.Creator.FEConsoleAPI.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <param name="value"></param>
+        [Route("{id:int}")]
         [HttpPut]
         [ProducesResponseType(typeof(ServiceObject), StatusCodes.Status200OK)]
-        public ActionResult<ServiceObject> Put(int id, [FromBody]ServiceObject value)
+        public async Task<ActionResult<ServiceObject>> Put(int id, [FromBody]ServiceObject value)
         {
             logger.LogDebug("Start GeneralObjectController.Put");
-            ServiceObject putResult = InsertOrUpdateServiceObject(value, true);
+            ServiceObject putResult = await InsertOrUpdateServiceObject(value, true);
 
             logger.LogDebug("End GeneralObjectController.Put");
             return this.Ok(putResult);
@@ -615,6 +628,7 @@ namespace FE.Creator.FEConsoleAPI.Controllers
         /// DELETE: api/GeneralObject/5
         /// </summary>
         /// <param name="id"></param>
+        [Route("{id:int}")]
         [HttpDelete]
         public void Delete(int id)
         {

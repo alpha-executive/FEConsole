@@ -80,10 +80,13 @@ namespace FE.Creator.IdentityServer
 
             //    config.AddConfiguration(appConfiguration);
             //})
+            .ConfigureLogging(logoptions =>
+            {
+                logoptions.AddSerilog();
+            })
             .ConfigureWebHostDefaults(webBuilder =>
-              {
-                    webBuilder.UseSerilog();
+             {
                     webBuilder.UseStartup<Startup>();
-                });
+             });
     }
 }

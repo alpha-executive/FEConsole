@@ -1,0 +1,22 @@
+﻿<div class="col-md-12">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-link"></i> {{objfield.keyName}}</span>
+        <span class="form-control">{{objfield.referedObject.objectName }}</span>
+        <span class="input-group-btn"><button class="btn btn-warning btn-flat" ng-click="ctrl.loadReferedObjectList(objfield)"><i class="fa fa-angle-down"></i>Choose...</button></span>
+    </div>
+    <div class="table-responsive no-padding" ng-if="objfield.referedObjectList && objfield.referedObjectList.length > 0">
+        <table class="table table-hover with-border">
+            <tbody>
+                <tr>
+                    <th>ID</th>
+                    <th>Object Name</th>
+                </tr>
+                <tr ng-repeat="orow in objfield.referedObjectList" ng-click="ctrl.onSelectObjectReference(orow, objfield)">
+                    <td>{{orow.objectID}}</td>
+                    <td>{{orow.objectName}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br />
+</div>

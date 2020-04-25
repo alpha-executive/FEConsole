@@ -1,0 +1,39 @@
+﻿<div class="col-md-12">
+    <div class="input-group" ng-if="objfield.value.primeDataType == 0 || objfield.value.primeDataType == 5 ">
+        <span class="input-group-addon"><i class="fa fa-tag"></i> {{objfield.keyName}}</span>
+        <input type="text" class="form-control" ng-model="objfield.value.value" />
+    </div>
+
+    <!--integer-->
+    <div class="input-group" ng-if="objfield.value.primeDataType == 1">
+        <div class="input-group-addon">
+            <i class="fa fa-tag"></i> {{objfield.keyName}}
+        </div>
+        <input type="text" class="form-control" data-inputmask="'mask': '999999999'" data-mask=""  ng-model="objfield.value.value" />
+    </div>
+
+    <!--Long-->
+    <div class="input-group" ng-if="objfield.value.primeDataType == 2">
+        <div class="input-group-addon">
+            <i class="fa fa-tag"></i> {{objfield.keyName}}
+        </div>
+        <input type="text" class="form-control" data-inputmask="'mask': '9999999999999999999'" data-mask=""  ng-model="objfield.value.value" />
+    </div>
+
+    <!--datetime-->
+    <div class="input-group" ng-if="objfield.value.primeDataType == 3">
+        <div class="input-group-addon">
+            <i class="fa fa-calendar"></i> {{objfield.keyName}}
+        </div>
+        <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask=""  ng-model="objfield.value.value" />
+    </div>
+
+    <!--Number-->
+    <div class="input-group" ng-if="objfield.value.primeDataType == 4">
+        <div class="input-group-addon">
+            <i class="fa fa-money"></i> {{objfield.keyName}}
+        </div>
+        <input type="text" class="form-control" data-inputmask="'mask': '9999999999999999999.99'" data-mask=""  ng-model="objfield.value.value" />
+    </div>
+    <br />
+</div>

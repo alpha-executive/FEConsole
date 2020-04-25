@@ -1,0 +1,64 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<AppLang> AppLangResource
+<div class="col-md-12">
+    <div class="box box-primary">
+        <div class="box-body no-border">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button class="btn btn-warning" type="file" ngf-select="ctrl.uploadImage($file, $invalidFiles,ctrl.editingImageObject)"
+                                accept="image/*"
+                                ngf-max-size="20MB">
+                            <i class="fa fa-upload"></i> @AppLangResource["IMAGEMGR_BTN_UPLOADIMG"]<i class="fa fa-refresh fa-spin text-green" ng-if="ctrl.f.showprogress"></i>
+
+                        </button><span class="message">{{ctrl.errorMsg}}</span>
+                        <br />
+                        <br />
+                        <div class="info-box" ng-if="ctrl.editingImageObject.properties.imageFile.fileName != null">
+                            <a class="info-box-icon bg-aqua" href="{{ctrl.editingImageObject.properties.imageFile.fileUrl | fullUrl}}"><i class="fa fa-cloud-download"></i></a>
+                            <div class="info-box-content text-black">
+                                <span class="info-box-text">{{ ctrl.editingImageObject.properties.imageFile.fileName }}</span>
+                                <span class="info-box-number">{{ctrl.editingImageObject.properties.imageFile.fileSize}} KB</span>
+                                <span class="info-box-text">SHA: {{ctrl.editingImageObject.properties.imageFile.fileCRC}}</span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">
+                        <i class="fa fa-tag"></i> @AppLangResource["IMAGEMGR_LBL_IMGTITLE"]</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" ng-model="ctrl.editingImageObject.objectName" auto-focus />
+                        </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">
+                        <i class="fa fa-commenting"></i> @AppLangResource["IMAGEMGR_LBL_DESC"]
+                    </label>
+                    <div class="col-sm-10">
+                        <textarea rows="3" class="form-control" ng-model="ctrl.editingImageObject.properties.imageDesc.value"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">
+                        <i class="fa fa-share-alt"></i> @AppLangResource["IMAGEMGR_LBL_SHARED"]
+                    </label>
+                    <div class="col-sm-10">
+                        <div class="form-control">
+                            <input type="radio" ng-model="ctrl.editingImageObject.properties.imageSharedLevel.value" ng-value="0" ng-checked="ctrl.editingImageObject.properties.imageSharedLevel.value == 0" /> @AppLangResource["IMAGEMGR_RDO_PRIVATE"]
+                            <input type="radio" ng-model="ctrl.editingImageObject.properties.imageSharedLevel.value" ng-value="1" ng-checked="ctrl.editingImageObject.properties.imageSharedLevel.value == 1" /> @AppLangResource["IMAGEMGR_RDO_SHARED"]
+                        </div>
+                    </div>
+                </div>
+                <ul class="list-inline">
+                    <li class="pull-right">
+                        <button class="btn btn-box-tool" type="button" ng-click="ctrl.saveEditingImage()">
+                            <i class="fa fa-save"></i> @AppLangResource["COMMON_BTN_SAVE"]</button>
+                            <button class="btn btn-box-tool" type="button" ng-click="ctrl.cancelEditingImage()"><i class="fa fa-close "></i> @AppLangResource["COMMON_BTN_CANCEL"]</button>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
+</div>

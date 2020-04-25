@@ -1,0 +1,153 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<AppLang> AppLangResource
+@{
+    ViewBag.Title = AppLangResource["TASKMGR_TITLE"];
+}
+<div class="row" ng-app="ngObjectRepository" ng-controller="TaskController as ctrl">
+    <div class="col-md-12">
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                <li class="active" ng-click="ctrl.switchTab(true)"><a aria-expanded="true" href="#targets" data-toggle="tab">@AppLangResource["TASKMGR_TAB_TARGETS"]</a></li>
+                <li ng-click="ctrl.switchTab(false)"><a aria-expanded="false" href="#tasks" data-toggle="tab">@AppLangResource["TASKMGR_TAB_TASKS"]</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="targets">
+                    <div class="row" ng-if="ctrl.displayMode == 'targetEditing'">
+                        <div class="col-md-12">
+                            <div class="box box-primary">
+                                <div class="box-body no-border">
+                                    <form class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2">
+                                                <i class="fa fa-tag"></i> @AppLangResource["TASKMGR_LBL_TGTTITLE"]</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" ng-model="ctrl.currentTarget.objectName" auto-focus />
+                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2">
+                                                <i class="fa fa-commenting"></i> @AppLangResource["TASKMGR_LBL_DESC"]
+                                            </label>
+                                            <div class="col-sm-10">
+                                                <textarea rows="3" class="form-control" ng-model="ctrl.currentTarget.properties.targetDesc.value"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2">
+                                                <i class="fa fa-navicon"></i> @AppLangResource["TASKMGR_LBL_TGTTYPE"]
+                                            </label>
+                                            <div class="col-sm-10">
+                                                <div class="form-control">
+                                                    <input type="radio" ng-model="ctrl.currentTarget.properties.targetType.value" ng-value="0" ng-checked="ctrl.currentTarget.properties.targetType.value == 0" /> @AppLangResource["TASKMGR_RDO_IMPORTANT"]
+                                                    <input type="radio" ng-model="ctrl.currentTarget.properties.targetType.value" ng-value="1" ng-checked="ctrl.currentTarget.properties.targetType.value == 1" /> @AppLangResource["TASKMGR_RDO_MEDIUM"]
+                                                    <input type="radio" ng-model="ctrl.currentTarget.properties.targetType.value" ng-value="2" ng-checked="ctrl.currentTarget.properties.targetType.value == 2" /> @AppLangResource["TASKMGR_RDO_LOW"]
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2">
+                                                <i class="fa fa-calendar"></i> @AppLangResource["TASKMGR_LBL_STARTDATE"]
+                                            </label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control field-datepicker" ng-model="ctrl.currentTarget.properties.targetStartDate.value" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2">
+                                                <i class="fa fa-calendar"></i> @AppLangResource["TASKMGR_LBL_COMP_DATE"]
+                                            </label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control field-datepicker" ng-model="ctrl.currentTarget.properties.targetCompleteDate.value" />
+                                            </div>
+                                        </div>
+                                        <ul class="list-inline">
+                                            <li class="pull-right">
+                                                <button class="btn btn-box-tool" type="button" ng-click="ctrl.saveTarget()">
+                                                    <i class="fa fa-save"></i> @AppLangResource["COMMON_BTN_SAVE"]</button>
+                                                    <button class="btn btn-box-tool" type="button" ng-click="ctrl.cancelTarget()"><i class="fa fa-close "></i> @AppLangResource["COMMON_BTN_CANCEL"]</button>
+                                            </li>
+                                        </ul>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            $(function () {
+                                applySystemDateFormat();
+                            });
+                        </script>
+                    </div>
+                    <div class="row" ng-if="ctrl.displayMode == 'targetTaskEditing'">
+                        <div class="col-md-12">
+                            @await Html.PartialAsync("~/Views/AngularView/Client/Efficiency/TaskEditing.cshtml")
+                        </div>
+                    </div>
+                    <div class="row" ng-if="ctrl.displayMode == 'targetList'">
+                        <div class="col-md-12" ng-if="vm.progress > 0 && vm.progress < 100">
+                            @await Html.PartialAsync("~/Views/AngularView/Client/Common/Progress.cshtml")
+                        </div>
+                        <div class="col-md-12">
+                            <div class="btn-group margin-bottom">
+                                <button type="button" class="btn btn-success" ng-click="ctrl.createorUpdateTarget(null)"><i class="fa fa-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="col-md-4" ng-repeat="target in ctrl.targets">
+                            <div class="info-box" ng-class="{'bg-red': target.properties.targetType.value == 0, 'bg-yellow': target.properties.targetType.value == 1, 'bg-blue': target.properties.targetType.value == 2}">
+                                <div class="box-tools pull-right">
+                                    <a class="btn btn-box-tool" ng-click="ctrl.showTargetTasks(target)"><i class="fa fa-tasks"></i></a>
+                                    <a class="btn btn-box-tool" ng-click="ctrl.createorUpdateTarget(target)"><i class="fa fa-pencil"></i></a>
+                                    <a class="btn btn-box-tool" ng-click="ctrl.deleteTarget(target)"><i class="fa fa-trash"></i></a>
+                                </div>
+                                <span class="info-box-icon cursor-pointer" ng-click="ctrl.showTargetTasks(target)"><i class="fa fa-flag" ng-class="{'text-success': target.properties.targetStatus.value == 100}"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text" ng-bind="target.objectName"></span>
+                                    <span class="progress-description" ng-bind="target.properties.targetDesc.value"></span>
+                                    <div class="progress">
+                                        <div class="progress-bar" ng-style="{width: target.properties.targetStatus.value + '%'}"></div>
+                                    </div>
+                                    <span class="label bg-gray" ng-bind="target.properties.targetStartDate.value"></span>
+                                    <span class="label bg-gray" ng-bind="target.properties.targetCompleteDate.value"></span>
+                                </div>
+                                <!-- /.info-box-content -->
+                            </div>
+                        </div>
+                        <div class="col-md-12" ng-if="ctrl.pager.totalPages > 1">
+                            @await Html.PartialAsync("~/Views/AngularView/Client/Common/Pager.cshtml")
+                        </div>
+                    </div>
+                    <div class="row" ng-if="ctrl.displayMode == 'targetTaskList'">
+                        <div class="col-md-12">
+                            <div class="btn-group margin-bottom">
+                                <button type="button" class="btn btn-success" ng-click="ctrl.createOrUpdateTask(null)"><i class="fa fa-plus"></i></button>
+                                <button type="button" class="btn btn-success" ng-click="ctrl.navToTargetList()"><i class="fa fa-reply"></i></button>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            @await Html.PartialAsync("~/Views/AngularView/Client/Efficiency/TaskList.cshtml")
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="tasks">
+                    <div class="row" ng-if="ctrl.displayMode == 'taskEditing'">
+                        <div class="col-md-12">
+                            @await Html.PartialAsync("~/Views/AngularView/Client/Efficiency/TaskEditing.cshtml")
+                        </div>
+                    </div>
+                    <div class="row" ng-if="ctrl.displayMode == 'taskList'">
+                        <div class="col-md-12">
+                            @await Html.PartialAsync("~/Views/AngularView/Client/Efficiency/TaskList.cshtml")
+                        </div>
+                        <div class="col-md-12" ng-if="ctrl.pager.totalPages >= 1">
+                            @await Html.PartialAsync("~/Views/AngularView/Client/Common/Pager.cshtml")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="~/js/apputilities.js"></script>
+    <script type="text/javascript" src="~/js/taskcontroller.js"></script>
+}

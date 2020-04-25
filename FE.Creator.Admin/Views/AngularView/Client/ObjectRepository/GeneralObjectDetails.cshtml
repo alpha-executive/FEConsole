@@ -1,0 +1,137 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<AppLang> AppLangResource
+<div class="box box-primary box-solid">
+    <div class="box-header with-border">
+        <h3 class="box-title">
+            <i class="fa fa-table"></i> @AppLangResource["DATA_CUST_VIEW_TABLE_OBJECT"] - {{ctrl.currentGeneralObject.objectName}}
+        </h3>
+        <div class="box-tools pull-right">
+            <div class="btn-group">
+                <button class="btn btn-box-tool" ng-click="ctrl.setViewMode('list')"><i class="fa fa-mail-reply"></i> @AppLangResource["DATA_CUST_BACKTOLIST"]</button>
+            </div>
+        </div>
+    </div>
+    <div class="box-body">
+        <div class="box box-warning">
+            <div class="box-header">
+                <h4><i class="fa fa-flag-o"></i> @AppLangResource["DATA_CUST_GENERAL_PROPERTY"]</h4>
+            </div>
+            <div class="box-body">
+                <!--ID and Name-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-addon label-default">
+                                <i class="fa fa-star-o text-yellow"></i> @AppLangResource["DATA_CUST_TABLE_OBJID"]
+                            </span>
+                            <span class="form-control">{{ctrl.currentGeneralObject.objectID}}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-addon label-default">
+                                <i class="fa fa-star-o text-yellow"></i> @AppLangResource["DATA_CUST_TABLE_OBJECT_NAME"]
+                            </span>
+                            <span class="form-control">{{ctrl.currentGeneralObject.objectName}}</span>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <!--owner-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <span class="input-group-addon label-default">
+                                <i class="fa fa-star-o text-yellow"></i> @AppLangResource["DATA_CUST_TABLE_OBJOWNER"]
+                            </span>
+                            <span class="form-control">{{ctrl.currentGeneralObject.objectOwner}}</span>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <!--Created and Created By-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-addon label-default">
+                                <i class="fa fa-star-o text-yellow"></i> @AppLangResource["DATA_CUST_TABLE_CREATED"]
+                            </span>
+                            <span class="form-control">{{ctrl.currentGeneralObject.created}}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-addon label-default">
+                                <i class="fa fa-star-o text-yellow"></i> @AppLangResource["DATA_CUST_TABLE_CREATEDBY"]
+                            </span>
+                            <span class="form-control">{{ctrl.currentGeneralObject.createdBy}}</span>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <!--Updated and updatedBy-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-addon label-default">
+                                <i class="fa fa-star-o text-yellow"></i> @AppLangResource["DATA_CUST_TABLE_UPDATED"]
+                            </span>
+                            <span class="form-control">{{ctrl.currentGeneralObject.updated}}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-addon label-default">
+                                <i class="fa fa-star-o text-yellow"></i> @AppLangResource["DATA_CUST_TABLE_UPDATEDBY"]
+                            </span>
+                            <span class="form-control">{{ctrl.currentGeneralObject.updatedBy}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box box-warning">
+            <div class="box-header">
+                <h4 class="box-title"><i class="fa fa-cubes"></i> @AppLangResource["DATA_CUST_ADVANCED_PROPERTY"]</h4>
+            </div>
+            <div class="box-body">
+                <div class="row" ng-repeat="field in ctrl.currentObjectDefinition.objectFields">
+                    <div class="col-md-12" ng-if="field.generalObjectDefinitionFiledType != 3">
+                        <div class="input-group">
+                            <span class="input-group-addon label-default"><i class="fa fa-tag"></i> {{field.objectDefinitionFieldName}}</span>
+                            <span class="form-control">{{ctrl.currentGeneralObject.properties | objectValueFilter:field}}</span>
+                        </div>
+                        <br />
+                    </div>
+                    <div class="col-md-12" ng-if="field.generalObjectDefinitionFiledType == 3">
+                        <div class="box">
+                            <div class="box-header">
+                                <h5 class="box-title"><i class="fa fa-paperclip"></i> {{field.objectDefinitionFieldName}}</h5>
+                            </div>
+                            <div class="box-body" ng-repeat="objfield in ctrl.currentGeneralObject.properties | filter: { keyName : field.objectDefinitionFieldName }">
+                                <div class="info-box" ng-if="field.generalObjectDefinitionFiledType==3 && objfield.value.fileName != null">
+                                    <a class="info-box-icon bg-aqua" href="{{objfield.value.fileUrl | fullUrl}}"><i class="fa fa-cloud-download"></i></a>
+                                    <div class="info-box-content text-black">
+                                        <span class="info-box-text">{{ objfield.value.fileName }}</span>
+                                        <span class="info-box-number">{{objfield.value.fileSize}} KB</span>
+                                        <span class="info-box-text">SHA: {{objfield.value.fileCRC}}</span>
+                                    </div>
+                                    <!-- /.info-box-content -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.ng-if -->
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </div><!--/.box-->
+    </div><!-- /.box-body -->
+    <div class="box-footer">
+        <div class="box-tools pull-right">
+            <div class="btn-group">
+                <button class="btn btn-box-tool" ng-click="ctrl.setViewMode('list')"><i class="fa fa-mail-reply"></i> @AppLangResource["DATA_CUST_BACKTOLIST"]</button>
+            </div>
+        </div>
+    </div>
+</div>

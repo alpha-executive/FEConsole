@@ -1,0 +1,18 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<AppLang> AppLangResource
+<div class="input-group">
+    <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+    <input type="text" class="form-control" placeholder="Field Name" ng-model="fld.objectDefinitionFieldName">
+</div>
+<br />
+<div class="input-group">
+    <span class="input-group-addon"><i class="fa fa-key"></i></span>
+    <input type="text" class="form-control" placeholder="Field Key" ng-model="fld.objectDefinitionFieldKey">
+</div>
+<div class="form-group">
+    <label>
+        @AppLangResource["DATA_CUST_FIELD_REFERNCE"]</label>
+    <select class="form-control" ng-required="true" ng-model="fld.referedObjectDefinitionID" convert-to-number>
+        <option ng-repeat="option in AvailableObjectDefinitions" value="{{option.objectDefinitionID}}">{{option.objectDefinitionName}}</option>
+    </select>
+</div>

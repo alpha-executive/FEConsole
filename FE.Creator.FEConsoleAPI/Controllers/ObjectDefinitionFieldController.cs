@@ -1,5 +1,6 @@
 ﻿using FE.Creator.ObjectRepository;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace FE.Creator.FEConsoleAPI.ApiControllers
 {
@@ -7,19 +8,19 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
     /// DELETE: api/ObjectDefinitionField/{id}
     ///      delete a object definition field by id
     /// </summary>
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ObjectDefinitionFieldController : ControllerBase
+    public class ObjectDefinitionFieldController : FEAPIBaseController
     {
         IObjectService objectService = null;
 
 
-        public ObjectDefinitionFieldController(IObjectService objectService)
+        public ObjectDefinitionFieldController(IObjectService objectService,
+            IServiceProvider provider) : base(provider)
         {
             this.objectService = objectService;
         }
 
         // DELETE: api/ObjectDefinitionField/5
+        [Route("{id:int}")]
         [HttpDelete]
         public void Delete(int id)
         {

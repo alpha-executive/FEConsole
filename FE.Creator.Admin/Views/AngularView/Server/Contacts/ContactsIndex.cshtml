@@ -1,0 +1,146 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<AppLang> AppLangResource
+@{
+    ViewBag.Title = AppLangResource["CONTACTS_TITLE"];
+}
+<div class="row" ng-app="ngObjectRepository" ng-controller="GeneralContactController as ctrl">
+    <div class="col-md-12" ng-if="ctrl.displayMode == 'contactList'">
+        <div class="box box-primary">
+            <div class="box-header">
+                <h3 class="box-title">
+                    @AppLangResource["CONTACTS_SUBTITLE"]
+                </h3>
+                <div class="box-tools">
+                    <button class="btn btn-box-tool" ng-click="ctrl.editGeneralContactProfile(null)"><i class="fa fa-plus text-green"></i> @AppLangResource["CONTACTS_BTN_NEWCONTACT"]</button>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <th>@AppLangResource["CONTACTS_COL_USERNAME"]</th>
+                            <th>@AppLangResource["CONTACTS_COL_FREQUENCY"]</th>
+                            <th>@AppLangResource["CONTACTS_COL_PHONE"]</th>
+                            <th>@AppLangResource["CONTACTS_COL_RSNOTE"]</th>
+                            <th>@AppLangResource["CONTACTS_COL_ACTION"]</th>
+                        </tr>
+                        <tr ng-repeat="contact in ctrl.generalcontacts">
+                            <td ng-switch="contact.properties.tapLevel.value">
+                                <span ng-switch-when="10" class="label label-danger">{{contact.properties.profile.firstName.value + ',' + contact.properties.profile.lastName.value}}</span>
+                                <span ng-switch-when="9" class="label label-success">{{contact.properties.profile.firstName.value + ',' + contact.properties.profile.lastName.value}}</span>
+                                <span ng-switch-when="8" class="label label-warning">{{contact.properties.profile.firstName.value + ',' + contact.properties.profile.lastName.value}}</span>
+                                <span ng-switch-default class="label label-primary">{{contact.properties.profile.firstName.value + ',' + contact.properties.profile.lastName.value}}</span>
+                            </td>
+                            <td>
+                                <div class="progress progress-xs" ng-switch="contact.properties.tapLevel.value">
+                                    <div ng-switch-when="10" class="progress-bar bg-red" style="width:100%;"></div>
+                                    <div ng-switch-when="9" class="progress-bar bg-green" ng-switch-when-separator="|" ng-style="{width: contact.properties.tapLevel.value * 10 + '%'}"></div>
+                                    <div ng-switch-when="8" class="progress-bar bg-yellow" ng-switch-when-separator="|" ng-style="{width: contact.properties.tapLevel.value * 10 + '%'}"></div>
+                                    <div ng-switch-default class="progress-bar bg-primary" ng-style="{width: contact.properties.tapLevel.value * 10 + '%'}"></div>
+                                </div>
+                            </td>
+                            <td ng-bind="contact.properties.contact.mobile.value"></td>
+                            <td ng-bind="contact.properties.relationship.value"></td>
+                            <td>
+                                <button class="btn btn-flat btn-primary btn-xs" ng-click="ctrl.editGeneralContactProfile(contact)"><i class="fa fa-user"></i></button>
+                                <button class="btn btn-flat btn-warning btn-xs" ng-click="ctrl.deleteGeneralContact(contact)"><i class="fa fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <div class="row">
+                    <div class="col-md-12" ng-if="ctrl.pager.totalPages >= 1">
+                        @await Html.PartialAsync("~/Views/AngularView/Client/Common/Pager.cshtml")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12" ng-if="ctrl.displayMode == 'contactEdit'">
+        <!--General Contact Profile-->
+        <div class="box box-primary">
+            <div class="box-header">
+                <label style="font-size:18px;" class="label label-warning" ng-bind="ctrl.currentGeneralContact.properties.relationship.value"></label>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" ng-click="ctrl.onReturn2List()"><i class="fa fa-share text-green"></i> @AppLangResource["CONTACTS_BTN_RETURNTOLIST"]</button>
+
+                </div>
+            </div>
+            <div class="box-body box-profile" ng-if="!ctrl.isEditGeneralContactProfile">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <star-rating max="10" ng-model="ctrl.currentGeneralContact.properties.tapLevel.value" readonly="true"></star-rating>
+                    </div>
+                </div>
+                <ul class="list-inline">
+                    <li class="pull-right">
+                        <button class="btn btn-box-tool" type="button" ng-click="ctrl.onGeneralContactEditing(ctrl.currentGeneralContact)"><i class="fa fa-pencil"></i> @AppLangResource["COMMON_BTN_EDIT"]</button>
+
+                    </li>
+                </ul>
+            </div>
+            <form class="form-horizontal" ng-if="ctrl.isEditGeneralContactProfile">
+                <div class="box-body box-primary">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">
+                            <i class="fa fa-tag"></i> @AppLangResource["CONTACTS_LBL_RELATIONSHIP"]
+                        </label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" ng-model="ctrl.currentGeneralContact.properties.relationship.value" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">
+                            <i class="fa fa-tag"></i> @AppLangResource["CONTACTS_LBL_TAPLEVEL"]
+                        </label>
+                        <div class="col-sm-10">
+                            <star-rating max="10" ng-model="ctrl.currentGeneralContact.properties.tapLevel.value"></star-rating>
+                        </div>
+                    </div>
+                    <ul class="list-inline">
+                        <li class="pull-right">
+                            <button class="btn btn-box-tool" type="button" ng-click="ctrl.saveGeneralContact()">
+                                <i class="fa fa-save"></i> @AppLangResource["COMMON_BTN_SAVE"]
+                            </button>
+                            <button class="btn btn-box-tool" type="button" ng-click="ctrl.cancelGeneralContactEdit()"><i class="fa fa-close "></i> @AppLangResource["COMMON_BTN_CANCEL"]</button>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+            <!-- /.box-body -->
+        </div>
+        <!--End General Contact Profile-->
+        <!-- Profile Image -->
+        @await Html.PartialAsync("~/Views/AngularView/Client/UserProfile/BasicProfile.cshtml")
+        <!-- /.box -->
+        <!-- Contact Box -->
+        @await Html.PartialAsync("~/Views/AngularView/Client/UserProfile/ContactInfo.cshtml")
+        <!-- /.box -->
+        <!-- Address Box -->
+        @await Html.PartialAsync("~/Views/AngularView/Client/UserProfile/AddressInfo.cshtml")
+        <!-- /.box -->
+        <!-- Education -->
+        @await Html.PartialAsync("~/Views/AngularView/Client/UserProfile/EducationInfo.cshtml")
+        <!-- Skill Box -->
+        @await Html.PartialAsync("~/Views/AngularView/Client/UserProfile/SkillInfo.cshtml")
+        <!-- /.Skill Box -->
+        <!--Work Experience-->
+        @await Html.PartialAsync("~/Views/AngularView/Client/UserProfile/WorkExperienceInfo.cshtml")
+        <!--./Work experience box-->
+
+        <div class="box-footer">
+            <div class="box-tools text-center">
+                <button class="btn btn-box-tool" ng-click="ctrl.onReturn2List()"><i class="fa fa-share text-green"></i> @AppLangResource["CONTACTS_BTN_RETURNTOLIST"]</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="~/js/apputilities.js"></script>
+    <script type="text/javascript" src="~/js/contactcontroller.js"></script>
+    <script type="text/javascript" src="~/js/userprofilecontroller.js"></script>
+}

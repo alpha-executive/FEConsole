@@ -1,0 +1,119 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IHtmlLocalizer<AppLang> AppLangResource
+<div class="box box-primary" ng-init="ctrl.init(CurrentUserProfileId)" ng-controller="GeneralContactProfileController as ctrl">
+    <div class="box-body box-profile" ng-if="!ctrl.isEditBasicInfo">
+        <div ng-if="ctrl.basicinfo.properties.Image.fileUrl == null" class="profile-user-img img-responsive img-circle">
+            <i class="ion ion-person-add"></i>
+        </div>
+        <h3 class="profile-username text-center">{{ctrl.basicinfo.properties.firstName.value}}, {{ctrl.basicinfo.properties.lastName.value}}</h3>
+        <div class="row">
+            <div class="col-md-4">
+                <strong>
+                    <i class="fa fa-birthday-cake margin-r-5"></i> @AppLangResource["PROFILE_BIRTH_DATE"]</strong>
+                    <p class="text-muted">
+                        {{ctrl.basicinfo.properties.birthDate.value}}
+                    </p>
+            </div>
+            <div class="col-md-4">
+                <strong>
+                    <i class="fa fa-genderless margin-r-5"></i> @AppLangResource["PROFILE_GENDER"]</strong>
+                    <p class="text-muted">
+                        {{ctrl.basicinfo.properties.gender.value}}
+                    </p>
+            </div>
+            <div class="col-md-4">
+                <strong>
+                    <i class="fa fa-barcode margin-r-5"></i> @AppLangResource["PROFILE_ID"]</strong>
+                    <p class="text-muted">
+                        {{ctrl.basicinfo.properties.ID.value}}
+                    </p>
+            </div>
+        </div>
+        <ul class="list-inline">
+            <li class="pull-right">
+                <button class="btn btn-box-tool" type="button" ng-click="ctrl.onBasicInfoEditing()"><i class="fa fa-pencil"></i> @AppLangResource["COMMON_BTN_EDIT"]</button>
+            </li>
+        </ul>
+    </div>
+    <form class="form-horizontal" ng-if="ctrl.isEditBasicInfo">
+        <div class="box-body box-primary">
+            <div class="form-group">
+                <label class="control-label col-sm-2">
+                    <i class="fa fa-tag"></i> @AppLangResource["PROFILE_FIRSTNAME"]</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" ng-model="ctrl.basicinfo.properties.firstName.value" />
+                    </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">
+                    <i class="fa fa-tag"></i> @AppLangResource["PROFILE_LASTNAME"]
+                </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" ng-model="ctrl.basicinfo.properties.lastName.value" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">
+                    <i class="fa fa-birthday-cake"></i> @AppLangResource["PROFILE_BIRTH_DATE"]
+                </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control field-datepicker" ng-model="ctrl.basicinfo.properties.birthDate.value" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">
+                    <i class="fa fa-barcode"></i> @AppLangResource["PROFILE_ID"]
+                </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" ng-model="ctrl.basicinfo.properties.ID.value" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">
+                    <i class="fa fa-user"></i> @AppLangResource["PROFILE_GENDER"]
+                </label>
+                <div class="col-sm-10">
+                    <div class="form-control">
+                        <input type="radio" ng-model="ctrl.basicinfo.properties.gender.value" ng-value="0" ng-checked="ctrl.basicinfo.properties.gender.value == 0" /> @AppLangResource["PROFILE_MALE"]
+                        <input type="radio" ng-model="ctrl.basicinfo.properties.gender.value" ng-value="1" ng-checked="ctrl.basicinfo.properties.gender.value == 1" /> @AppLangResource["PROFILE_FEMALE"]
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button class="btn btn-warning" type="file" ngf-select="ctrl.uploadFiles($file, $invalidFiles,ctrl.basicinfo.properties.Image)" ngf-max-height="1000" ngf-max-size="10MB">
+                        <i class="fa fa-upload"></i> @AppLangResource["PROFILE_BTN_UPLOADIMG"] <i class="fa fa-refresh fa-spin text-green" ng-if="ctrl.f.showprogress"></i>
+
+                    </button><span class="message">{{ctrl.errorMsg}}</span>
+                    <br />
+                    <br />
+                    <div class="info-box" ng-if="ctrl.basicinfo.properties.Image.fileName != null">
+                        <a class="info-box-icon bg-aqua" href="{{ctrl.basicinfo.properties.Image.fileUrl}}"><i class="fa fa-cloud-download"></i></a>
+                        <div class="info-box-content text-black">
+                            <span class="info-box-text">{{ ctrl.basicinfo.properties.Image.fileName }}</span>
+                            <span class="info-box-number">{{ctrl.basicinfo.properties.Image.fileSize}} KB</span>
+                            <span class="info-box-text">SHA: {{ctrl.basicinfo.properties.Image.fileCRC}}</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                </div>
+            </div>
+            <ul class="list-inline">
+                <li class="pull-right">
+                    <button class="btn btn-box-tool" type="button" ng-click="ctrl.saveUserinfo()">
+                        <i class="fa fa-save"></i> @AppLangResource["COMMON_BTN_SAVE"]</button>
+                        <button class="btn btn-box-tool" type="button" ng-click="ctrl.cancelUserInfoEdit()"><i class="fa fa-close "></i> @AppLangResource["COMMON_BTN_CANCEL"]</button>
+                </li>
+            </ul>
+            <script type="text/javascript">
+                $(function () {
+                    $(".field-datepicker").datepicker({
+                        autoclose: true
+                    })
+                });
+            </script>
+        </div>
+    </form>
+    <!-- /.box-body -->
+</div>

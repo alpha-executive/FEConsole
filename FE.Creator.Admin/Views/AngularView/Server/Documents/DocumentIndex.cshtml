@@ -1,0 +1,230 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<AppLang> AppLangResource
+@{
+    ViewBag.Title = AppLangResource["DOCUMENT_TITLE"];
+
+    var uploadSetting = Context.GetFileUploadSetting();
+    var maxUploadFileSize = uploadSetting.MaxFileSize;
+    var allowedFileExtensions = uploadSetting.AllowedExtensions;
+}
+
+<div class="box box-primary" ng-app="ngObjectRepository" ng-controller="DocumentController as ctrl">
+    <div class="box-header primary with-border">
+        <div class="mailbox-controls">
+            <div class="btn-group">
+                <button class="btn btn-box-tool" type="button" ng-click="ctrl.directorEditing(null)">
+                    <i class="fa fa-folder text-green"></i>  @AppLangResource["DOCUMENT_ADD_FOLDER"]</button>
+                    <button class="btn btn-box-tool" type="button" ng-click="ctrl.documentEditing(null)">
+                        <i class="fa fa-file text-green"></i> @AppLangResource["DOCUMENT_ADD_DOCUMENT"]</button>
+                        <button class="btn btn-box-tool" ng-click="ctrl.setViewMode('listView')">
+                            <i class="fa fa-list text-primary"></i> @AppLangResource["DOCUMENT_LIST_VIEW"]</button>
+                            <button class="btn btn-box-tool" ng-click="ctrl.setViewMode('gridView')"><i class="fa fa-th text-primary"></i> @AppLangResource["DOCUMENT_GRID_VIEW"]</button>
+            </div>
+            <div class="pull-right">
+                <div class="has-feedback">
+                    <input class="form-control input-sm" type="text" ng-model="ctrl.searchText" placeholder="@AppLangResource["DOCUMENT_SEARCH_TEXT_PLH"]">
+                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box-body">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb site-navpath pull-right">
+                    <li ng-repeat="path in ctrl.navpaths"><a ng-click="ctrl.navPath(path)" href="javascript:void(0);"><i ng-if="path.objectID == 0" class="fa fa-home text-warning"></i> {{path.objectName}}</a></li>
+                </ol>
+            </div>
+        </div>
+        <div class="box box-warning with-border" ng-if="ctrl.displayMode == 'dirEditing'">
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form class="form-horizontal">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">
+                                        <i class="fa fa-tag"></i> @AppLangResource["DOCUMENT_EDIT_FOLDER_NAME"]</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" ng-model="ctrl.currentEditingDirectory.objectName" auto-focus />
+                                        </div>
+                                </div>
+                                <ul class="list-inline">
+                                    <li class="pull-right">
+                                        <button class="btn btn-box-tool" type="button" ng-click="ctrl.saveDirectory()">
+                                            <i class="fa fa-save"></i> @AppLangResource["DOCUMENT_BTN_SAVE"]</button>
+                                            <button class="btn btn-box-tool" type="button" ng-click="ctrl.cancelDirectoryEdit()"><i class="fa fa-close "></i> @AppLangResource["DOCUMENT_BTN_CANCEL"]</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box box-warning with-border" ng-if="ctrl.displayMode == 'documentEditing'">
+            <div class="box-body">
+                <form class="form-horizontal">
+                    <div class="box-body box-primary">
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button class="btn btn-warning" type="file" ngf-select="ctrl.uploadFiles($file, $invalidFiles,ctrl.currentEditingDocument)" ngf-max-height="1000" ngf-max-size="@maxUploadFileSize">
+                                    <i class="fa fa-upload"></i> @AppLangResource["DOCUMENT_BTN_UPLOAD"] <i class="fa fa-refresh fa-spin text-green" ng-if="ctrl.f.showprogress"></i>
+
+                                </button><span class="message">{{ctrl.errorMsg}}</span>
+                                <br />
+                                <br />
+                                <div class="info-box" ng-if="ctrl.currentEditingDocument.properties.documentFile.fileName != null">
+                                    <a class="info-box-icon bg-aqua" href="{{ctrl.currentEditingDocument.properties.documentFile.fileUrl | fullUrl}}"><i class="fa fa-cloud-download"></i></a>
+                                    <div class="info-box-content text-black">
+                                        <span class="info-box-text">{{ ctrl.currentEditingDocument.properties.documentFile.fileName }}</span>
+                                        <span class="info-box-number">{{ctrl.currentEditingDocument.properties.documentFile.fileSize}} KB</span>
+                                        <span class="info-box-text">SHA: {{ctrl.currentEditingDocument.properties.documentFile.fileCRC}}</span>
+                                    </div>
+                                    <!-- /.info-box-content -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">
+                                <i class="fa fa-tag"></i> @AppLangResource["DOCUMENT_LBL_FILENAME"]</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" ng-model="ctrl.currentEditingDocument.objectName" auto-focus />
+                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">
+                                <i class="fa fa-clock-o"></i> @AppLangResource["DOCUMENT_LBL_VERSION"]
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" ng-model="ctrl.currentEditingDocument.properties.documentVersion.value" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">
+                                <i class="fa fa-share-alt"></i> @AppLangResource["DOCUMENT_LBL_SHARED"]
+                            </label>
+                            <div class="col-sm-10">
+                                <div class="form-control">
+                                    <input type="radio" ng-model="ctrl.currentEditingDocument.properties.documentSharedLevel.value" ng-value="0" ng-checked="ctrl.currentEditingDocument.properties.documentSharedLevel.value == 0" /> @AppLangResource["DOCUMENT_RDO_PRIVATE"]
+                                    <input type="radio" ng-model="ctrl.currentEditingDocument.properties.documentSharedLevel.value" ng-value="1" ng-checked="ctrl.currentEditingDocument.properties.documentSharedLevel.value == 1" /> @AppLangResource["DOCUMENT_RDO_SHARED"]
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="list-inline">
+                            <li class="pull-right">
+                                <button class="btn btn-box-tool" type="button" ng-click="ctrl.saveDocument()">
+                                    <i class="fa fa-save"></i> @AppLangResource["DOCUMENT_BTN_SAVE"]</button>
+                                    <button class="btn btn-box-tool" type="button" ng-click="ctrl.cancelDocumentEdit()"><i class="fa fa-close "></i> @AppLangResource["DOCUMENT_BTN_CANCEL"]</button>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="box no-border">
+            <div class="box-body" ng-if="ctrl.viewMode == 'listView'">
+                <table class="table no-margin">
+                    <thead>
+                        <tr>
+                            <th>@AppLangResource["DOCUMENT_TH_NAME"]</th>
+                            <th>@AppLangResource["DOCUMENT_TH_MODIFIED"]</th>
+                            <th>@AppLangResource["DOCUMENT_TH_OWNER"]</th>
+                            <th>@AppLangResource["DOCUMENT_TH_SIZE_KB"]</th>
+                            <th style="text-align:right;">@AppLangResource["DOCUMENT_TH_ACTION"]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="dir in ctrl.directories | filter: ctrl.searchText">
+                            <td><a class="btn btn-flat" ng-click="ctrl.folderdbclick(dir)" href="javascript:void(0);"><i class="fa fa-folder text-yellow"></i> {{dir.objectName}}</a></td>
+                            <td>{{dir.updated}}</td>
+                            <td>{{dir.objectOwner}}</td>
+                            <td></td>
+                            <td>
+                                <div class="btn-group pull-right">
+                                    <button class="btn btn-primary btn-flat btn-xs" type="button" ng-click="ctrl.directorEditing(dir)"><i class="fa fa-pencil"></i></button>
+                                    <button class="btn btn-warning btn-flat btn-xs" type="button" ng-click="ctrl.deleteDirectory(dir)"><i class="fa fa-trash"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr ng-repeat="doc in ctrl.documents | filter: ctrl.searchText">
+                            <td><a class="btn btn-flat" href="{{doc.properties.documentFile.fileUrl | fullUrl}}"><i class="fa text-primary {{doc.properties.documentFile | checkFileType}}"></i> {{doc.objectName}}</a></td>
+                            <td>{{doc.updated}}</td>
+                            <td>{{doc.objectOwner}}</td>
+                            <td>{{doc.properties.documentFile.fileSize}}</td>
+                            <td>
+                                <div class="btn-group pull-right">
+                                    <a class="btn btn-info btn-flat btn-xs" href="{{doc.properties.documentFile.fileUrl | fullUrl}}"><i class="fa fa-cloud-download"></i></a>
+                                    <button class="btn btn-primary btn-flat btn-xs" type="button" ng-click="ctrl.documentEditing(doc)"><i class="fa fa-pencil"></i></button>
+                                    <button class="btn btn-warning btn-flat btn-xs" type="button" ng-click="ctrl.documentDelete(doc)"><i class="fa fa-trash"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="box-body" ng-if="ctrl.viewMode != 'listView'">
+                <ul class="mailbox-attachments clearfix">
+                    <li ng-repeat="dir in ctrl.directories | filter: ctrl.searchText">
+                        <a class="mailbox-attachment-icon" ng-click="ctrl.folderdbclick(dir)" href="javascript:void(0);"><i class="fa fa-folder text-yellow"></i></a>
+                        <div class="mailbox-attachment-info">
+                            <a class="mailbox-attachment-name" href="javascript:void(0);">{{dir.objectName}}</a>
+                            <span class="mailbox-attachment-size">
+                                {{doc.updated}}
+                            </span>
+                            <span class="mailbox-attachment-size">
+                                <button class="btn btn-default btn-xs pull-right" type="button" ng-click="ctrl.directorEditing(dir)"><i class="fa fa-pencil"></i></button>
+                                <button class="btn btn-default btn-xs pull-right" type="button" ng-click="ctrl.deleteDirectory(dir)"><i class="fa fa-trash"></i></button>
+                            </span>
+                        </div>
+                    </li>
+                    <li ng-repeat="doc in ctrl.documents | filter: ctrl.searchText">
+                        <a class="mailbox-attachment-icon" href="{{doc.properties.documentFile.fileUrl | fullUrl}}"><i class="fa text-primary {{doc.properties.documentFile | checkFileType}}"></i></a>
+                        <div class="mailbox-attachment-info">
+                            <a class="mailbox-attachment-name" href="javascript:void(0);">{{doc.objectName}}</a>
+                            <span class="mailbox-attachment-size">
+                                {{doc.updated}}
+                            </span>
+                            <span class="mailbox-attachment-size">
+                                <a class="btn btn-default btn-xs pull-right" href="{{doc.properties.documentFile.fileUrl | fullUrl}}"><i class="fa fa-cloud-download"></i></a>
+                                <button class="btn btn-default btn-xs pull-right" type="button" ng-click="ctrl.documentEditing(doc)"><i class="fa fa-pencil"></i></button>
+                                <button class="btn btn-default btn-xs pull-right" type="button" ng-click="ctrl.documentDelete(doc)"><i class="fa fa-trash"></i></button>
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb site-navpath pull-right">
+                    <li ng-repeat="path in ctrl.navpaths"><a ng-click="ctrl.navPath(path)" href="javascript:void(0);"><i ng-if="path.objectID == 0" class="fa fa-home text-warning"></i> {{path.objectName}}</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!-- /.box-body -->
+    <div class="box-footer">
+        <div class="mailbox-controls">
+            <div class="btn-group">
+                <button class="btn btn-box-tool" type="button" ng-click="ctrl.directorEditing(null)">
+                    <i class="fa fa-folder text-green"></i>  @AppLangResource["DOCUMENT_ADD_FOLDER"]</button>
+                    <button class="btn btn-box-tool" type="button" ng-click="ctrl.documentEditing(null)">
+                        <i class="fa fa-file text-green"></i> @AppLangResource["DOCUMENT_ADD_DOCUMENT"]</button>
+                        <button class="btn btn-box-tool" ng-click="ctrl.setViewMode('listView')">
+                            <i class="fa fa-list text-primary"></i> @AppLangResource["DOCUMENT_LIST_VIEW"]</button>
+                            <button class="btn btn-box-tool" ng-click="ctrl.setViewMode('gridView')"><i class="fa fa-th text-primary"></i> @AppLangResource["DOCUMENT_GRID_VIEW"]</button>
+            </div>
+            <div class="pull-right">
+                <div class="has-feedback">
+                    <input class="form-control input-sm" type="text" ng-model="ctrl.searchText" placeholder="@AppLangResource["DOCUMENT_SEARCH_TEXT_PLH"]">
+                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                </div>
+                <!-- /.btn-group -->
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript" src="~/js/documentcontroller.js"></script>
+}

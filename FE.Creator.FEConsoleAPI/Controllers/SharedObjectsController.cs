@@ -7,54 +7,127 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-
 namespace FE.Creator.FEConsoleAPI.ApiControllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class SharedObjectsController : ControllerBase
+    public class SharedObjectsController : FEAPIBaseController
     {
         public IObjectService objectService = null;
         IFileStorageService storageService = null;
         public readonly ILogger<SharedObjectsController> logger = null;
-        public SharedObjectsController(IObjectService objectService, 
+        public SharedObjectsController(IObjectService objectService,
                 IFileStorageService storageService,
-                ILogger<SharedObjectsController> logger)
+                ILogger<SharedObjectsController> logger,
+                IServiceProvider provider) : base(provider)
         {
             this.objectService = objectService;
             this.storageService = storageService;
             this.logger = logger;
         }
 
-        private List<ServiceObject> GetSharedServiceObjects(int objDefID, 
-            string[] properties,
-            string shareFieldName,
-            int page, 
-            int pageSize)
+        [Route("[action]/{objectId}/{shareFieldName}")]
+        [HttpPost]
+        [ProducesResponseType(typeof(List<ServiceObject>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<ServiceObject> GetSharedServiceObjectById(int objectId, string shareFieldName, [FromBody] string[] properties)
         {
-            var svcObjLists = objectService.GetServiceObjects(
-                objDefID,
-                properties,
-                page,
-                pageSize,
-                null);
+            if (objectId < 0)
+            {
+                return NotFound();
+            }
+            var svcObj = objectService.GetServiceObjectById(objectId, properties, null);
+            if (svcObj != null
+                    && svcObj.GetPropertyValue<PrimeObjectField>(shareFieldName)
+                                              .GetStrongTypeValue<int>() == 1)
+            {
+                return Ok(svcObj);
+            }
 
-            var sharedObjects = (from s in svcObjLists
-                                   where s.GetPropertyValue<PrimeObjectField>(shareFieldName)
-                                            .GetStrongTypeValue<int>() == 1
-                                   select s
+            return NotFound();
+        }
+
+        [Route("[action]/{objDefName}/{shareFieldName}")]
+        [HttpPost]
+        [ProducesResponseType(typeof(List<ServiceObject>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<List<ServiceObject>> GetSharedServiceObjects(string objDefName,
+            string shareFieldName,
+            [FromBody] string[] properties,
+            int page = 1, 
+            int pageSize = 1)
+        {
+            var objDef = FindObjectDefinitionByName(objDefName);
+
+            if (objDef == null || objDef.ObjectDefinitionID < 0)
+            {
+                return NotFound();
+            }
+
+            int objDefId = objDef.ObjectDefinitionID;
+            List<ServiceObject> svcObjLists = GetSharedObjects(properties,    
+                                                                page,
+                                                                pageSize, 
+                                                                objDefId);
+            if(svcObjLists　!= null && svcObjLists.Count > 0)
+            {
+                var sharedObjects = (from s in svcObjLists
+                                     where s.GetPropertyValue<PrimeObjectField>(shareFieldName)
+                                              .GetStrongTypeValue<int>() == 1
+                                     select s
                                   )
                                   .Skip((page - 1) * pageSize)
                                   .Take(pageSize)
                                   .ToList();
 
+                return Ok(sharedObjects);
+            }
 
-            return sharedObjects;
+            return NotFound();
         }
 
+        private List<ServiceObject> GetSharedObjects(string[] properties, int page, int pageSize, int objDefId)
+        {
+            var svcObjLists = objectService.GetServiceObjects(
+                objDefId,
+                properties,
+                page,
+                pageSize,
+                null);
+
+            return svcObjLists;
+        }
+
+        [Route("[action]/{objDefName}")]
+        [HttpPost]
+        [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
+        public int GetSharedServiceObjectsCount(string objDefName,
+          [FromBody] string shareFieldName)
+        {
+            var objDef = FindObjectDefinitionByName(objDefName);
+
+            if (objDef == null || objDef.ObjectDefinitionID < 0)
+            {
+                return 0;
+            }
+            int objDefId = objDef.ObjectDefinitionID;
+            List<ServiceObject> svcObjLists = GetSharedObjects(new string[] { shareFieldName },
+                                                              1,
+                                                              int.MaxValue,
+                                                              objDefId);
+
+            if (svcObjLists != null && svcObjLists.Count > 0)
+            {
+                var count = (from s in svcObjLists
+                                     where s.GetPropertyValue<PrimeObjectField>(shareFieldName)
+                                              .GetStrongTypeValue<int>() == 1
+                                     select s
+                                  )
+                                  .Count();
+
+                return count;
+            }
+
+            return 0;
+        }
 
         private ObjectDefinition FindObjectDefinitionByName(string defname)
         {
@@ -73,339 +146,34 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
         }
 
 
-        private async Task<HttpResponseMessage> DownloadSharedObjectFile(string Id, 
+        [Route("[action]/{objectId}/{filePropertyName}/{shareFieldName}")]
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult DownloadSharedObjectFile(string objectId, 
             string filePropertyName, 
             string shareFieldName,
-            bool isThumbinal)
+            bool thumbinal)
         {
-            byte[] content = null;
-
-            ServiceObject svo = objectService.GetServiceObjectById(int.Parse(Id),
+            ServiceObject svo = objectService.GetServiceObjectById(int.Parse(objectId),
                 new string[] { filePropertyName, shareFieldName },
                 null);
-
+            string file = string.Empty;
             if(svo != null && 
                 svo.GetPropertyValue<PrimeObjectField>(shareFieldName)
                                             .GetStrongTypeValue<int>() == 1)
             {
-               string fileFullPath = svo.GetPropertyValue<ObjectFileField>(filePropertyName)
-                    .FileFullPath;
+                var downloadUrl = svo.GetPropertyValue<ObjectFileField>(filePropertyName)
+                    .FileUrl;
 
-                if (isThumbinal)
+                if (thumbinal)
                 {
-                    content = await storageService
-                        .GetFileThumbinalAsync(fileFullPath);
+                    downloadUrl = string.Format("~{0}?thumbinal=true", downloadUrl);
                 }
-                else
-                {
-                    content = await storageService
-                        .GetFileContentAsync(fileFullPath);
-                }
+
+                return Redirect(downloadUrl);
             }
 
-            HttpResponseMessage message = CreateResponseMessage(content,
-                svo != null ? svo.GetPropertyValue<ObjectFileField>(filePropertyName)
-                .FileName : string.Empty);
-
-            return message;
-        }
-
-
-        private HttpResponseMessage CreateResponseMessage(byte[] content, string fileName)
-        {
-            logger.LogDebug("Start CreateResponseMessage");
-            HttpResponseMessage result = null;
-
-            if (content != null)
-            {
-                logger.LogDebug("content found on the server storage.");
-                // Serve the file to the client
-                result = new HttpResponseMessage(HttpStatusCode.OK);
-                result.Content = new ByteArrayContent(content);
-                result.Content.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("attachment");
-                result.Content.Headers.ContentDisposition.FileName = fileName;
-            }
-            else
-            {
-                logger.LogDebug("content was not found");
-                result = new HttpResponseMessage(HttpStatusCode.NotFound);
-            }
-
-            logger.LogDebug("End GetFileContent");
-            return result;
-        }
-
-        /// <summary>
-        /// For File Download : /api/SharedObjects/DownloadSharedBook/{objectid}
-        /// </summary>
-        /// <param name="Id"></param>
-        /// <returns></returns>
-        [Route("[action]/{Id}")]
-        [HttpGet]
-        [ProducesResponseType(typeof(HttpResponseMessage), StatusCodes.Status200OK)]
-        public async Task<HttpResponseMessage> DownloadSharedDocument(string Id)
-        {
-            return await DownloadSharedObjectFile(Id,
-                "documentFile",
-                "documentSharedLevel",
-                false);
-        }
-
-        /// <summary>
-        /// For thumbinal download : /api/SharedObjects/DownloadSharedBook/{objectid}?thumbinal=true
-        /// For File Download : /api/SharedObjects/DownloadSharedBook/{objectid}
-        /// </summary>
-        /// <param name="Id"></param>
-        /// <param name="thumbinal"></param>
-        /// <returns></returns>
-        [Route("[action]/{Id}")]
-        [HttpGet]
-        [ProducesResponseType(typeof(HttpResponseMessage), StatusCodes.Status200OK)]
-        public async Task<HttpResponseMessage> DownloadSharedBook(string Id, bool thumbinal = false)
-        {
-            return await DownloadSharedObjectFile(Id,
-                "bookFile", 
-                "bookSharedLevel", 
-                thumbinal);
-        }
-
-        /// <summary>
-        /// For thumbinal download : /api/SharedObjects/DownloadSharedImage/{objectid}?thumbinal=true
-        /// For File Download : /api/SharedObjects/DownloadSharedImage/{objectid}
-        /// </summary>
-        /// <param name="Id"></param>
-        /// <param name="thumbinal"></param>
-        /// <returns></returns>
-        [Route("[action]/{Id}")]
-        [HttpGet]
-        [ProducesResponseType(typeof(HttpResponseMessage), StatusCodes.Status200OK)]
-        public async Task<HttpResponseMessage> DownloadSharedImage(string Id, bool thumbinal = false)
-        {
-            return await DownloadSharedObjectFile(Id,
-                "imageFile",
-                "imageSharedLevel",
-                thumbinal);
-        }
-
-        /// <summary>
-        ///  For File Download : /api/SharedObjects/DownloadArticleImage/{objectid}
-        /// </summary>
-        /// <param name="Id"></param>
-        /// <returns></returns>
-        [Route("[action]/{Id}")]
-        [HttpGet]
-        [ProducesResponseType(typeof(HttpResponseMessage), StatusCodes.Status200OK)]
-        public async Task<HttpResponseMessage> DownloadArticleImage(string Id)
-        {
-            return await DownloadSharedObjectFile(Id,
-                "articleImage",
-                "articleSharedLevel",
-                 false);
-        }
-
-        /// <summary>
-        /// /api/custom/SharedObjects/SharedArticles
-        /// </summary>
-        /// <param name="page"></param>
-        /// <param name="pagesize"></param>
-        /// <returns></returns>
-        [Route("[action]")]
-        [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<ServiceObject>), StatusCodes.Status200OK)]
-        public ActionResult<IEnumerable<ServiceObject>> SharedArticles(int page = 1, int pagesize = int.MaxValue)
-        {
-            var articleDef = FindObjectDefinitionByName("Article");
-            int currPage = page > 0 ? page : 1;
-            int currPageSize = pagesize > 0 ? pagesize : int.MaxValue;
-
-            var sharedObjects = GetSharedServiceObjects(
-                    articleDef.ObjectDefinitionID,
-                    new string[] {
-                        "articleDesc",
-                        "isOriginal",
-                        "articleImage",
-                        "articleGroup",
-                        "articleSharedLevel"
-                    },
-                    "articleSharedLevel",
-                    currPage > 0 ? currPage : 1,
-                    currPageSize > 0 ? currPageSize : int.MaxValue
-                );
-
-            return this.Ok(sharedObjects);
-        }
-
-        /// <summary>
-        /// /api/custom/SharedObjects/SharedImages
-        /// </summary>
-        /// <param name="page"></param>
-        /// <param name="pagesize"></param>
-        /// <returns></returns>
-        [Route("[action]")]
-        [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<ServiceObject>), StatusCodes.Status200OK)]
-        public ActionResult<IEnumerable<ServiceObject>> SharedImages(int page = 1, int pagesize = int.MaxValue)
-        {
-            var imageDef = FindObjectDefinitionByName("Photos");
-            int currPage = page > 0 ? page : 1;
-            int currPageSize = pagesize > 0 ? pagesize : int.MaxValue;
-
-            var sharedObjects = GetSharedServiceObjects(
-                 imageDef.ObjectDefinitionID,
-                 new string[] {
-                        "imageFile",
-                        "imageDesc",
-                        "imageCategory",
-                        "imageSharedLevel"
-                 },
-                 "imageSharedLevel",
-                 currPage > 0 ? currPage : 1,
-                 currPageSize > 0 ? currPageSize : int.MaxValue
-             );
-
-            return this.Ok(sharedObjects);
-        }
-
-        /// <summary>
-        /// /api/custom/SharedObjects/SharedBooks
-        /// </summary>
-        /// <param name="page"></param>
-        /// <param name="pagesize"></param>
-        /// <returns></returns>
-        [Route("[action]")]
-        [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<ServiceObject>), StatusCodes.Status200OK)]
-        public ActionResult<IEnumerable<ServiceObject>> SharedBooks(int page = 1, int pagesize = int.MaxValue)
-        {
-            var imageDef = FindObjectDefinitionByName("Books");
-            int currPage = page > 0 ? page : 1;
-            int currPageSize = pagesize > 0 ? pagesize : int.MaxValue;
-
-            var sharedObjects = GetSharedServiceObjects(
-                 imageDef.ObjectDefinitionID,
-                 new string[] {
-                        "bookFile",
-                        "bookDesc",
-                        "bookAuthor",
-                        "bookVersion",
-                        "bookSharedLevel",
-                        "bookCategory",
-                        "bookISBN"
-                 },
-                 "bookSharedLevel",
-                 currPage > 0 ? currPage : 1,
-                 currPageSize > 0 ? currPageSize : int.MaxValue
-             );
-
-            return this.Ok(sharedObjects);
-        }
-
-
-        /// <summary>
-        /// /api/custom/SharedObjects/SharedDocuments
-        /// </summary>
-        /// <param name="page"></param>
-        /// <param name="pagesize"></param>
-        /// <returns></returns>
-        [Route("[action]")]
-        [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<ServiceObject>), StatusCodes.Status200OK)]
-        public ActionResult<IEnumerable<ServiceObject>> SharedDocuments(int page = 1, int pagesize = int.MaxValue)
-        {
-            var imageDef = FindObjectDefinitionByName("Documents");
-            int currPage = page > 0 ? page : 1;
-            int currPageSize = pagesize > 0 ? pagesize : int.MaxValue;
-
-            var sharedObjects = GetSharedServiceObjects(
-                 imageDef.ObjectDefinitionID,
-                 new string[] {
-                        "documentFile",
-                        "documentSharedLevel"
-                 },
-                 "documentSharedLevel",
-                 currPage > 0 ? currPage : 1,
-                 currPageSize > 0 ? currPageSize : int.MaxValue
-             );
-
-            return this.Ok(sharedObjects);
-        }
-
-        [Route("[action]")]
-        [HttpGet]
-        [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
-        public int GetSharedImageCount()
-        {
-            var imageDef = FindObjectDefinitionByName("Photos");
-
-            var images = GetSharedServiceObjects(
-                 imageDef.ObjectDefinitionID,
-                 new string[] { "imageSharedLevel" },
-                 "imageSharedLevel",
-                 1,
-                 int.MaxValue
-                );
-
-            return images.Count;
-        }
-
-        [Route("[action]")]
-        [HttpGet]
-        [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
-        public int GetSharedBookCount()
-        {
-            var imageDef = FindObjectDefinitionByName("Books");
-
-            var sharedObjects = GetSharedServiceObjects(
-               imageDef.ObjectDefinitionID,
-               new string[] {
-                        "bookSharedLevel"
-               },
-               "bookSharedLevel",
-               1,
-               int.MaxValue
-           );
-
-            return sharedObjects.Count;
-        }
-
-        [Route("[action]")]
-        [HttpGet]
-        [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
-        public int GetSharedArticleCount()
-        {
-            var articleDef = FindObjectDefinitionByName("Article");
-
-            var sharedObjects = GetSharedServiceObjects(
-                   articleDef.ObjectDefinitionID,
-                   new string[] {
-                        "articleSharedLevel"
-                   },
-                   "articleSharedLevel",
-                   1,
-                   int.MaxValue
-               );
-
-            return sharedObjects.Count;
-        }
-
-        [Route("[action]")]
-        [HttpGet]
-        [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
-        public int GetSharedDocumentCount()
-        {
-            var articleDef = FindObjectDefinitionByName("Documents");
-
-            var sharedObjects = GetSharedServiceObjects(
-                   articleDef.ObjectDefinitionID,
-                   new string[] {
-                        "documentSharedLevel"
-                   },
-                   "documentSharedLevel",
-                   1,
-                   int.MaxValue
-               );
-
-            return sharedObjects.Count;
+            return NotFound();
         }
     }
 }

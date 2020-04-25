@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config group="FESystem" name="UserProfile" displayName="User Profile" key="FE_SYS_USER_PROFILE" licenseId ="F67370D1-337C-473C-B64C-000C8D2D9EC4" version="1.0">
+  <entity name="UserInfo" key="FE_SYS_USERINFO">
+    <properties>
+      <property name="firstName" key="FE_COL_FIRSTNAME" type="String" displayOrder="1"></property>
+      <property name="lastName" key="FE_COL_LASTNAME" type="String" displayOrder="2"></property>
+      <property name="birthDate" key="FE_COL_BIRTHDATE" type="Datetime" displayOrder="3"></property>
+      <property name="gender" key="FE_COL_GENDER" type="Integer" displayOrder="4"></property>
+      <property name="ID" key="FE_COL_ID" type="String" displayOrder="5"></property>
+      <property name="Image" key="FE_COL_IMAGE" type="File" displayOrder="6"></property>
+      <property name="UserExternalId" key="FE_COL_EXTERNAL_ID" type="String"></property>
+    </properties>
+  </entity>
+  <entity name="Contact" key="FE_SYS_CONTACT">
+    <property name="phone" key="FE_COL_PHONE" type="String" displayOrder="1"></property>
+    <property name="mobile" key="FE_COL_MOBILE" type="String" displayOrder="2"></property>
+    <property name="eMail" key="FE_COL_EMAIL" type="String" displayOrder="3"></property>
+    <property name="weChat" key="FE_COL_WECHAT" type="String" displayOrder="4"></property>
+    <property name="QQ" key="FE_COL_QQ" type="String" displayOrder="5"></property>
+    <property name="tweet" key="FE_COL_TWEET" type="String" displayOrder="6"></property>
+    <property name="linkedIn" key="FE_COL_LINKEDIN" type="String" displayOrder="7"></property>
+    <property name="facebook" key="FE_COL_FACEBOOK" type="String" displayOrder="8"></property>
+    <property name="freeNote" key="FE_COL_FREENOTE" type="String" displayOrder="9"></property>
+    <property name="UserExternalId" key="FE_COL_EXTERNAL_ID" type="String"></property>
+  </entity>
+  <entity name="Address" key="FE_SYS_ADDRESS">
+    <property name="country" key="FE_COL_COUNTRY" type="String" displayOrder="1"></property>
+    <property name="province" key="FE_COL_PROVINCE" type="String" displayOrder=""></property>
+    <property name="city" key="FE_COL_CITY" type="String" displayOrder=""></property>
+    <property name="address" key="FE_COL_ADDRESS" type="String" displayOrder=""></property>
+    <property name="address1" key="FE_COL_ADDRESS1" type="String" displayOrder=""></property>
+    <property name="postCode" key="FE_COL_POSTCODE" type="String" displayOrder=""></property>
+    <property name="UserExternalId" key="FE_COL_EXTERNAL_ID" type="String"></property>
+  </entity>
+  <entity name="Skill" key="FE_SYS_SKILL">
+    <property name="skillName" key="FE_COL_SKILLNAME" type="String" displayOrder="1"></property>
+    <property name="skillDescription" key="FE_COL_SKILLDESCRIP" type="String" displayOrder="2"></property>
+    <property name="level" key="FE_COL_LEVEL" type="Integer" displayOrder="3"></property>
+    <property name="UserExternalId" key="FE_COL_EXTERNAL_ID" type="String"></property>
+  </entity>
+  <entity name="WorkExperience" key="FE_SYS_WORKEXPERIENCE">
+    <property name="company" key="FE_COL_COMPANY" type="String" displayOrder="1"></property>
+    <property name="companyUrl" key="FE_COL_COMPANYURL" type="String" displayOrder=""></property>
+    <property name="jobTitle" key="FE_COL_JOBTITLE" type="String" displayOrder=""></property>
+    <property name="startDate" key="FE_COL_STARTDATE" type="Datetime" displayOrder=""></property>
+    <property name="endDate" key="FE_COL_ENDDATE" type="Datetime" displayOrder=""></property>
+    <property name="eventDescription" key="FE_COL_EVENTDESCRIP" type="String" displayOrder=""></property>
+    <property name="UserExternalId" key="FE_COL_EXTERNAL_ID" type="String"></property>
+  </entity>
+  <entity name="Education" key="FE_SYS_EDUCATION">
+    <property name="school" key="FE_COL_SCHOOL" type="String" displayOrder="1"></property>
+    <property name="grade" key="FE_COL_SCHOOL_GRADE" type="String" displayOrder=""></property>
+    <property name="enrollDate" key="FE_COL_ENROLLDATE" type="Datetime" displayOrder=""></property>
+    <property name="exitDate" key="FE_COL_EXITDATE" type="Datetime" displayOrder=""></property>
+    <property name="degree" key="FE_COL_SCHOOLDEGREE" type="String" displayOrder=""></property>
+    <property name="UserExternalId" key="FE_COL_EXTERNAL_ID" type="String"></property>
+  </entity>
+</config>

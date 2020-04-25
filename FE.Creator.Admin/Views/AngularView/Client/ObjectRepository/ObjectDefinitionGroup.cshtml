@@ -1,0 +1,16 @@
+﻿<div class="info-box">
+        <div class="box-tools pull-right">
+            @*<a class="btn btn-box-tool" ng-click="drillDown({group:currentGroup})"><i class="fa fa-folder"></i></a>*@
+            <a class="btn btn-box-tool" href="/defgrps/{{currentGroup.groupID}}"><i class="fa fa-pencil"></i></a>
+            <button class="btn btn-box-tool" ng-click="onDelete({group:currentGroup})"><i class="fa fa-trash"></i></button>
+        </div>
+        <!-- Apply any bg-* class to to the icon to color it -->
+        <span class="info-box-icon bg-blue"><i class="fa fa-object-group"></i></span>
+        <div class="info-box-content">
+            <span class="info-box-text">{{currentGroup.groupName}}</span>
+            <span class="info-box-number">{{currentGroup.chidrenGroups.length}}</span>
+            <span class="progress-description">
+                {{currentGroup.groupKey}}
+            </span>
+        </div><!-- /.info-box-content -->
+</div><!-- /.info-box -->

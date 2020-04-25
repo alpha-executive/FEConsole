@@ -37,17 +37,16 @@ namespace FE.Creator.FEConsoleAPI.Controllers
     ///     delete a object definition by {id}
     /// </summary>
 
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ObjectDefinitionController : ControllerBase
+    public class ObjectDefinitionController : FEAPIBaseController
     {
         IObjectService objectService = null;
-        ILogger logger = null;
+        ILogger<ObjectDefinitionController> logger = null;
         readonly IConfiguration _configuration;
 
         public ObjectDefinitionController(IObjectService objectService,
              IConfiguration configuration,
-             ILogger logger)
+             ILogger<ObjectDefinitionController> logger, 
+             IServiceProvider provider) : base(provider)
         {
             this.objectService = objectService;
             this.logger = logger;
@@ -143,7 +142,7 @@ namespace FE.Creator.FEConsoleAPI.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<ObjectDefinition>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<IEnumerable<ObjectDefinition>> getCustomObjectDefinitions()
+        public async Task<ActionResult<IEnumerable<ObjectDefinition>>> getCustomObjectDefinitions()
         {
             logger.LogDebug("Start ObjectDefinitionController.getCustomObjectDefinitions");
             var groups = objectService.GetObjectDefinitionGroups(null, null);
@@ -158,7 +157,7 @@ namespace FE.Creator.FEConsoleAPI.Controllers
                     new ServiceRequestContext()
                     {
                         IsDataCurrentUserOnly = bool.Parse(_configuration["SiteSettings:IsDataForLoginUserOnly"]),
-                        RequestUser = User.Identity.Name,
+                        RequestUser = await GetLoginUser(),
                         UserSenstiveForSharedData = false
                     });
                 logger.LogDebug("objDefinitions.Count = " + objDefinitions.Count);
@@ -187,7 +186,7 @@ namespace FE.Creator.FEConsoleAPI.Controllers
                 new ServiceRequestContext()
                 {
                     IsDataCurrentUserOnly = bool.Parse(_configuration["SiteSettings:IsDataForLoginUserOnly"]),
-                    RequestUser = User.Identity.Name
+                    RequestUser = await GetLoginUser()
                 }) :
                 await getObjectDefinitions();
 
@@ -206,7 +205,7 @@ namespace FE.Creator.FEConsoleAPI.Controllers
             return Task.FromResult<ObjectDefinition>(objectDefinition);
         }
 
-        [Route("FindObjectDefinition/{id?}")]
+        [Route("FindObjectDefinition/{id}")]
         [HttpGet]
         [ProducesResponseType(typeof(ObjectDefinition), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -218,6 +217,17 @@ namespace FE.Creator.FEConsoleAPI.Controllers
             return this.Ok(objDefinition);
         }
 
+        bool IsValidObjectDefinitoinExists(string defname)
+        {
+            var objDefs = objectService.GetAllObjectDefinitions();
+            logger.LogDebug("objDefs.count : " + objDefs.Count);
+
+            var findObjDef = (from def in objDefs
+                              where def.ObjectDefinitionName.Equals(defname, StringComparison.InvariantCultureIgnoreCase)
+                              select def).FirstOrDefault();
+
+            return findObjDef != null;
+        }
 
         // POST: api/ObjectDefinition
         [HttpPost]
@@ -228,10 +238,19 @@ namespace FE.Creator.FEConsoleAPI.Controllers
             int objectId = -1;
             if(value != null)
             {
-                value.ObjectOwner = User.Identity.Name;
+                value.ObjectOwner = await GetLoginUser();
                 value.UpdatedBy = value.ObjectOwner;
-                objectId = objectService.CreateORUpdateObjectDefinition(value);
-                logger.LogDebug("New object defintion with objectId = " + objectId);
+
+                if(!string.IsNullOrEmpty(value.ObjectDefinitionName)
+                    && !IsValidObjectDefinitoinExists(value.ObjectDefinitionName))
+                {
+                    objectId = objectService.CreateORUpdateObjectDefinition(value);
+                    logger.LogDebug("New object defintion with objectId = " + objectId);
+                }
+                else
+                {
+                    throw new InvalidOperationException("object definition name already exists.");
+                }
             }
 
             logger.LogDebug("End Post");
@@ -239,12 +258,13 @@ namespace FE.Creator.FEConsoleAPI.Controllers
         }
 
         // PUT: api/ObjectDefinition/5
+        [Route("{id}")]
         [HttpPut]
-        public void Put(int id, [FromBody]ObjectDefinition value)
+        public async Task Put(int id, [FromBody]ObjectDefinition value)
         {
             if(value != null)
             {
-                value.UpdatedBy = User.Identity.Name;
+                value.UpdatedBy = await GetLoginUser();
                 if (string.IsNullOrEmpty(value.ObjectOwner))
                 {
                     value.ObjectOwner = value.UpdatedBy;
@@ -255,6 +275,7 @@ namespace FE.Creator.FEConsoleAPI.Controllers
         }
 
         // DELETE: api/ObjectDefinition/5
+        [Route("{id}")]
         [HttpDelete]
         public void Delete(int id)
         {

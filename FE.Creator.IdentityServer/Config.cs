@@ -2,11 +2,12 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
+using IdentityModel;
 using IdentityServer4.Models;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Security.Claims;
 
 namespace FE.Creator.IdentityServer
 {
@@ -37,6 +38,13 @@ namespace FE.Creator.IdentityServer
                               {
                                   Client bindClient = new Client();
                                   client.Bind(bindClient);
+
+                                  if (bindClient.AllowedGrantTypes.Contains(GrantType.AuthorizationCode))
+                                  {
+                                      bindClient.RefreshTokenExpiration = TokenExpiration.Sliding;
+                                      bindClient.RefreshTokenUsage = TokenUsage.ReUse;
+                                  }
+
                                   //bindClient.AllowedGrantTypes = GrantTypes.Code;
                                   return bindClient;
                               });

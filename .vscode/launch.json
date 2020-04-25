@@ -17,14 +17,14 @@
         "internalConsoleOptions": "openOnSessionStart"
     },
         {
-            "name": ".NET Core Launch (web)",
+            "name": ".NET Core PCenter (web)",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/coreaspnet/bin/Debug/netcoreapp2.1/coreaspnet.dll",
+            "program": "${workspaceFolder}/FE.Creator.PCenter/bin/Debug/netcoreapp3.1/FE.Creator.PCenter.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/coreaspnet",
+            "cwd": "${workspaceFolder}/FE.Creator.PCenter",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart",
             "launchBrowser": {
@@ -45,7 +45,7 @@
                 "ASPNETCORE_ENVIRONMENT": "Development"
             },
             "sourceFileMap": {
-                "/Views": "${workspaceFolder}/Views"
+                "/Views": "${workspaceFolder}/FE.Creator.PCenter/Views"
             }
         },
         {

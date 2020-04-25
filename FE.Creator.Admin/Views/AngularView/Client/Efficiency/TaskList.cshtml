@@ -1,0 +1,62 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IHtmlLocalizer<AppLang> AppLangResource
+<div class="box box-primary">
+    <div class="box-header">
+        <h3 class="box-title">
+            @AppLangResource["TASKMGR_TASKLIST"]
+        </h3>
+        <div class="box-tools pull-right">
+            <label class="badge bg-red">
+                @AppLangResource["TASKMGR_RDO_IMPORTANT"]
+            </label>
+            <label class="badge bg-yellow">
+                @AppLangResource["TASKMGR_RDO_MEDIUM"]
+            </label>
+            <label class="badge bg-blue">@AppLangResource["TASKMGR_RDO_LOW"]</label>
+        </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body no-padding">
+        <table class="table table-condensed">
+            <tbody>
+                <tr>
+                    <th style="width:5%;"></th>
+                    <th style="width:25%;">@AppLangResource["TASKMGR_TH_TASK"]</th>
+                    <th>@AppLangResource["TASKMGR_TH_DESC"]</th>
+                    <th style="width:10%;">@AppLangResource["TASKMGR_TH_PROGRESS"]</th>
+                    <th style="width:120px;">@AppLangResource["TASKMGR_TH_ACTION"]</th>
+                </tr>
+                <tr ng-repeat="task in ctrl.tasks">
+                    <td><div class="badge" ng-class="{'bg-red': task.properties.taskType.value == 0, 'bg-yellow': task.properties.taskType.value == 1, 'bg-blue': task.properties.taskType.value == 2}" ng-bind="task.properties.taskStatus.value + '%'"></div></td>
+                    <td ng-bind="task.objectName"></td>
+                    <td ng-bind="task.properties.taskDesc.value"></td>
+                    <td>
+                        <div class="progress progress-xs">
+                            <div class="progress-bar" ng-class="{'bg-red': task.properties.taskType.value == 0, 'bg-yellow': task.properties.taskType.value == 1, 'bg-blue': task.properties.taskType.value == 2}" ng-style="{width: task.properties.taskStatus.value + '%'}"></div>
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-success btn-flat btn-xs" title="@AppLangResource["TASKMGR_BTN_LBL_STARTTASK"]" ng-click="ctrl.startTask(task)" ng-disabled="task.properties.taskStatus.value >= 100">
+                            <i class="fa fa-forward">
+                            </i>
+                        </button>
+                        <button type="button" class="btn btn-success btn-flat btn-xs" title="@AppLangResource["TASKMGR_BTN_LBL_COMTASK"]" ng-click="ctrl.completeTask(task)" ng-disabled="task.properties.taskStatus.value == 100">
+                            <i class="fa fa-stop">
+                            </i>
+                        </button>
+                        <button type="button" class="btn btn-primary btn-flat btn-xs" title="@AppLangResource["COMMON_BTN_EDIT"]" ng-click="ctrl.createOrUpdateTask(task)">
+                            <i class="fa fa-pencil">
+                            </i>
+                        </button>
+                        <button type="button" class="btn btn-warning btn-flat btn-xs" title="@AppLangResource["COMMON_BTN_DELETE"]" ng-click="ctrl.deleteTask(task)">
+                            <i class="fa fa-trash">
+                            </i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- /.box-body -->
+</div>

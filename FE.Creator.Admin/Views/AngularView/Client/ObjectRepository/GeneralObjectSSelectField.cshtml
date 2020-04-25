@@ -1,0 +1,9 @@
+﻿<div class="col-md-12">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-star-o text-yellow"></i> {{objfield.keyName}}</span>
+        <select class="form-control" ng-required="true" ng-model="objfield.value.selectedItemID" convert-to-number>
+            <option ng-repeat="option in objfield.selectionItems" value="{{option.selectItemID}}">{{option.selectDisplayName}}</option>
+        </select>
+    </div>
+    <br />
+</div>

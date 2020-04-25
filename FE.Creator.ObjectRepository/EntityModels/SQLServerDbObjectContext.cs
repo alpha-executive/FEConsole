@@ -7,11 +7,14 @@ namespace FE.Creator.ObjectRepository.EntityModels
     using Microsoft.Extensions.Logging.Console;
     public class SQLServerDbObjectContext:DBObjectContext
     {
-        public static readonly LoggerFactory loggerFactory = new LoggerFactory(
-            new []{
-                new ConsoleLoggerProvider((category,level)=> level == LogLevel.Debug, true)
-            }
-        );
+        private static ILoggerFactory loggerFactory = LoggerFactory.Create(builder =>
+        {
+            builder
+                .AddFilter("Microsoft", LogLevel.Warning)
+                .AddFilter("System", LogLevel.Warning)
+                .AddFilter("LoggingConsoleApp.Program", LogLevel.Debug)
+                .AddConsole();
+        });
         public SQLServerDbObjectContext(){}
         public SQLServerDbObjectContext(DbContextOptions<SQLServerDbObjectContext> options):base(options){}
          protected override void OnConfiguring(DbContextOptionsBuilder options)

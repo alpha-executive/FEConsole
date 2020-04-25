@@ -5,8 +5,33 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Config\Module\ContactManagement\GeneralContact.xml" />
+    <None Remove="Config\Module\Efficiency\AccountManagement.xml" />
+    <None Remove="Config\Module\Efficiency\Content.xml" />
+    <None Remove="Config\Module\Efficiency\Task.xml" />
+    <None Remove="Config\Module\FileManagement\FileManagement.xml" />
+    <None Remove="Config\Module\LicenseMaps.xml" />
+    <None Remove="Config\Module\SystemConfig\AppConfig.xml" />
+    <None Remove="Config\Module\UserProfile\UserProfile.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Config\Module\ContactManagement\GeneralContact.xml" />
+    <EmbeddedResource Include="Config\Module\Efficiency\AccountManagement.xml" />
+    <EmbeddedResource Include="Config\Module\Efficiency\Content.xml" />
+    <EmbeddedResource Include="Config\Module\Efficiency\Task.xml" />
+    <EmbeddedResource Include="Config\Module\FileManagement\FileManagement.xml" />
+    <EmbeddedResource Include="Config\Module\LicenseMaps.xml" />
+    <EmbeddedResource Include="Config\Module\SystemConfig\AppConfig.xml" />
+    <EmbeddedResource Include="Config\Module\UserProfile\UserProfile.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IdentityModel.AspNetCore" Version="1.0.0-rc.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.3" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Json" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.3" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="3.1.3" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
     <PackageReference Include="NSwag.AspNetCore" Version="13.3.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />

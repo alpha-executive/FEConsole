@@ -1,0 +1,1225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ABOUT_APP_LICENSE" xml:space="preserve">
+    <value>Application is Under</value>
+  </data>
+  <data name="ABOUT_COMPONENT_LICENSE" xml:space="preserve">
+    <value>License</value>
+  </data>
+  <data name="ABOUT_COMPONENT_NAME" xml:space="preserve">
+    <value>Component Name</value>
+  </data>
+  <data name="ABOUT_COMPONENT_VERSION" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="ABOUT_CONTACT_INFO" xml:space="preserve">
+    <value>Contact Information</value>
+  </data>
+  <data name="ABOUT_FECONSOLE_TITLE" xml:space="preserve">
+    <value>About FEConsole</value>
+  </data>
+  <data name="ABOUT_FECONSOLE_TITLE1" xml:space="preserve">
+    <value>About FEConsole</value>
+  </data>
+  <data name="ABOUT_INTRODUCTION" xml:space="preserve">
+    <value>Introduction</value>
+  </data>
+  <data name="ABOUT_INTRO_CONTENT" xml:space="preserve">
+    <value>The Author - 10+ years experience in computer software technology. Who is a self-motivated person and trying his best to lead a simple and easy life in this complex world. </value>
+  </data>
+  <data name="ABOUT_LICENSE" xml:space="preserve">
+    <value>License</value>
+  </data>
+  <data name="ABOUT_LOCATION" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="ABOUT_LOC_CONTENT" xml:space="preserve">
+    <value>Beijing, China</value>
+  </data>
+  <data name="ABOUT_NOTES" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="ABOUT_NOTES_CONTENT" xml:space="preserve">
+    <value>Wishing you all the great things in life, Hope this application will bring you extra share of all that make your happiest.</value>
+  </data>
+  <data name="ABOUT_THE_AUTHOR" xml:space="preserve">
+    <value>About the Author</value>
+  </data>
+  <data name="ABOUT_TITLE" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="ABOUT_WHYDESC" xml:space="preserve">
+    <value>FEConsole is a easy to use web application, it is in purpose of protecting and organizing your personal information, valuable memories, knowlege in one place!</value>
+  </data>
+  <data name="ABOUT_WHYFECONSOLE" xml:space="preserve">
+    <value>Why FEConsole</value>
+  </data>
+  <data name="ACCOUNTMGR_ATTENTION" xml:space="preserve">
+    <value>Attention</value>
+  </data>
+  <data name="ACCOUNTMGR_BTN_DOWLOAD_TOOL" xml:space="preserve">
+    <value>Download Crypotography Tool</value>
+  </data>
+  <data name="ACCOUNTMGR_BTN_NEWREC" xml:space="preserve">
+    <value>New Record</value>
+  </data>
+  <data name="ACCOUNTMGR_ENCTOOL_DESC" xml:space="preserve">
+    <value>Even through account senstive data were encrypted by system, but we recommend you to download a cryptography tool to encrypt your sensitive data before save them to the system.</value>
+  </data>
+  <data name="ACCOUNTMGR_LBL_ACTTYPE" xml:space="preserve">
+    <value>Account Type</value>
+  </data>
+  <data name="ACCOUNTMGR_LBL_DESC" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="ACCOUNTMGR_LBL_LOGIN" xml:space="preserve">
+    <value>Account No./Login</value>
+  </data>
+  <data name="ACCOUNTMGR_LBL_PASS" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="ACCOUNTMGR_LBL_TITLE" xml:space="preserve">
+    <value>Account Title</value>
+  </data>
+  <data name="ACCOUNTMGR_RDO_BANK" xml:space="preserve">
+    <value>Bank</value>
+  </data>
+  <data name="ACCOUNTMGR_RDO_DEVICES" xml:space="preserve">
+    <value>Devices</value>
+  </data>
+  <data name="ACCOUNTMGR_RDO_INTERNET" xml:space="preserve">
+    <value>Internet</value>
+  </data>
+  <data name="ACCOUNTMGR_TH_ACTION" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="ACCOUNTMGR_TH_DESC" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="ACCOUNTMGR_TH_NAME" xml:space="preserve">
+    <value>Account No./Name</value>
+  </data>
+  <data name="ACCOUNTMGR_TH_PASS" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="ACCOUNTMGR_TH_TITLE" xml:space="preserve">
+    <value>Account Title</value>
+  </data>
+  <data name="ACCOUNTMGR_TITLE" xml:space="preserve">
+    <value>Account Management</value>
+  </data>
+  <data name="APPEVENT_ERROR_LEVEL_ERROR" xml:space="preserve">
+    <value>Critical Error</value>
+  </data>
+  <data name="APPEVENT_ERROR_LEVEL_INFO" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="APPEVENT_ERROR_LEVEL_WARNING" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="APPEVENT_TITLE" xml:space="preserve">
+    <value>Application Event</value>
+  </data>
+  <data name="APPEVENT_VIEW_ALL_EVENTS" xml:space="preserve">
+    <value>View all Events</value>
+  </data>
+  <data name="APPSETTINGS_DATEFMT" xml:space="preserve">
+    <value>DateTime Format</value>
+  </data>
+  <data name="APPSETTINGS_LANG" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="APPSETTINGS_PROVIDER_URL" xml:space="preserve">
+    <value>Provider URL</value>
+  </data>
+  <data name="APPSETTINGS_PULLMSG" xml:space="preserve">
+    <value>Pull Message</value>
+  </data>
+  <data name="APPSETTINGS_THEME" xml:space="preserve">
+    <value>System Theme</value>
+  </data>
+  <data name="APPSETTINGS_TITLE" xml:space="preserve">
+    <value>App Settings</value>
+  </data>
+  <data name="APP_EVENT_USER_lOGIN" xml:space="preserve">
+    <value>User Login to System</value>
+  </data>
+  <data name="APP_EVENT_USER_lOGIN_DESC" xml:space="preserve">
+    <value>Login Token is received and User is going to Login to system.</value>
+  </data>
+  <data name="BOOK_ADD_BOOK" xml:space="preserve">
+    <value>+Book</value>
+  </data>
+  <data name="BOOK_ALL_BOOKS" xml:space="preserve">
+    <value>All Books</value>
+  </data>
+  <data name="BOOK_BOOK_GALLARY" xml:space="preserve">
+    <value>Book Gallary</value>
+  </data>
+  <data name="BOOK_BTN_CANCEL" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="BOOK_BTN_SAVE" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="BOOK_BTN_UPLOAD" xml:space="preserve">
+    <value>Upload book</value>
+  </data>
+  <data name="BOOK_FIELD_AUTHOR" xml:space="preserve">
+    <value>Author</value>
+  </data>
+  <data name="BOOK_FIELD_INTRODUCTION" xml:space="preserve">
+    <value>Introduction</value>
+  </data>
+  <data name="BOOK_FIELD_ISBN" xml:space="preserve">
+    <value>ISBN</value>
+  </data>
+  <data name="BOOK_FIELD_NAME" xml:space="preserve">
+    <value>Book Name</value>
+  </data>
+  <data name="BOOK_FIELD_SHARED" xml:space="preserve">
+    <value>Shared</value>
+  </data>
+  <data name="BOOK_FIELD_VERSION" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="BOOK_RDO_PRIVATE" xml:space="preserve">
+    <value>Private</value>
+  </data>
+  <data name="BOOK_RDO_SHARED" xml:space="preserve">
+    <value>Shared</value>
+  </data>
+  <data name="BOOK_SEARCH_PLH" xml:space="preserve">
+    <value>Search books...</value>
+  </data>
+  <data name="BOOK_TITLE" xml:space="preserve">
+    <value>Books Management</value>
+  </data>
+  <data name="COMMON_BTN_ADD" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="COMMON_BTN_CANCEL" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="COMMON_BTN_CONFIRM" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="COMMON_BTN_DELETE" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="COMMON_BTN_EDIT" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="COMMON_BTN_PREVIEW" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="COMMON_BTN_SAVE" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="COMMON_BTN_VIEW" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="COMMON_LBL_NO" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="COMMON_LBL_YES" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="COMMON_OPT_TOGGLE_DOWN" xml:space="preserve">
+    <value>Toggle Dropdown</value>
+  </data>
+  <data name="CONTACTS_BTN_NEWCONTACT" xml:space="preserve">
+    <value>New Contact</value>
+  </data>
+  <data name="CONTACTS_BTN_RETURNTOLIST" xml:space="preserve">
+    <value>Return to List</value>
+  </data>
+  <data name="CONTACTS_COL_ACTION" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="CONTACTS_COL_FREQUENCY" xml:space="preserve">
+    <value>Contact Frequency</value>
+  </data>
+  <data name="CONTACTS_COL_PHONE" xml:space="preserve">
+    <value>Mobile Phone</value>
+  </data>
+  <data name="CONTACTS_COL_RSNOTE" xml:space="preserve">
+    <value>Relationship Note</value>
+  </data>
+  <data name="CONTACTS_COL_USERNAME" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+  <data name="CONTACTS_LBL_RELATIONSHIP" xml:space="preserve">
+    <value>Relationship</value>
+  </data>
+  <data name="CONTACTS_LBL_TAPLEVEL" xml:space="preserve">
+    <value>Tap Level</value>
+  </data>
+  <data name="CONTACTS_SUBTITLE" xml:space="preserve">
+    <value>Contacts</value>
+  </data>
+  <data name="CONTACTS_TITLE" xml:space="preserve">
+    <value>Contacts Management</value>
+  </data>
+  <data name="CUST_DATA_TABLE_KEY" xml:space="preserve">
+    <value>Table Key Code</value>
+  </data>
+  <data name="CUST_DATA_TABLE_NAME" xml:space="preserve">
+    <value>Table Name</value>
+  </data>
+  <data name="DATA_CUST_ADD_DATA" xml:space="preserve">
+    <value>Add Table Data</value>
+  </data>
+  <data name="DATA_CUST_ADD_DISP_COL" xml:space="preserve">
+    <value>Add Display Column</value>
+  </data>
+  <data name="DATA_CUST_ADVANCED_PROPERTY" xml:space="preserve">
+    <value>Custom Properties</value>
+  </data>
+  <data name="DATA_CUST_BACKTOLIST" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+  <data name="DATA_CUST_COL_CREATED" xml:space="preserve">
+    <value>Created</value>
+  </data>
+  <data name="DATA_CUST_COL_ID" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="DATA_CUST_COL_NAME" xml:space="preserve">
+    <value>Table Data Name</value>
+  </data>
+  <data name="DATA_CUST_DATA_LIST" xml:space="preserve">
+    <value>Table Data List</value>
+  </data>
+  <data name="DATA_CUST_DATA_MGR" xml:space="preserve">
+    <value>Table Data Management</value>
+  </data>
+  <data name="DATA_CUST_EDITTABLE" xml:space="preserve">
+    <value>Edit Custom Table</value>
+  </data>
+  <data name="DATA_CUST_FIELD_BIGINTEGER" xml:space="preserve">
+    <value>Big Integer Field</value>
+  </data>
+  <data name="DATA_CUST_FIELD_DATETIME" xml:space="preserve">
+    <value>DateTime Field</value>
+  </data>
+  <data name="DATA_CUST_FIELD_FILE" xml:space="preserve">
+    <value>File Upload Field</value>
+  </data>
+  <data name="DATA_CUST_FIELD_INTEGER" xml:space="preserve">
+    <value>Integer Field</value>
+  </data>
+  <data name="DATA_CUST_FIELD_NUMBER" xml:space="preserve">
+    <value>Number Field</value>
+  </data>
+  <data name="DATA_CUST_FIELD_OPT_DSP" xml:space="preserve">
+    <value>Display Text</value>
+  </data>
+  <data name="DATA_CUST_FIELD_OPT_ITEMS" xml:space="preserve">
+    <value>Selection Items</value>
+  </data>
+  <data name="DATA_CUST_FIELD_OPT_VALUE" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="DATA_CUST_FIELD_REFERNCE" xml:space="preserve">
+    <value>Object Reference Field</value>
+  </data>
+  <data name="DATA_CUST_FIELD_SINGLE_CHOICE" xml:space="preserve">
+    <value>Single Selection Field</value>
+  </data>
+  <data name="DATA_CUST_FIELD_STRING" xml:space="preserve">
+    <value>String Field</value>
+  </data>
+  <data name="DATA_CUST_FILED_BTNUPLOAD" xml:space="preserve">
+    <value>Upload File</value>
+  </data>
+  <data name="DATA_CUST_GENERAL_PROPERTY" xml:space="preserve">
+    <value>General Properties</value>
+  </data>
+  <data name="DATA_CUST_LBL_EDIT_TABLE" xml:space="preserve">
+    <value>Editing Table</value>
+  </data>
+  <data name="DATA_CUST_SELECT_TABLE" xml:space="preserve">
+    <value>Select a Custom Table...</value>
+  </data>
+  <data name="DATA_CUST_TABLE" xml:space="preserve">
+    <value>Custom Table</value>
+  </data>
+  <data name="DATA_CUST_TABLEGROUP" xml:space="preserve">
+    <value>Custom Table Group</value>
+  </data>
+  <data name="DATA_CUST_TABLES_IN_GRP" xml:space="preserve">
+    <value>Tables In The  Table Group</value>
+  </data>
+  <data name="DATA_CUST_TABLE_CREATED" xml:space="preserve">
+    <value>Created</value>
+  </data>
+  <data name="DATA_CUST_TABLE_CREATEDBY" xml:space="preserve">
+    <value>Created By</value>
+  </data>
+  <data name="DATA_CUST_TABLE_DATA" xml:space="preserve">
+    <value>Custom Table Data</value>
+  </data>
+  <data name="DATA_CUST_TABLE_GRPKEY" xml:space="preserve">
+    <value>Table Group Key</value>
+  </data>
+  <data name="DATA_CUST_TABLE_GRPNAME" xml:space="preserve">
+    <value>Table Group Name</value>
+  </data>
+  <data name="DATA_CUST_TABLE_OBJECT_NAME" xml:space="preserve">
+    <value>Data Name</value>
+  </data>
+  <data name="DATA_CUST_TABLE_OBJID" xml:space="preserve">
+    <value>Table Data Id</value>
+  </data>
+  <data name="DATA_CUST_TABLE_OBJOWNER" xml:space="preserve">
+    <value>Table Data Owner</value>
+  </data>
+  <data name="DATA_CUST_TABLE_UPDATED" xml:space="preserve">
+    <value>Updated</value>
+  </data>
+  <data name="DATA_CUST_TABLE_UPDATEDBY" xml:space="preserve">
+    <value>Updated By</value>
+  </data>
+  <data name="DATA_CUST_TOGGLE_DROPDOWN" xml:space="preserve">
+    <value>Toggle Dropdown</value>
+  </data>
+  <data name="DATA_CUST_UPDATE_RESULTS" xml:space="preserve">
+    <value>Update Results!</value>
+  </data>
+  <data name="DATA_CUST_VIEW_TABLE_OBJECT" xml:space="preserve">
+    <value>Viewing Table Data</value>
+  </data>
+  <data name="DIARYMGR_AUTHOR_MOOD" xml:space="preserve">
+    <value>Author Mood</value>
+  </data>
+  <data name="DIARYMGR_DIARY" xml:space="preserve">
+    <value>Diary</value>
+  </data>
+  <data name="DIARYMGR_NEW_DIARY" xml:space="preserve">
+    <value>New Diary</value>
+  </data>
+  <data name="DIARYMGR_RETURN_LIST" xml:space="preserve">
+    <value>Return to List</value>
+  </data>
+  <data name="DIARYMGR_TITLE" xml:space="preserve">
+    <value>Diary Management</value>
+  </data>
+  <data name="DIARYMGR_WEATHER" xml:space="preserve">
+    <value>Weather</value>
+  </data>
+  <data name="DOCUMENT_ADD_DOCUMENT" xml:space="preserve">
+    <value>+Document</value>
+  </data>
+  <data name="DOCUMENT_ADD_FOLDER" xml:space="preserve">
+    <value>+Folder</value>
+  </data>
+  <data name="DOCUMENT_BTN_CANCEL" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="DOCUMENT_BTN_SAVE" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="DOCUMENT_BTN_UPLOAD" xml:space="preserve">
+    <value>Upload File</value>
+  </data>
+  <data name="DOCUMENT_EDIT_FOLDER_NAME" xml:space="preserve">
+    <value>Folder Name</value>
+  </data>
+  <data name="DOCUMENT_GRID_VIEW" xml:space="preserve">
+    <value>Grid View</value>
+  </data>
+  <data name="DOCUMENT_LBL_FILENAME" xml:space="preserve">
+    <value>File Name</value>
+  </data>
+  <data name="DOCUMENT_LBL_SHARED" xml:space="preserve">
+    <value>Shared</value>
+  </data>
+  <data name="DOCUMENT_LBL_VERSION" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="DOCUMENT_LIST_VIEW" xml:space="preserve">
+    <value>List View</value>
+  </data>
+  <data name="DOCUMENT_RDO_PRIVATE" xml:space="preserve">
+    <value>Private</value>
+  </data>
+  <data name="DOCUMENT_RDO_SHARED" xml:space="preserve">
+    <value>Shared</value>
+  </data>
+  <data name="DOCUMENT_SEARCH_TEXT_PLH" xml:space="preserve">
+    <value>Search Documents</value>
+  </data>
+  <data name="DOCUMENT_TH_ACTION" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="DOCUMENT_TH_MODIFIED" xml:space="preserve">
+    <value>Modified</value>
+  </data>
+  <data name="DOCUMENT_TH_NAME" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="DOCUMENT_TH_OWNER" xml:space="preserve">
+    <value>Owner</value>
+  </data>
+  <data name="DOCUMENT_TH_SIZE_KB" xml:space="preserve">
+    <value>Size (KB)</value>
+  </data>
+  <data name="DOCUMENT_TITLE" xml:space="preserve">
+    <value>Document Management</value>
+  </data>
+  <data name="ERROR_DETAILS_DESC" xml:space="preserve">
+    <value>The error detail is: {0}</value>
+  </data>
+  <data name="ERROR_NOT_FOUND" xml:space="preserve">
+    <value>Oops! Page not found.</value>
+  </data>
+  <data name="ERROR_NOT_FOUND_DESC" xml:space="preserve">
+    <value>We could not find the page you were looking for.
+           Meanwhile, you may&lt;a href="/"&gt;return to Home&lt;/a&gt;</value>
+  </data>
+  <data name="ERROR_SERVER_ERROR" xml:space="preserve">
+    <value>Oops! Error happend on the server.</value>
+  </data>
+  <data name="ERROR_SERVER_ERROR_BODY" xml:space="preserve">
+    <value>There is application error on the server, the detail is: {0}</value>
+  </data>
+  <data name="ERROR_SERVER_ERROR_DESC" xml:space="preserve">
+    <value>There are error happened on the appliation server, please contact to your System administrator for help. Meanwhile, you may &lt;a href="/"&gt;return to Home&lt;/a&gt;</value>
+  </data>
+  <data name="ERROR_TITLE" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="EVENT_APP_ACCESS_URL_ERROR" xml:space="preserve">
+    <value>Error happened when access url {0}</value>
+  </data>
+  <data name="EVENT_APP_ERROR" xml:space="preserve">
+    <value>Application Error</value>
+  </data>
+  <data name="EVENT_APP_EVENT" xml:space="preserve">
+    <value>Application Event</value>
+  </data>
+  <data name="EVENT_APP_EVENT_LIST" xml:space="preserve">
+    <value>Event List</value>
+  </data>
+  <data name="EVENT_APP_EVENT_LOGIN_DESC" xml:space="preserve">
+    <value>User {0} is login to the System</value>
+  </data>
+  <data name="EVENT_APP_EVENT_LOGIN_FAILED" xml:space="preserve">
+    <value>Failed to Login to the System</value>
+  </data>
+  <data name="EVENT_APP_EVENT_LOGIN_FAILEDDESC" xml:space="preserve">
+    <value>User {0} Failed to Login to the System</value>
+  </data>
+  <data name="EVENT_APP_EVENT_NEWUSER" xml:space="preserve">
+    <value>New User Registered to the System</value>
+  </data>
+  <data name="EVENT_APP_EVENT_TYPE_ERROR" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="EVENT_APP_EVENT_TYPE_INFO" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="EVENT_APP_EVENT_TYPE_WARNING" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="EVENT_APP_EVENT_USERLOGIN" xml:space="preserve">
+    <value>User login to the System</value>
+  </data>
+  <data name="EVENT_APP_UNKOWN_ERROR" xml:space="preserve">
+    <value>Unkown Application Error Happened.</value>
+  </data>
+  <data name="EVNET_APP_EVENT_NEWUSER_DESC" xml:space="preserve">
+    <value>User {0} is registered to the System</value>
+  </data>
+  <data name="IMAGEMGR_ALBUM" xml:space="preserve">
+    <value>Album</value>
+  </data>
+  <data name="IMAGEMGR_ALBUMS" xml:space="preserve">
+    <value>Alburms</value>
+  </data>
+  <data name="IMAGEMGR_BTN_UPLOADIMG" xml:space="preserve">
+    <value>Upload Image</value>
+  </data>
+  <data name="IMAGEMGR_ERR_ALERT" xml:space="preserve">
+    <value>Alert!</value>
+  </data>
+  <data name="IMAGEMGR_IMAGES" xml:space="preserve">
+    <value>Images</value>
+  </data>
+  <data name="IMAGEMGR_LBL_DESC" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="IMAGEMGR_LBL_IMGTITLE" xml:space="preserve">
+    <value>Image Title</value>
+  </data>
+  <data name="IMAGEMGR_LBL_NAME" xml:space="preserve">
+    <value>album Name</value>
+  </data>
+  <data name="IMAGEMGR_LBL_SHARED" xml:space="preserve">
+    <value>Shared</value>
+  </data>
+  <data name="IMAGEMGR_LBL_TYPE" xml:space="preserve">
+    <value>album Type</value>
+  </data>
+  <data name="IMAGEMGR_RDO_PRIVATE" xml:space="preserve">
+    <value>Private</value>
+  </data>
+  <data name="IMAGEMGR_RDO_SHARED" xml:space="preserve">
+    <value>Shared</value>
+  </data>
+  <data name="IMAGEMGR_TITLE" xml:space="preserve">
+    <value>Photos Management</value>
+  </data>
+  <data name="IMAGEMGR_VIEW_LOADING" xml:space="preserve">
+    <value>Loading ...</value>
+  </data>
+  <data name="IMAGEMGR_VIEW_MORE_IMGS" xml:space="preserve">
+    <value>View More Images</value>
+  </data>
+  <data name="INDEX_ABOUT" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="INDEX_EVENT_COUNTER_MSG" xml:space="preserve">
+    <value>There are {0} Latest System Events</value>
+  </data>
+  <data name="INDEX_HELP" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="INDEX_MENU_HOT" xml:space="preserve">
+    <value>Hot</value>
+  </data>
+  <data name="INDEX_NOTIFY_DEFAULT_MSG" xml:space="preserve">
+    <value>FEConsole V1.0 is Now General Avaliable!</value>
+  </data>
+  <data name="INDEX_NOTIFY_DEFAULT_PROVIDER" xml:space="preserve">
+    <value>Locale System</value>
+  </data>
+  <data name="INDEX_REPORT_BOOKS" xml:space="preserve">
+    <value>Books</value>
+  </data>
+  <data name="INDEX_REPORT_COL_AUTHOR" xml:space="preserve">
+    <value>Author</value>
+  </data>
+  <data name="INDEX_REPORT_COL_DATE" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="INDEX_REPORT_COL_TITLE" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="INDEX_REPORT_COL_VERSION" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="INDEX_REPORT_LATEST_IMAGES" xml:space="preserve">
+    <value>Latest Images</value>
+  </data>
+  <data name="INDEX_REPORT_POSTS" xml:space="preserve">
+    <value>Posts</value>
+  </data>
+  <data name="INDEX_REPORT_VIEW_ALLBOOKS" xml:space="preserve">
+    <value>View All Books</value>
+  </data>
+  <data name="INDEX_REPORT_VIEW_ALLIMGS" xml:space="preserve">
+    <value>View All Images</value>
+  </data>
+  <data name="INDEX_REPORT_VIEW_ALLPOSTS" xml:space="preserve">
+    <value>View All Posts</value>
+  </data>
+  <data name="INDEX_TOTAL_BOOKS" xml:space="preserve">
+    <value>TOTAL BOOKS</value>
+  </data>
+  <data name="INDEX_TOTAL_CONTACTS" xml:space="preserve">
+    <value>TOTAL CONTACTS</value>
+  </data>
+  <data name="INDEX_TOTAL_IMAGES" xml:space="preserve">
+    <value>TOTAL IMAGES</value>
+  </data>
+  <data name="INDEX_TOTAL_POSTS" xml:space="preserve">
+    <value>TOTAL POSTS</value>
+  </data>
+  <data name="LAYOUT_ADMIN_CONSOLE" xml:space="preserve">
+    <value>Admin Console</value>
+  </data>
+  <data name="LAYOUT_COMPANY" xml:space="preserve">
+    <value>FE Contributes Space</value>
+  </data>
+  <data name="LAYOUT_CONSOLE" xml:space="preserve">
+    <value>Console</value>
+  </data>
+  <data name="LAYOUT_COPYRIGHT" xml:space="preserve">
+    <value>Copyright &amp;copy; 2016</value>
+  </data>
+  <data name="LAYOUT_COPYRIGHT_STR" xml:space="preserve">
+    <value>All rights reserved.</value>
+  </data>
+  <data name="LAYOUT_NAV_ACTMGR" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="LAYOUT_NAV_BOOKS" xml:space="preserve">
+    <value>Books</value>
+  </data>
+  <data name="LAYOUT_NAV_CONTACTS" xml:space="preserve">
+    <value>Contacts</value>
+  </data>
+  <data name="LAYOUT_NAV_DATAMGR" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="LAYOUT_NAV_DIARY" xml:space="preserve">
+    <value>Diary</value>
+  </data>
+  <data name="LAYOUT_NAV_DOCUMENTS" xml:space="preserve">
+    <value>Documents</value>
+  </data>
+  <data name="LAYOUT_NAV_EFFICIENCY" xml:space="preserve">
+    <value>Efficiency</value>
+  </data>
+  <data name="LAYOUT_NAV_GENERALOBJ" xml:space="preserve">
+    <value>General Objects</value>
+  </data>
+  <data name="LAYOUT_NAV_LICENSE" xml:space="preserve">
+    <value>License Management</value>
+  </data>
+  <data name="LAYOUT_NAV_MAIN" xml:space="preserve">
+    <value>MAIN NAVIGATION</value>
+  </data>
+  <data name="LAYOUT_NAV_PHOTOS" xml:space="preserve">
+    <value>Photos</value>
+  </data>
+  <data name="LAYOUT_NAV_PORTAL" xml:space="preserve">
+    <value>Shared Portal</value>
+  </data>
+  <data name="LAYOUT_NAV_POSTS" xml:space="preserve">
+    <value>Posts</value>
+  </data>
+  <data name="LAYOUT_NAV_SYSCONF" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="LAYOUT_NAV_SYSUSR" xml:space="preserve">
+    <value>System Users</value>
+  </data>
+  <data name="LAYOUT_NAV_TASKMGR" xml:space="preserve">
+    <value>Task Management</value>
+  </data>
+  <data name="LAYOUT_NAV_TOGGLE" xml:space="preserve">
+    <value>Toggle navigation</value>
+  </data>
+  <data name="LAYOUT_NAV_USRMGR" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="LAYOUT_PROFILE" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="LAYOUT_SIGNOUT" xml:space="preserve">
+    <value>Sign out</value>
+  </data>
+  <data name="LAYOUT_STATUS_ONLINE" xml:space="preserve">
+    <value>Online</value>
+  </data>
+  <data name="LAYOUT_SUBTITLE" xml:space="preserve">
+    <value>Just for the Best Experience!</value>
+  </data>
+  <data name="LAYOUT_SYSTEM_SETTINGS" xml:space="preserve">
+    <value>System Settings</value>
+  </data>
+  <data name="LAYOUT_VERSION" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="LEAVING_PAGE_WARN" xml:space="preserve">
+    <value>Are you sure you want to leave this page?</value>
+  </data>
+  <data name="LICMGR_BTN_UPLOADLIC" xml:space="preserve">
+    <value>Upload Your License</value>
+  </data>
+  <data name="LICMGR_COL_DESC" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="LICMGR_COL_EXPIRED" xml:space="preserve">
+    <value>Expired Date</value>
+  </data>
+  <data name="LICMGR_COL_ID" xml:space="preserve">
+    <value>Module ID</value>
+  </data>
+  <data name="LICMGR_COL_LSD" xml:space="preserve">
+    <value>Licensed</value>
+  </data>
+  <data name="LICMGR_COL_NAME" xml:space="preserve">
+    <value>Module Name</value>
+  </data>
+  <data name="LICMGR_LBL_MODULES" xml:space="preserve">
+    <value>Modules in System</value>
+  </data>
+  <data name="LICMGR_TITLE" xml:space="preserve">
+    <value>License Management</value>
+  </data>
+  <data name="LOGIN_BTN_REGISTER" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="LOGIN_BTN_SENDEMAIL" xml:space="preserve">
+    <value>Send Email</value>
+  </data>
+  <data name="LOGIN_BTN_SIGNGOOGLE" xml:space="preserve">
+    <value>Sign in using Google+</value>
+  </data>
+  <data name="LOGIN_BTN_SIGNIN" xml:space="preserve">
+    <value>Sign In</value>
+  </data>
+  <data name="LOGIN_BTN_SIGNMICROSOFT" xml:space="preserve">
+    <value>Sign in using Microsoft Account</value>
+  </data>
+  <data name="LOGIN_ENTER_EMAIL" xml:space="preserve">
+    <value>Enter your email</value>
+  </data>
+  <data name="LOGIN_FORGET_PASS_MSG" xml:space="preserve">
+    <value>Forgot your password?</value>
+  </data>
+  <data name="LOGIN_LBL_AGREE_TERM" xml:space="preserve">
+    <value>I agree to the &lt;a href="#"&gt;terms&lt;/a&gt;</value>
+  </data>
+  <data name="LOGIN_LBL_ALREADY_MEMBER" xml:space="preserve">
+    <value>I already have a membership</value>
+  </data>
+  <data name="LOGIN_LBL_CONFIRMPASS" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="LOGIN_LBL_EMAIL" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="LOGIN_LBL_FOGETPASS" xml:space="preserve">
+    <value>I forgot my password</value>
+  </data>
+  <data name="LOGIN_LBL_PASS" xml:space="preserve">
+    <value>Passowrd</value>
+  </data>
+  <data name="LOGIN_LBL_REGISTERNEW" xml:space="preserve">
+    <value>Register a new membership</value>
+  </data>
+  <data name="LOGIN_LBL_REMBERME" xml:space="preserve">
+    <value>Remember Me</value>
+  </data>
+  <data name="LOGIN_MSG_INVALIDUSER" xml:space="preserve">
+    <value>Invalid User name or Password</value>
+  </data>
+  <data name="LOGIN_START_MSG" xml:space="preserve">
+    <value>Sign in to start your session</value>
+  </data>
+  <data name="LOGIN_TITLE" xml:space="preserve">
+    <value>Log in</value>
+  </data>
+  <data name="POST_ADD_GROUP" xml:space="preserve">
+    <value>Add Group</value>
+  </data>
+  <data name="POST_ALL_POSTS" xml:space="preserve">
+    <value>All Posts</value>
+  </data>
+  <data name="POST_BTN_DELETE" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="POST_BTN_EDIT" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="POST_BTN_PRINT" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="POST_BTN_RETURN_TO_LIST" xml:space="preserve">
+    <value>Return to List</value>
+  </data>
+  <data name="POST_BTN_UPLOAD_IMG" xml:space="preserve">
+    <value>Upload Post Image</value>
+  </data>
+  <data name="POST_BTN_VIEW" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="POST_DELETE_GROUP" xml:space="preserve">
+    <value>Delete Group</value>
+  </data>
+  <data name="POST_EDIT_GROUP" xml:space="preserve">
+    <value>Edit Group</value>
+  </data>
+  <data name="POST_LBL_CONTENT" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="POST_LBL_INTRODUCTION" xml:space="preserve">
+    <value>Introduction</value>
+  </data>
+  <data name="POST_LBL_ISORIGINAL" xml:space="preserve">
+    <value>Is Original</value>
+  </data>
+  <data name="POST_LBL_ORIGINAL" xml:space="preserve">
+    <value>Original</value>
+  </data>
+  <data name="POST_LBL_SHARED" xml:space="preserve">
+    <value>Shared</value>
+  </data>
+  <data name="POST_LBL_TITLE" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="POST_NEW_POST" xml:space="preserve">
+    <value>New Post</value>
+  </data>
+  <data name="POST_RDO_NO" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="POST_RDO_PRIVATE" xml:space="preserve">
+    <value>Private</value>
+  </data>
+  <data name="POST_RDO_SHARED" xml:space="preserve">
+    <value>Shared</value>
+  </data>
+  <data name="POST_RDO_YES" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="POST_TITLE" xml:space="preserve">
+    <value>Post Management</value>
+  </data>
+  <data name="PROFILE_ADDRESS" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="PROFILE_BIRTH_DATE" xml:space="preserve">
+    <value>Birth Date</value>
+  </data>
+  <data name="PROFILE_BTN_PROFILE" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="PROFILE_BTN_SIGNOUT" xml:space="preserve">
+    <value>Sign out</value>
+  </data>
+  <data name="PROFILE_BTN_UPLOADIMG" xml:space="preserve">
+    <value>Upload Image</value>
+  </data>
+  <data name="PROFILE_BUILDING" xml:space="preserve">
+    <value>Building</value>
+  </data>
+  <data name="PROFILE_CITY" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="PROFILE_COMPANY" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="PROFILE_COMPANYURL" xml:space="preserve">
+    <value>Company Url</value>
+  </data>
+  <data name="PROFILE_CONTACT" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="PROFILE_COUNTRY" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="PROFILE_DEGREE" xml:space="preserve">
+    <value>Degree</value>
+  </data>
+  <data name="PROFILE_EDUCATION" xml:space="preserve">
+    <value>Education</value>
+  </data>
+  <data name="PROFILE_EMAIL" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="PROFILE_ENDDATE" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="PROFILE_ENROLL_DATE" xml:space="preserve">
+    <value>Enroll Date</value>
+  </data>
+  <data name="PROFILE_EXIT_DATE" xml:space="preserve">
+    <value>Exit Date</value>
+  </data>
+  <data name="PROFILE_FACEBOOK" xml:space="preserve">
+    <value>Facebook</value>
+  </data>
+  <data name="PROFILE_FEMALE" xml:space="preserve">
+    <value>Female</value>
+  </data>
+  <data name="PROFILE_FIRSTNAME" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="PROFILE_GENDER" xml:space="preserve">
+    <value>Gender</value>
+  </data>
+  <data name="PROFILE_GRADE" xml:space="preserve">
+    <value>Grade</value>
+  </data>
+  <data name="PROFILE_ID" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="PROFILE_JOBDESC" xml:space="preserve">
+    <value>Job Description</value>
+  </data>
+  <data name="PROFILE_JOBTITLE" xml:space="preserve">
+    <value>Job Title</value>
+  </data>
+  <data name="PROFILE_LASTNAME" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="PROFILE_LEVEL" xml:space="preserve">
+    <value>Level</value>
+  </data>
+  <data name="PROFILE_LINKEDIN" xml:space="preserve">
+    <value>LinkedIn</value>
+  </data>
+  <data name="PROFILE_LOCATION" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="PROFILE_MALE" xml:space="preserve">
+    <value>Male</value>
+  </data>
+  <data name="PROFILE_MOBPHONE" xml:space="preserve">
+    <value>Mobile Phone</value>
+  </data>
+  <data name="PROFILE_OTHERCONTACT" xml:space="preserve">
+    <value>Other Contact</value>
+  </data>
+  <data name="PROFILE_POSTCODE" xml:space="preserve">
+    <value>PostCode</value>
+  </data>
+  <data name="PROFILE_PROVINCE" xml:space="preserve">
+    <value>Province</value>
+  </data>
+  <data name="PROFILE_QQ" xml:space="preserve">
+    <value>QQ</value>
+  </data>
+  <data name="PROFILE_SCHOOL" xml:space="preserve">
+    <value>School</value>
+  </data>
+  <data name="PROFILE_SKILLDESC" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="PROFILE_SKILLNAME" xml:space="preserve">
+    <value>Skill Name</value>
+  </data>
+  <data name="PROFILE_SKILLS" xml:space="preserve">
+    <value>Skills</value>
+  </data>
+  <data name="PROFILE_STARTDATE" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="PROFILE_STREET" xml:space="preserve">
+    <value>Street</value>
+  </data>
+  <data name="PROFILE_TELEPHONE" xml:space="preserve">
+    <value>Telephone</value>
+  </data>
+  <data name="PROFILE_TWITTER" xml:space="preserve">
+    <value>Twitter</value>
+  </data>
+  <data name="PROFILE_WECHAT" xml:space="preserve">
+    <value>WeChat</value>
+  </data>
+  <data name="PROFILE_WKEXPRERIENCE" xml:space="preserve">
+    <value>Work Experience</value>
+  </data>
+  <data name="String" xml:space="preserve">
+    <value>FEConsole is also a greate helper for those who are willing to learn and improve themself all their lives. Share is also a key feature of this application, you can share your articles, books and images to the public, thus all your friends can enjor the happy moment with you.</value>
+  </data>
+  <data name="TASKMGR_BTN_LBL_COMTASK" xml:space="preserve">
+    <value>Complete task</value>
+  </data>
+  <data name="TASKMGR_BTN_LBL_STARTTASK" xml:space="preserve">
+    <value>Increase Progress</value>
+  </data>
+  <data name="TASKMGR_LBL_COMP_DATE" xml:space="preserve">
+    <value>Completed Date</value>
+  </data>
+  <data name="TASKMGR_LBL_DESC" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="TASKMGR_LBL_ENDDATE" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="TASKMGR_LBL_STARTDATE" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="TASKMGR_LBL_TASKNAME" xml:space="preserve">
+    <value>Task Name</value>
+  </data>
+  <data name="TASKMGR_LBL_TASKTYPE" xml:space="preserve">
+    <value>Task Type</value>
+  </data>
+  <data name="TASKMGR_LBL_TGTTITLE" xml:space="preserve">
+    <value>Target Title</value>
+  </data>
+  <data name="TASKMGR_LBL_TGTTYPE" xml:space="preserve">
+    <value>Target Type</value>
+  </data>
+  <data name="TASKMGR_RDO_IMPORTANT" xml:space="preserve">
+    <value>Important</value>
+  </data>
+  <data name="TASKMGR_RDO_LOW" xml:space="preserve">
+    <value>Low</value>
+  </data>
+  <data name="TASKMGR_RDO_MEDIUM" xml:space="preserve">
+    <value>Medium</value>
+  </data>
+  <data name="TASKMGR_TAB_TARGETS" xml:space="preserve">
+    <value>Targets</value>
+  </data>
+  <data name="TASKMGR_TAB_TASKS" xml:space="preserve">
+    <value>Tasks</value>
+  </data>
+  <data name="TASKMGR_TASKLIST" xml:space="preserve">
+    <value>Task List</value>
+  </data>
+  <data name="TASKMGR_TH_ACTION" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="TASKMGR_TH_DESC" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="TASKMGR_TH_PROGRESS" xml:space="preserve">
+    <value>Progress</value>
+  </data>
+  <data name="TASKMGR_TH_TASK" xml:space="preserve">
+    <value>Task</value>
+  </data>
+  <data name="TASKMGR_TITLE" xml:space="preserve">
+    <value>Task Management</value>
+  </data>
+  <data name="TASKMGR_VIEW_ALL_TASK" xml:space="preserve">
+    <value>View all tasks</value>
+  </data>
+  <data name="USERMGR_BTN_PROFILE" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="USERMGR_BTN_RESETPASS" xml:space="preserve">
+    <value>Reset password</value>
+  </data>
+  <data name="USERMGR_COL_ACTION" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="USERMGR_COL_EMAIL" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="USERMGR_COL_STATUS" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="USERMGR_COL_USERID" xml:space="preserve">
+    <value>User ID</value>
+  </data>
+  <data name="USERMGR_COL_USERNAME" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="USERMGR_LBL_ACTIVE" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="USERMGR_TITLE" xml:space="preserve">
+    <value>User Management</value>
+  </data>
+  <data name="USERPROFILE_TITLE" xml:space="preserve">
+    <value>User Profile</value>
+  </data>
+</root>

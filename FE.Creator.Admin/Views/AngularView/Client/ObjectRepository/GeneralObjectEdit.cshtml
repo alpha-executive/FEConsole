@@ -1,0 +1,59 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<AppLang> AppLangResource
+<div class="box box-primary box-solid">
+    <div class="box-header with-border">
+        <h3 class="box-title">
+            <i class="fa fa-table"></i> @AppLangResource["DATA_CUST_LBL_EDIT_TABLE"]-{{ctrl.currentGeneralObject.objectName}}
+        </h3>
+        <div class="box-tools pull-right">
+            <div class="btn-group">
+                <button class="btn btn-box-tool" ng-click="ctrl.setViewMode('list')">
+                    <i class="fa fa-mail-reply"></i> @AppLangResource["DATA_CUST_BACKTOLIST"]
+                </button>
+                <button class="btn btn-box-tool" ng-click="ctrl.saveChanges()"><i class="fa fa-save"></i> @AppLangResource["COMMON_BTN_SAVE"]</button>
+            </div>
+        </div>
+    </div>
+    <div class="box-body">
+        <div class="box box-warning">
+            <div class="box-header">
+                <h4><i class="fa fa-flag-o"></i> @AppLangResource["DATA_CUST_GENERAL_PROPERTY"]</h4>
+            </div>
+            <div class="box-body">
+                <!--ID and Name-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-star-o text-yellow"></i> @AppLangResource["DATA_CUST_TABLE_OBJECT_NAME"]
+                            </span>
+                            <input type="text" class="form-control" ng-model="ctrl.currentGeneralObject.objectName" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box box-warning">
+            <div class="box-header">
+                <h4 class="box-title"><i class="fa fa-cubes"></i> @AppLangResource["DATA_CUST_ADVANCED_PROPERTY"]</h4>
+            </div>
+            <div class="box-body">
+                <div class="row" ng-repeat="objfield in ctrl.currentGeneralObject.properties">
+                    <div ng-include="ctrl.getObjectFieldTemplateUrl(objfield.keyName)"></div>
+                    <!-- /.ng-if -->
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </div><!--/.box-->
+    </div><!-- /.box-body -->
+    <div class="box-footer">
+        <div class="box-tools pull-right">
+            <div class="btn-group">
+                <button class="btn btn-box-tool" ng-click="ctrl.setViewMode('list')">
+                    <i class="fa fa-mail-reply"></i> @AppLangResource["DATA_CUST_BACKTOLIST"]
+                </button>
+                <button class="btn btn-box-tool" ng-click="ctrl.saveChanges()"><i class="fa fa-save"></i> @AppLangResource["COMMON_BTN_SAVE"]</button>
+            </div>
+        </div>
+    </div>
+</div>

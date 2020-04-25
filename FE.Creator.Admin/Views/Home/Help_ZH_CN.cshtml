@@ -1,0 +1,306 @@
+﻿
+@{
+    ViewBag.Title = "帮助";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-body">
+                <section id="introduction">
+                    <h2 class="page-header"><i class="fa fa-info"></i> 简介</h2>
+                    <p>
+                        欢迎使用个人信息管理平台, 这个页面的内容会指导你去更容易的使用系统。当然, 你在任何时候都可以用电子邮件<span class="label label-success"><i class="fa fa-envelope-o"></i> alpha_executive@126.com</span>、领英<span class="label label-success"><i class="fa fa-linkedin-square"></i> alphateam.zhang@gmail.com</span>或者微信<span class="label label-success"><i class="fa fa-weixin"></i> ksfounder</span>联系系统的作者来获得技术上的支持。
+                    </p>
+                    <div class="callout callout-warning">
+                        <h4>警告</h4>
+                        <p>尽管这个应用程序是免费的， 但你仍然需要从官方站点上获取一个免费的授权文件来激活你的应用， 强烈建议你在了解系统的各个功能后再做实际的应用操作。</p>
+                        <p>建议每年去官网上获取一个授权， 以便得到最新的更新包和了解系统的新功能。</p>
+                    </div>
+                </section>
+                <section id="register">
+                    <h2 class="page-header"><i class="fa fa-balance-scale"></i> 首要任务</h2>
+                    <p>
+                        <b>激活授权文件</b> 系统必须要用激活授权文件来激活，请到<a href="#">FEConsole</a>站点获取激活授权文件。
+                    </p>
+                    <p>
+                        你可以从<a href="#">FEConsole</a>获取到最新的更新和免费的技术支持， 更重要的是， 你可以在这里报告你在使用系统中遇到的问题，以及对这个应用的一些意见和看法。
+                    </p>
+                    <p><b>激活系统</b> 首先的定位到“系统”->“授权管理”界面，然后点击<button class="btn btn-xs">上传注册码</button>按钮将从FEConsole官网上获取到的授权激活文件应用到系统。</p>
+                </section>
+                <section id="setupprofile">
+                    <h2 class="page-header"><i class="fa fa-user"></i> 维护用户资料</h2>
+                    <p>
+                        <b>用户资料</b> 是一个保存用户个人信息的功能单元，这些信息包括个人基本信息，联系方式，联系地址以及个人技能等。
+                    </p>
+                    <p>
+                        要编辑用户资料， 需要先从系统菜单导航到“用户”模块，然后点击相应用户记录的<button class="btn btn-primary btn-flat btn-xs"><i class="fa  fa-user"></i>用户资料</button>按钮。
+                        <ul>
+                            <li>
+                                <b>编辑一般信息</b> 在第一分组中点击<button class="btn btn-box-tool" type="button"><i class="fa fa-pencil"></i> 编辑</button>按钮来编辑你的个人图片，出生日期，性别和身份证号， 切记点击 <button class="btn btn-box-tool" type="button"><i class="fa fa-save"></i> 保存</button>按钮来保存更改。
+                            </li>
+                            <li>
+                                <b>编辑联系方式</b> 在“联系方式”分组中点击<button class="btn btn-box-tool" type="button"><i class="fa fa-pencil"></i> 编辑</button>按钮来编辑“电话”，“电子邮件”， “QQ号码”， “微信号码”， “领英号码”和“推特账号”等联系方式；切记点击<button class="btn btn-box-tool" type="button"><i class="fa fa-save"></i> 保存</button>按钮来保存更改。
+                            </li>
+                            <li>
+                                <b>编辑联系地址</b> 在“联系地址”分组中点击<button class="btn btn-box-tool" type="button"><i class="fa fa-pencil"></i> 编辑</button>按钮来编辑你的联系地址，你可以维护多个联系地址，点击<button class="btn btn-box-tool" type="button"><i class="fa fa-plus"></i> 添加</button> 按钮来添加一个新的联系地址记录，记得点击<button class="btn btn-box-tool" type="button"><i class="fa fa-save"></i> 保存</button>按钮去保存更改。
+                            </li>
+                            <li>
+                                <b>编辑教育背景</b> 在“教育背景”分组中点击<button class="btn btn-box-tool" type="button"><i class="fa fa-pencil"></i> 编辑</button>按钮来编辑你的教育背景, 你可以维护多条受教育信息，点击<button class="btn btn-box-tool" type="button"><i class="fa fa-plus"></i> 添加</button> 按钮来添加一条教育背景记录，点击<button class="btn btn-box-tool" type="button"><i class="fa fa-save"></i> 保存</button>按钮保存更改。
+                            </li>
+                            <li>
+                                <b>编辑个人技能</b> 在“个人技能”分组中点击<button class="btn btn-box-tool" type="button"><i class="fa fa-pencil"></i> 编辑</button>按钮来编辑你的个人技能信息，你可以维护多个个人技能信息，点击<button class="btn btn-box-tool" type="button"><i class="fa fa-plus"></i> 添加</button> 按钮来添加一条新的纪录, 记得点击 <button class="btn btn-box-tool" type="button"><i class="fa fa-save"></i> 保存</button>按钮来保存更改。
+                            </li>
+                            <li>
+                                <b>编辑工作经验</b> 在“工作经验”分组中点击<button class="btn btn-box-tool" type="button"><i class="fa fa-pencil"></i> 编辑</button>按钮来编辑工作经验，你可以维护多条工作经验信息，点击<button class="btn btn-box-tool" type="button"><i class="fa fa-plus"></i> 添加</button>按钮来添加一条工作经验信息，记得点击<button class="btn btn-box-tool" type="button"><i class="fa fa-save"></i> 保存</button>按钮来保存更改。
+                            </li>
+                        </ul>
+                    </p>
+                </section>
+                <section id="picturemanagement">
+                    <h2 class="page-header"><i class="fa fa-picture-o"></i> 管理照片</h2>
+                    <p>
+                        与日俱增的照片几乎占满了智能手机那有限的存储空间，这个问题一直困扰着我，寻找一个高效，安全可靠的图片管理方案是我写这个应用的原始动力之一。现在我们几乎可以把自己所有的图片都保存到这个应用来进行管理， 并且可以为每张图片提供简要的描述，以便在将来的一天重温当时的记忆， 也可以在应用中创建相册来分组管理照片，或者分享照片到互联网上，以让朋友们一起来分享我们的快乐。
+                    </p>
+                    <p>要管理图片， 请从系统菜单导航到“图片”模块。</p>
+                    <h4>添加图片到系统</h4>
+                    <p>你可以用两种不同的方式添加图片到系统中：</p>
+                    <ul>
+                        <li>
+                            <b>添加</b> 点击按钮<button type="button" class="btn btn-success btn-xs"><i class="fa fa-plus"></i></button>可以添加一张本地图片到系统中，用户可以同时指定图片标题，图片描述以及共享标志等属性。
+                        </li>
+                        <li>
+                            <b>上传</b> 点击按钮<button type="button" class="btn btn-success btn-xs"><i class="fa fa-upload"></i></button>可以导入多张图片到系统中，导入的图片默认设置为“私有”属性，没有图片描述，用户可以在上传完成后编辑图片描述和标题。
+                        </li>
+                    </ul>
+                    <h4>编辑图片</h4>
+                    <p>所有上传的图片在系统中按时间顺序逆序排列，用户可以对每一个上传的图片做如下操作：</p>
+                    <ul>
+                        <li>
+                            <b>编辑</b> 点击<button class="btn btn-box-tool" type="button"><i class="fa fa-pencil"></i></button>按钮来编辑图片描述，设置共享/私有属性和标题。
+                        </li>
+                        <li>
+                            <b>删除</b> 点击<button class="btn btn-box-tool" type="button"><i class="fa fa-trash"></i></button>按钮将从系统中删除当前图片。
+                        </li>
+                        <li>
+                            <b>下载</b> 点击<button class="btn btn-box-tool"><i class="fa fa-cloud-download"></i></button>按钮将下载原始图片到本地。
+                        </li>
+                    </ul>
+                    <h4>管理相册</h4>
+                    <p>相册可以把系统中的图片分成小组，在“图片”页面点击“相册”选项卡，便切换到了相册管理界面。</p>
+                    <ul>
+                        <li>
+                            <b>创建相册</b> 点击按钮<button type="button" class="btn btn-success btn-xs"><i class="fa fa-plus"></i></button>可以新建一个相册。
+                        </li>
+                        <li>
+                            <b>编辑相册</b> 点击按钮<button class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></button>以编辑相册，“相册类型”是一个很重要的属性，这个属性决定了相册中图片的布局方式：
+                            <ul>
+                                <li><b>列表</b> 相册中的图片以卡片列表的方式显示。</li>
+                                <li><b>幻灯片</b> 相册中的图片以幻灯片的方式播放。</li>
+                                <li><b>流线布局</b> 相册中的图片以流线方式布局。</li>
+                            </ul>
+                            做完任何更改后，切记点击<button class="btn btn-box-tool" type="button"><i class="fa fa-save"></i> 保存</button>按钮来保存更改。
+                        </li>
+                        <li>
+                            <b>删除相册</b> 点击按钮<button class="btn btn-default btn-xs" type="button"><i class="fa fa-trash"></i></button>将删除一个相册。
+                            删除相册并不会将相册中的图片全部删除掉，而是把相册中的图片迁移到默认相册中，要删除一个图片，请点击对应图片的<button class="btn btn-box-tool" type="button"><i class="fa fa-trash"></i></button>按钮。
+                        </li>
+                        <li>
+                            <b>添加图片到相册</b> 用户即可以把本地图片导入相册，也可以把系统中已有的图片添加到相册，在相册页面中，点击相应的相册图标进入相册来添加图片：
+                            <ul>
+                                <li><b>选择系统中图片</b> 点击按钮<button class="btn btn-success btn-xs" type="button"><i class="fa fa-ellipsis-h"></i></button>后选择要加入相册中的图片，然后点击<button class="btn btn-box-tool" type="button"><i class="fa fa-save text-green"></i> 确认</button> 按钮完成照片选择。</li>
+                                <li><b>上传本地图片</b> 点击按钮<button class="btn btn-success btn-xs" type="button"><i class="fa fa-upload"></i></button>，然后从文件选择管理器中选择要上传的本地图片。</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                <section id="posts">
+                    <h2 class="page-header"><i class="fa  fa-lightbulb-o"></i> 管理文章</h2>
+                    <p>时间飞逝！你总会有一些要写的东西，或者是生活感悟，或者是技术总结，也或者是一首诗，甚至是一个有趣的想法。把它们集中写到这个系统中，然后分享给朋友或者供自己欣赏。</p>
+                    <h4>创建分组</h4>
+                    <p>创建分组来管理文章一直是一个好的方法，要在系统中创建一个分组，从系统菜单中导航“效率"->“文章” 到文章管理页面。</p>
+                    <p>在“文章管理”页面，点击<button class="btn btn-box-tool" type="button"><i class="fa fa-plus text-primary"></i> 添加分组</button>按钮，然后输入分组名称，点击<button class="btn btn-primary btn-flat btn-xs" id="add-new-event" type="button"><i class="fa fa-save"></i></button>按钮来创建分组，要取消创建分组，点击<button class="btn btn-primary btn-flat btn-xs" id="cancel-new-event" type="button"><i class="fa fa-close"></i></button>按钮。</p>
+                    <h4>编辑分组</h4>
+                    <p>在“分组”中点击要编辑的分组，然后点击<button class="btn btn-box-tool" type="button"><i class="fa fa-pencil text-blue"></i> 编辑分组</button>按钮，更改分组名称后点击<button class="btn btn-primary btn-flat btn-xs" id="add-new-event" type="button"><i class="fa fa-save"></i></button>按钮保存更改。</p>
+                    <h4>删除分组</h4>
+                    <p>在“分组”中点击要删除的分组，然后点击<button class="btn btn-box-tool" type="button"><i class="fa fa-trash text-red"></i> 删除分组</button>按钮来删除分组。注意：分组下面的文章不会被删除，它们会被转移到默认分组下。</p>
+                    <h4>创建文章</h4>
+                    <p>
+                        从系统菜单“效率”->“文章”导航到“文章管理”界面，点击<button class="btn btn-box-tool" type="button"><i class="fa fa-plus text-green"></i> 新建文章</button>按钮, 填写创建文章所需的信息，点击<button class="btn btn-success btn-xs" type="button"><i class="fa fa-save"></i> 保存</button>按钮来保存新建的文章到系统。
+                    </p>
+                    <p>
+                        文章内容的编辑是在一个“可见即可得”的在线编辑器中完成的，这个编辑器操作简单，甚至支持从Office Word中拷贝过来的内容。你可以设置文章的“共享”熟悉来共享这篇文章，这样这篇文章就会显示到个性站点上，以便关注你的朋友来阅读你的文章。
+                    </p>
+                    <h4>文章操作</h4>
+                    <p>用户可以编辑，预览和查看文章，对于在“文章管理”界面中列出的文章， 用户可以：</p>
+                    <ul>
+                        <li><b>编辑</b> 点击<button class="btn btn-box-tool" type="button"><i class="fa fa-pencil text-primary"></i> 编辑</button>按钮来编辑指定文章。</li>
+                        <li><b>预览</b> 点击<button class="btn btn-box-tool" type="button"><i class="fa fa-search text-primary"></i> 查看</button>按钮来预览指定文章，你也可以在预览的同时打印文章。</li>
+                        <li><b>删除</b> 点击<button class="btn btn-box-tool" type="button"><i class="fa fa-trash text-primary"></i> 删除</button>按钮来删除一篇文章。</li>
+                    </ul>
+                </section>
+                <section id="diary">
+                    <h2 class="page-header"><i class="fa  fa-edit"></i> 管理日记</h2>
+                    <p>
+                       相信很多人都会写日记，至少很多人认为他们可以通过写日获得很多好处，若不信，你可以轻松在网上找到很多写日记的理由。
+                       很幸运，这个应用也可以帮助用户管理他们的日记。
+                    </p>
+                    <p>用户的日记在系统中是隐私保护的，除了用户本人，没有人被授权查看他的日记，用户的日记在系统中按时间顺序排序。</p>
+                    <h4>创建日记</h4>
+                    <p>从系统菜单“效率”->“日记”导航到“日记管理”界面，在这个界面，点击<button class="btn btn-box-tool" type="button"><i class="fa fa-plus text-green"></i> 新建日记</button>按钮来创建一个新的日记，日记内容编辑器和文章编辑器一样，是一个易用的在线编辑器，用户可以从Office Word拷贝内容。</p>
+                    <h4>日记操作</h4>
+                    <ul>
+                        <li><b>编辑</b> 点击<button class="btn btn-success btn-xs"><i class="fa fa-pencil"></i> 编辑</button>按钮可以编辑当前日记。</li>
+                        <li><b>删除</b> 点击<button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> 删除</button>按钮将删除当前日记。</li>
+                    </ul>
+                </section>
+                <section id="taskandtarget">
+                    <h2 class="page-header"><i class="fa fa-lightbulb-o"></i> 任务管理</h2>
+                    <p>
+                        “失败的准备，就是准备失败” - 本杰明.富兰克林，如果你认同个人计划的重要性，FEConsole应用将会是你管理目标和任务的得力助手。
+                    </p>
+                    <p>
+                        系统用“目标”来管理一系列具有相同目的的任务，要在系统中创建任务，必须先设定目标。
+                    </p>
+                    <p>若要管理系统中的目标和任务，从系统菜单导航到“效率”->“任务”界面。</p>
+                    <h4>创建目标</h4>
+                    <p>在“任务管理”界面，点击<button type="button" class="btn btn-success btn-xs"><i class="fa fa-plus"></i></button>按钮来创建一个目标，记得点击<button class="btn btn-box-tool" type="button"><i class="fa fa-save"></i> 保存</button>按钮来保存新建的目标。</p>
+                    <h4>“目标”操作</h4>
+                    <ul>
+                        <li><b>编辑</b> 点击当前目标的<a class="btn btn-box-tool"><i class="fa fa-pencil"></i></a>按钮。</li>
+                        <li><b>删除</b> 点击当前目标的<a class="btn btn-box-tool"><i class="fa fa-trash"></i></a>按钮，注意，删除目标会同时删除这个目标所关联的所有任务。</li>
+                        <li><b>显示任务</b> 点击当前目标的<a class="btn btn-box-tool"><i class="fa fa-tasks"></i></a>按钮，用户也可以点击目标卡片上的“旗帜”标志来显示其关联的任务。</li>
+                    </ul>
+                    <h4>创建任务</h4>
+                    <p>任务一定是属于一个特定目标的，要创建一个任务，先进入其所属于目标的任务列表，然后点击<button type="button" class="btn btn-success btn-xs"><i class="fa fa-plus"></i></button>按钮来创建一个任务，记得点击<button class="btn btn-box-tool" type="button"><i class="fa fa-save"></i> 保存</button>按钮来保存更改。</p>
+                    <h4>任务操作</h4>
+                    <ul>
+                        <li><b>更新任务进度</b> 点击<button type="button" class="btn btn-primary btn-flat btn-xs"><i class="fa fa-forward"></i></button>按钮来更新任务的进度。</li>
+                        <li><b>完成任务</b> 点击<button type="button" class="btn btn-success btn-flat btn-xs"><i class="fa fa-stop"></i></button>按钮来设置完成一项任务。</li>
+                        <li><b>编辑任务</b> 点击<button type="button" class="btn btn-primary btn-flat btn-xs"><i class="fa fa-pencil"></i></button>按钮来编辑当前任务。</li>
+                        <li><b>删除任务</b> 点击<button type="button" class="btn btn-warning btn-flat btn-xs"><i class="fa fa-trash"></i></button>按钮来删除任务。</li>
+                    </ul>
+                    <h4>显示所有任务</h4>
+                    <p>要管理系统中所有的任务，用户可以切换到“任务管理”界面中的“任务”选项卡，所有的任务相关操作都可以在这个界面完成。</p>
+                    <p>在系统通知栏上会显示最近5条任务信息。</p>
+                </section>
+                <section id="contactmanagement">
+                    <h2 class="page-header"><i class="fa fa-phone-square"></i> 联系人管理</h2>
+                    <p>
+                        尽管你有智能手机来管理联系人，但这并不是一个可靠的方式来管理重要的联系人信息，许多人抱怨说他们很多朋友在手机丢失后就失去了联系。另外，智能手机不能详尽的记录联系人的一些重要信息，为了这些信息启用ERP（企业资源管理系统）又极其不现实，为此，FEConsole 提供了联系人管理功能，它可以帮助用户记录联系人的基本资料，常用地址，电话号码，擅长技能，个人照片以及其他的社交联系方式。
+                    </p>
+                    <h4>添加一个联系人</h4>
+                    <p>
+                        从系统菜单“联系人”导航到“联系人管理”界面，然后点击<button class="btn btn-box-tool"><i class="fa fa-plus text-green"></i> 新建联系人</button>按钮来添加一个联系人。编辑联系人信息和编辑用户个人资料一样，请参阅<b>维护用户资料</b>来了解更多的信息。
+                    </p>
+                    <h4>联系人操作</h4>
+                    <ul>
+                        <li><b>查看/编辑</b> 点击<button class="btn btn-flat btn-primary btn-xs"><i class="fa fa-user"></i></button>来查看或编辑联系人资料。</li>
+                        <li><b>删除</b> 点击<button class="btn btn-flat btn-warning btn-xs"><i class="fa fa-trash"></i></button>来删除当前联系人。</li>
+                    </ul>
+                </section>
+                <section id="books">
+                    <h2 class="page-header"><i class="fa fa-book"></i> 管理电子书</h2>
+                    <p>
+                        读一本书的时光总是很美好，现如今越来越多的书已经电子化，也许你和我一样困惑于越来越多的电子书，很多花时间下载的电子书都未曾读过，却几乎已经被遗忘。系统中"书籍管理"模块正是帮助用户高效管理电子书的一个功能，分类和列表的显示方式可以帮助用户快速定位到要阅读的电子书。
+                    </p>
+                    <h4>书籍类别</h4>
+                    <p>强烈建议用户创建类别来分组管理书籍，这样，用户就可以用选择的类别来快速过滤书籍了。</p>
+                    <ul>
+                        <li><b>创建</b> 在“书籍类别”工具栏上，点击按钮<button class="btn btn-box-tool" type="button"><i class="fa fa-plus"></i></button>来新建一个书籍类别，别忘记点击<button class="btn btn-primary btn-flat btn-xs" id="add-new-event" type="button"><i class="fa fa-save"></i></button>按钮来保存新建的类别。</li>
+                        <li><b>编辑</b> 点击选择要编辑的“书籍类别”，然后点击“书籍类别”工具栏上的<button class="btn btn-box-tool" type="button"><i class="fa fa-pencil"></i></button>按钮，在类别名称框中输入新的类别名称后点击<button class="btn btn-primary btn-flat btn-xs" id="add-new-event" type="button"><i class="fa fa-save"></i></button>按钮来保存更改。</li>
+                        <li><b>删除</b> 点击选择要删除的“书籍类别”，然后点击“书籍类别”工具栏上的<button class="btn btn-box-tool" type="button"><i class="fa fa-trash"></i></button>按钮。注意，删除书籍类别后，该类别下的书籍并不会被删除，而是移到默认的类别下。</li>
+                    </ul>
+                    <h4>添加电子书</h4>
+                    <p>如果已经选择了一个书籍类别，那么新建的电子书会添加到该类别下, 否则就会添加到默认的类别下，因此， 用户在添加新的电子书时，最好先选择一个目标“书籍类别”，然后点击<button class="btn btn-box-tool" type="button"><i class="fa fa-file text-green"></i> +书籍</button>按钮来添加一本新的电子书。</p>
+                    <h4>电子书操作</h4>
+                    <p>用户可以对列表中的电子书做如下操作：</p>
+                    <ul>
+                        <li><b>编辑</b> 点击当前书籍的<button class="btn btn-box-tool" type="button"><i class="fa fa-pencil text-primary"></i></button>按钮，然后在更新页面上更改书籍信息。</li>
+                        <li><b>删除</b> 点击当前书籍的<button class="btn btn-box-tool" type="button"><i class="fa fa-trash text-primary"></i></button>按钮，注意，这个操作会使书籍从系统中彻底删除掉。</li>
+                    </ul>
+                </section>
+                <section id="files">
+                    <h2 class="page-header"><i class="fa fa-folder"></i> 管理文件</h2>
+                    <p>
+                        在这个信息社会中，相信你有很多很多的文件，其中有很多文件很重要。Windows资源管理器一直是一个经典的文件管理工具，但一个更理想的个人文件管理工具应该是基于浏览器的轻量级应用，可以从多种设备去访问，系统中的“文件管理”模块正是这样一款应用。
+                    </p>
+                    <h4>文件夹</h4>
+                    <p>
+                        正如用户所用的“Windows资源管理器”，他们可以在系统中创建文件夹来管理他们的文件，用户可以对文件夹做如下操作：
+                    </p>
+                    <ul>
+                        <li><b>创建</b> 点击工具栏上的<button class="btn btn-box-tool" type="button"><i class="fa fa-folder text-green"></i>  +文件夹</button>按钮可以在当前目录下创建一个文件夹，输入文件夹名称然后点击<button class="btn btn-box-tool" type="button"><i class="fa fa-save"></i> 保存</button>按钮来保存新建的文件夹。</li>
+                        <li><b>编辑</b> 点击要编辑文件夹上的<button class="btn btn-primary btn-flat btn-xs" type="button"><i class="fa fa-pencil"></i></button>按钮来编辑文件夹，同样要记得在编辑完成后点击<button class="btn btn-box-tool" type="button"><i class="fa fa-save"></i> 保存</button>按钮来保存更改。</li>
+                        <li><b>删除</b> 点击要删除文件夹上的<button class="btn btn-warning btn-flat btn-xs" type="button"><i class="fa fa-trash"></i></button>按钮来删除当前文件夹，注意，文件夹下面的所有文件和子文件夹都会被删除掉。</li>
+                        <li><b>浏览</b> 单击要浏览的文件夹就可以进入文件夹，在界面的右上角显示了浏览路径，点击浏览路径中的文件夹名称就可以返回到上层目录了。</li>
+                    </ul>
+                    <h4>文件</h4>
+                    <p>
+                        在系统中，你可以添加新的文件，下载，编辑或删除一个已有的文件。新建的文件会被放到当前的浏览目录下，如果没有选择浏览任何目录，新建文件就会被放到根目录下面。
+                    </p>
+                    <h4>文件操作</h4>
+                    <ul>
+                        <li><b>新建</b> 点击左上角工具栏上的<button class="btn btn-box-tool" type="button"><i class="fa fa-file text-green"></i> +文件</button>按钮，然后从本地上传文件到系统，填入必要的文件信息，然后点击<button class="btn btn-box-tool" type="button"><i class="fa fa-save"></i> 保存</button>按钮来保存新文件。</li>
+                        <li><b>编辑</b> 在目标文件上，点击<button class="btn btn-flat btn-xs" type="button"><i class="fa fa-pencil"></i></button>按钮，编辑完成后记得点击<button class="btn btn-box-tool" type="button"><i class="fa fa-save"></i> 保存</button>按钮来保存更改。</li>
+                        <li><b>删除</b> 在目标文件上，点击<button class="btn btn-flat btn-xs" type="button"><i class="fa fa-trash"></i></button>按钮将删除当前文件。</li>
+                        <li><b>下载</b> 在目标文件上，点击文件名或者点击<button class="btn btn-flat btn-xs"><i class="fa fa-cloud-download"></i></button>按钮可以下载一个文件。</li>
+                    </ul>
+                    <h4>界面视图</h4>
+                    <p>文件和文件夹在系统中可以显示为列表视图或网格视图，列表视图是默认视图，要切换视图，在左上角工具栏上：</p>
+                    <ul>
+                        <li><b>切换到列表</b> 点击<button class="btn btn-box-tool"><i class="fa fa-list text-primary"></i> 列表视图</button>按钮，文件和文件夹会显示成列表布局。</li>
+                        <li><b>切换到网格</b> 点击<button class="btn btn-box-tool"><i class="fa fa-th text-primary"></i> 网格视图</button>按钮，文件和文件夹会显示成网格布局。</li>
+                    </ul>
+                </section>
+                <section id="credentials">
+                    <h2 class="page-header"><i class="fa fa-expeditedssl"></i> 管理账户</h2>
+                    <p>
+                        在这个数字世界中，你有越来越多的账号和密码，不幸的是人的记忆却随着时间变得越来越差。忘记用户账户或密码会给生活中带来麻烦，我们需要一个简单安全的方案来保存我们的账户和密码。
+                        系统中的“账户”模块正是为解决账户和密码问题而设计的，系统还提供了一个基于非对称加密算法（RSA）的加密软件，用来加密要保存的账户或密码，当然，用户可以自由选中他们自己喜欢的加密软件来加密账户信息。
+                    </p>
+                    <h4>加密工具</h4>
+                    <p>系统提供一个基于非对称加密算法（RSA）的加密工具以加密所管理账号的密码，值得注意的是这个加密工具对于每次安装都是唯一的，用户需要用同一个安装实例来解密已加密的数据，例如，如果你在电脑A上面下载安装了系统提供的加密工具，然后你用这个工具加密一段明文得到了密文S，这时，你如果要想解密S，那么你需要用到安装在电脑A上的那个加密工具，只有那个工具才能解密S，所以建议把“加密工具”安装在一个没有联网的安全电脑上或者是一个安全的USB盘上。</p>
+                    <p>要下载加密工具，在“账号管理”界面上，点击<button class="btn btn-box-tool btn-xs">下载加密工具</button>连接就可以下载系统中的加密工具。</p>
+                    <h4>管理账号记录</h4>
+                    <ul>
+                        <li><b>创建</b> 点击<button class="btn btn-box-tool" type="button"><i class="fa fa-plus"></i> 新建记录</button>按钮可以添加新的账号记录，注意，尽管系统会对“密码”数据做加密，但更安全的做法是用系统提供的“加密工具”或用户自己的加密工具先对密码段进行加密。</li>
+                        <li><b>编辑</b> 点击<button type="button" class="btn btn-primary btn-flat btn-xs"><i class="fa fa-pencil"></i></button>按钮进入编辑界面。</li>
+                        <li><b>显示/隐藏密码</b> 点击<button class="btn btn-success btn-flat btn-xs"><i class="fa fa-unlock"></i></button>按钮会显示密码，如果密码被系统提供的“加密工具” 或者用户自己的加密工具加密过，用户需要用相应的工具去解密显示的密码来获得密码明文。点击<button class="btn btn-success btn-flat btn-xs"><i class="fa fa-lock"></i></button>按钮会隐藏密码。</li>
+                        <li><b>删除</b> 点击<button type="button" class="btn btn-warning btn-flat btn-xs"><i class="fa fa-trash"></i></button>按钮来删除一条账号记录。</li>
+                    </ul>
+                </section>
+                <section id="data">
+                    <h2 class="page-header"><i class="fa fa-diamond"></i>管理结构化数据</h2>
+                    <p>
+                        人们都喜结构化的数据，这也是Excel受欢迎的一个原因，要是有一个基于网络的轻量级、结构化数据管理应用绝对是一件非常好的事情，FEConsole应用中的“数据”模块就实现了这个愿望，用户可以在这个系统里面定义自己的结构化表格。
+                        注意，这个模块主要是面向那些熟悉表格设计或者结构化数据处理的人群的，如果你对这些方面不熟悉，就不要用这个模块了。
+                    </p>
+                    <h4>自定义数据表分组</h4>
+                    <p>在系统中，自定义数据表必须放在一个表分组中，请从主菜单导航到"数据"->"自定义数据分组"，然后点击"添加"选项卡来添加一个新的数据表分组。</p>
+                    <h4>自定义数据表</h4>
+                    <p>自定义数据表是一个用户自定义的表结构，表中可以包含任意个字段，每一个字段都要指定数据类型，系统提供了丰富的数据类型以供选择，可以是“字符串” ，“数字”，“整数”，“单选”，“文件”或“引用”类型。</p>
+                    <h4>创建自定义数据表</h4>
+                    <p>
+                        从主菜单导航到 “数据”->“自定义数据表定义”，在表分组列表中点击选择一个“自定义数据表分组”，然后点击<a class="btn btn-social-icon btn-success btn-xs" href="javascript:void(0);"><i class="fa fa-plus"></i></a>按钮切换到表格定义界面，输入一个唯一的表格名称，一个唯一的表格编码，然后从<span class="btn btn-warning btn-xs" type="button"><i class="fa fa-plus"></i> 添加</span>下拉列表中选择自定义的字段，为每一个字段指定名称和编码，然后点击<button class="btn btn-xs" type="button"><i class="fa fa-save"></i> 保存</button>按钮来添加一个新的自定义表格。
+                    </p>
+                    <h4>自定义表格操作</h4>
+                    <ul>
+                        <li><b>编辑</b> 在目标自定义表格上点击<a class="btn btn-box-tool" href="javascript:void(0);"><i class="fa fa-edit"></i> 编辑</a>按钮切换到表格编辑界面，更新表格和字段后点击<button class="btn btn-box-tool btn-xs" type="button"><i class="fa fa-save"></i> 保存</button>按钮来保存更改。</li>
+                        <li><b>删除</b> 在目标自定义表格上点击<button class="btn btn-box-tool btn-xs" type="button"><i class="fa fa-expand"></i></button>按钮来展开表格属性，然后点击<button class="btn btn-box-tool"><i class="fa fa-trash"></i> 删除</button>按钮来删除自定义数据表，注意，自定义数据表中的数据也会被一并删除。</li>
+                    </ul>
+                    <h4>自定义表数据操作</h4>
+                    <p>从主菜单导航到“数据”->“自定义数据表数据”来操作表数据。</p>
+                    <ul>
+                        <li><b>新建表数据</b> 在下拉列表中选择目标“自定义数据表”，然后点击<button title="Add Table Data" class="btn btn-box-tool btn-xs" type="button"><i class="fa fa-plus text-green"></i></button>切换到新建界面，输入“名称”字段和其他的“自定义”字段，然后点击<button class="btn btn-box-tool btn-xs"><i class="fa fa-save"></i> 保存</button> 按钮来添加新的数据记录。</li>
+                        <li><b>编辑表数据</b> 在下拉列表中选择目标“自定义数据表”，然后点击<button class="btn btn-primary btn-flat btn-xs" type="button"><i class="fa fa-pencil"></i> 编辑</button>按钮, 记得更改完成后点击<button class="btn btn-box-tool btn-xs"><i class="fa fa-save"></i> 保存</button>按钮来保存更改。</li>
+                        <li><b>删除表数据</b> 在下拉列表中选择目标“自定义数据表”，然后点击<button class="btn btn-warning btn-flat btn-xs" type="button"><i class="fa fa-minus-square"></i> 删除</button>按钮将删除表数据记录。</li>
+                        <li><b>查看表数据</b> 在下拉列表中选择目标“自定义数据表”，然后点击<button class="btn btn-success btn-flat btn-xs" type="button"><i class="fa fa-eye"></i> 查看</button>按钮来查看表数据记录。</li>
+                    </ul>
+                </section>
+            </div>
+            <!-- /.box-body -->
+        </div>
+    </div>
+</div>
+

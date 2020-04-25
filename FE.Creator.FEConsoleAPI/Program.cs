@@ -37,7 +37,10 @@ namespace FE.Creator.FEConsoleAPI
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .UseSerilog()
+                .ConfigureLogging(logoptions =>
+                {
+                    logoptions.AddSerilog();
+                })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

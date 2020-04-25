@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config group="FESystem" name="TaskManagement" displayName="Task Management" key="FE_SYS_TASK_MANAGEMENT" licenseId ="EC6A7449-92B7-4694-8413-E255D38F2CBE" version="1.0">
+  <entity name="Target" key="FE_SYS_TARGET">
+    <properties>
+      <property name="targetDesc" key="FE_COL_TARGET_DESC" type="String" displayOrder="1"></property>
+      <property name="targetType" key="FE_COL_TARGET_TYPE" type="Integer" displayOrder="2"></property>
+      <property name="targetStartDate" key="FE_COL_TARGET_STARTDATE" type="Datetime" displayOrder="3"></property>
+      <property name="targetStatus" key="FE_COL_TARGET_STATUS" type="Integer" displayOrder="4"></property>
+      <property name="targetCompleteDate" key="FE_COL_TARGET_COMPLETEDATE" type="Datetime" displayOrder="5"></property>
+    </properties>
+  </entity>
+  <entity name="Task" key="FE_SYS_TASK">
+    <properties>
+      <property name="taskDesc" key="FE_COL_TASK_DESC" type="String" displayOrder="1"></property>
+      <property name="taskType" key="FE_COL_TASK_TYPE" type="Integer" displayOrder="2"></property>
+      <property name="taskStartDate" key="FE_COL_TASK_START_DATE" type="Datetime" displayOrder="3"></property>
+      <property name="taskExpEndDate" key="FE_COL_TASK_EXP_END_DATE" type="Datetime" displayOrder="4"></property>
+      <property name="taskEndDate" key="FE_COL_TASK_END_DATE" type="Datetime" displayOrder="5"></property>
+      <property name="taskStatus" key="FE_COL_TASK_STATUS" type="Integer" displayOrder="6"></property>
+      <property name="target" key="FE_COL_TARGET" type="ObjRef" refName="Target" displayOrder="7"></property>
+    </properties>
+  </entity>
+</config>

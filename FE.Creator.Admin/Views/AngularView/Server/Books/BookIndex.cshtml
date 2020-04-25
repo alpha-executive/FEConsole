@@ -1,0 +1,216 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<AppLang> AppLangResource
+@{
+    ViewBag.Title = AppLangResource["BOOK_TITLE"];
+
+    var uploadSetting = Context.GetFileUploadSetting();
+    var maxUploadFileSize = uploadSetting.MaxFileSize;
+    var allowedFileExtensions = uploadSetting.AllowedExtensions;
+}
+<div class="row" ng-app="ngObjectRepository" ng-controller="BooksController as ctrl" ng-cloak>
+    <div class="col-md-3">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title">
+                    @AppLangResource["BOOK_BOOK_GALLARY"]</h3>
+                <div class="box-tools">
+                    <button class="btn btn-box-tool" type="button" ng-click="ctrl.categoryEditing(null)">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                    <button class="btn btn-box-tool" type="button" ng-disabled="ctrl.currentBookCategory == null" ng-click="ctrl.categoryEditing(ctrl.currentBookCategory)">
+                        <i class="fa fa-pencil"></i>
+                    </button>
+                    <button class="btn btn-box-tool" type="button" ng-disabled="ctrl.currentBookCategory == null" ng-click="ctrl.deleteCategory(ctrl.currentBookCategory)">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </div>
+        </div>
+        <div class="box-body no-padding">
+            <ul class="nav nav-pills nav-stacked">
+                <li ng-class="{'active': ctrl.currentBookCategory == null}" ng-click="ctrl.switchCategory(null)">
+                    <a href="javascript:void(0);">
+                        <i class="fa fa-map-o"></i> @AppLangResource["BOOK_ALL_BOOKS"]
+                        <span class="label label-primary pull-right">{{ctrl.totalBookNumber}}</span>
+                    </a>
+                </li>
+                <li ng-repeat="category in ctrl.bookCategories" ng-click="ctrl.switchCategory(category)" ng-class="{'active': ctrl.currentBookCategory.objectID==category.objectID}">
+                    <a href="javascript:void(0);"><i class="fa fa-map-signs"></i> {{category.objectName}}</a>
+                </li>
+            </ul>
+            <div class="input-group" ng-if="ctrl.categoryEditMode != 'list'">
+                <input class="form-control" id="new-event" type="text" placeholder="New Category..." ng-model="ctrl.currentBookCategory.objectName">
+                <div class="input-group-btn">
+                    <button class="btn btn-primary btn-flat btn-xm" id="add-new-event" type="button" ng-click="ctrl.saveBookCategory()"><i class="fa fa-save"></i></button>
+                    <button class="btn btn-primary btn-flat btn-xm" id="cancel-new-event" type="button" ng-click="ctrl.cancelCategoryEditing(ctrl.currentBookCategory)"><i class="fa fa-close"></i></button>
+                </div>
+                <!-- /btn-group -->
+            </div>
+        </div>
+        <!-- /.box-body -->
+    </div>
+</div>
+<div class="col-md-9">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <div class="mailbox-controls">
+                <div class="btn-group">
+                    <button class="btn btn-box-tool" type="button" ng-click="ctrl.bookEditing(null)"><i class="fa fa-file text-green"></i> @AppLangResource["BOOK_ADD_BOOK"]</button>
+                </div>
+                <div class="pull-right">
+                    <div class="has-feedback">
+                        <input class="form-control input-sm" type="text" ng-model="ctrl.searchText" placeholder="@AppLangResource["BOOK_SEARCH_PLH"]">
+                            <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box-body">
+            <div class="box box-primary" ng-if="ctrl.displayMode=='editing'">
+                <div class="box-body">
+                    <form class="form-horizontal">
+                        <div class="box-body box-primary">
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button class="btn btn-warning" type="file" ngf-select="ctrl.uploadFiles($file, $invalidFiles,ctrl.currentEditingBook)"
+                                            ngf-max-size="@maxUploadFileSize"
+                                            ngf-accept="'@allowedFileExtensions'"
+                                            ngf-pattern="'@allowedFileExtensions'">
+                                        <i class="fa fa-upload"></i> @AppLangResource["BOOK_BTN_UPLOAD"] <i class="fa fa-refresh fa-spin text-green" ng-if="ctrl.f.showprogress"></i>
+
+                                    </button><span class="message">{{ctrl.errorMsg}}</span>
+                                    <br />
+                                    <br />
+                                    <div class="info-box" ng-if="ctrl.currentEditingBook.properties.bookFile.fileName != null">
+                                        <a class="info-box-icon bg-aqua" href="{{ctrl.currentEditingBook.properties.bookFile.fileUrl | fullUrl}}"><i class="fa fa-cloud-download"></i></a>
+                                        <div class="info-box-content text-black">
+                                            <span class="info-box-text">{{ ctrl.currentEditingBook.properties.bookFile.fileName }}</span>
+                                            <span class="info-box-number">{{ctrl.currentEditingBook.properties.bookFile.fileSize}} KB</span>
+                                            <span class="info-box-text">SHA: {{ctrl.currentEditingBook.properties.bookFile.fileCRC}}</span>
+                                        </div>
+                                        <!-- /.info-box-content -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">
+                                    <i class="fa fa-tag"></i> @AppLangResource["BOOK_FIELD_NAME"]</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" ng-model="ctrl.currentEditingBook.objectName" auto-focus />
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">
+                                    <i class="fa fa-commenting"></i> @AppLangResource["BOOK_FIELD_INTRODUCTION"]
+                                </label>
+                                <div class="col-sm-10">
+                                    <textarea rows="3" class="form-control" ng-model="ctrl.currentEditingBook.properties.bookDesc.value"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">
+                                    <i class="fa fa-user"></i> @AppLangResource["BOOK_FIELD_AUTHOR"]
+                                </label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" ng-model="ctrl.currentEditingBook.properties.bookAuthor.value" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">
+                                    <i class="fa fa-clock-o"></i> @AppLangResource["BOOK_FIELD_VERSION"]
+                                </label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" ng-model="ctrl.currentEditingBook.properties.bookVersion.value" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">
+                                    <i class="fa fa-share-alt"></i> @AppLangResource["BOOK_FIELD_SHARED"]
+                                </label>
+                                <div class="col-sm-10">
+                                    <div class="form-control">
+                                        <input type="radio" ng-model="ctrl.currentEditingBook.properties.bookSharedLevel.value" ng-value="0" ng-checked="ctrl.currentEditingBook.properties.bookSharedLevel.value == 0" /> @AppLangResource["BOOK_RDO_PRIVATE"]
+                                        <input type="radio" ng-model="ctrl.currentEditingBook.properties.bookSharedLevel.value" ng-value="1" ng-checked="ctrl.currentEditingBook.properties.bookSharedLevel.value == 1" /> @AppLangResource["BOOK_RDO_SHARED"]
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">
+                                    <i class="fa fa-barcode"></i> @AppLangResource["BOOK_FIELD_ISBN"]
+                                </label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" ng-model="ctrl.currentEditingBook.properties.bookISBN.value" />
+                                </div>
+                            </div>
+                            <ul class="list-inline">
+                                <li class="pull-right">
+                                    <button class="btn btn-box-tool" type="button" ng-click="ctrl.saveBook()">
+                                        <i class="fa fa-save"></i> @AppLangResource["BOOK_BTN_SAVE"]</button>
+                                        <button class="btn btn-box-tool" type="button" ng-click="ctrl.cancelBookEditing()"><i class="fa fa-close "></i> @AppLangResource["BOOK_BTN_CANCEL"]</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <ul class="products-list product-list-in-box" ng-if="ctrl.displayMode == 'list'">
+                <li class="item" ng-repeat="book in ctrl.books | filter: ctrl.searchText">
+                    <div class="product-img book-thumbinal-img">
+                        <a class="margin-r-5" href="{{book.properties.bookFile.fileUrl | fullUrl}}"><img alt="Book Thumbinal" ng-src="{{book.properties.bookFile.fileUrl + '?thumbinal=true' | fullUrl}}"></a>
+                    </div>
+                    <div class="product-info">
+                        <a class="product-title" href="{{book.properties.bookFile.fileUrl | fullUrl}}">
+                            {{book.objectName}}
+                        </a>
+                        <small class="text-muted pull-right" ng-if="book.properties.bookVersion.value != null"><i class="fa fa-clock-o"></i> {{book.properties.bookVersion.value}}</small>
+                        <span class="product-description">
+                            {{book.properties.bookDesc.value}}
+                        </span>
+                    </div>
+                    <div class="product-info">
+                        <span class="label label-warning" ng-if="book.properties.bookAuthor.value != null"><i class="fa fa-user"></i> {{book.properties.bookAuthor.value}}</span>
+                        <span class="label label-primary" ng-if="book.properties.bookISBN.value != null"><i class="fa fa-barcode"></i> {{book.properties.bookISBN.value}}</span>
+                        <span class="label label-danger" ng-if="book.properties.bookSharedLevel.value == 1">
+                            <i class="fa fa-share"></i> @AppLangResource["BOOK_FIELD_SHARED"]</span>
+                            <div class="btn-group pull-right">
+                                <button class="btn btn-box-tool" type="button" ng-click="ctrl.bookEditing(book)"><i class="fa fa-pencil text-primary"></i></button>
+                                <button class="btn btn-box-tool" type="button" ng-click="ctrl.bookDelete(book)"><i class="fa fa-trash text-primary"></i></button>
+                            </div>
+                    </div>
+                </li>
+                <!-- /.item -->
+            </ul>
+        </div>
+        <div class="box-footer">
+            <div class="mailbox-controls">
+                <div class="btn-group">
+                    <button class="btn btn-box-tool" type="button" ng-click="ctrl.bookEditing(null)"><i class="fa fa-file text-green"></i> @AppLangResource["BOOK_ADD_BOOK"]</button>
+                </div>
+                <div class="pull-right">
+                    <div class="has-feedback">
+                        <input class="form-control input-sm" type="text" ng-model="ctrl.searchText" placeholder="@AppLangResource["BOOK_SEARCH_PLH"]">
+                            <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer" ng-if="ctrl.pager.pages.length > 0 && ctrl.displayMode == 'list'">
+            <div class="row">
+                <div class="col-md-12 content-center">
+                    <ul class="pagination pagination-sm no-margin">
+                        <li><a href="javascript:void(0);" ng-click="ctrl.onPageClick(1)" ng-class="{disabled: ctrl.pager.disabledFirstPage}">«</a></li>
+                        <li ng-repeat="page in ctrl.pager.pages" ng-class="{'active':ctrl.pager.currentPage === page}">
+                            <a href="javascript:void(0);" ng-click="ctrl.onPageClick(page)">{{page}}</a>
+                        </li>
+                        <li><a href="javascript:void(0);" ng-click="ctrl.onPageClick(ctrl.pager.totalPages)" ng-class="{disabled:ctrl.pager.disabledLastPage}">»</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+@section Scripts {
+    <script type="text/javascript" src="~/js/bookscontroller.js"></script>
+}

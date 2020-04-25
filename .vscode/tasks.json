@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/coreaspnet/coreaspnet.csproj"
+                "${workspaceFolder}/FE.Creator.PCenter/FE.Creator.PCenter.csproj"
             ],
             "problemMatcher": "$msCompile"
         }

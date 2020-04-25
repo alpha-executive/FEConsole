@@ -1,0 +1,16 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<AppLang> AppLangResource
+<div class="row">
+    <div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="grp in DefinitionGroups">
+        <object-definition-group group="grp" on-delete="DeleteGroup(group)" drill-down="DrillDown(group)"></object-definition-group>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box bg-green">
+            <!-- Apply any bg-* class to to the icon to color it -->
+            <a href="/defgrps/true/{{parentGroupID}}" class="info-box-icon"><i class="fa fa-plus"></i></a>
+            <div class="info-box-content">
+                <span class="info-box-text">@AppLangResource["COMMON_BTN_ADD"]</span>
+            </div><!-- /.info-box-content -->
+        </div><!-- /.info-box -->
+    </div>
+</div>

@@ -1,0 +1,11 @@
+﻿<div class="row">
+    <div class="col-md-12 content-center">
+        <ul class="pagination pagination-sm no-margin">
+            <li><a href="javascript:void(0);" ng-click="ctrl.onPageClick(1)" ng-class="{disabled: ctrl.pager.disabledFirstPage}">«</a></li>
+            <li ng-repeat="page in ctrl.pager.pages" ng-class="{'active':ctrl.pager.currentPage === page}">
+                <a href="javascript:void(0);" ng-click="ctrl.onPageClick(page)">{{page}}</a>
+            </li>
+            <li><a href="javascript:void(0);" ng-click="ctrl.onPageClick(ctrl.pager.totalPages)" ng-class="{disabled:ctrl.pager.disabledLastPage}">»</a></li>
+        </ul>
+    </div>
+</div>

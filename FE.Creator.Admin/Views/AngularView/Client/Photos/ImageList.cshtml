@@ -1,0 +1,27 @@
+﻿<div class="col-md-12">
+    @await Html.PartialAsync("~/Views/AngularView/Client/Photos/ImageViewModal.cshtml")
+    <div class="row" ng-repeat="imgrow in ctrl.imageRows">
+        <div class="col-sm-3 magin-bottom" ng-repeat="img in imgrow">
+            <div class="image-card">
+                <div class="image-wrapper" ng-click="ctrl.viewLargeImage(img)">
+                    <img class="img-responsive" style="width:100%;max-height:230px;" ng-src="{{img.properties.imageFile.fileUrl + '?thumbinal=true' | fullUrl}}" alt="{{img.objectName}}">
+                    <div class="image-desc" ng-if="img.properties.imageDesc.value != null && img.properties.imageDesc.value!= ''">
+                        {{img.properties.imageDesc.value}}
+                    </div>
+                </div>
+                <div class="image-info-container">{{img.objectName}}</div>
+                <div class="box-tools text-left">
+                    <a class="btn btn-box-tool" href="{{img.properties.imageFile.fileUrl | fullUrl}}" download="{{img.objectName}}">
+                        <i class="fa fa-cloud-download"></i>
+                    </a>
+                    <button class="btn btn-box-tool" type="button" ng-click="ctrl.createOrEditImage(img)">
+                        <i class="fa fa-pencil"></i>
+                    </button>
+                    <button class="btn btn-box-tool" type="button" ng-click="ctrl.deleteImage(img)">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<AppLang> AppLangResource
+@{
+    ViewBag.Title = AppLangResource["DATA_CUST_TABLEGROUP"];
+}
+<div ng-app="ngObjectRepository">
+    <div ng-view></div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript" src="~/js/definitiongroupcontroller.js"></script>
+}

@@ -1,0 +1,54 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<AppLang> AppLangResource
+@{
+    ViewBag.Title = "Objects Management";
+}
+<div ng-app="ngObjectRepository">
+    <div class="row" ng-controller="LicenseController as ctrl">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">@AppLangResource["LICMGR_TITLE"]</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <button class="btn btn-warning" type="file" ngf-select="ctrl.uploadFiles($file, $invalidFiles)" ngf-max-size="10MB">
+                        <i class="fa fa-upload"></i> @AppLangResource["LICMGR_BTN_UPLOADLIC"] <i class="fa fa - refresh fa - spin text - green" ng-if="ctrl.f.showprogress"></i>
+
+                    </button><span class="message">{{ctrl.errorMsg}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">@AppLangResource["LICMGR_LBL_MODULES"]</h3>
+                </div>
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <th>@AppLangResource["LICMGR_COL_ID"]</th>
+                            <th>@AppLangResource["LICMGR_COL_NAME"]</th>
+                            <th>@AppLangResource["LICMGR_COL_DESC"]</th>
+                            <th>@AppLangResource["LICMGR_COL_LSD"]</th>
+                            <th>@AppLangResource["LICMGR_COL_EXPIRED"]</th>
+                        </tr>
+                        <tr ng-repeat="module in ctrl.moduleList">
+                            <td>{{module.moduleId}}</td>
+                            <td>{{module.moduleName}}</td>
+                            <td>{{module.moduleDescription}}</td>
+                            <td>
+                                <span class="badge bg-green" ng-if="module.licensed == true">{{module.licensed}}</span>
+                                <span class="badge bg-red" ng-if="module.licensed == false">{{module.licensed}}</span>
+                            </td>
+                            <td>{{module.expiredDate}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript" src="~/js/licensecontroller.js"></script>
+}

@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<AppLang> AppLangResource
+@{
+    ViewBag.Title = AppLangResource["ERROR_TITLE"].Value;
+}
+
+<div class="error-page">
+    <h2 class="headline text-yellow">@AppLangResource["ERROR_TITLE"]</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="error-content">
+                @if (Model == 404)
+                {
+                    <h3><i class="fa fa-warning text-yellow"></i> @AppLangResource["ERROR_NOT_FOUND"]</h3>
+                    <p>
+                        @AppLangResource["ERROR_NOT_FOUND_DESC"]
+                    </p>
+                }
+                else
+                {
+                    <h3><i class="fa fa-warning text-red"></i> @AppLangResource["ERROR_SERVER_ERROR"]</h3>
+                    <p>
+                        @AppLangResource["ERROR_SERVER_ERROR_DESC"]
+                    </p>
+                }
+            </div>
+            <!-- /.error-content -->
+        </div>
+    </div>
+</div>

@@ -11,6 +11,9 @@ namespace FE.Creator.FileStorage
     {
         private string rootDirectory = null;
         private static readonly string FILE_PROTOCOL = @"file://";
+
+        public string ProtocolName => FILE_PROTOCOL;
+
         public FileSystemStorageProvider(string rootDirectory)
         {
             this.rootDirectory = rootDirectory;

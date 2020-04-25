@@ -29,28 +29,28 @@ namespace FE.Creator.FileStorage
         private static string currentDir = Environment.CurrentDirectory;
         static string ComposeFilePath(string folder, string imageFile)
         {
-            return string.Format("file://{0}", Path.Combine(currentDir, folder, imageFile));
+            return string.Format("resx://{0}/{1}", typeof(IThumbinalGenerator).Assembly.FullName,  folder + "." + imageFile);
         }
         static GeneralFileThumbinalGenerator()
         {
-            thumbinalMappings.Add(".docx", ComposeFilePath("localresources", "docx.png"));
-            thumbinalMappings.Add(".doc", ComposeFilePath("localresources", "docx.png"));
-            thumbinalMappings.Add(".xlsx", ComposeFilePath("localresources", "xlsx.png"));
-            thumbinalMappings.Add(".xls", ComposeFilePath("localresources", "xlsx.png"));
-            thumbinalMappings.Add(".pptx", ComposeFilePath("localresources", "pptx.png"));
-            thumbinalMappings.Add(".ppt", ComposeFilePath("localresources", "pptx.png"));
-            thumbinalMappings.Add(".pdf", ComposeFilePath("localresources", "pdf.png"));
-            thumbinalMappings.Add(".iso", ComposeFilePath("localresources", "iso.png"));
-            thumbinalMappings.Add(".html", ComposeFilePath("localresources", "html.png"));
-            thumbinalMappings.Add(".htm", ComposeFilePath("localresources", "html.png"));
-            thumbinalMappings.Add(".exe", ComposeFilePath("localresources", "cmd.png"));
+            thumbinalMappings.Add(".docx", ComposeFilePath("FE.Creator.FileStorage.localresources", "docx.png"));
+            thumbinalMappings.Add(".doc", ComposeFilePath("FE.Creator.FileStorage.localresources", "docx.png"));
+            thumbinalMappings.Add(".xlsx", ComposeFilePath("FE.Creator.FileStorage.localresources", "xlsx.png"));
+            thumbinalMappings.Add(".xls", ComposeFilePath("FE.Creator.FileStorage.localresources", "xlsx.png"));
+            thumbinalMappings.Add(".pptx", ComposeFilePath("FE.Creator.FileStorage.localresources", "pptx.png"));
+            thumbinalMappings.Add(".ppt", ComposeFilePath("FE.Creator.FileStorage.localresources", "pptx.png"));
+            thumbinalMappings.Add(".pdf", ComposeFilePath("FE.Creator.FileStorage.localresources", "pdf.png"));
+            thumbinalMappings.Add(".iso", ComposeFilePath("FE.Creator.FileStorage.localresources", "iso.png"));
+            thumbinalMappings.Add(".html", ComposeFilePath("FE.Creator.FileStorage.localresources", "html.png"));
+            thumbinalMappings.Add(".htm", ComposeFilePath("FE.Creator.FileStorage.localresources", "html.png"));
+            thumbinalMappings.Add(".exe", ComposeFilePath("FE.Creator.FileStorage.localresources", "cmd.png"));
 
             //Zip, rar, 7z, gz, tar.
-            thumbinalMappings.Add(".zip", ComposeFilePath("localresources", "zip.png"));
-            thumbinalMappings.Add(".rar", ComposeFilePath("localresources", "zip.png"));
-            thumbinalMappings.Add(".7z", ComposeFilePath("localresources", "zip.png"));
-            thumbinalMappings.Add(".gz", ComposeFilePath("localresources", "zip.png"));
-            thumbinalMappings.Add(".tar", ComposeFilePath("localresources", "zip.png"));
+            thumbinalMappings.Add(".zip", ComposeFilePath("FE.Creator.FileStorage.localresources", "zip.png"));
+            thumbinalMappings.Add(".rar", ComposeFilePath("FE.Creator.FileStorage.localresources", "zip.png"));
+            thumbinalMappings.Add(".7z", ComposeFilePath("FE.Creator.FileStorage.localresources", "zip.png"));
+            thumbinalMappings.Add(".gz", ComposeFilePath("FE.Creator.FileStorage.localresources", "zip.png"));
+            thumbinalMappings.Add(".tar", ComposeFilePath("FE.Creator.FileStorage.localresources", "zip.png"));
         }
 
         public bool IsMatchFormat(string format)
@@ -78,7 +78,7 @@ namespace FE.Creator.FileStorage
                    .ContainsKey(format.ToLower()))
                     return thumbinalMappings[format.ToLower()];
 
-                return ComposeFilePath("localresources", "doc.png");
+                return ComposeFilePath("FE.Creator.FileStorage.localresources", "doc.png");
             });
         }
 
@@ -136,8 +136,7 @@ namespace FE.Creator.FileStorage
             using (MemoryStream ms = new MemoryStream())
             {
                 image.Mutate(x => x
-                 .Resize((int)(image.Width * ratio), (int)(image.Height * ratio))
-                 .Grayscale());
+                 .Resize((int)(image.Width * ratio), (int)(image.Height * ratio)));
 
                 image.Save(ms, encoder);
                 thumbinalPath = await storageProvider.UploadFileAsync(ms.ToArray());

@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace FE.Creator.FEConsoleAPI.ApiControllers
 {
@@ -23,16 +24,15 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
     ///      return: array of int, 12 elements, from the month of last year to the current month, each of the value indicate the 
     ///      count of specific objects in that given month.
     /// </summary>
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ReportController : ControllerBase
+    public class ReportController : FEAPIBaseController
     {
         IObjectService objectService = null;
-        ILogger logger = null;
+        ILogger<ReportController> logger = null;
         readonly IConfiguration _configuration;
         public ReportController(IObjectService objectService,
             IConfiguration configuration,
-            ILogger logger)
+            ILogger<ReportController> logger,
+            IServiceProvider provider) : base(provider)
         {
             this.objectService = objectService;
             this.logger = logger;
@@ -51,16 +51,17 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
         [Route("[action]")]
         [HttpGet]
         [ProducesResponseType(typeof(double[]), StatusCodes.Status200OK)]
-        public ActionResult<double[]> TargetStatusReport()
+        public async Task<ActionResult<double[]>> TargetStatusReport()
         {
             logger.LogDebug("Start TargetStatusReport");
             int targetDefId = FindObjectDefinitionIdByName("Target");
+            var requestUser = await GetLoginUser();
             var targetList = objectService.GetAllSerivceObjects(targetDefId, 
                 new string[] { "targetStatus" },
                 new ServiceRequestContext()
                 {
                     IsDataCurrentUserOnly = bool.Parse(_configuration["SiteSettings:IsDataForLoginUserOnly"]),
-                    RequestUser = User.Identity.Name,
+                    RequestUser = requestUser,
                     UserSenstiveForSharedData = false
                 });
 
@@ -82,7 +83,7 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
                         new ServiceRequestContext()
                         {
                             IsDataCurrentUserOnly = bool.Parse(_configuration["SiteSettings:IsDataForLoginUserOnly"]),
-                            RequestUser = User.Identity.Name,
+                            RequestUser = requestUser,
                             UserSenstiveForSharedData = false
                         });
 
@@ -98,7 +99,7 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
         [Route("[action]/{Id}")]
         [HttpGet]
         [ProducesResponseType(typeof(List<int[]>), StatusCodes.Status200OK)]
-        public ActionResult<List<int[]>> YOYObjectUsageReport(string Id)
+        public async Task<ActionResult<List<int[]>>> YOYObjectUsageReport(string Id)
         {
             logger.LogDebug("Start YOYObjectUsageReport");
             List<int[]> seriesData = new List<int[]>();
@@ -108,7 +109,7 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
 
                 foreach (string objName in objNames)
                 {
-                    int[] data = GetYoYStatisticReportData(objName);
+                    int[] data = await GetYoYStatisticReportData(objName);
                     seriesData.Add(data);
                 }
             }
@@ -117,7 +118,7 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
             return this.Ok(seriesData);
         }
 
-        private int[] GetYoYStatisticReportData(string objectName)
+        private async Task<int[]> GetYoYStatisticReportData(string objectName)
         {
             int objDefId = FindObjectDefinitionIdByName(objectName);
             var objList = objectService.GetAllSerivceObjects(objDefId, 
@@ -125,7 +126,7 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
                 new ServiceRequestContext()
                 {
                     IsDataCurrentUserOnly = bool.Parse(_configuration["SiteSettings:IsDataForLoginUserOnly"]),
-                    RequestUser = User.Identity.Name,
+                    RequestUser = await GetLoginUser(),
                     UserSenstiveForSharedData = false
                 });
 

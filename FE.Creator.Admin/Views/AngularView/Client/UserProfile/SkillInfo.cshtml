@@ -1,0 +1,79 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<AppLang> AppLangResource
+<div class="box box-primary" ng-init="ctrl.init(CurrentUserProfileId)" ng-controller="SkillController as ctrl">
+    <div class="box-header with-border">
+        <h3 class="box-title">
+            <i class="fa fa-balance-scale margin-r-5"></i> @AppLangResource["PROFILE_SKILLS"]</h3>
+</div>
+
+<div class="box-body" ng-if="!ctrl.isEditSkills">
+<div class="row">
+<div class="col-md-4" ng-repeat="skill in ctrl.skills" ng-switch="skill.properties.level.value">
+<p ng-switch-when="10">
+<span class="label label-danger">{{skill.properties.skillName.value
+    }
+}</span> {{skill.properties.skillDescription.value}}
+</p>
+<p ng-switch-when="9">
+<span class="label label-warning">{{skill.properties.skillName.value}}</span> {{skill.properties.skillDescription.value}}
+</p>
+<p ng-switch-when="8">
+<span class="label label-success">{{skill.properties.skillName.value}}</span> {{skill.properties.skillDescription.value}}
+</p>
+<p ng-switch-when="7">
+<span class="label label-primary">{{skill.properties.skillName.value}}</span> {{skill.properties.skillDescription.value}}
+</p>
+<p ng-switch-default>
+<span class="label label-default">{{skill.properties.skillName.value}}</span> {{skill.properties.skillDescription.value}}
+</p>
+</div>
+</div>
+<ul class="list-inline">
+<li class="pull-right">
+<button class="btn btn-box-tool" type="button" ng-click="ctrl.onSkillEditing()"><i class="fa fa-pencil"></i> @AppLangResource["COMMON_BTN_EDIT"]</button>
+</li>
+</ul>
+</div>
+
+<form class="form-horizontal" ng-if="ctrl.isEditSkills">
+<div class="box-body">
+<div class="box box-warning" ng-repeat="skill in ctrl.skills">
+<div class="box-body">
+<div class="form-group">
+<label class="control-label col-sm-2"><i class="fa fa-tag"></i> @AppLangResource["PROFILE_SKILLNAME"]</label>
+<div class="col-sm-10">
+<input type = "text" class="form-control" ng-model="skill.properties.skillName.value" />
+</div>
+</div>
+<div class="form-group">
+<label class="control-label col-sm-2"><i class="fa fa-commenting"></i> @AppLangResource["PROFILE_SKILLDESC"]</label>
+<div class="col-sm-10">
+<input type = "text" class="form-control" ng-model="skill.properties.skillDescription.value" />
+</div>
+</div>
+<div class="form-group">
+<label class="control-label col-sm-2"><i class="fa fa-battery-3"></i> @AppLangResource["PROFILE_LEVEL"]</label>
+<div class="col-sm-10">
+<star-rating max = "10" ng-model="skill.properties.level.value"></star-rating>
+@*<input type="text" class="form-control" ng-model="skill.properties.level.value" />*@
+    </div>
+</div>
+<ul class="list-inline">
+    <li class="pull-right">
+        <button class="btn btn-box-tool" type="button" ng-click="ctrl.deleteSkill(skill)"><i class="fa fa-trash"></i> @AppLangResource["COMMON_BTN_DELETE"]</button>
+    </li>
+</ul>
+                </div>
+            </div>
+<ul class="list-inline">
+    <li class="pull-right">
+        <button class="btn btn-box-tool" type="button" ng-click="ctrl.onAddSkill()">
+            <i class="fa fa-plus"></i> @AppLangResource["COMMON_BTN_ADD"]</button>
+            <button class="btn btn-box-tool" type="button" ng-click="ctrl.saveSkills()">
+                <i class="fa fa-save"></i> @AppLangResource["COMMON_BTN_SAVE"]</button>
+                <button class="btn btn-box-tool" type="button" ng-click="ctrl.cancelSkillsEdit()"><i class="fa fa-close "></i> @AppLangResource["COMMON_BTN_CANCEL"]</button>
+    </li>
+</ul>
+        </div>
+    </form>
+</div>

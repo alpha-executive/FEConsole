@@ -1,0 +1,126 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<AppLang> AppLangResource
+@{
+    ViewBag.Title = AppLangResource["DIARYMGR_TITLE"];
+}
+<div class="row" ng-app="ngObjectRepository" ng-controller="DiaryController as ctrl">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">
+                    @AppLangResource["DIARYMGR_DIARY"]
+                </h3>
+                <div class="box-tools" ng-if="ctrl.displayMode == 'diaryList'">
+                    <button class="btn btn-box-tool" type="button" ng-click="ctrl.createOrEditDiary(null)">
+                        <i class="fa fa-plus text-green"></i> @AppLangResource["DIARYMGR_NEW_DIARY"]
+                    </button>
+                </div>
+            </div>
+            <div class="box-body" ng-if="ctrl.displayMode == 'diaryList'">
+                <ul class="timeline timeline-inverse">
+                    <!-- timeline time label -->
+                    <li class="time-label" ng-repeat-start="diary in ctrl.diaries" ng-switch="diary.properties.diaryMood.value">
+                        <span ng-switch-when="5" class="bg-green" ng-bind="diary.created"></span>
+                        <span ng-switch-when="4" class="bg-blue" ng-bind="diary.created"></span>
+                        <span ng-switch-when="3" class="bg-yellow" ng-bind="diary.created"></span>
+                        <span ng-switch-default class="bg-gray" ng-bind="diary.created"></span>
+                    </li>
+                    <!-- /.timeline-label -->
+                    <!-- timeline item -->
+                    <li ng-repeat-end>
+                        <i class="ion ion-clipboard bg-blue"></i>
+                        <div class="timeline-item" style="background-color:transparent;">
+                            <span class="time"><i class="fa fa-clock-o"></i> {{diary.created | dateformatFilter : 'dddd'}}</span>
+                            <h3 class="timeline-header"><i class="wi text-yellow" ng-class="ctrl.getWeatherStatusById(diary.properties.weatherStatus.value).cssclass"></i> {{ctrl.getWeatherStatusById(diary.properties.weatherStatus.value).label}}</h3>
+                            <div class="timeline-body" ng-bind-html="diary.properties.diaryContent.value">
+                            </div>
+                            <div class="timeline-footer">
+                                <button class="btn btn-success btn-xs" ng-click="ctrl.createOrEditDiary(diary)">
+                                    <i class="fa fa-pencil"></i> @AppLangResource["COMMON_BTN_EDIT"]
+                                </button>
+                                <button class="btn btn-danger btn-xs" ng-click="ctrl.deleteDiary(diary)"><i class="fa fa-trash"></i> @AppLangResource["COMMON_BTN_DELETE"]</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="time-label"><i class="fa fa-clock-o bg-gray"></i></li>
+                </ul>
+                <div ng-if="ctrl.pager.totalPages > 1">
+                    @Html.PartialAsync("~/Views/AngularView/Client/Common/Pager.cshtml")
+                </div>
+            </div>
+            <div class="box-body" ng-if="ctrl.displayMode == 'diaryEditing'">
+                <form class="form-horizontal">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="control-label col-sm-4">
+                                        <i class="wi wi-sunrise"></i> @AppLangResource["DIARYMGR_WEATHER"]
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <div class="btn-group">
+                                            <button class="btn btn-primary" type="button"><i class="wi" ng-class="ctrl.currentWeatherStatus == null ? 'wi-day-sunny' : ctrl.currentWeatherStatus.cssclass"></i> {{ctrl.currentWeatherStatus.label}}</button>
+                                            <button class="btn btn-primary dropdown-toggle" aria-expanded="false" type="button" data-toggle="dropdown">
+                                                <span class="caret"></span>
+                                                <span class="sr-only"> @AppLangResource["COMMON_OPT_TOGGLE_DOWN"]</span>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-weather" role="menu">
+                                                <li ng-repeat="ws in ctrl.weatherstatus" ng-click="ctrl.setWeatherStatus(ws)" class="cursor-pointer"><i class="wi" ng-class="ws.cssclass"></i> {{ws.label}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="control-label col-sm-4">
+                                        <i class="fa fa-heart-o"></i> @AppLangResource["DIARYMGR_AUTHOR_MOOD"]
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <star-rating max="5" ng-model="ctrl.currentEditingDiary.properties.diaryMood.value"></star-rating>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row margin-bottom">
+                        <div class="col-md-12">
+                            <textarea id="editor1" ng-bind-html="ctrl.currentEditingDiary.properties.diaryContent.value"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <button class="btn btn-success" type="button" ng-click="ctrl.saveDiary()">
+                                <i class="fa fa-save"></i> @AppLangResource["COMMON_BTN_SAVE"]
+                            </button>
+                            <button class="btn btn-warning" type="button" ng-click="ctrl.cancelDiaryEdit()">
+                                <i class="fa fa-close "></i> @AppLangResource["COMMON_BTN_CANCEL"]
+                            </button>
+                            <button class="btn btn-primary" type="button" ng-click="ctrl.return2List()"><i class="fa fa-reply"></i> @AppLangResource["DIARYMGR_RETURN_LIST"]</button>
+                        </div>
+                    </div>
+                </form>
+
+                <script type="text/javascript">
+                    jQuery(window).bind('beforeunload', function () {
+                        return "@AppLangResource["LEAVING_PAGE_WARN"]";
+                    });
+                </script>
+            </div>
+            <div class="box-footer" ng-if="ctrl.displayMode == 'diaryList'">
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" type="button" ng-click="ctrl.createOrEditDiary(null)">
+                        <i class="fa fa-plus text-green"></i> @AppLangResource["DIARYMGR_NEW_DIARY"]
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="~/js/apputilities.js"></script>
+    <script type="text/javascript" src="~/js/diarycontroller.js"></script>
+    <script type="text/javascript" src="~/lib/adminlte-2.3.6/plugins/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js"></script>
+}

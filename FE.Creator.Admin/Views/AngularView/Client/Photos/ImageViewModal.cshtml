@@ -1,0 +1,22 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<AppLang> AppLangResource
+<div class="modal fade" id="viewImageModal" tabindex="-1" role="dialog" aria-labelledby="viewImageModal">
+    <div class="modal-dialog" role="document" style="width:60vw;">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="image-wrapper">
+                    <div id="imageLoadSpin" class="alert">
+                        <h4>
+                            <span>
+                                <i class="fa fa-spin fa-refresh"></i> @AppLangResource["IMAGEMGR_VIEW_LOADING"]</span></h4>
+                                <p></p>
+                    </div>
+                    <img class="img-responsive" src="" alt="{{img.objectName}}">
+                    <div class="image-desc" style="white-space:normal;" ng-if="ctrl.viewingImage.properties.imageDesc.value != null && ctrl.viewingImage.properties.imageDesc.value!= ''">
+                        {{ctrl.viewingImage.properties.imageDesc.value}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config group="FESystem" name="FileManagement" displayName="File Management" key="FE_SYS_FILE_MANAGEMENT" licenseId ="85EB7327-D54F-4F7F-9256-249D8558186F" version="1.0">
+  <entity name="FileDirectory" key="FE_SYS_FILEDIRECTORY">
+    <properties>
+        <property name="directoryPathFlag" key="FE_COL_DIRECTORYPATHFLAG" type="String" displayOrder="1"></property>
+    </properties>
+  </entity>
+  <entity name="Documents" key="FE_SYS_DOCUMENTS">
+      <properties>
+          <property name="documentFile" key="FE_COL_DOCUMENTFILE" type="File" displayOrder="1"></property>
+          <property name="documentDirectory" key="FE_COL_DOCUMENTDIR" type="ObjRef" refName="FileDirectory" displayOrder="2"></property>
+          <property name="documentVersion" key="FE_COL_DOCUMENTVERSION" type="String" displayOrder="3"></property> 
+          <property name="documentSharedLevel" key="FE_COL_DOCUMENSHAREDLEVEL" type="Integer" displayOrder="4"></property> 
+     </properties>
+  </entity>
+  <entity name="ImageCategory" key="FE_SYS_IMAGECATEGORY">
+    <properties>
+        <property name="imageCategoryType" key="FE_COL_CATEGORYTYPE" type="Integer" displayOrder="1"></property>
+        <property name="categorySharedLevel" key="FE_COL_SHAREDLEVEL" type="Integer" displayOrder="1"></property>
+    </properties>
+  </entity>
+  <entity name="Photos" key="FE_SYS_PHOTOS">
+    <properties>
+        <property name="imageFile" key="FE_COL_IMAGEFILE" type="File" displayOrder="1"></property>
+        <property name="imageDesc" key="FE_COL_IMAGEDESC" type="String" displayOrder="2"></property>
+        <property name="imageCategory" key="FE_COL_IMAGECATEGORY" type="ObjRef" refName="ImageCategory" displayOrder="3"></property>
+        <property name="imageSharedLevel" key="FE_COL_IMAGESHAREDLEVEL" type="Integer" displayOrder="4"></property> 
+    </properties>
+  </entity>
+  <entity name="BookCategory" key="FE_SYS_BOOKCATEGORY"></entity>
+  <entity name="Books" key="FE_SYS_BOOKS">
+    <properties>
+       <property name="bookFile" key="FE_COL_BOOKFILE" type="File" displayOrder="1"></property>
+       <property name="bookDesc" key="FE_COL_BOOKDESC" type="String" displayOrder="2"></property>
+       <property name="bookAuthor" key="FE_COL_BOOKAUTHOR" type="String" displayOrder="4"></property>
+       <property name="bookVersion" key="FE_COL_BOOKVERSION" type="String" displayOrder="5"></property>
+       <property name="bookSharedLevel" key="FE_COL_BOOKSHAREDLEVEL" type="Integer" displayOrder="6"></property>  
+       <property name="bookCategory" key="FE_COL_BOOKCATEGORY" type="ObjRef" refName="ImageCategory" displayOrder="7"></property>
+       <property name="bookISBN" key="FE_COL_BOOKISBN" type="String" displayOrder="8"></property>
+    </properties>
+  </entity>
+</config>

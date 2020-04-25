@@ -1,0 +1,75 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<AppLang> AppLangResource
+@{
+    ViewBag.Title = AppLangResource["APPSETTINGS_TITLE"];
+}
+<div class="box box-primary" ng-app="ngObjectRepository" ng-controller="AppSettingsController as ctrl">
+    <div class="box-header">
+
+    </div>
+    <div class="box-body">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-sm-2">
+                    <i class="fa fa-language"></i> @AppLangResource["APPSETTINGS_LANG"]</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" ng-model="ctrl.appsettings.properties.language.value">
+                            <option ng-repeat="lang in ctrl.languages" value="{{lang.langCode}}">{{lang.text}}</option>
+                        </select>
+                    </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">
+                    <i class="fa fa-calendar"></i> @AppLangResource["APPSETTINGS_DATEFMT"]
+                </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" ng-model="ctrl.appsettings.properties.dateTimeFormat.value" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">
+                    <i class="fa fa-coffee"></i> @AppLangResource["APPSETTINGS_THEME"]
+                </label>
+                <div class="col-sm-10">
+                    <ul class="list-unstyled clearfix theme-selector">
+                        <li style="padding: 5px; width: 33.33%; float: left;" ng-click="ctrl.setTheme(theme.name)" ng-class="{'active-theme' : theme.name == ctrl.appsettings.properties.systemTheme.value}" ng-repeat="theme in ctrl.themes">
+                            <a class="clearfix full-opacity-hover" style="display: block; box-shadow: 0px 0px 3px rgba(0,0,0,0.4);" href="javascript:void(0);">
+                                <div>
+                                    <span ng-style="{{theme.topLeft}}" style="width: 20%; height: 7px; float: left; display: block;"></span>
+                                    <span class="{{theme.topRight}}" style="width: 80%; height: 7px; float: left; display: block;"></span>
+                                </div>
+                                <div>
+                                    <span ng-style="{{theme.bottomLeft}}" style="width: 20%; height: 20px; float: left; display: block;"></span>
+                                    <span ng-style="{{theme.bottomRight}}" style="width: 80%; height: 20px; float: left; display: block;"></span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">
+                    <i class="fa fa-toggle-on"></i> @AppLangResource["APPSETTINGS_PULLMSG"]
+                </label>
+                <div class="col-sm-10">
+                    <input type="radio" ng-model="ctrl.appsettings.properties.pullMessageFromPublisher.value" ng-value="0" ng-checked="ctrl.appsettings.properties.pullMessageFromPublisher.value == 0" /> @AppLangResource["COMMON_LBL_NO"]
+                    <input type="radio" ng-model="ctrl.appsettings.properties.pullMessageFromPublisher.value" ng-value="1" ng-checked="ctrl.appsettings.properties.pullMessageFromPublisher.value == 1" /> @AppLangResource["COMMON_LBL_YES"]
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">
+                    <i class="fa fa-link"></i> @AppLangResource["APPSETTINGS_PROVIDER_URL"]
+                </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control field-datepicker" ng-model="ctrl.appsettings.properties.pullMessagePublisherUrl.value" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="box-footer text-center">
+        <button class="btn btn-warning" type="button" ng-click="ctrl.saveSettings(ctrl.appsettings)"><i class="fa fa-save"></i> @AppLangResource["COMMON_BTN_SAVE"]</button>
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript" src="~/js/appsettingscontroller.js"></script>
+}

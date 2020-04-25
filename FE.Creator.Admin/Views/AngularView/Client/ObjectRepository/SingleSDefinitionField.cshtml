@@ -1,0 +1,46 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<AppLang> AppLangResource
+<div class="input-group">
+    <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+    <input type="text" class="form-control" placeholder="Field Name" ng-model="fld.objectDefinitionFieldName">
+</div>
+<br />
+<div class="input-group">
+    <span class="input-group-addon"><i class="fa fa-key"></i></span>
+    <input type="text" class="form-control" placeholder="Field Key" ng-model="fld.objectDefinitionFieldKey">
+</div>
+<br />
+<h4>
+    @AppLangResource["DATA_CUST_FIELD_OPT_ITEMS"]</h4>
+<div class="row" ng-repeat="fitem in fld.selectionItems">
+    <div class="col-lg-6">
+        <div class="input-group">
+            <span class="input-group-addon">
+                @AppLangResource["DATA_CUST_FIELD_OPT_DSP"]
+            </span>
+            <input type="text" class="form-control" ng-model="fitem.selectDisplayName">
+        </div>
+        <!-- /input-group -->
+    </div>
+    <!-- /.col-lg-6 -->
+    <div class="col-lg-6">
+        <div class="input-group">
+            <span class="input-group-addon">
+                @AppLangResource["DATA_CUST_FIELD_OPT_VALUE"]
+            </span>
+            <input type="text" class="form-control" ng-model="fitem.selectItemKey">
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-trash btn-warning" ng-click="deleteSingleSelectionItem(fld,fitem)">Delete</button>
+            </span>
+        </div>
+        <!-- /input-group -->
+    </div>
+    <!-- /.col-lg-6 -->
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-box-tool btn-warning btn-sm" ng-click="addSingleSelectionItem(fld)"><i class="fa fa-plus"></i> New Item</button>
+        </span>
+    </div>
+</div>

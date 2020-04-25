@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config group="FESystem" name="ContactManagement" displayName="Contact Management" key="FE_SYS_CONTACT_MANAGEMENT" licenseId ="5D040545-2DB6-4A35-B7F5-A12C33E95E1A" version="1.0">
+  <entity name="GeneralContact" key="FE_SYS_GENERALCONTACT">
+    <properties>
+      <property name="contactUID" key="FE_COL_CONTACT_UID" type="String" displayOrder="1"></property>
+      <property name="tapLevel" key="FE_COL_TAP_LEVEL" type="Integer" displayOrder="2"></property>
+      <property name="relationship" key="FE_COL_RELATIONSHIP" type="String" displayOrder="3"></property>
+    </properties>
+  </entity>
+</config>

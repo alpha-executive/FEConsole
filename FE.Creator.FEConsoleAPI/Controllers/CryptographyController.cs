@@ -23,14 +23,12 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
     ///       Decrypt data with rsa key.
     ///       parameters: data: base64 string data to be decrypted.
     /// </summary>
-    [Route("api/[controller]")]
-    [ApiController]
-    public class CryptographyController : ControllerBase
+    public class CryptographyController : FEAPIBaseController
     {
         ISymmetricCryptographyService cryptoservice = null;
         IRSACryptographyService rsaCryptoService = null;
         IObjectService objectService = null;
-        private readonly ILogger logger = null;
+        private readonly ILogger<CryptographyController> logger = null;
         private string GetSystemCryptographKeys()
         {
             logger.LogDebug("Start GetSystemCryptographKeys...");
@@ -50,7 +48,8 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
         public CryptographyController(ISymmetricCryptographyService cryptoservice,
             IRSACryptographyService rsaCryptoService,
             IObjectService objectService,
-            ILogger logger)
+            IServiceProvider provider,
+            ILogger<CryptographyController> logger):base(provider)
         {
             this.cryptoservice = cryptoservice;
             this.objectService = objectService;

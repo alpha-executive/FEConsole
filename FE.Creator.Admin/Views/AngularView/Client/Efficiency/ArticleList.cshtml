@@ -1,0 +1,33 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<AppLang> AppLangResource
+<ul class="products-list product-list-in-box">
+    <li class="item" ng-repeat="article in ctrl.articles">
+        <div class="product-img article-thumbinal-img">
+            <a class="margin-r-5 cursor-pointer" href="javascript:void(0);" ng-click="ctrl.viewArticle(article)"><img alt="{{article.objectName}}" class="article-img" ng-src="{{article.properties.articleImage.fileUrl + '?thumbinal=true' | fullUrl}}"></a>
+        </div>
+        <div class="product-info">
+            <a class="product-title article-tilte cursor-pointer" href="javascript:void(0);" ng-click="ctrl.viewArticle(article)">
+                {{article.objectName}}
+            </a>
+            <small class="text-muted pull-right label label-primary"><i class="fa fa-clock-o"></i> {{article.created | dateformatFilter : 'dddd'}}</small>
+            <span class="product-description">
+                {{article.properties.articleDesc.value}}
+            </span>
+        </div>
+        <div class="product-info">
+            <span class="label label-warning" ng-if="article.properties.isOriginal.value == 1">
+                <i class="fa fa-user"></i> @AppLangResource["POST_LBL_ORIGINAL"]</span>
+                <span class="label label-danger" ng-if="article.properties.articleSharedLevel.value == 1">
+                    <i class="fa fa-share"></i> @AppLangResource["POST_LBL_SHARED"]</span>
+                    <span class="label label-primary"><i class="fa fa-clock"></i> {{article.created}}</span>
+                    <div class="btn-group pull-right">
+                        <button class="btn btn-box-tool" type="button" ng-click="ctrl.viewArticle(article)">
+                            <i class="fa fa-search text-primary"></i> @AppLangResource["POST_BTN_VIEW"]</button>
+                            <button class="btn btn-box-tool" type="button" ng-click="ctrl.createOrEditArticle(article)">
+                                <i class="fa fa-pencil text-primary"></i> @AppLangResource["POST_BTN_EDIT"]</button>
+                                <button class="btn btn-box-tool" type="button" ng-click="ctrl.deleteArticle(article)"><i class="fa fa-trash text-primary"></i> @AppLangResource["POST_BTN_DELETE"]</button>
+                    </div>
+        </div>
+    </li>
+    <!-- /.item -->
+</ul>

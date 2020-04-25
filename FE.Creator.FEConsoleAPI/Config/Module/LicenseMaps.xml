@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config>
+  <!--PRIVATE KEY: BwIAAACkAABSU0EyAAQAAAEAAQBPkHSfs7Ukfng9Dz4EZZ1bDw5wCo4zKglQDlzOx01/b69bvLqxg2COkfKpegMJH8uDSGd8fvSSBKoWFu1RGnTomNUMHB7FRrbDAYQ0VAyUNfUcrZps8YlqgAjFGt3pF5GSoT7vGVVt3dKaRinvcPmlF3mk9qM/DHtqPfp4oA2HqyWjUmP2vM4Rr8CemR3F9sBcGqm1OVKoJDhpbrnybIuyWbfbyZfPrMo0TUe9O1BONxilbQODYXFcSAUj1YFpW+pjxeRqnuJwqmR4aXEhX2WcVlM2fPUm3vsC6Bh09UDqHHbDnwRNzevWlaUH+FzyNUbnts2bGyKN1ijdAupYP167sZVhFoaCjv3zfRMjVIqikopfCnfH+8ViXMs8yH7qqkX5Z+TfsUzOtddG2d6cOgKqp+JcgLmoYxxyUrzDg8FwyZ8HYK+XBBh8TdTyfBTMpgi31LZLjEHhOcKlSxpoUTLPR/ex28+XCEAcM6D0Fbb/RQJ6FhF1hUQgdY6SMhjkja4EiZjJrks8xn6N3FK0KOFLOUqBgo1zlZ3/boKC5vRtvX7qBMOjY6wcOfM7ecPP4unuR3f0LPIA5m9/X/nlSDOGyZKFoACVBvbCZTRLSqw22bj+y3wO9ii7BaHTVQcwRDDOS5JZh/w04gdgFQLSExjmr1gdMqGNEywEPJ0zPoGdohiwPyVA76RzbRfZDmKPLao2EUXJGjK09NKoEo1GTjnTzW99ruSt8dQ+lcCvjfsY87th6Q4vomdxjbA4T+SWRBk=-->
+  <modules>
+    <module licenseId="F67370D1-337C-473C-B64C-000C8D2D9EC4" name="User Profile" Description="Enable user to create/edit/update the profile of system user.">FE.Creator.FEConsoleAPI.Config.Module.UserProfile.UserProfile.xml</module>
+    <module licenseId="85EB7327-D54F-4F7F-9256-249D8558186F" name="File Management" Description="Enable user to manage documents/photos/books.">FE.Creator.FEConsoleAPI.Config.Module.FileManagement.FileManagement.xml</module>
+    <module licenseId="EC6A7449-92B7-4694-8413-E255D38F2CBE" name="Task Management" Description="Enable user to manage target and task.">FE.Creator.FEConsoleAPI.Config.Module.Efficiency.Task.xml</module>
+    <module licenseId="50E26B03-C78B-4BC2-8D5A-CBC2F70F0E9A" name="Content Management" Description="Enable user to manage their content such as diary and article.">FE.Creator.FEConsoleAPI.Config.Module.Efficiency.Content.xml</module>
+    <module licenseId="5849EA67-3126-4765-AB80-87E9C9442774" name="Account Management" Description="Enable user to organize their work effectively.">FE.Creator.FEConsoleAPI.Config.Module.Efficiency.AccountManagement.xml</module>
+    <module licenseId="5D040545-2DB6-4A35-B7F5-A12C33E95E1A" name="Contact Management" Description="Enable user to manage their security account information.">FE.Creator.FEConsoleAPI.Config.Module.ContactManagement.GeneralContact.xml</module>
+    <module licenseId="DB95235E-42EE-48BF-81C9-18C75C8C0F49" name="System Configuration" Description="Enable user to configure their system settings.">FE.Creator.FEConsoleAPI.Config.Module.SystemConfig.AppConfig.xml</module>
+  </modules>
+</config>

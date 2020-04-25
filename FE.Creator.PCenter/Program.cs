@@ -58,7 +58,10 @@ namespace coreaspnet
             .Build();
 
             return Host.CreateDefaultBuilder(args)
-                .UseSerilog()
+                .ConfigureLogging(logoptions =>
+                {
+                    logoptions.AddSerilog();
+                })
                 .ConfigureAppConfiguration((hostingContext, config) =>
                 {
                     config.AddConfiguration(builtConfig);

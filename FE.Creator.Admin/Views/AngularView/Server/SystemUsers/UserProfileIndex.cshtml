@@ -1,0 +1,33 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<AppLang> AppLangResource
+@{
+    ViewBag.Title = AppLangResource["USERPROFILE_TITLE"];
+    var userLoginId = Context.GetLoginUserId();
+}
+<div class="row">
+    <div class="col-md-12" ng-app="ngObjectRepository" ng-init="CurrentUserProfileId = '@userLoginId'">
+        <!-- Profile Image -->
+        @await Html.PartialAsync("~/Views/AngularView/Client/UserProfile/BasicProfile.cshtml")
+        <!-- /.box -->
+        <!-- Contact Box -->
+        @await Html.PartialAsync("~/Views/AngularView/Client/UserProfile/ContactInfo.cshtml")
+        <!-- /.box -->
+        <!-- Address Box -->
+        @await Html.PartialAsync("~/Views/AngularView/Client/UserProfile/AddressInfo.cshtml")
+        <!-- /.box -->
+        <!-- Education -->
+        @await Html.PartialAsync("~/Views/AngularView/Client/UserProfile/EducationInfo.cshtml")
+
+        <!-- Skill Box -->
+        @await Html.PartialAsync("~/Views/AngularView/Client/UserProfile/SkillInfo.cshtml")
+        <!-- /.Skill Box -->
+        <!--Work Experience-->
+        @await Html.PartialAsync("~/Views/AngularView/Client/UserProfile/WorkExperienceInfo.cshtml")
+
+        <!--./Work experience box-->
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript" src="~/js/apputilities.js"></script>
+    <script type="text/javascript" src="~/js/userprofilecontroller.js"></script>
+}

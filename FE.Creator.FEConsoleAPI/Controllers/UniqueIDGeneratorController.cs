@@ -8,10 +8,13 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
     /// GET: /api/UniqueIDGenerator
     ///    return: a new GUID string.
     /// </summary>
-    [Route("api/[controller]")]
-    [ApiController]
-    public class UniqueIDGeneratorController : ControllerBase
+    public class UniqueIDGeneratorController : FEAPIBaseController
     {
+        public UniqueIDGeneratorController(IServiceProvider provider) 
+            : base(provider)
+        {
+
+        }
         // GET: api/UniqueIDGenerator
         [HttpGet]
         public string Get()

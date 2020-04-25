@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config group="FESystem" name="ContentManagement" displayName="Content Management" key="FE_SYS_CONTENT_MANAGEMENT" licenseId ="50E26B03-C78B-4BC2-8D5A-CBC2F70F0E9A" version="1.0">
+  <entity name="Diary" key="FE_SYS_DIARY">
+    <properties>
+      <property name="weatherStatus" key="FE_COL_TARGET_DESC" type="Integer" displayOrder="1"></property>
+      <property name="diaryContent" key="FE_COL_Diary_Content" type="String" displayOrder="2"></property>
+      <property name="diaryMood" key="FE_COL_DIARY_MOOD" type="Integer" displayOrder="3"></property>
+    </properties>
+  </entity>
+  <entity name="ArticleGroup" key="FE_SYS_ARTICLE_GROUP"></entity>
+  <entity name="Article" key="FE_SYS_ARTICLE">
+    <properties>
+      <property name="articleDesc" key="FE_COL_ARTICLE_DESC" type="String" displayOrder="1"></property>
+      <property name="isOriginal" key="FE_COL_IS_ORIGINAL" type="Integer" displayOrder="2"></property>
+      <property name="articleImage" key="FE_COL_ARTICLE_IMAGE" type="File" displayOrder="3"></property>
+      <property name="articleContent" key="FE_COL_ARTICLE_CONTENT" type="String" displayOrder="4"></property>
+      <property name="articleSharedLevel" key="FE_COL_ARTICLE_SHAREDLEVEL" type="Integer" displayOrder="5"></property>
+      <property name="articleGroup" key="FE_COL_ARTICLE_GROUP" type="ObjRef" refName="ArticleGroup" displayOrder="6"></property>
+    </properties>
+  </entity>
+</config>

@@ -1,0 +1,35 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<AppLang> AppLangResource
+<div class="col-md-12">
+    <div class="box">
+        <div class="box-header">
+            <h5 class="box-title"><i class="fa fa-paperclip"></i> {{objfield.keyName}}</h5>
+        </div>
+        <div class="box-body">
+            <div class="row">
+                <div class="col-lg-6">
+                    <button class="btn btn-warning" type="file" ngf-select="ctrl.uploadFiles($file, $invalidFiles,objfield)" ngf-max-height="1000" ngf-max-size="10MB">
+                        <i class="fa fa-upload"></i> @AppLangResource["DATA_CUST_FILED_BTNUPLOAD"]<i class="fa fa-refresh fa-spin text-green" ng-if="ctrl.f.showprogress"></i>
+                    </button><span class="message">{{ ctrl.errorMsg }}</span>
+                    @*<div class="progress progress-sm active" ng-show="ctrl.f.progress > 0">
+                                <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{ctrl.f.progress}}"
+                                     aria-valuemin="0" aria-valuemax="100" style="width: {{ctrl.f.progress}}%" ng-bind="ctrl.f.progress + '%'">
+                                </div>
+                        </div>*@
+
+                    <br />
+                    <br />
+                    <div class="info-box" ng-if="objfield.value.fileName != null">
+                        <a class="info-box-icon bg-aqua" href="{{objfield.value.fileUrl}}"><i class="fa fa-cloud-download"></i></a>
+                        <div class="info-box-content text-black">
+                            <span class="info-box-text">{{ objfield.value.fileName }}</span>
+                            <span class="info-box-number">{{objfield.value.fileSize}} KB</span>
+                            <span class="info-box-text">SHA: {{objfield.value.fileCRC}}</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                </div> <!--/.col-lg-6-->
+            </div>
+        </div>
+    </div>
+</div>

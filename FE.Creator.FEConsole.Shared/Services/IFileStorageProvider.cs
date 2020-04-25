@@ -8,6 +8,7 @@ namespace FE.Creator.FEConsole.Shared.Services
 {
     public interface IFileStorageProvider
     {
+        string ProtocolName { get; }
         bool IsSupport(string fileFullName);
 
         Task<byte[]> DownloadFileAsync(string fileFullName);

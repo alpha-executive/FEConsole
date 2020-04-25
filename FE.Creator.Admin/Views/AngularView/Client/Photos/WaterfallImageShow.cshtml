@@ -1,0 +1,9 @@
+﻿@await Html.PartialAsync("~/Views/AngularView/Client/Photos/ImageViewModal.cshtml")
+<div class="waterfall-wrapper">
+    <div class="waterfall-columns">
+        <div class="waterfall-item" ng-if="ctrl.images != null && ctrl.images.length > 0" ng-repeat="img in ctrl.images">
+            <img ng-src="{{img.properties.imageFile.fileUrl + '?thumbinal=true' | fullUrl}}" alt="{{img.objectName}}" title="{{img.objectName}}" ng-click="ctrl.viewLargeImage(img)" />
+            <p ng-if="img.properties.imageDesc.value != null && img.properties.imageDesc.value!= ''">{{img.properties.imageDesc.value}}</p>
+        </div>
+    </div>
+</div>

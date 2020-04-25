@@ -25,15 +25,14 @@ namespace FE.Creator.FEConsoleAPI.Controllers
     ///    {id}: required object definition group id.
     ///    delete a object definition instance.
     /// </summary>
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ObjectDefinitionGroupController : ControllerBase
+    public class ObjectDefinitionGroupController : FEAPIBaseController
     {
         IObjectService objectService = null;
-        ILogger logger = null;
+        ILogger<ObjectDefinitionGroupController> logger = null;
 
         public ObjectDefinitionGroupController(IObjectService service,
-            ILogger logger)
+            ILogger<ObjectDefinitionGroupController> logger,
+            IServiceProvider provider) : base(provider)
         {
             this.objectService = service;
             this.logger = logger;
@@ -84,6 +83,7 @@ namespace FE.Creator.FEConsoleAPI.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Route("{id:int}")]
         [HttpGet]
         [ProducesResponseType(typeof(ObjectDefinitionGroup), StatusCodes.Status200OK)]
         public async Task<ActionResult<ObjectDefinitionGroup>> Get(int id)
@@ -114,6 +114,7 @@ namespace FE.Creator.FEConsoleAPI.Controllers
         }
 
         // PUT: api/ObjectDefinitionGroup/5
+        [Route("{id}")]
         [HttpPut]
         public void Put(int id, [FromBody]ObjectDefinitionGroup value)
         {
@@ -126,6 +127,7 @@ namespace FE.Creator.FEConsoleAPI.Controllers
         }
 
         // DELETE: api/ObjectDefinitionGroup/5
+        [Route("{id}")]
         [HttpDelete]
         public void Delete(int id)
         {

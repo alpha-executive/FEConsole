@@ -1,0 +1,9 @@
+﻿@model FE.Creator.Admin.Models.CKUploadModels
+@{
+    ViewBag.Title = "Upload";
+    Layout = null;
+}
+<script type="text/javascript">
+    var url = "@Model.Url";
+    window.parent.CKEDITOR.tools.callFunction("@Model.FunctionNumber", url, '@Model.Message');
+</script>

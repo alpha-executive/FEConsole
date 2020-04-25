@@ -1,5 +1,6 @@
 ﻿using FE.Creator.ObjectRepository;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace FE.Creator.FEConsoleAPI.ApiControllers
 {
@@ -7,18 +8,19 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
     /// DELETE: api/SingleSelectionFieldItem/{id}
     ///      delete a selection item of the single selection field by id.
     /// </summary>
-    [Route("api/[controller]")]
-    [ApiController]
-    public class SingleSelectionFieldItemController : ControllerBase
+    public class SingleSelectionFieldItemController : FEAPIBaseController
     {
         IObjectService objectService = null;
 
-        public SingleSelectionFieldItemController(IObjectService objectService)
+        public SingleSelectionFieldItemController(IObjectService objectService,
+            IServiceProvider provider) : base(provider)
         {
             this.objectService = objectService;
         }
 
 
+        [Route("{id}")]
+        [HttpDelete]
         // DELETE: api/SingleSelectionFieldItem/5
         public void Delete(int id)
         {

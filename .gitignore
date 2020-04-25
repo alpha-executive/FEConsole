@@ -3,3 +3,7 @@
 ################################################################################
 
 /.vs/FECreator
+/FE.Creator.FEConsoleAPI/appdata/20200410
+/FE.Creator.IdentityServer/fetechhub_identityserver.db
+*.json
+/FE.Creator.FEConsoleAPI/appdata

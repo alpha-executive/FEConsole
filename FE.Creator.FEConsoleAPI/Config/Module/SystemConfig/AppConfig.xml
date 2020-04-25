@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config group="FESystem" name="AppConfiguration" displayName="Application Configuration" key="FE_SYS_APP_CONFIG" licenseId ="DB95235E-42EE-48BF-81C9-18C75C8C0F49" version="1.0">
+  <entity name="AppConfig" key="FE_SYS_APPCONFIG">
+    <properties>
+      <property name="language" key="FE_COL_SYS_LANG" type="String" displayOrder="1"></property>
+      <property name="dateTimeFormat" key="FE_COL_TIME_FORMAT" type="String" displayOrder="2"></property>
+      <property name="cryptoSecurityKey" key="FE_COL_PUBLIC_SECURITY_KEY" type="String" displayOrder="3"></property>
+      <property name="systemTheme" key="FE_COL_SYSTEM_THEME" type="String" displayOrder="4"></property>
+      <property name="pullMessageFromPublisher" key="FE_COL_IS_PULL_MESSAGE" type="Integer" displayOrder="5"></property>
+      <property name="pullMessagePublisherUrl" key="FE_COL_PULL_MESSAGE_URL" type="String" displayOrder="6"></property>
+      <property name="systemVersion" key="FE_COL_SYS_VERSION" type="String" displayOrder="7"></property>
+      <property name="license" key="FE_COL_SYS_LICENSE" type="String" displayOrder="8"></property>
+    </properties>
+  </entity>
+  <entity name="AppEvent" key="FE_SYS_APPEVENT">
+    <properties>
+      <property name="eventTitle" key="FE_COL_SYS_EVT_TITLE" type="String" displayOrder="1"></property>
+      <property name="eventDetails" key="FE_COL_SYS_EVT_DETAILS" type="String" displayOrder="2"></property>
+      <property name="eventDateTime" key="FE_COL_SYS_EVT_DATETIME" type="Datetime" displayOrder="3"></property>
+      <property name="eventLevel" key="FE_COL_SYS_EVT_LEVEL" type="Integer" displayOrder="4"></property>
+      <property name="eventOwner" key="FE_COL_SYS_EVT_OWNER" type="String" displayOrder="5"></property>
+    </properties>
+  </entity>
+</config>

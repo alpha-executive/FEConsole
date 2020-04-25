@@ -1,0 +1,1218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ABOUT_APP_LICENSE" xml:space="preserve">
+    <value>本程序授权方式为： </value>
+  </data>
+  <data name="ABOUT_COMPONENT_LICENSE" xml:space="preserve">
+    <value>授权</value>
+  </data>
+  <data name="ABOUT_COMPONENT_NAME" xml:space="preserve">
+    <value>模块名称</value>
+  </data>
+  <data name="ABOUT_COMPONENT_VERSION" xml:space="preserve">
+    <value>版本</value>
+  </data>
+  <data name="ABOUT_CONTACT_INFO" xml:space="preserve">
+    <value>联系方式</value>
+  </data>
+  <data name="ABOUT_FECONSOLE_TITLE" xml:space="preserve">
+    <value>关于FEConsole</value>
+  </data>
+  <data name="ABOUT_INTRODUCTION" xml:space="preserve">
+    <value>简介</value>
+  </data>
+  <data name="ABOUT_INTRO_CONTENT" xml:space="preserve">
+    <value>作者 - 10年以上计算机软件相关工作经验, 力图在忙碌而又繁杂的世界中找到一个简单、轻松却不乏上进的生活方式。 </value>
+  </data>
+  <data name="ABOUT_LICENSE" xml:space="preserve">
+    <value>授权方式</value>
+  </data>
+  <data name="ABOUT_LOCATION" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="ABOUT_LOC_CONTENT" xml:space="preserve">
+    <value>中国北京</value>
+  </data>
+  <data name="ABOUT_NOTES" xml:space="preserve">
+    <value>附言</value>
+  </data>
+  <data name="ABOUT_NOTES_CONTENT" xml:space="preserve">
+    <value>热切希望这个程序可以为您幸福的生活添加一点额外的色彩。</value>
+  </data>
+  <data name="ABOUT_THE_AUTHOR" xml:space="preserve">
+    <value>关于作者</value>
+  </data>
+  <data name="ABOUT_TITLE" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="ABOUT_WHYDESC" xml:space="preserve">
+    <value>FEConsol 建立初衷是打造一款统一的个人用户应用，以便更好的保护和组织用户的私人信息、组织珍贵记忆以及所学知识。对于那些有志于终生学习的用户,FEConsole 也是一个很好的帮手。分享同样是系统的一个重要功能， 你可以分享一篇文章， 一本书籍或者一些照片， 让所有的朋友们一起来分享你的快乐时光。</value>
+  </data>
+  <data name="ABOUT_WHYFECONSOLE" xml:space="preserve">
+    <value>FEConsole简介</value>
+  </data>
+  <data name="ACCOUNTMGR_ATTENTION" xml:space="preserve">
+    <value>注意</value>
+  </data>
+  <data name="ACCOUNTMGR_BTN_DOWLOAD_TOOL" xml:space="preserve">
+    <value>下载加密工具</value>
+  </data>
+  <data name="ACCOUNTMGR_BTN_NEWREC" xml:space="preserve">
+    <value>新建账号记录</value>
+  </data>
+  <data name="ACCOUNTMGR_ENCTOOL_DESC" xml:space="preserve">
+    <value>尽管系统会加密账号记录中的敏感信息，但是仍然建议用户下载加密工具， 在保存账号记录前用加密工具加密敏感信息。每次下载的加密工具都不同， 请不要多次下载，以防解密失败。</value>
+  </data>
+  <data name="ACCOUNTMGR_LBL_ACTTYPE" xml:space="preserve">
+    <value>账号类型</value>
+  </data>
+  <data name="ACCOUNTMGR_LBL_DESC" xml:space="preserve">
+    <value>账号描述</value>
+  </data>
+  <data name="ACCOUNTMGR_LBL_LOGIN" xml:space="preserve">
+    <value>账号</value>
+  </data>
+  <data name="ACCOUNTMGR_LBL_PASS" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="ACCOUNTMGR_LBL_TITLE" xml:space="preserve">
+    <value>账号名称</value>
+  </data>
+  <data name="ACCOUNTMGR_RDO_BANK" xml:space="preserve">
+    <value>银行账号</value>
+  </data>
+  <data name="ACCOUNTMGR_RDO_DEVICES" xml:space="preserve">
+    <value>设备账号</value>
+  </data>
+  <data name="ACCOUNTMGR_RDO_INTERNET" xml:space="preserve">
+    <value>网络账号</value>
+  </data>
+  <data name="ACCOUNTMGR_TH_ACTION" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="ACCOUNTMGR_TH_DESC" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="ACCOUNTMGR_TH_NAME" xml:space="preserve">
+    <value>账号</value>
+  </data>
+  <data name="ACCOUNTMGR_TH_PASS" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="ACCOUNTMGR_TH_TITLE" xml:space="preserve">
+    <value>账号名称</value>
+  </data>
+  <data name="ACCOUNTMGR_TITLE" xml:space="preserve">
+    <value>账户管理</value>
+  </data>
+  <data name="APPEVENT_ERROR_LEVEL_ERROR" xml:space="preserve">
+    <value>严重错误</value>
+  </data>
+  <data name="APPEVENT_ERROR_LEVEL_INFO" xml:space="preserve">
+    <value>提示</value>
+  </data>
+  <data name="APPEVENT_ERROR_LEVEL_WARNING" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="APPEVENT_TITLE" xml:space="preserve">
+    <value>应用程序事件</value>
+  </data>
+  <data name="APPEVENT_VIEW_ALL_EVENTS" xml:space="preserve">
+    <value>查看所有事件</value>
+  </data>
+  <data name="APPSETTINGS_DATEFMT" xml:space="preserve">
+    <value>时间格式</value>
+  </data>
+  <data name="APPSETTINGS_LANG" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="APPSETTINGS_PROVIDER_URL" xml:space="preserve">
+    <value>提供商连接</value>
+  </data>
+  <data name="APPSETTINGS_PULLMSG" xml:space="preserve">
+    <value>消息推送</value>
+  </data>
+  <data name="APPSETTINGS_THEME" xml:space="preserve">
+    <value>系统主题</value>
+  </data>
+  <data name="APPSETTINGS_TITLE" xml:space="preserve">
+    <value>系统设置</value>
+  </data>
+  <data name="APP_EVENT_USER_lOGIN" xml:space="preserve">
+    <value>用户登陆</value>
+  </data>
+  <data name="APP_EVENT_USER_lOGIN_DESC" xml:space="preserve">
+    <value>用户{0}登录到系统</value>
+  </data>
+  <data name="BOOK_ADD_BOOK" xml:space="preserve">
+    <value>+书籍</value>
+  </data>
+  <data name="BOOK_ALL_BOOKS" xml:space="preserve">
+    <value>所有书籍</value>
+  </data>
+  <data name="BOOK_BOOK_GALLARY" xml:space="preserve">
+    <value>书籍类别</value>
+  </data>
+  <data name="BOOK_BTN_CANCEL" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="BOOK_BTN_SAVE" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="BOOK_BTN_UPLOAD" xml:space="preserve">
+    <value>上传书籍</value>
+  </data>
+  <data name="BOOK_FIELD_AUTHOR" xml:space="preserve">
+    <value>作者</value>
+  </data>
+  <data name="BOOK_FIELD_INTRODUCTION" xml:space="preserve">
+    <value>介绍</value>
+  </data>
+  <data name="BOOK_FIELD_ISBN" xml:space="preserve">
+    <value>序列号</value>
+  </data>
+  <data name="BOOK_FIELD_NAME" xml:space="preserve">
+    <value>书籍名称</value>
+  </data>
+  <data name="BOOK_FIELD_SHARED" xml:space="preserve">
+    <value>共享</value>
+  </data>
+  <data name="BOOK_FIELD_VERSION" xml:space="preserve">
+    <value>版本</value>
+  </data>
+  <data name="BOOK_RDO_PRIVATE" xml:space="preserve">
+    <value>私有</value>
+  </data>
+  <data name="BOOK_RDO_SHARED" xml:space="preserve">
+    <value>共享</value>
+  </data>
+  <data name="BOOK_SEARCH_PLH" xml:space="preserve">
+    <value>过滤书籍...</value>
+  </data>
+  <data name="BOOK_TITLE" xml:space="preserve">
+    <value>书籍管理</value>
+  </data>
+  <data name="COMMON_BTN_ADD" xml:space="preserve">
+    <value>新建</value>
+  </data>
+  <data name="COMMON_BTN_CANCEL" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="COMMON_BTN_CONFIRM" xml:space="preserve">
+    <value>确认</value>
+  </data>
+  <data name="COMMON_BTN_DELETE" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="COMMON_BTN_EDIT" xml:space="preserve">
+    <value>编辑</value>
+  </data>
+  <data name="COMMON_BTN_PREVIEW" xml:space="preserve">
+    <value>预览</value>
+  </data>
+  <data name="COMMON_BTN_SAVE" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="COMMON_BTN_VIEW" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="COMMON_LBL_NO" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="COMMON_LBL_YES" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="COMMON_OPT_TOGGLE_DOWN" xml:space="preserve">
+    <value>折叠</value>
+  </data>
+  <data name="CONTACTS_BTN_NEWCONTACT" xml:space="preserve">
+    <value>新建联系人</value>
+  </data>
+  <data name="CONTACTS_BTN_RETURNTOLIST" xml:space="preserve">
+    <value>返回列表</value>
+  </data>
+  <data name="CONTACTS_COL_ACTION" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="CONTACTS_COL_FREQUENCY" xml:space="preserve">
+    <value>联系频率</value>
+  </data>
+  <data name="CONTACTS_COL_PHONE" xml:space="preserve">
+    <value>移动电话</value>
+  </data>
+  <data name="CONTACTS_COL_RSNOTE" xml:space="preserve">
+    <value>关系描述</value>
+  </data>
+  <data name="CONTACTS_COL_USERNAME" xml:space="preserve">
+    <value>姓名</value>
+  </data>
+  <data name="CONTACTS_LBL_RELATIONSHIP" xml:space="preserve">
+    <value>关系</value>
+  </data>
+  <data name="CONTACTS_LBL_TAPLEVEL" xml:space="preserve">
+    <value>亲密程度</value>
+  </data>
+  <data name="CONTACTS_SUBTITLE" xml:space="preserve">
+    <value>联系人</value>
+  </data>
+  <data name="CONTACTS_TITLE" xml:space="preserve">
+    <value>联系人管理</value>
+  </data>
+  <data name="CUST_DATA_TABLE_KEY" xml:space="preserve">
+    <value>表编码</value>
+  </data>
+  <data name="CUST_DATA_TABLE_NAME" xml:space="preserve">
+    <value>表名称</value>
+  </data>
+  <data name="DATA_CUST_ADD_DATA" xml:space="preserve">
+    <value>新建表数据</value>
+  </data>
+  <data name="DATA_CUST_ADD_DISP_COL" xml:space="preserve">
+    <value>添加显示列</value>
+  </data>
+  <data name="DATA_CUST_ADVANCED_PROPERTY" xml:space="preserve">
+    <value>自定义属性</value>
+  </data>
+  <data name="DATA_CUST_BACKTOLIST" xml:space="preserve">
+    <value>返回到列表</value>
+  </data>
+  <data name="DATA_CUST_COL_CREATED" xml:space="preserve">
+    <value>创建时间</value>
+  </data>
+  <data name="DATA_CUST_COL_ID" xml:space="preserve">
+    <value>ID编码</value>
+  </data>
+  <data name="DATA_CUST_COL_NAME" xml:space="preserve">
+    <value>表数据名称</value>
+  </data>
+  <data name="DATA_CUST_DATA_LIST" xml:space="preserve">
+    <value>表数据列表</value>
+  </data>
+  <data name="DATA_CUST_DATA_MGR" xml:space="preserve">
+    <value>表数据管理</value>
+  </data>
+  <data name="DATA_CUST_EDITTABLE" xml:space="preserve">
+    <value>编辑数据表</value>
+  </data>
+  <data name="DATA_CUST_FIELD_BIGINTEGER" xml:space="preserve">
+    <value>长整数字段</value>
+  </data>
+  <data name="DATA_CUST_FIELD_DATETIME" xml:space="preserve">
+    <value>时间字段</value>
+  </data>
+  <data name="DATA_CUST_FIELD_FILE" xml:space="preserve">
+    <value>文件字段</value>
+  </data>
+  <data name="DATA_CUST_FIELD_INTEGER" xml:space="preserve">
+    <value>整数字段</value>
+  </data>
+  <data name="DATA_CUST_FIELD_NUMBER" xml:space="preserve">
+    <value>数字字段</value>
+  </data>
+  <data name="DATA_CUST_FIELD_OPT_DSP" xml:space="preserve">
+    <value>显示名称</value>
+  </data>
+  <data name="DATA_CUST_FIELD_OPT_ITEMS" xml:space="preserve">
+    <value>备选项目</value>
+  </data>
+  <data name="DATA_CUST_FIELD_OPT_VALUE" xml:space="preserve">
+    <value>值</value>
+  </data>
+  <data name="DATA_CUST_FIELD_REFERNCE" xml:space="preserve">
+    <value>数据引用字段</value>
+  </data>
+  <data name="DATA_CUST_FIELD_SINGLE_CHOICE" xml:space="preserve">
+    <value>单选字段</value>
+  </data>
+  <data name="DATA_CUST_FIELD_STRING" xml:space="preserve">
+    <value>字符字段</value>
+  </data>
+  <data name="DATA_CUST_FILED_BTNUPLOAD" xml:space="preserve">
+    <value>上传文件</value>
+  </data>
+  <data name="DATA_CUST_GENERAL_PROPERTY" xml:space="preserve">
+    <value>一般属性</value>
+  </data>
+  <data name="DATA_CUST_LBL_EDIT_TABLE" xml:space="preserve">
+    <value>编辑数据表</value>
+  </data>
+  <data name="DATA_CUST_SELECT_TABLE" xml:space="preserve">
+    <value>请选择一个自定义表</value>
+  </data>
+  <data name="DATA_CUST_TABLE" xml:space="preserve">
+    <value>自定义数据表定义</value>
+  </data>
+  <data name="DATA_CUST_TABLEGROUP" xml:space="preserve">
+    <value>自定义数据表分组</value>
+  </data>
+  <data name="DATA_CUST_TABLES_IN_GRP" xml:space="preserve">
+    <value>分组中的自定义数据表</value>
+  </data>
+  <data name="DATA_CUST_TABLE_CREATED" xml:space="preserve">
+    <value>创建时间</value>
+  </data>
+  <data name="DATA_CUST_TABLE_CREATEDBY" xml:space="preserve">
+    <value>创建人</value>
+  </data>
+  <data name="DATA_CUST_TABLE_DATA" xml:space="preserve">
+    <value>自定义数据表数据</value>
+  </data>
+  <data name="DATA_CUST_TABLE_GRPKEY" xml:space="preserve">
+    <value>数据表分组编码</value>
+  </data>
+  <data name="DATA_CUST_TABLE_GRPNAME" xml:space="preserve">
+    <value>数据表分组名称</value>
+  </data>
+  <data name="DATA_CUST_TABLE_OBJECT_NAME" xml:space="preserve">
+    <value>数据名称</value>
+  </data>
+  <data name="DATA_CUST_TABLE_OBJID" xml:space="preserve">
+    <value>数据标识</value>
+  </data>
+  <data name="DATA_CUST_TABLE_OBJOWNER" xml:space="preserve">
+    <value>数据拥有者</value>
+  </data>
+  <data name="DATA_CUST_TABLE_UPDATED" xml:space="preserve">
+    <value>更新时间</value>
+  </data>
+  <data name="DATA_CUST_TABLE_UPDATEDBY" xml:space="preserve">
+    <value>更新人</value>
+  </data>
+  <data name="DATA_CUST_TOGGLE_DROPDOWN" xml:space="preserve">
+    <value>切换下拉列表</value>
+  </data>
+  <data name="DATA_CUST_UPDATE_RESULTS" xml:space="preserve">
+    <value>更新结果！</value>
+  </data>
+  <data name="DATA_CUST_VIEW_TABLE_OBJECT" xml:space="preserve">
+    <value>查看数据表数据</value>
+  </data>
+  <data name="DIARYMGR_AUTHOR_MOOD" xml:space="preserve">
+    <value>心情指数</value>
+  </data>
+  <data name="DIARYMGR_DIARY" xml:space="preserve">
+    <value>日记</value>
+  </data>
+  <data name="DIARYMGR_NEW_DIARY" xml:space="preserve">
+    <value>新建日记</value>
+  </data>
+  <data name="DIARYMGR_RETURN_LIST" xml:space="preserve">
+    <value>返回到列表</value>
+  </data>
+  <data name="DIARYMGR_TITLE" xml:space="preserve">
+    <value>日记管理</value>
+  </data>
+  <data name="DIARYMGR_WEATHER" xml:space="preserve">
+    <value>天气</value>
+  </data>
+  <data name="DOCUMENT_ADD_DOCUMENT" xml:space="preserve">
+    <value>+文件</value>
+  </data>
+  <data name="DOCUMENT_ADD_FOLDER" xml:space="preserve">
+    <value>+文件夹</value>
+  </data>
+  <data name="DOCUMENT_BTN_CANCEL" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="DOCUMENT_BTN_SAVE" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="DOCUMENT_BTN_UPLOAD" xml:space="preserve">
+    <value>上传文件</value>
+  </data>
+  <data name="DOCUMENT_EDIT_FOLDER_NAME" xml:space="preserve">
+    <value>文件夹名称</value>
+  </data>
+  <data name="DOCUMENT_GRID_VIEW" xml:space="preserve">
+    <value>网格视图</value>
+  </data>
+  <data name="DOCUMENT_LBL_FILENAME" xml:space="preserve">
+    <value>文件名称</value>
+  </data>
+  <data name="DOCUMENT_LBL_SHARED" xml:space="preserve">
+    <value>共享</value>
+  </data>
+  <data name="DOCUMENT_LBL_VERSION" xml:space="preserve">
+    <value>版本</value>
+  </data>
+  <data name="DOCUMENT_LIST_VIEW" xml:space="preserve">
+    <value>列表视图</value>
+  </data>
+  <data name="DOCUMENT_RDO_PRIVATE" xml:space="preserve">
+    <value>私有</value>
+  </data>
+  <data name="DOCUMENT_RDO_SHARED" xml:space="preserve">
+    <value>共享</value>
+  </data>
+  <data name="DOCUMENT_SEARCH_TEXT_PLH" xml:space="preserve">
+    <value>查找文档</value>
+  </data>
+  <data name="DOCUMENT_TH_ACTION" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="DOCUMENT_TH_MODIFIED" xml:space="preserve">
+    <value>更新时间</value>
+  </data>
+  <data name="DOCUMENT_TH_NAME" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="DOCUMENT_TH_OWNER" xml:space="preserve">
+    <value>创建者</value>
+  </data>
+  <data name="DOCUMENT_TH_SIZE_KB" xml:space="preserve">
+    <value>大小 (KB)</value>
+  </data>
+  <data name="DOCUMENT_TITLE" xml:space="preserve">
+    <value>文件管理</value>
+  </data>
+  <data name="ERROR_DETAILS_DESC" xml:space="preserve">
+    <value>详细错误是： {0}</value>
+  </data>
+  <data name="ERROR_NOT_FOUND" xml:space="preserve">
+    <value>哎呀！没有找到相关内容。</value>
+  </data>
+  <data name="ERROR_NOT_FOUND_DESC" xml:space="preserve">
+    <value>在系统中找不到你要找的信息，你也可以&lt;a href="/"&gt;返回到系统首页&lt;/a&gt;</value>
+  </data>
+  <data name="ERROR_SERVER_ERROR" xml:space="preserve">
+    <value>哎呀！系统服务发生错误。</value>
+  </data>
+  <data name="ERROR_SERVER_ERROR_BODY" xml:space="preserve">
+    <value>系统服务出现错误，详细内容是: {0}</value>
+  </data>
+  <data name="ERROR_SERVER_ERROR_DESC" xml:space="preserve">
+    <value>应用服务出现错误，请联系系统管理员获取技术支持，你也可以 &lt;a href="/"&gt;返回到系统首页&lt;/a&gt;</value>
+  </data>
+  <data name="ERROR_TITLE" xml:space="preserve">
+    <value>出错了</value>
+  </data>
+  <data name="EVENT_APP_ACCESS_URL_ERROR" xml:space="preserve">
+    <value>访问连接{0}出错</value>
+  </data>
+  <data name="EVENT_APP_ERROR" xml:space="preserve">
+    <value>系统错误</value>
+  </data>
+  <data name="EVENT_APP_EVENT" xml:space="preserve">
+    <value>系统事件</value>
+  </data>
+  <data name="EVENT_APP_EVENT_LIST" xml:space="preserve">
+    <value>事件列表</value>
+  </data>
+  <data name="EVENT_APP_EVENT_LOGIN_DESC" xml:space="preserve">
+    <value>{0}登录系统</value>
+  </data>
+  <data name="EVENT_APP_EVENT_LOGIN_FAILED" xml:space="preserve">
+    <value>用户登录系统失败</value>
+  </data>
+  <data name="EVENT_APP_EVENT_LOGIN_FAILEDDESC" xml:space="preserve">
+    <value>{0} 登录系统失败</value>
+  </data>
+  <data name="EVENT_APP_EVENT_NEWUSER" xml:space="preserve">
+    <value>系统有新的注册用户</value>
+  </data>
+  <data name="EVENT_APP_EVENT_TYPE_ERROR" xml:space="preserve">
+    <value>错误</value>
+  </data>
+  <data name="EVENT_APP_EVENT_TYPE_INFO" xml:space="preserve">
+    <value>信息</value>
+  </data>
+  <data name="EVENT_APP_EVENT_TYPE_WARNING" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="EVENT_APP_EVENT_USERLOGIN" xml:space="preserve">
+    <value>用户登录系统</value>
+  </data>
+  <data name="EVENT_APP_UNKOWN_ERROR" xml:space="preserve">
+    <value>发生未知的系统错误</value>
+  </data>
+  <data name="EVNET_APP_EVENT_NEWUSER_DESC" xml:space="preserve">
+    <value>收到用户请求码， 用户验证通过后将会登陆到系统</value>
+  </data>
+  <data name="IMAGEMGR_ALBUM" xml:space="preserve">
+    <value>相册</value>
+  </data>
+  <data name="IMAGEMGR_ALBUMS" xml:space="preserve">
+    <value>相册</value>
+  </data>
+  <data name="IMAGEMGR_BTN_UPLOADIMG" xml:space="preserve">
+    <value>上传图片</value>
+  </data>
+  <data name="IMAGEMGR_ERR_ALERT" xml:space="preserve">
+    <value>注意!</value>
+  </data>
+  <data name="IMAGEMGR_IMAGES" xml:space="preserve">
+    <value>图片</value>
+  </data>
+  <data name="IMAGEMGR_LBL_DESC" xml:space="preserve">
+    <value>图片描述</value>
+  </data>
+  <data name="IMAGEMGR_LBL_IMGTITLE" xml:space="preserve">
+    <value>图片名称</value>
+  </data>
+  <data name="IMAGEMGR_LBL_NAME" xml:space="preserve">
+    <value>相册名称</value>
+  </data>
+  <data name="IMAGEMGR_LBL_SHARED" xml:space="preserve">
+    <value>共享</value>
+  </data>
+  <data name="IMAGEMGR_LBL_TYPE" xml:space="preserve">
+    <value>相册类型</value>
+  </data>
+  <data name="IMAGEMGR_RDO_PRIVATE" xml:space="preserve">
+    <value>私有</value>
+  </data>
+  <data name="IMAGEMGR_RDO_SHARED" xml:space="preserve">
+    <value>共享</value>
+  </data>
+  <data name="IMAGEMGR_TITLE" xml:space="preserve">
+    <value>图片管理</value>
+  </data>
+  <data name="IMAGEMGR_VIEW_LOADING" xml:space="preserve">
+    <value>加载中 ...</value>
+  </data>
+  <data name="IMAGEMGR_VIEW_MORE_IMGS" xml:space="preserve">
+    <value>查看更多图片</value>
+  </data>
+  <data name="INDEX_ABOUT" xml:space="preserve">
+    <value>关于系统</value>
+  </data>
+  <data name="INDEX_EVENT_COUNTER_MSG" xml:space="preserve">
+    <value>系统有{0}个新的事件</value>
+  </data>
+  <data name="INDEX_HELP" xml:space="preserve">
+    <value>帮助</value>
+  </data>
+  <data name="INDEX_MENU_HOT" xml:space="preserve">
+    <value>热门</value>
+  </data>
+  <data name="INDEX_NOTIFY_DEFAULT_MSG" xml:space="preserve">
+    <value>FEConsole V1.0 现在正式上线了!</value>
+  </data>
+  <data name="INDEX_NOTIFY_DEFAULT_PROVIDER" xml:space="preserve">
+    <value>本地系统</value>
+  </data>
+  <data name="INDEX_REPORT_BOOKS" xml:space="preserve">
+    <value>书籍</value>
+  </data>
+  <data name="INDEX_REPORT_COL_AUTHOR" xml:space="preserve">
+    <value>作者</value>
+  </data>
+  <data name="INDEX_REPORT_COL_DATE" xml:space="preserve">
+    <value>日期</value>
+  </data>
+  <data name="INDEX_REPORT_COL_TITLE" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="INDEX_REPORT_COL_VERSION" xml:space="preserve">
+    <value>版本</value>
+  </data>
+  <data name="INDEX_REPORT_LATEST_IMAGES" xml:space="preserve">
+    <value>最新图片</value>
+  </data>
+  <data name="INDEX_REPORT_POSTS" xml:space="preserve">
+    <value>文章</value>
+  </data>
+  <data name="INDEX_REPORT_VIEW_ALLBOOKS" xml:space="preserve">
+    <value>查看所有书籍</value>
+  </data>
+  <data name="INDEX_REPORT_VIEW_ALLIMGS" xml:space="preserve">
+    <value>查看所有图片</value>
+  </data>
+  <data name="INDEX_REPORT_VIEW_ALLPOSTS" xml:space="preserve">
+    <value>查看所有文章</value>
+  </data>
+  <data name="INDEX_TOTAL_BOOKS" xml:space="preserve">
+    <value>电子书总数</value>
+  </data>
+  <data name="INDEX_TOTAL_CONTACTS" xml:space="preserve">
+    <value>联系人总数</value>
+  </data>
+  <data name="INDEX_TOTAL_IMAGES" xml:space="preserve">
+    <value>图片总数</value>
+  </data>
+  <data name="INDEX_TOTAL_POSTS" xml:space="preserve">
+    <value>文章总数</value>
+  </data>
+  <data name="LAYOUT_ADMIN_CONSOLE" xml:space="preserve">
+    <value>管理控制台</value>
+  </data>
+  <data name="LAYOUT_COMPANY" xml:space="preserve">
+    <value>FE Contributes Space</value>
+  </data>
+  <data name="LAYOUT_CONSOLE" xml:space="preserve">
+    <value>控制台</value>
+  </data>
+  <data name="LAYOUT_COPYRIGHT" xml:space="preserve">
+    <value>版权所有 2016</value>
+  </data>
+  <data name="LAYOUT_COPYRIGHT_STR" xml:space="preserve">
+    <value>All rights reserved.</value>
+  </data>
+  <data name="LAYOUT_NAV_ACTMGR" xml:space="preserve">
+    <value>账号</value>
+  </data>
+  <data name="LAYOUT_NAV_BOOKS" xml:space="preserve">
+    <value>书籍</value>
+  </data>
+  <data name="LAYOUT_NAV_CONTACTS" xml:space="preserve">
+    <value>联系人</value>
+  </data>
+  <data name="LAYOUT_NAV_DATAMGR" xml:space="preserve">
+    <value>数据</value>
+  </data>
+  <data name="LAYOUT_NAV_DIARY" xml:space="preserve">
+    <value>日记</value>
+  </data>
+  <data name="LAYOUT_NAV_DOCUMENTS" xml:space="preserve">
+    <value>文档</value>
+  </data>
+  <data name="LAYOUT_NAV_EFFICIENCY" xml:space="preserve">
+    <value>效率</value>
+  </data>
+  <data name="LAYOUT_NAV_GENERALOBJ" xml:space="preserve">
+    <value>通用数据</value>
+  </data>
+  <data name="LAYOUT_NAV_LICENSE" xml:space="preserve">
+    <value>版权管理</value>
+  </data>
+  <data name="LAYOUT_NAV_MAIN" xml:space="preserve">
+    <value>导航</value>
+  </data>
+  <data name="LAYOUT_NAV_PHOTOS" xml:space="preserve">
+    <value>照片</value>
+  </data>
+  <data name="LAYOUT_NAV_PORTAL" xml:space="preserve">
+    <value>门户</value>
+  </data>
+  <data name="LAYOUT_NAV_POSTS" xml:space="preserve">
+    <value>文章</value>
+  </data>
+  <data name="LAYOUT_NAV_SYSCONF" xml:space="preserve">
+    <value>系统</value>
+  </data>
+  <data name="LAYOUT_NAV_SYSUSR" xml:space="preserve">
+    <value>系统用户</value>
+  </data>
+  <data name="LAYOUT_NAV_TASKMGR" xml:space="preserve">
+    <value>任务管理</value>
+  </data>
+  <data name="LAYOUT_NAV_TOGGLE" xml:space="preserve">
+    <value>隐藏导航</value>
+  </data>
+  <data name="LAYOUT_NAV_USRMGR" xml:space="preserve">
+    <value>用户管理</value>
+  </data>
+  <data name="LAYOUT_PROFILE" xml:space="preserve">
+    <value>用户资料</value>
+  </data>
+  <data name="LAYOUT_SIGNOUT" xml:space="preserve">
+    <value>退出</value>
+  </data>
+  <data name="LAYOUT_STATUS_ONLINE" xml:space="preserve">
+    <value>在线</value>
+  </data>
+  <data name="LAYOUT_SUBTITLE" xml:space="preserve">
+    <value>更好的体验!</value>
+  </data>
+  <data name="LAYOUT_SYSTEM_SETTINGS" xml:space="preserve">
+    <value>系统设置</value>
+  </data>
+  <data name="LAYOUT_VERSION" xml:space="preserve">
+    <value>版本</value>
+  </data>
+  <data name="LEAVING_PAGE_WARN" xml:space="preserve">
+    <value>确定要离开本页面？</value>
+  </data>
+  <data name="LICMGR_BTN_UPLOADLIC" xml:space="preserve">
+    <value>上传注册码</value>
+  </data>
+  <data name="LICMGR_COL_DESC" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="LICMGR_COL_EXPIRED" xml:space="preserve">
+    <value>过期时间</value>
+  </data>
+  <data name="LICMGR_COL_ID" xml:space="preserve">
+    <value>模块编号</value>
+  </data>
+  <data name="LICMGR_COL_LSD" xml:space="preserve">
+    <value>是否授权</value>
+  </data>
+  <data name="LICMGR_COL_NAME" xml:space="preserve">
+    <value>模块名称</value>
+  </data>
+  <data name="LICMGR_LBL_MODULES" xml:space="preserve">
+    <value>系统模块</value>
+  </data>
+  <data name="LICMGR_TITLE" xml:space="preserve">
+    <value>注册码管理</value>
+  </data>
+  <data name="LOGIN_BTN_REGISTER" xml:space="preserve">
+    <value>注册</value>
+  </data>
+  <data name="LOGIN_BTN_SENDEMAIL" xml:space="preserve">
+    <value>发送</value>
+  </data>
+  <data name="LOGIN_BTN_SIGNGOOGLE" xml:space="preserve">
+    <value>用Google+账号登陆</value>
+  </data>
+  <data name="LOGIN_BTN_SIGNIN" xml:space="preserve">
+    <value>登录</value>
+  </data>
+  <data name="LOGIN_BTN_SIGNMICROSOFT" xml:space="preserve">
+    <value>用Microsoft账号登陆</value>
+  </data>
+  <data name="LOGIN_ENTER_EMAIL" xml:space="preserve">
+    <value>输入邮件地址</value>
+  </data>
+  <data name="LOGIN_FORGET_PASS_MSG" xml:space="preserve">
+    <value>忘记了密码？</value>
+  </data>
+  <data name="LOGIN_LBL_AGREE_TERM" xml:space="preserve">
+    <value>我同意&lt;a href="#"&gt;注册条款&lt;/a&gt;</value>
+  </data>
+  <data name="LOGIN_LBL_ALREADY_MEMBER" xml:space="preserve">
+    <value>我已经注册为用户</value>
+  </data>
+  <data name="LOGIN_LBL_CONFIRMPASS" xml:space="preserve">
+    <value>确认密码</value>
+  </data>
+  <data name="LOGIN_LBL_EMAIL" xml:space="preserve">
+    <value>邮件</value>
+  </data>
+  <data name="LOGIN_LBL_FOGETPASS" xml:space="preserve">
+    <value>忘记密码</value>
+  </data>
+  <data name="LOGIN_LBL_PASS" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="LOGIN_LBL_REGISTERNEW" xml:space="preserve">
+    <value>注册新用户</value>
+  </data>
+  <data name="LOGIN_LBL_REMBERME" xml:space="preserve">
+    <value>记住用户</value>
+  </data>
+  <data name="LOGIN_MSG_INVALIDUSER" xml:space="preserve">
+    <value>用户名或密码不正确</value>
+  </data>
+  <data name="LOGIN_START_MSG" xml:space="preserve">
+    <value>请登陆后再使用系统功能</value>
+  </data>
+  <data name="LOGIN_TITLE" xml:space="preserve">
+    <value>登陆</value>
+  </data>
+  <data name="POST_ADD_GROUP" xml:space="preserve">
+    <value>添加分组</value>
+  </data>
+  <data name="POST_ALL_POSTS" xml:space="preserve">
+    <value>所有文章</value>
+  </data>
+  <data name="POST_BTN_DELETE" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="POST_BTN_EDIT" xml:space="preserve">
+    <value>编辑</value>
+  </data>
+  <data name="POST_BTN_PRINT" xml:space="preserve">
+    <value>打印</value>
+  </data>
+  <data name="POST_BTN_RETURN_TO_LIST" xml:space="preserve">
+    <value>返回到列表</value>
+  </data>
+  <data name="POST_BTN_UPLOAD_IMG" xml:space="preserve">
+    <value>上传文章图片</value>
+  </data>
+  <data name="POST_BTN_VIEW" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="POST_DELETE_GROUP" xml:space="preserve">
+    <value>删除分组</value>
+  </data>
+  <data name="POST_EDIT_GROUP" xml:space="preserve">
+    <value>编辑分组</value>
+  </data>
+  <data name="POST_LBL_CONTENT" xml:space="preserve">
+    <value>内容</value>
+  </data>
+  <data name="POST_LBL_INTRODUCTION" xml:space="preserve">
+    <value>文章简介</value>
+  </data>
+  <data name="POST_LBL_ISORIGINAL" xml:space="preserve">
+    <value>是否原创</value>
+  </data>
+  <data name="POST_LBL_ORIGINAL" xml:space="preserve">
+    <value>原创</value>
+  </data>
+  <data name="POST_LBL_SHARED" xml:space="preserve">
+    <value>共享</value>
+  </data>
+  <data name="POST_LBL_TITLE" xml:space="preserve">
+    <value>标题</value>
+  </data>
+  <data name="POST_NEW_POST" xml:space="preserve">
+    <value>新建文章</value>
+  </data>
+  <data name="POST_RDO_NO" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="POST_RDO_PRIVATE" xml:space="preserve">
+    <value>私有</value>
+  </data>
+  <data name="POST_RDO_SHARED" xml:space="preserve">
+    <value>共享</value>
+  </data>
+  <data name="POST_RDO_YES" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="POST_TITLE" xml:space="preserve">
+    <value>文章管理</value>
+  </data>
+  <data name="PROFILE_ADDRESS" xml:space="preserve">
+    <value>联系地址</value>
+  </data>
+  <data name="PROFILE_BIRTH_DATE" xml:space="preserve">
+    <value>出生日期</value>
+  </data>
+  <data name="PROFILE_BTN_PROFILE" xml:space="preserve">
+    <value>用户资料</value>
+  </data>
+  <data name="PROFILE_BTN_SIGNOUT" xml:space="preserve">
+    <value>退出</value>
+  </data>
+  <data name="PROFILE_BTN_UPLOADIMG" xml:space="preserve">
+    <value>上传图片</value>
+  </data>
+  <data name="PROFILE_BUILDING" xml:space="preserve">
+    <value>小区地址</value>
+  </data>
+  <data name="PROFILE_CITY" xml:space="preserve">
+    <value>城市</value>
+  </data>
+  <data name="PROFILE_COMPANY" xml:space="preserve">
+    <value>公司</value>
+  </data>
+  <data name="PROFILE_COMPANYURL" xml:space="preserve">
+    <value>公司网址</value>
+  </data>
+  <data name="PROFILE_CONTACT" xml:space="preserve">
+    <value>联系方式</value>
+  </data>
+  <data name="PROFILE_COUNTRY" xml:space="preserve">
+    <value>国家</value>
+  </data>
+  <data name="PROFILE_DEGREE" xml:space="preserve">
+    <value>学位</value>
+  </data>
+  <data name="PROFILE_EDUCATION" xml:space="preserve">
+    <value>教育背景</value>
+  </data>
+  <data name="PROFILE_EMAIL" xml:space="preserve">
+    <value>电子邮件</value>
+  </data>
+  <data name="PROFILE_ENDDATE" xml:space="preserve">
+    <value>结束时间</value>
+  </data>
+  <data name="PROFILE_ENROLL_DATE" xml:space="preserve">
+    <value>入学日期</value>
+  </data>
+  <data name="PROFILE_EXIT_DATE" xml:space="preserve">
+    <value>毕业日期</value>
+  </data>
+  <data name="PROFILE_FACEBOOK" xml:space="preserve">
+    <value>Facebook</value>
+  </data>
+  <data name="PROFILE_FEMALE" xml:space="preserve">
+    <value>女</value>
+  </data>
+  <data name="PROFILE_FIRSTNAME" xml:space="preserve">
+    <value>名字</value>
+  </data>
+  <data name="PROFILE_GENDER" xml:space="preserve">
+    <value>性别</value>
+  </data>
+  <data name="PROFILE_GRADE" xml:space="preserve">
+    <value>年级</value>
+  </data>
+  <data name="PROFILE_ID" xml:space="preserve">
+    <value>身份证号码</value>
+  </data>
+  <data name="PROFILE_JOBDESC" xml:space="preserve">
+    <value>工作描述</value>
+  </data>
+  <data name="PROFILE_JOBTITLE" xml:space="preserve">
+    <value>工作名称</value>
+  </data>
+  <data name="PROFILE_LASTNAME" xml:space="preserve">
+    <value>姓氏</value>
+  </data>
+  <data name="PROFILE_LEVEL" xml:space="preserve">
+    <value>技能级别</value>
+  </data>
+  <data name="PROFILE_LINKEDIN" xml:space="preserve">
+    <value>LinkedIn</value>
+  </data>
+  <data name="PROFILE_LOCATION" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="PROFILE_MALE" xml:space="preserve">
+    <value>男</value>
+  </data>
+  <data name="PROFILE_MOBPHONE" xml:space="preserve">
+    <value>移动电话</value>
+  </data>
+  <data name="PROFILE_OTHERCONTACT" xml:space="preserve">
+    <value>其他联系方式</value>
+  </data>
+  <data name="PROFILE_POSTCODE" xml:space="preserve">
+    <value>邮政编码</value>
+  </data>
+  <data name="PROFILE_PROVINCE" xml:space="preserve">
+    <value>省份</value>
+  </data>
+  <data name="PROFILE_QQ" xml:space="preserve">
+    <value>QQ</value>
+  </data>
+  <data name="PROFILE_SCHOOL" xml:space="preserve">
+    <value>学校</value>
+  </data>
+  <data name="PROFILE_SKILLDESC" xml:space="preserve">
+    <value>技能描述</value>
+  </data>
+  <data name="PROFILE_SKILLNAME" xml:space="preserve">
+    <value>技能名称</value>
+  </data>
+  <data name="PROFILE_SKILLS" xml:space="preserve">
+    <value>个人技能</value>
+  </data>
+  <data name="PROFILE_STARTDATE" xml:space="preserve">
+    <value>开始时间</value>
+  </data>
+  <data name="PROFILE_STREET" xml:space="preserve">
+    <value>街道</value>
+  </data>
+  <data name="PROFILE_TELEPHONE" xml:space="preserve">
+    <value>电话</value>
+  </data>
+  <data name="PROFILE_TWITTER" xml:space="preserve">
+    <value>Twitter</value>
+  </data>
+  <data name="PROFILE_WECHAT" xml:space="preserve">
+    <value>微信</value>
+  </data>
+  <data name="PROFILE_WKEXPRERIENCE" xml:space="preserve">
+    <value>工作经验</value>
+  </data>
+  <data name="TASKMGR_BTN_LBL_COMTASK" xml:space="preserve">
+    <value>完成任务</value>
+  </data>
+  <data name="TASKMGR_BTN_LBL_STARTTASK" xml:space="preserve">
+    <value>增加进度</value>
+  </data>
+  <data name="TASKMGR_LBL_COMP_DATE" xml:space="preserve">
+    <value>完成时间</value>
+  </data>
+  <data name="TASKMGR_LBL_DESC" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="TASKMGR_LBL_ENDDATE" xml:space="preserve">
+    <value>结束时间</value>
+  </data>
+  <data name="TASKMGR_LBL_STARTDATE" xml:space="preserve">
+    <value>开始时间</value>
+  </data>
+  <data name="TASKMGR_LBL_TASKNAME" xml:space="preserve">
+    <value>任务名称</value>
+  </data>
+  <data name="TASKMGR_LBL_TASKTYPE" xml:space="preserve">
+    <value>任务类型</value>
+  </data>
+  <data name="TASKMGR_LBL_TGTTITLE" xml:space="preserve">
+    <value>目标名称</value>
+  </data>
+  <data name="TASKMGR_LBL_TGTTYPE" xml:space="preserve">
+    <value>目标类型</value>
+  </data>
+  <data name="TASKMGR_RDO_IMPORTANT" xml:space="preserve">
+    <value>特别重要</value>
+  </data>
+  <data name="TASKMGR_RDO_LOW" xml:space="preserve">
+    <value>普通</value>
+  </data>
+  <data name="TASKMGR_RDO_MEDIUM" xml:space="preserve">
+    <value>一般重要</value>
+  </data>
+  <data name="TASKMGR_TAB_TARGETS" xml:space="preserve">
+    <value>目标</value>
+  </data>
+  <data name="TASKMGR_TAB_TASKS" xml:space="preserve">
+    <value>任务</value>
+  </data>
+  <data name="TASKMGR_TASKLIST" xml:space="preserve">
+    <value>任务列表</value>
+  </data>
+  <data name="TASKMGR_TH_ACTION" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="TASKMGR_TH_DESC" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="TASKMGR_TH_PROGRESS" xml:space="preserve">
+    <value>进度</value>
+  </data>
+  <data name="TASKMGR_TH_TASK" xml:space="preserve">
+    <value>任务</value>
+  </data>
+  <data name="TASKMGR_TITLE" xml:space="preserve">
+    <value>任务管理</value>
+  </data>
+  <data name="TASKMGR_VIEW_ALL_TASK" xml:space="preserve">
+    <value>查看所有任务</value>
+  </data>
+  <data name="USERMGR_BTN_PROFILE" xml:space="preserve">
+    <value>用户资料</value>
+  </data>
+  <data name="USERMGR_BTN_RESETPASS" xml:space="preserve">
+    <value>重置密码</value>
+  </data>
+  <data name="USERMGR_COL_ACTION" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="USERMGR_COL_EMAIL" xml:space="preserve">
+    <value>邮件</value>
+  </data>
+  <data name="USERMGR_COL_STATUS" xml:space="preserve">
+    <value>状态</value>
+  </data>
+  <data name="USERMGR_COL_USERID" xml:space="preserve">
+    <value>用户编号</value>
+  </data>
+  <data name="USERMGR_COL_USERNAME" xml:space="preserve">
+    <value>用户名</value>
+  </data>
+  <data name="USERMGR_LBL_ACTIVE" xml:space="preserve">
+    <value>活动</value>
+  </data>
+  <data name="USERMGR_TITLE" xml:space="preserve">
+    <value>用户管理</value>
+  </data>
+  <data name="USERPROFILE_TITLE" xml:space="preserve">
+    <value>用户资料</value>
+  </data>
+</root>

@@ -101,13 +101,17 @@ namespace coreaspnet
             .AddCookie("Cookies")
             .AddOpenIdConnect("oidc", "Identity Server4", options =>
             {
-                options.Authority = _configuration.GetSection("Authentication:IdentityServer")
-                                    .GetValue<string>("Url");
+
+                options.Authority = Configuration.GetSection("Authentication:IdentityServer")
+                                   .GetValue<string>("Url");
                 options.RequireHttpsMetadata = false;
 
-                options.ClientId = "fetechhub";
-                options.ClientSecret = "fetechhub@passw0rd";
-                options.ResponseType = "code";
+                options.ClientId = Configuration.GetSection("Authentication:IdentityServer")
+                                    .GetValue<string>("ClientId");
+                options.ClientSecret = Configuration.GetSection("Authentication:IdentityServer")
+                                    .GetValue<string>("ClientSecret");
+                options.ResponseType = Configuration.GetSection("Authentication:IdentityServer")
+                                    .GetValue<string>("code");
 
                 options.SaveTokens = true;
 
@@ -115,23 +119,10 @@ namespace coreaspnet
                 options.Scope.Add("email");
                 options.Scope.Add("offline_access");
 
-
-                // options.Events = new OpenIdConnectEvents
-                //     {
-                //         OnRedirectToIdentityProvider = redirectContext =>
-                //         {
-                //             redirectContext.ProtocolMessage.RedirectUri = redirectContext.ProtocolMessage.RedirectUri.Replace("http://", "https://", StringComparison.OrdinalIgnoreCase);
-                //             return Task.FromResult(0);
-                //         }
-                //     };
             });
             services.AddControllersWithViews();
             services.AddMvc()
             .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix);
-            //services
-/*            services.AddMvc()
-                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
-                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0); */
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -147,28 +138,12 @@ namespace coreaspnet
                 app.UseHsts();
             }
 
-            /*var supportedCultures = new[]
-            {
-                new CultureInfo("en"),
-                new CultureInfo("zh"),
-            };
-
-            app.UseRequestLocalization(new RequestLocalizationOptions
-            {
-                DefaultRequestCulture = new RequestCulture("zh"),
-                // Formatting numbers, dates, etc.
-                SupportedCultures = supportedCultures,
-                // UI strings that we have localized.
-                SupportedUICultures = supportedCultures
-            });*/
-
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseSession();
             app.UseRequestLocalization();
 
-            
             app.UseRouting();
            
             app.UseAuthentication();
@@ -194,15 +169,6 @@ namespace coreaspnet
                  endpoints.MapControllers();
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
-
-
-           /*  app.UseMvc(routes=>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            }); */
-            
         }
     }
 }
