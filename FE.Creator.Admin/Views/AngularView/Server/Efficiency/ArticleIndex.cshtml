@@ -2,6 +2,9 @@
 @inject IHtmlLocalizer<AppLang> AppLangResource
 @{
     ViewBag.Title = AppLangResource["POST_TITLE"];
+    var uploadSetting = Context.GetFileUploadSetting();
+    var maxImageFileSize = uploadSetting.MaxImageSize;
+    var allowedFileExtensions = uploadSetting.AllowedImageExtensions;
 }
 <div class="row" ng-app="ngObjectRepository" ng-init="CurrentArticleId ='@Model'">
     <div class="col-md-12" ng-controller="ArticleController as ctrl" ng-init="ctrl.init(CurrentArticleId)">
@@ -63,14 +66,18 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <button class="btn btn-warning" type="file" ngf-select="ctrl.uploadFiles($file, $invalidFiles,ctrl.currentEditingArticle.properties.articleImage)" ngf-max-size="10MB">
+                                    <button class="btn btn-warning" type="file" 
+                                            ngf-select="ctrl.uploadFiles($file, $invalidFiles,ctrl.currentEditingArticle.properties.articleImage)" 
+                                            ngf-max-size="@maxImageFileSize" 
+                                            ngf-accept="'@allowedFileExtensions'" 
+                                            ngf-pattern="'@allowedFileExtensions'">
                                         <i class="fa fa-upload"></i> @AppLangResource["POST_BTN_UPLOAD_IMG"] <i class="fa fa - refresh fa - spin text - green" ng-if="ctrl.f.showprogress"></i>
 
                                     </button><span class="message">{{ctrl.errorMsg}}</span>
                                     <br />
                                     <br />
                                     <div class="info-box" ng-if="ctrl.currentEditingArticle.properties.articleImage.fileName != null">
-                                        <a class="info-box-icon bg-aqua" href="{{ctrl.currentEditingArticle.properties.articleImage.fileUrl}}"><i class="fa fa-cloud-download"></i></a>
+                                        <a class="info-box-icon bg-aqua" href="{{ctrl.currentEditingArticle.properties.articleImage.fileUrl | fullUrl}}"><i class="fa fa-cloud-download"></i></a>
                                         <div class="info-box-content text-black">
                                             <span class="info-box-text">{{ ctrl.currentEditingArticle.properties.articleImage.fileName }}</span>
                                             <span class="info-box-number">{{ctrl.currentEditingArticle.properties.articleImage.fileSize}} KB</span>
@@ -95,8 +102,8 @@
                                     </label>
                                     <div class="col-sm-8">
                                         <div class="form-control">
-                                            <input type="radio" ng-model="ctrl.currentEditingArticle.properties.articleSharedLevel.value" ng-value="0" ng-checked="ctrl.currentEditingArticle.properties.articleSharedLevel.value == 0" /> @AppLangResource["POST_RDO_PRIVATE"]
-                                            <input type="radio" ng-model="ctrl.currentEditingArticle.properties.articleSharedLevel.value" ng-value="1" ng-checked="ctrl.currentEditingArticle.properties.articleSharedLevel.value == 1" /> @AppLangResource["POST_RDO_SHARED"]
+                                             <input icheck name="sharelevel" type="radio" ng-model="ctrl.currentEditingArticle.properties.articleSharedLevel.value" value="0"/> @AppLangResource["POST_RDO_PRIVATE"]
+                                             <input icheck name="sharelevel" type="radio" ng-model="ctrl.currentEditingArticle.properties.articleSharedLevel.value" value="1"/> @AppLangResource["POST_RDO_SHARED"]
                                         </div>
                                     </div>
                                 </div>
@@ -106,8 +113,8 @@
                                     </label>
                                     <div class="col-sm-8">
                                         <div class="form-control">
-                                            <input type="radio" ng-model="ctrl.currentEditingArticle.properties.isOriginal.value" ng-value="0" ng-checked="ctrl.currentEditingArticle.properties.isOriginal.value == 0" /> @AppLangResource["POST_RDO_YES"]
-                                            <input type="radio" ng-model="ctrl.currentEditingArticle.properties.isOriginal.value" ng-value="1" ng-checked="ctrl.currentEditingArticle.properties.isOriginal.value == 1" /> @AppLangResource["POST_RDO_NO"]
+                                                <input icheck name="isoriginal" type="radio" ng-model="ctrl.currentEditingArticle.properties.isOriginal.value" value="1" /> @AppLangResource["POST_RDO_YES"]
+                                                <input icheck name="isoriginal" type="radio" ng-model="ctrl.currentEditingArticle.properties.isOriginal.value" value="0" /> @AppLangResource["POST_RDO_NO"]
                                         </div>
                                     </div>
                                 </div>
@@ -158,7 +165,7 @@
 </div>
 
 @section Scripts{
-    <script type="text/javascript" src="~/js/apputilities.js"></script>
-    <script type="text/javascript" src="~/js/articlecontroller.js"></script>
+    <script type="text/javascript" src="~/js/apputilities.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/articlecontroller.js" asp-append-version="true"></script>
     <script type="text/javascript" src="~/lib/adminlte-2.3.6/plugins/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js"></script>
 }

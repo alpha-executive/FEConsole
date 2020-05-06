@@ -4,8 +4,8 @@
     ViewBag.Title = AppLangResource["BOOK_TITLE"];
 
     var uploadSetting = Context.GetFileUploadSetting();
-    var maxUploadFileSize = uploadSetting.MaxFileSize;
-    var allowedFileExtensions = uploadSetting.AllowedExtensions;
+    var maxUploadFileSize = uploadSetting.MaxBookSize;
+    var allowedFileExtensions = uploadSetting.AllowedBookExtensions;
 }
 <div class="row" ng-app="ngObjectRepository" ng-controller="BooksController as ctrl" ng-cloak>
     <div class="col-md-3">
@@ -128,8 +128,8 @@
                                 </label>
                                 <div class="col-sm-10">
                                     <div class="form-control">
-                                        <input type="radio" ng-model="ctrl.currentEditingBook.properties.bookSharedLevel.value" ng-value="0" ng-checked="ctrl.currentEditingBook.properties.bookSharedLevel.value == 0" /> @AppLangResource["BOOK_RDO_PRIVATE"]
-                                        <input type="radio" ng-model="ctrl.currentEditingBook.properties.bookSharedLevel.value" ng-value="1" ng-checked="ctrl.currentEditingBook.properties.bookSharedLevel.value == 1" /> @AppLangResource["BOOK_RDO_SHARED"]
+                                        <input icheck name="sharelevel" type="radio" ng-model="ctrl.currentEditingBook.properties.bookSharedLevel.value" value="0" /> @AppLangResource["BOOK_RDO_PRIVATE"]
+                                        <input icheck name="sharelevel" type="radio" ng-model="ctrl.currentEditingBook.properties.bookSharedLevel.value" value="1" /> @AppLangResource["BOOK_RDO_SHARED"]
                                     </div>
                                 </div>
                             </div>
@@ -212,5 +212,5 @@
 </div>
 </div>
 @section Scripts {
-    <script type="text/javascript" src="~/js/bookscontroller.js"></script>
+    <script type="text/javascript" src="~/js/bookscontroller.js" asp-append-version="true"></script>
 }

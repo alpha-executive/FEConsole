@@ -2,6 +2,9 @@
 @inject IHtmlLocalizer<AppLang> AppLangResource
 @{
     ViewBag.Title = AppLangResource["IMAGEMGR_TITLE"];
+    var uploadSetting = Context.GetFileUploadSetting();
+    var maxImageFileSize = uploadSetting.MaxImageSize;
+    var allowedFileExtensions = uploadSetting.AllowedImageExtensions;
 }
 <div class="row">
     <div class="col-md-12" ng-app="ngObjectRepository" ng-controller="ImagesController as ctrl" ng-cloak>
@@ -14,7 +17,11 @@
                 <div class="tab-pane active" id="allimages">
                     <div class="btn-group margin-bottom">
                         <button type="button" class="btn btn-success" ng-click="ctrl.createOrEditImage(null)"><i class="fa fa-plus"></i></button>
-                        <button type="button" class="btn btn-success" type="file" multiple ngf-select="ctrl.importImages($files, $invalidFiles)" ngf-max-size="20MB"><i class="fa fa-upload"></i></button>
+                        <button type="button" class="btn btn-success" type="file"
+                                            multiple ngf-select="ctrl.importImages($files, $invalidFiles)" 
+                                            ngf-max-size="@maxImageFileSize" 
+                                            ngf-accept="'@allowedFileExtensions'"
+                                            ngf-pattern="'@allowedFileExtensions'"><i class="fa fa-upload"></i></button>
                     </div>
                     <div class="row" ng-if="ctrl.displayMode ==='imageImport'">
                         @await Html.PartialAsync("~/Views/AngularView/Client/Photos/ImportImages.cshtml")
@@ -39,7 +46,11 @@
                         <div class="col-md-12">
                             <div class="btn-group margin-bottom">
                                 <button type="button" class="btn btn-success pull-left" ng-click="ctrl.addImages2album()"><i class="fa fa-ellipsis-h"></i> </button>
-                                <button type="button" class="btn btn-success" type="file" multiple ngf-select="ctrl.importImages($files, $invalidFiles)" ngf-max-size="20MB"><i class="fa fa-upload"></i></button>
+                                <button type="button" class="btn btn-success" type="file" multiple 
+                                            ngf-select="ctrl.importImages($files, $invalidFiles)" 
+                                            ngf-max-size="@maxImageFileSize" 
+                                            ngf-accept="'@allowedFileExtensions'"
+                                            ngf-pattern="'@allowedFileExtensions'"><i class="fa fa-upload"></i></button>
                             </div>
                             <ol class="breadcrumb site-navpath pull-right">
                                 <li><a ng-click="ctrl.switchTab(true)" href="javascript:void(0);"><i class="fa fa-home text-warning"></i> @AppLangResource["IMAGEMGR_ALBUMS"]</a></li>
@@ -119,8 +130,8 @@
                                             </label>
                                             <div class="col-sm-10">
                                                 <div class="form-control">
-                                                    <input type="radio" ng-model="ctrl.editingalbumObject.properties.categorySharedLevel.value" ng-value="0" ng-checked="ctrl.editingalbumObject.properties.categorySharedLevel.value == 0" /> @AppLangResource["IMAGEMGR_RDO_PRIVATE"]
-                                                    <input type="radio" ng-model="ctrl.editingalbumObject.properties.categorySharedLevel.value" ng-value="1" ng-checked="ctrl.editingalbumObject.properties.categorySharedLevel.value == 1" /> @AppLangResource["IMAGEMGR_RDO_SHARED"]
+                                                    <input icheck name="sharelevel" type="radio" ng-model="ctrl.editingalbumObject.properties.categorySharedLevel.value" value="0" /> @AppLangResource["IMAGEMGR_RDO_PRIVATE"]
+                                                    <input icheck name="sharelevel" type="radio" ng-model="ctrl.editingalbumObject.properties.categorySharedLevel.value" value="1" /> @AppLangResource["IMAGEMGR_RDO_SHARED"]
                                                 </div>
                                             </div>
                                         </div>
@@ -204,5 +215,5 @@
     </div>
 </div>
 @section Scripts{
-    <script type="text/javascript" src="~/js/imagescontroller.js"></script>
+    <script type="text/javascript" src="~/js/imagescontroller.js" asp-append-version="true"></script>
 }

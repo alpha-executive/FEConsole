@@ -16,17 +16,21 @@
         </div>
         <div class="product-info">
             <span class="label label-warning" ng-if="article.properties.isOriginal.value == 1">
-                <i class="fa fa-user"></i> @AppLangResource["POST_LBL_ORIGINAL"]</span>
-                <span class="label label-danger" ng-if="article.properties.articleSharedLevel.value == 1">
-                    <i class="fa fa-share"></i> @AppLangResource["POST_LBL_SHARED"]</span>
-                    <span class="label label-primary"><i class="fa fa-clock"></i> {{article.created}}</span>
-                    <div class="btn-group pull-right">
-                        <button class="btn btn-box-tool" type="button" ng-click="ctrl.viewArticle(article)">
-                            <i class="fa fa-search text-primary"></i> @AppLangResource["POST_BTN_VIEW"]</button>
-                            <button class="btn btn-box-tool" type="button" ng-click="ctrl.createOrEditArticle(article)">
-                                <i class="fa fa-pencil text-primary"></i> @AppLangResource["POST_BTN_EDIT"]</button>
-                                <button class="btn btn-box-tool" type="button" ng-click="ctrl.deleteArticle(article)"><i class="fa fa-trash text-primary"></i> @AppLangResource["POST_BTN_DELETE"]</button>
-                    </div>
+                <i class="fa fa-user"></i> @AppLangResource["POST_LBL_ORIGINAL"]
+            </span>
+            <span class="label label-danger" ng-if="article.properties.articleSharedLevel.value == 1">
+                <i class="fa fa-share"></i> @AppLangResource["POST_LBL_SHARED"]
+            </span>
+            <span class="label label-primary"><i class="fa fa-clock"></i> {{article.created}}</span>
+            <div class="btn-group pull-right">
+                <button class="btn btn-box-tool" type="button" ng-click="ctrl.viewArticle(article)">
+                    <i class="fa fa-search text-primary"></i> @AppLangResource["POST_BTN_VIEW"]
+                </button>
+                <button class="btn btn-box-tool" type="button" ng-click="ctrl.createOrEditArticle(article)">
+                    <i class="fa fa-pencil text-primary"></i> @AppLangResource["POST_BTN_EDIT"]
+                </button>
+                <button class="btn btn-box-tool" type="button" ng-click="ctrl.deleteArticle(article)"><i class="fa fa-trash text-primary"></i> @AppLangResource["POST_BTN_DELETE"]</button>
+            </div>
         </div>
     </li>
     <!-- /.item -->

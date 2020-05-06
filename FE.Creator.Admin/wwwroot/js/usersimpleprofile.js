@@ -74,7 +74,7 @@
         function loadUserRecentTasks(authHeaders) {
             $.ajax({
                 headers: authHeaders,
-                url: webApiBaseUrl + "/api/GeneralObject/FindSysObjectsByFilter/Task/"
+                url: webApiBaseUrl + "/api/GeneralObject/FindServiceObjectsByFilter/Task/"
                     + ["taskStatus", "taskType"].join()
                     + "?pageIndex=1&pageSize=6",
                 dataType: "json",
@@ -126,7 +126,8 @@
             });
         }
         function loadSystemEvents(authHeaders) {
-            var loadEventCount = 5;
+            var loadEventCount = 6;
+            var MAX_EVENT_COUNT = 5;
             $.ajax({
                 headers: authHeaders,
                 url: "/Home/LatestSystemEvent",
@@ -134,15 +135,22 @@
                 data: { count: loadEventCount },
                 type: "POST",
                 success: function (data) {
+                    
                     if (Array.isArray(data)
                         && data.length > 0) {
-                        $("#event_counter").text(data.length.toString());
+                        if (data.length > MAX_EVENT_COUNT) {
+                            $("#event_counter").text(data.length + "+");
+                        }
+                        else {
+                            $("#event_counter").text(data.length);
+                        }
+                        
                         $("#event_updates")
                             .find(".header")
                             .text(AppLang.getFormatString(AppLang.INDEX_EVENT_COUNTER_MSG_FMT, [data.length.toString()]));
 
 
-                        for (var i = 0; i < data.length; i++) {
+                        for (var i = 0; i < data.length && i < MAX_EVENT_COUNT; i++) {
                             var item = "<li>" +
                                 "<a href=\"#\">"
                                 + "<i class=\"fa " + getErrorLevelIconStyles(data[i].eventLevel) + "\"></i>" + data[i].eventTitle

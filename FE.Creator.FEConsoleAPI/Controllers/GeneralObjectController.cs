@@ -408,7 +408,7 @@ namespace FE.Creator.FEConsoleAPI.Controllers
         /// <param name="pageSize"></param>
         /// <param name="filters"></param>
         /// <returns></returns>
-        [Route("FindServiceObjectsByFilter/{definitionname}/{parameters?}")]
+        [Route("[action]/{definitionname}/{parameters?}")]
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<ServiceObject>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -449,7 +449,7 @@ namespace FE.Creator.FEConsoleAPI.Controllers
         /// <param name="pageSize"></param>
         /// <param name="filters"></param>
         /// <returns></returns>
-        [Route("FindSysObjectsByFilter/{definitionname}/{parameters?}")]
+        [Route("[action]/{definitionname}/{parameters?}")]
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<ServiceObject>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

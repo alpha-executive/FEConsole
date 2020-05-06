@@ -120,6 +120,7 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
 
         private async Task<int[]> GetYoYStatisticReportData(string objectName)
         {
+            int ShiftMonthes = 12;
             int objDefId = FindObjectDefinitionIdByName(objectName);
             var objList = objectService.GetAllSerivceObjects(objDefId, 
                 null,
@@ -130,16 +131,19 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
                     UserSenstiveForSharedData = false
                 });
 
-            DateTime dateOfLastYear = DateTime.Now.AddYears(-1).AddMonths(1);
+            DateTime currentDate = DateTime.Now;
+
+            //the current month is included.
+            DateTime dateOfLastYear = currentDate.AddMonths(1 - ShiftMonthes);
             //only take care of the data of recent years.
             var groupInfo = (from o in objList
                              where o.Created >= dateOfLastYear
                              group o.ObjectID by o.Created.ToString("MM-yy") into g
                              select new KeyValuePair<string, int>(g.Key, g.Count())).ToDictionary(ks => ks.Key);
 
-            int[] data = new int[12];
+            int[] data = new int[ShiftMonthes];
             int idx = 0;
-            for (; dateOfLastYear.Date <= DateTime.Now.Date; dateOfLastYear = dateOfLastYear.AddMonths(1))
+            for (; dateOfLastYear <= currentDate; dateOfLastYear = dateOfLastYear.AddMonths(1))
             {
                 var currentMonth = dateOfLastYear.ToString("MM-yy");
                 data[idx++] = groupInfo != null && groupInfo.ContainsKey(currentMonth)

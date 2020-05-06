@@ -9,8 +9,7 @@ jQuery(window).load(function () {
 	//Preloader
 	setTimeout("jQuery('#preloader').animate({'opacity' : '0'},300,function(){jQuery('#preloader').hide()})",800);
 	setTimeout("jQuery('.preloader_hide, .selector_open').animate({'opacity' : '1'},500)",800);
-	setTimeout("jQuery('footer').animate({'opacity' : '1'},500)",2000);
-
+	//setTimeout("jQuery('footer').animate({'opacity' : '1'},500)",2000);
 });
 
 
@@ -86,68 +85,6 @@ jQuery(document).ready(function() {
 });
 
 
-
-
-
-	
-
-
-/*-----------------------------------------------------------------------------------*/
-/*	FLEXSLIDER
-/*-----------------------------------------------------------------------------------*/
-jQuery(window).load(function(){
-	//Top Slider
-	$('.flexslider.top_slider').flexslider({
-		animation: "fade",
-		controlNav: false,
-		directionNav: false,
-		animationLoop: true,
-		slideshow: false,
-		prevText: "",
-		nextText: "",
-		sync: "#carousel"
-	});
-	$('#carousel').flexslider({
-		animation: "fade",
-		controlNav: false,
-		animationLoop: true,
-		directionNav: false,
-		slideshow: false,
-		itemWidth: 100,
-		itemMargin: 5,
-		asNavFor: '.top_slider'
-	});
-	
-	homeHeight();
-	
-	
-	jQuery('.flexslider.top_slider .flex-direction-nav').addClass('container');	
-	
-});
-
-jQuery(window).resize(function(){
-	homeHeight();
-	
-});
-
-jQuery(document).ready(function(){
-	homeHeight();
-	
-});
-
-function homeHeight(){
-	var wh = jQuery(window).height() - 80;
-	jQuery('.top_slider, .top_slider .slides li').css('height', wh);
-}
-
-
-
-
-
-
-
-
-
 /*-----------------------------------------------------------------------------------*/
 /*	OWLCAROUSEL
 /*-----------------------------------------------------------------------------------*/
@@ -201,8 +138,52 @@ function homeHeight(){
 
 
 
+/*-----------------------------------------------------------------------------------*/
+/*	FLEXSLIDER
+/*-----------------------------------------------------------------------------------*/
+jQuery(window).load(function () {
 
+	//Top Slider
+	$('#top_slider').flexslider({
+		animation: "fade",
+		controlNav: false,
+		directionNav: false,
+		animationLoop: true,
+		slideshow: true,
+		initDelay: 2000,
+		prevText: "",
+		nextText: "",
+		sync: "#carousel"
+	});
+	$('#carousel').flexslider({
+		animation: "fade",
+		controlNav: false,
+		animationLoop: true,
+		directionNav: false,
+		slideshow: true,
+		initDelay: 2000,
+		itemWidth: 100,
+		itemMargin: 5,
+		asNavFor: '#top_slider'
+	});
 
+	homeHeight();
+	jQuery('.top_slider .flex-direction-nav').addClass('container');
+
+});
+
+jQuery(window).resize(function () {
+	homeHeight();
+});
+
+jQuery(document).ready(function () {
+	homeHeight();
+});
+
+function homeHeight() {
+	var wh = jQuery(window).height() - 80;
+	jQuery('.top_slider, .top_slider .slides li').css('height', wh);
+}
 
 
 
@@ -223,74 +204,22 @@ jQuery(document).ready(function() {
 	});
 });
 
-
-
-
-
-
-
 /*-----------------------------------------------------------------------------------*/
 /*	BLOG MIN HEIGHT
 /*-----------------------------------------------------------------------------------*/
-//jQuery(document).ready(function() {
-//	blogHeight();
+//jQuery(document).ready(function () {
+//	resetSectionHeight('#footerzone');
 //});
 
 //jQuery(window).resize(function(){
-//	blogHeight();
+//	resetSectionHeight('#footerzone');
 //});
-
-//function blogHeight(){
+//function resetSectionHeight(section){
 //	if ($(window).width() > 991){
 //		var wh = jQuery(window).height() - 80;
-//		jQuery('#blog').css('min-height', wh);
+//		jQuery(section).css('min-height', wh);
 //	}
-	
 //}
-
-
-
-
-
-
-
-/*-----------------------------------------------------------------------------------*/
-/*	FOOTER HEIGHT
-/*-----------------------------------------------------------------------------------*/
-jQuery(document).ready(function() {
-	contactHeight();
-});
-
-jQuery(window).resize(function(){
-	contactHeight();
-});
-
-function contactHeight(){
-	if ($(window).width() > 991){
-		var wh = jQuery('footer').height() + 70;
-		jQuery('#contacts').css('min-height', wh);
-	}
-	
-
-}
-
-
-
-
-
-/*-----------------------------------------------------------------------------------*/
-/*	FOOTER MAP
-/*-----------------------------------------------------------------------------------*/
-//jQuery(document).ready(function() {
-//	jQuery('.map_show').click(function(){
-//		jQuery('#map').addClass('showed');
-//	});
-	
-//	jQuery('.map_hide').click(function(){
-//		jQuery('#map').removeClass('showed');
-//	});
-//});
-
 
 
 

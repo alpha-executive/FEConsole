@@ -14,28 +14,15 @@
             <div class="logo pull-left">
                 <a href="~/"><span class="b1">FEConsole</span><span class="b5">Portal</span></a>
             </div><!-- //LOGO -->
-            <!-- MENU -->
-            <div class="logo pull-right">
-                <div class="share-component"
-                     data-title="@Model.PostTitle"
-                     data-url="@Model.ContentUrl"
-                     data-description="@Model.PostDesc"
-                     data-image="@Model.ImageUrl"
-                     data-disabled="diandian, douban, tencent"></div>
-                @*<div class="social-share" data-title="@Model.PostTitle"  data-url="@Model.PostDesc" data-image="@Model.ImageUrl"
-                         data-qq-tilte="@Model.PostTitle" data-qq-url="@Model.ContentUrl" data-qq-description="@Model.PostDesc"
-                         data-qzone-tilte="@Model.PostTitle" data-qzone-url="@Model.ContentUrl" data-qzone-description="@Model.PostDesc" data-qzone-image="@Model.ImageUrl"
-                         data-wechat-qrcode-title="@FE.Creator.Admin.lang.ConsolePortal.PORTAL_WECHAT_TITLE" data-wechat-qrcode-helper="@FE.Creator.Admin.lang.ConsolePortal.PORTAL_WECHAT_HELP" data-wechat-title="@Model.PostTitle" data-wechat-url="@Model.ContentUrl"
-                         style="line-height:80px;">
-                        <a href="#" class="social-share-icon icon-wechat"></a>
-                        <a href="#" class="social-share-icon icon-weibo"></a>
-                        <a href="#" class="social-share-icon icon-qq"></a>
-                        <a href="#" class="social-share-icon icon-linkedin"></a>
-                        <a href="#" class="social-share-icon icon-facebook"></a>
-                        <a href="#" class="social-share-icon icon-twitter"></a>
-                        <a href="#" class="social-share-icon icon-google"></a>
-                        <a href="#" class="social-share-icon icon-qzone"></a>
-                    </div>*@
+
+            <div class="pull-right">
+                <nav class="navmenu center">
+                    <div class="navbar" id="myNavbar">
+                        <ul>
+                            <li><a class="label label-primary" href="~/#articles"><i class="fa fa-reply-all"></i> @localResource["PORTAL_POST_LIST"]</a></li>
+                        </ul>
+                    </div>
+                </nav>
             </div><!-- //MENU -->
         </div><!-- //MENU BLOCK -->
     </div><!-- //CONTAINER -->
@@ -50,11 +37,9 @@
 <section id="posts">
 
     <!-- CONTAINER -->
-    <div class="container">
-
+    <div class="container padbot50">
         <!-- ROW -->
         <div class="row">
-
             <!-- BLOG BLOCK -->
             <div class="blog_block col-lg-12 col-md-12 padbot50">
                 <!-- SINGLE BLOG POST -->
@@ -62,20 +47,31 @@
 
                     <div class="single_blog_post_descr">
                         @*<div class="single_blog_post_title">@Model.PostTitle</div>*@
-                        <ul class="single_blog_post_info">
-                            <li><a href="javascript:void(0);" class="label label-warning">@Model.Author</a></li>
-                            @if (Model.IsOriginal)
-                            {
-                                <li><a href="javascript:void(0);" class="label label-info">Original</a></li>
-                            }
-                            else
-                            {
-                                <li><a href="javascript:void(0);" class="label label-info">Copied</a></li>
-                            }
-                            <li><a href="javascript:void(0);" class="label label-primary">@Model.Updated</a></li>
-                        </ul>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="label label-warning"><i class="fa fa-user"></i> @Model.Author</div>
+                                @if (Model.IsOriginal)
+                                {
+                                    <div class="label label-info"><i class="fa fa-star"></i> @localResource["PORTAL_ORIGINAL"]</div>
+                                }
+                                else
+                                {
+                                    <div class="label label-info"><i class="fa fa-copy"></i> @localResource["PORTAL_COPY"]</div>
+                                }
+                                <div class="label label-primary"><i class="fa fa-clock-o"></i> @Model.Updated</div>
+                            </div>
+                            <div class="col-md-6 showbottom">
+                                <div class="share-component pull-right"
+                                     data-title="@Model.PostTitle"
+                                     data-url="@Model.ContentUrl"
+                                     data-description="@Model.PostDesc"
+                                     data-image="@Model.ImageUrl"
+                                     data-disabled="diandian, douban, tencent"></div>
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="bs-callout-info bs-callout">
+                    <div class="bs-callout bs-callout-primary">
                         <p class="lead">@Model.PostDesc</p>
                     </div>
                     <div class="single_blog_post_content">
@@ -83,10 +79,36 @@
                     </div>
 
                 </div><!-- //SINGLE BLOG POST -->
-                <div><a href="~/#articles"><i class="fa glyphicon-fast-backward"></i> @localResource["PORTAL_POST_LIST"]</a></div>
             </div><!-- //BLOG BLOCK -->
         </div><!-- //ROW -->
+        <hr />
+        <div class="single_blog_post margbot20">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="label label-warning"><i class="fa fa-user"></i> @Model.Author</div>
+                    @if (Model.IsOriginal)
+                    {
+                        <div class="label label-info"><i class="fa fa-star"></i> @localResource["PORTAL_ORIGINAL"]</div>
+                    }
+                    else
+                    {
+                        <div class="label label-info"><i class="fa fa-copy"></i> @localResource["PORTAL_COPY"]</div>
+                    }
+                    <div class="label label-primary"><i class="fa fa-clock-o"></i> @Model.Updated</div>
+                </div>
+                <div class="col-md-6">
+                    <div class="share-component pull-right"
+                         data-title="@Model.PostTitle"
+                         data-url="@Model.ContentUrl"
+                         data-description="@Model.PostDesc"
+                         data-image="@Model.ImageUrl"
+                         data-disabled="diandian, douban, tencent"></div>
+                </div>
+            </div>
+
+        </div>
     </div><!-- //CONTAINER -->
+   
     <script src="~/js/social-share.min.js" type="text/javascript"></script>
     <script src="~/js/qrcode.js" type="text/javascript"></script>
 </section>

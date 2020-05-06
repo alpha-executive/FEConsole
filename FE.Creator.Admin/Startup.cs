@@ -18,7 +18,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authentication.OAuth.Claims;
 using IdentityModel;
 using FE.Creator.AspNetCoreUtil;
-using Microsoft.CodeAnalysis.Options;
 
 namespace FE.Creator.Admin
 {
@@ -90,42 +89,6 @@ namespace FE.Creator.Admin
                options.ClaimActions.Add(new JsonKeyClaimAction(JwtClaimTypes.Name, null, JwtClaimTypes.Name));
                options.ClaimActions.Add(new JsonKeyClaimAction(JwtClaimTypes.Email, null, JwtClaimTypes.Email));
                options.GetClaimsFromUserInfoEndpoint = true;
-
-               //options.Events = new Microsoft.AspNetCore.Authentication.OpenIdConnect.OpenIdConnectEvents()
-               //{
-               //    OnTokenResponseReceived = context =>
-               //    {
-               //        // Add the access_token as a claim, as we may actually need it
-               //        var accessToken = context.TokenEndpointResponse.AccessToken;
-               //        context.Request.Headers["access_token"] = accessToken;
-               //        return Task.CompletedTask;
-               //    },
-               //    OnTicketReceived = async e =>
-               //    {
-               //        var token = e.Request.Headers["access_token"];
-               //        var factory = e.HttpContext.RequestServices.GetRequiredService<IHttpClientFactory>();
-               //        var client = factory.CreateClient("client");
-               //        var authServerUrl = Configuration.GetSection("Authentication:IdentityServer")
-               //                    .GetValue<string>("Url");
-
-               //        var disco = await client.GetDiscoveryDocumentAsync(authServerUrl);
-               //        client.SetBearerToken(token);
-               //        var response = await client.GetUserInfoAsync(new UserInfoRequest
-               //        {
-               //            Address = disco.UserInfoEndpoint,
-               //            Token = token
-               //        });
-
-               //        var name = response.Claims.FirstOrDefault(claim => claim.Type == "name");
-               //        var email = response.Claims.FirstOrDefault(claim => claim.Type == "email");
-
-               //        var claimsToKeep = new List<Claim> { name, email };
-
-               //        var newIdentity = new ClaimsIdentity(claimsToKeep, e.Principal.Identity.AuthenticationType);
-
-               //        e.Principal = new ClaimsPrincipal(newIdentity);
-               //    }
-               //};
            });
 
             //Localization support.

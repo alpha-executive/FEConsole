@@ -117,17 +117,42 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ERROR_NOT_FOUND" xml:space="preserve">
+    <value>Oops! Page not found.</value>
+  </data>
+  <data name="ERROR_NOT_FOUND_DESC" xml:space="preserve">
+    <value>We could not find the page you were looking for.
+           Meanwhile, you may&lt;a href="/"&gt;return to Home&lt;/a&gt;</value>
+  </data>
+  <data name="ERROR_PORTAL_ERROR" xml:space="preserve">
+    <value>Error on the FEConsole Portal</value>
+  </data>
+  <data name="ERROR_SERVER_ERROR" xml:space="preserve">
+    <value>Appliation Server Error</value>
+  </data>
+  <data name="ERROR_SERVER_ERROR_BODY" xml:space="preserve">
+    <value>Error Details: {0}</value>
+  </data>
+  <data name="ERROR_SERVER_ERROR_DESC" xml:space="preserve">
+    <value>Unknown Error Happened on the Application Server</value>
+  </data>
+  <data name="ERROR_TITLE" xml:space="preserve">
+    <value>Error</value>
+  </data>
   <data name="PORTAL_BOOK_DESC" xml:space="preserve">
     <value>Power Your Mind</value>
   </data>
   <data name="PORTAL_BOOK_TITLE" xml:space="preserve">
     <value>BOOK</value>
   </data>
+  <data name="PORTAL_COPY" xml:space="preserve">
+    <value>Reprint</value>
+  </data>
   <data name="PORTAL_DOCUMENTS_DESC" xml:space="preserve">
     <value>Share your content to public</value>
   </data>
   <data name="PORTAL_DOCUMENTS_TITLE" xml:space="preserve">
-    <value>DOCUMENT</value>
+    <value>FILE</value>
   </data>
   <data name="PORTAL_FOOTER_ABOUT" xml:space="preserve">
     <value>About</value>
@@ -183,6 +208,9 @@
   </data>
   <data name="PORTAL_MENU_POST" xml:space="preserve">
     <value>POSTS</value>
+  </data>
+  <data name="PORTAL_ORIGINAL" xml:space="preserve">
+    <value>Original</value>
   </data>
   <data name="PORTAL_POST_DESC" xml:space="preserve">
     <value>Share What You Believe</value>

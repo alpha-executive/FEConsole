@@ -1,8 +1,14 @@
 ﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using FE.Creator.AspNetCoreUtil
 @inject IHtmlLocalizer<ConsolePortal> localResource
 @{
     ViewBag.Title = "Index";
     string flexSiliderViewName = (string)Model;
+    bool showFlexSilider = Context.GetConfigValue<bool>("SiteSettings:DisplaySetting:ShowFlexSlider");
+    bool showArticleList = Context.GetConfigValue<bool>("SiteSettings:DisplaySetting:ShowArticleList");
+    bool showFileList = Context.GetConfigValue<bool>("SiteSettings:DisplaySetting:ShowFileList");
+    bool showImageList = Context.GetConfigValue<bool>("SiteSettings:DisplaySetting:ShowImageList");
+    bool showBookList = Context.GetConfigValue<bool>("SiteSettings:DisplaySetting:ShowBookList");
 }
 <!-- HEADER -->
 <header>
@@ -20,10 +26,26 @@
                     <div class="navbar" id="myNavbar">
                         <ul>
                             <li class="first active scroll_btn"><a href="#home">@localResource["PORTAL_MENU_HOME"]</a></li>
-                            <li class="scroll_btn"><a href="#articles">@localResource["PORTAL_MENU_POST"]</a></li>
-                            <li class="scroll_btn"><a href="#images">@localResource["PORTAL_MENU_IMAGE"]</a></li>
-                            <li class="scroll_btn"><a href="#books">@localResource["PORTAL_MENU_BOOK"]</a></li>
-                            <li class="scroll_btn"><a href="#documents">@localResource["PORTAL_MENU_DOCUMENTS"]</a></li>
+                            @if (showArticleList)
+                            {
+                                <li class="scroll_btn"><a href="#articles">@localResource["PORTAL_MENU_POST"]</a></li>
+                            }
+
+                            @if (showImageList)
+                            {
+                                <li class="scroll_btn"><a href="#images">@localResource["PORTAL_MENU_IMAGE"]</a></li>
+                            }
+
+                            @if (showBookList)
+                            {
+                                <li class="scroll_btn"><a href="#books">@localResource["PORTAL_MENU_BOOK"]</a></li>
+                            }
+
+                            @if (showFileList)
+                            {
+                                <li class="scroll_btn"><a href="#documents">@localResource["PORTAL_MENU_DOCUMENTS"]</a></li>
+                            }
+
                         </ul>
                     </div>
                 </nav>
@@ -31,162 +53,191 @@
         </div><!-- //MENU BLOCK -->
     </div>
 </header><!-- //HEADER -->
-@await Html.PartialAsync(flexSiliderViewName)
-<section id="articles">
-    <div class="container" ng-controller="SharedArticlesController as actrl">
-        <h2 style="margin-top:20px;">
-            <b class="b2">@localResource["PORTAL_POST_TITLE"]</b> @localResource["PORTAL_POST_DESC"]
-        </h2>
-        <hr style="border-color:cadetblue; border-width:2px;" />
-        <div class="row">
-            <!-- BLOG BLOCK -->
-            <div class="blog_block col-lg-12 col-md-12 padbot50" ng-if="actrl.articles.length > 0">
-                <!-- BLOG POST -->
-                <div class="blog_post margbot50 clearfix animated fadeInUp" data-animated="fadeInUp" ng-repeat="article in actrl.articles">
-                    <div class="post_item_img_widget" style="float:left; margin-right:10px;">
-                        <a class="link" href="{{'/home/viewarticlecontent/' + article.objectID}}" target="_blank"><img style="width:270px; height:180px;" class="img-thumbnail" alt="" ng-src="{{'/home/DownloadArticleImage/' + article.objectID }}"></a>
-                    </div>
-                    <div class="post_item_content-small">
-                        <a class="blog_post_title" href="{{'/home/viewarticlecontent/' + article.objectID}}" target="_blank">{{article.objectName}}</a>
-                        <div class="blog_post_date">{{article.created}}</div>
-                        <div ng-if="article.updatedBy != null">{{article.updatedBy}}</div>
-                        <div class="blog_post_content">{{article.properties.articleDesc.value}}</div>
-                    </div>
-                    <hr style="clear:both;">
-                </div><!-- //BLOG POST -->
-                <!-- PAGINATION -->
-                <ul class="pagination clearfix" ng-if="actrl.pager.pages.length > 0">
-                    <li><a href="javascript:void(0);" ng-click="actrl.onPageClick(1)" ng-class="{disabled: actrl.pager.disabledFirstPage}">«</a></li>
-                    <li ng-repeat="page in actrl.pager.pages" ng-class="{'active':actrl.pager.currentPage === page}">
-                        <a href="javascript:void(0);" ng-click="actrl.onPageClick(page)">{{page}}</a>
-                    </li>
-                    <li><a href="javascript:void(0);" ng-click="actrl.onPageClick(actrl.pager.totalPages)" ng-class="{disabled:actrl.pager.disabledLastPage}">»</a></li>
-                </ul><!-- //PAGINATION -->
-            </div><!-- //BLOG BLOCK -->
+@if (showFlexSilider)
+{
+    @await Html.PartialAsync(flexSiliderViewName)
+}
 
-            <div class="blog_block col-lg-12 col-md-12 padbot50" ng-if="actrl.articles.length <= 0">
-                <div class="alert alert-info">
-                    <strong>@localResource["PORTAL_WARN_INFO"]</strong> @localResource["PORTAL_WARN_INFO_NO_POST"]
+@if (showArticleList)
+{
+    <section id="articles">
+        <div class="container" ng-controller="SharedArticlesController as actrl">
+            <h2 style="margin-top:20px;">
+                <b class="b2">@localResource["PORTAL_POST_TITLE"]</b> @localResource["PORTAL_POST_DESC"]
+            </h2>
+            <hr style="border-color:cadetblue; border-width:2px;" />
+            <div class="row">
+                <!-- BLOG BLOCK -->
+                <div class="blog_block col-lg-12 col-md-12" ng-if="actrl.articles.length > 0">
+                    <!-- BLOG POST -->
+                    <div class="blog_post clearfix" ng-repeat="article in actrl.articles">
+                        <div class="post_item_img_widget" style="float:left; margin-right:10px;">
+                            <a class="link" href="{{'/home/viewarticlecontent/' + article.objectID}}" target="_self"><img style="width:270px; height:180px;" class="img-thumbnail" alt="" ng-src="{{'/home/DownloadArticleImage/' + article.objectID }}"></a>
+                        </div>
+                        <div class="post_item_content-small">
+                            <a class="blog_post_tile_wrap" href="{{'/home/viewarticlecontent/' + article.objectID}}" target="_self">{{article.objectName}}</a>
+                            <ul class="blog_post_info">
+                                <li class="label label-primary"><i class="fa fa-user"></i> {{article.updatedBy}}</li>
+                                <li class="label label-primary"><i class="fa fa-clock-o"></i> {{article.updated}}</li>
+                            </ul>
+                            <div class="blog_post_content"><span class="label label-primary"><i class="fa fa-info"></i></span> {{article.properties.articleDesc.value}}</div>
+                        </div>
+                        <hr style="clear:both;">
+                    </div><!-- //BLOG POST -->
+                </div><!-- //BLOG BLOCK -->
+
+                <div class="blog_block col-lg-12 col-md-12" ng-if="actrl.articles.length <= 0">
+                    <div class="alert alert-info">
+                        <strong>@localResource["PORTAL_WARN_INFO"]</strong> @localResource["PORTAL_WARN_INFO_NO_POST"]
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix margbot20">
+                <div class="col-md-12 center">
+                    <!-- PAGINATION -->
+                    <ul class="pagination" ng-if="actrl.pager.pages.length > 1">
+                        <li><a href="javascript:void(0);" ng-click="actrl.onPageClick(1)" ng-class="{disabled: actrl.pager.disabledFirstPage}">«</a></li>
+                        <li ng-repeat="page in actrl.pager.pages" ng-class="{'active':actrl.pager.currentPage === page}">
+                            <a href="javascript:void(0);" ng-click="actrl.onPageClick(page)">{{page}}</a>
+                        </li>
+                        <li><a href="javascript:void(0);" ng-click="actrl.onPageClick(actrl.pager.totalPages)" ng-class="{disabled:actrl.pager.disabledLastPage}">»</a></li>
+                    </ul><!-- //PAGINATION -->
                 </div>
             </div>
         </div>
-    </div>
-</section>
-
+    </section>
+}
 <!--IMAGES-->
-<section id="images" style="padding-top: 50px;">
-    <!-- CONTAINER -->
-    <div class="container" ng-controller="SharedImagesController as imgCtrl">
-        <h2><b class="b2">@localResource["PORTAL_IMAGE_TITLE"]</b> @localResource["PORTAL_IMAGE_DESC"]</h2>
-        <hr style="border-color:cadetblue; border-width:2px;"
-        <!-- ROW -->
-        <div class="row recent_posts animated fadeInUp" data-animated="fadeInUp" data-appear-top-offset="-200" ng-if="imgCtrl.images.length > 0">
-            <div class="col-lg-4 col-md-4 col-sm-4 padbot30 post_item_block" ng-repeat="img in imgCtrl.images">
-                <a href="javascript:void(0);" ng-click="imgCtrl.showLightboxImage($index)"><img style="height:220px;width:300px;" class="img-thumbnail" alt="{{img.caption}}" ng-src="{{img.thumbUrl}}"></a>
+@if (showImageList)
+{
+    <section id="images">
+        <!-- CONTAINER -->
+        <div class="container" ng-controller="SharedImagesController as imgCtrl">
+            <h2><b class="b2">@localResource["PORTAL_IMAGE_TITLE"]</b> @localResource["PORTAL_IMAGE_DESC"]</h2>
+            <hr style="border-color:cadetblue; border-width:2px;" />
+            <!-- ROW -->
+            <div class="row">
+                <div class="recent_posts col-lg-12" data-appear-top-offset="-200" ng-if="imgCtrl.images.length > 0">
+                    <div class="col-lg-4 col-md-4 col-sm-4 padbot30 post_item_block" ng-repeat="img in imgCtrl.images">
+                        <a href="javascript:void(0);" ng-click="imgCtrl.showLightboxImage($index)"><img style="height:220px;width:300px;" class="img-thumbnail" alt="{{img.caption}}" ng-src="{{img.thumbUrl}}"></a>
+                    </div>
+                </div><!-- //ROW -->
+                <div class="blog_block col-lg-12 col-md-12" ng-if="imgCtrl.images.length <= 0">
+                    <div class="alert alert-info">
+                        <strong>@localResource["PORTAL_WARN_INFO"]</strong> @localResource["PORTAL_WARN_INFO_NO_IMAGE"]
+                    </div>
+                </div>
             </div>
-        </div><!-- //ROW -->
-        <!-- PAGINATION -->
-        <ul class="pagination clearfix" ng-if="imgCtrl.pager.pages.length > 0">
-            <li><a href="javascript:void(0);" ng-click="imgCtrl.onPageClick(1)" ng-class="{disabled: imgCtrl.pager.disabledFirstPage}">«</a></li>
-            <li ng-repeat="page in imgCtrl.pager.pages" ng-class="{'active':imgCtrl.pager.currentPage === page}">
-                <a href="javascript:void(0);" ng-click="imgCtrl.onPageClick(page)">{{page}}</a>
-            </li>
-            <li><a href="javascript:void(0);" ng-click="imgCtrl.onPageClick(imgCtrl.pager.totalPages)" ng-class="{disabled:imgCtrl.pager.disabledLastPage}">»</a></li>
-        </ul><!-- //PAGINATION -->
-
-        <div class="blog_block col-lg-12 col-md-12 padbot50" ng-if="imgCtrl.images.length <= 0">
-            <div class="alert alert-info">
-                <strong>@localResource["PORTAL_WARN_INFO"]</strong> @localResource["PORTAL_WARN_INFO_NO_IMAGE"]
+            <div class="row clearfix margbot20">
+                <div class="col-md-12 center">
+                    <!-- PAGINATION -->
+                    <ul class="pagination" ng-if="imgCtrl.pager.pages.length > 1">
+                        <li><a href="javascript:void(0);" ng-click="imgCtrl.onPageClick(1)" ng-class="{disabled: imgCtrl.pager.disabledFirstPage}">«</a></li>
+                        <li ng-repeat="page in imgCtrl.pager.pages" ng-class="{'active':imgCtrl.pager.currentPage === page}">
+                            <a href="javascript:void(0);" ng-click="imgCtrl.onPageClick(page)">{{page}}</a>
+                        </li>
+                        <li><a href="javascript:void(0);" ng-click="imgCtrl.onPageClick(imgCtrl.pager.totalPages)" ng-class="{disabled:imgCtrl.pager.disabledLastPage}">»</a></li>
+                    </ul><!-- //PAGINATION -->
+                </div>
             </div>
-        </div>
-
-
-    </div><!-- //CONTAINER -->
-</section>
-
+        </div><!-- //CONTAINER -->
+    </section>
+}
 <!--BOOKS-->
-<section id="books" style="padding-top: 50px;">
-    <!-- CONTAINER -->
-    <div class="container" ng-controller="SharedBooksController as bookctrl">
-        <h2><b class="b2">@localResource["PORTAL_BOOK_TITLE"]</b> @localResource["PORTAL_BOOK_DESC"]</h2>
-        <hr style="border-color:cadetblue; border-width:2px;" />
-        <!-- ROW -->
-        <div class="row">
-            <!-- BLOG BLOCK -->
-            <div class="blog_block col-lg-12 col-md-12 padbot50" ng-if="bookctrl.books.length > 0">
-                <!-- BLOG POST -->
-                <div class="blog_post margbot50 clearfix animated fadeInUp" data-animated="fadeInUp" ng-repeat="book in bookctrl.books">
-                    <div class="post_item_img_small">
-                        <a class="link" href="{{'/home/DownloadSharedBook/' + book.objectID}}"><img alt="" src="{{'/home/DownloadSharedBook/' + book.objectID + '?thumbinal=true'}}"></a>
+@if (showBookList)
+{
+    <section id="books">
+        <!-- CONTAINER -->
+        <div class="container" ng-controller="SharedBooksController as bookctrl">
+            <h2><b class="b2">@localResource["PORTAL_BOOK_TITLE"]</b> @localResource["PORTAL_BOOK_DESC"]</h2>
+            <hr style="border-color:cadetblue; border-width:2px;" />
+            <!-- ROW -->
+            <div class="row">
+                <!-- BLOG BLOCK -->
+                <div class="blog_block col-lg-12 col-md-12" ng-if="bookctrl.books.length > 0">
+                    <!-- BLOG POST -->
+                    <div class="blog_post clearfix" ng-repeat="book in bookctrl.books">
+                        <div class="post_item_img_small">
+                            <a class="link" href="{{'/home/DownloadSharedBook/' + book.objectID}}"><img alt="" ng-src="{{'/home/DownloadSharedBook/' + book.objectID + '?thumbinal=true'}}"></a>
+                        </div>
+                        <div class="blog_post_descr">
+                            <a class="blog_post_title" href="{{'/home/DownloadSharedBook/' + book.objectID}}">{{book.objectName}}</a>
+                            <ul class="blog_post_info">
+                                <li ng-if="book.properties.bookAuthor.value != null" class="label label-primary"><i class="fa fa-user"></i> {{book.properties.bookAuthor.value}}</li>
+                                <li ng-if="book.properties.bookVersion.value != null" class="label label-primary"><i class="fa fa-clock-o"></i> {{book.properties.bookVersion.value}}</li>
+                                <li ng-if="book.properties.bookISBN.value != null" class="label label-primary"><i class="fa fa-barcode"></i> {{book.properties.bookISBN.value}}</li>
+                            </ul>
+                            <div class="blog_post_content" ng-if="book.properties.bookDesc.value != null"><span class="label label-primary"><i class="fa fa-info"></i></span> {{book.properties.bookDesc.value}}</div>
+                            <hr>
+                        </div>
+                    </div><!-- //BLOG POST -->
+                </div><!-- //BLOG BLOCK -->
+                <div class="blog_block col-lg-12 col-md-12" ng-if="bookctrl.books.length <= 0">
+                    <div class="alert alert-info">
+                        <strong>@localResource["PORTAL_WARN_INFO"]</strong> @localResource["PORTAL_WARN_INFO_NO_BOOKS"]
                     </div>
-                    <div class="blog_post_descr">
-                        <a class="blog_post_title" href="{{'/home/DownloadSharedBook/' + book.objectID}}">{{book.objectName}}</a>
-                        <ul class="blog_post_info">
-                            <li ng-if="book.properties.bookAuthor.value != null"><a href="javascript:void(0);">{{book.properties.bookAuthor.value}}</a></li>
-                            <li ng-if="book.properties.bookVersion.value != null"><a href="javascript:void(0);">{{book.properties.bookVersion.value}}</a></li>
-                            <li ng-if="book.properties.bookISBN.value != null"><a href="javascript:void(0);">{{book.properties.bookISBN.value}}</a></li>
-                        </ul>
-                        <hr>
-                        <div class="blog_post_content">{{book.properties.bookDesc.value}}</div>
-                    </div>
-                </div><!-- //BLOG POST -->
-                <!-- PAGINATION -->
-                <ul class="pagination clearfix" ng-if="bookctrl.pager.pages.length > 0">
-                    <li><a href="javascript:void(0);" ng-click="bookctrl.onPageClick(1)" ng-class="{disabled: bookctrl.pager.disabledFirstPage}">«</a></li>
-                    <li ng-repeat="page in bookctrl.pager.pages" ng-class="{'active':bookctrl.pager.currentPage === page}">
-                        <a href="javascript:void(0);" ng-click="bookctrl.onPageClick(page)">{{page}}</a>
-                    </li>
-                    <li><a href="javascript:void(0);" ng-click="bookctrl.onPageClick(bookctrl.pager.totalPages)" ng-class="{disabled:bookctrl.pager.disabledLastPage}">»</a></li>
-                </ul><!-- //PAGINATION -->
-            </div><!-- //BLOG BLOCK -->
-
-            <div class="blog_block col-lg-12 col-md-12 padbot50" ng-if="bookctrl.books.length <= 0">
-                <div class="alert alert-info">
-                    <strong>@localResource["PORTAL_WARN_INFO"]</strong> @localResource["PORTAL_WARN_INFO_NO_BOOKS"]
+                </div>
+            </div><!-- //ROW -->
+            <div class="row clearfix margbot20">
+                <div class="col-md-12 center">
+                    <!-- PAGINATION -->
+                    <ul class="pagination" ng-if="bookctrl.pager.pages.length > 1">
+                        <li><a href="javascript:void(0);" ng-click="bookctrl.onPageClick(1)" ng-class="{disabled: bookctrl.pager.disabledFirstPage}">«</a></li>
+                        <li ng-repeat="page in bookctrl.pager.pages" ng-class="{'active':bookctrl.pager.currentPage === page}">
+                            <a href="javascript:void(0);" ng-click="bookctrl.onPageClick(page)">{{page}}</a>
+                        </li>
+                        <li><a href="javascript:void(0);" ng-click="bookctrl.onPageClick(bookctrl.pager.totalPages)" ng-class="{disabled:bookctrl.pager.disabledLastPage}">»</a></li>
+                    </ul><!-- //PAGINATION -->
                 </div>
             </div>
-        </div><!-- //ROW -->
-    </div><!-- //CONTAINER -->
-</section>
-
+        </div><!-- //CONTAINER -->
+    </section>
+}
 <!--FILES-->
-<section id="documents" style="padding-top:50px;">
-    <!-- CONTAINER -->
-    <div class="container" ng-controller="ShareDocumentsController as documentctrl">
-        <h2><b class="b2">@localResource["PORTAL_DOCUMENTS_TITLE"]</b> @localResource["PORTAL_DOCUMENTS_DESC"]</h2>
-        <hr style="border-color:cadetblue; border-width:2px;" />
-        <!-- ROW -->
-        <div class="row">
-            <!-- BLOG BLOCK -->
-            <div class="blog_block col-lg-12 col-md-12 padbot50" ng-if="documentctrl.documents.length > 0">
-                <!-- BLOG POST -->
-                <div class="blog_post margbot50 clearfix animated fadeInUp" data-animated="fadeInUp" ng-repeat="document in documentctrl.documents">
-                    <div class="blog_post_descr">
-                        <a class="blog_post_title" href="{{'/home/DownloadSharedDocument/' + document.objectID}}"><i class="fa text-primary {{document.properties.documentFile | checkFileType}}"></i> {{document.objectName}}</a>
-                        <ul class="blog_post_info">
-                            <li ng-if="document.updatedBy != null"><a href="javascript:void(0);">{{document.updatedBy}}</a></li>
-                            <li ng-if="document.properties.documentFile.fileSize != null"><a href="javascript:void(0);">{{document.properties.documentFile.fileSize}}</a></li>
-                            <li>{{document.updated}}</li>
-                        </ul>
-                        <hr />
-                    </div>
-                </div><!-- //BLOG POST -->
-                <!-- PAGINATION -->
-                <ul class="pagination clearfix" ng-if="documentctrl.pager.pages.length > 0">
-                    <li><a href="javascript:void(0);" ng-click="documentctrl.onPageClick(1)" ng-class="{disabled: documentctrl.pager.disabledFirstPage}">«</a></li>
-                    <li ng-repeat="page in documentctrl.pager.pages" ng-class="{'active':documentctrl.pager.currentPage === page}">
-                        <a href="javascript:void(0);" ng-click="documentctrl.onPageClick(page)">{{page}}</a>
-                    </li>
-                    <li><a href="javascript:void(0);" ng-click="documentctrl.onPageClick(documentctrl.pager.totalPages)" ng-class="{disabled:documentctrl.pager.disabledLastPage}">»</a></li>
-                </ul><!-- //PAGINATION -->
-            </div><!-- //BLOG BLOCK -->
+@if (showFileList)
+{
+    <section id="documents">
+        <!-- CONTAINER -->
+        <div class="container" ng-controller="ShareDocumentsController as documentctrl">
+            <h2><b class="b2">@localResource["PORTAL_DOCUMENTS_TITLE"]</b> @localResource["PORTAL_DOCUMENTS_DESC"]</h2>
+            <hr style="border-color:cadetblue; border-width:2px;" />
+            <!-- ROW -->
+            <div class="row">
+                <!-- BLOG BLOCK -->
+                <div class="blog_block col-lg-12 col-md-12" ng-if="documentctrl.documents.length > 0">
+                    <!-- BLOG POST -->
+                    <div class="blog_post clearfix" ng-repeat="document in documentctrl.documents">
+                        <div class="blog_post_descr">
+                            <a class="blog_post_title" href="{{'/home/DownloadSharedDocument/' + document.objectID}}"><i class="fa text-primary {{document.properties.documentFile | checkFileType}}"></i> {{document.objectName}}</a>
+                            <ul class="blog_post_info">
+                                <li ng-if="document.updatedBy != null" class="label label-primary"><i class="fa fa-user"></i> {{document.updatedBy}}</li>
+                                <li ng-if="document.properties.documentFile.fileSize != null" class="label label-primary"><i class="fa fa-file"></i> {{document.properties.documentFile.fileSize == 0 ? "&lt;1" : document.properties.documentFile.fileSize}} KB</li>
+                                <li class="label label-primary"><i class="fa fa-clock-o"></i> {{document.updated}}</li>
+                            </ul>
+                            <hr />
+                        </div>
+                    </div><!-- //BLOG POST -->
+                </div><!-- //BLOG BLOCK -->
 
-            <div class="blog_block col-lg-12 col-md-12 padbot50" ng-if="documentctrl.documents.length <= 0">
-                <div class="alert alert-info">
-                    <strong>@localResource["PORTAL_WARN_INFO"]</strong> @localResource["PORTAL_WARN_INFO_NO_DOC"]
+                <div class="blog_block col-lg-12 col-md-12" ng-if="documentctrl.documents.length <= 0">
+                    <div class="alert alert-info">
+                        <strong>@localResource["PORTAL_WARN_INFO"]</strong> @localResource["PORTAL_WARN_INFO_NO_DOC"]
+                    </div>
                 </div>
-            </div>
-        </div><!-- //ROW -->
-    </div><!-- //CONTAINER -->
-</section>
+            </div><!-- //ROW -->
+             <div class="row clearfix margbot20">
+                 <div class="col-md-12 center">
+                     <!-- PAGINATION -->
+                     <ul class="pagination" ng-if="documentctrl.pager.pages.length > 1">
+                         <li><a href="javascript:void(0);" ng-click="documentctrl.onPageClick(1)" ng-class="{disabled: documentctrl.pager.disabledFirstPage}">«</a></li>
+                         <li ng-repeat="page in documentctrl.pager.pages" ng-class="{'active':documentctrl.pager.currentPage === page}">
+                             <a href="javascript:void(0);" ng-click="documentctrl.onPageClick(page)">{{page}}</a>
+                         </li>
+                         <li><a href="javascript:void(0);" ng-click="documentctrl.onPageClick(documentctrl.pager.totalPages)" ng-class="{disabled:documentctrl.pager.disabledLastPage}">»</a></li>
+                     </ul><!-- //PAGINATION -->
+                 </div>
+             </div>
+        </div><!-- //CONTAINER -->
+    </section>
+}
 <!--FILES-->

@@ -10,9 +10,7 @@
 <div class="row">
 <div class="col-md-4" ng-repeat="skill in ctrl.skills" ng-switch="skill.properties.level.value">
 <p ng-switch-when="10">
-<span class="label label-danger">{{skill.properties.skillName.value
-    }
-}</span> {{skill.properties.skillDescription.value}}
+<span class="label label-danger">{{skill.properties.skillName.value}}</span> {{skill.properties.skillDescription.value}}
 </p>
 <p ng-switch-when="9">
 <span class="label label-warning">{{skill.properties.skillName.value}}</span> {{skill.properties.skillDescription.value}}

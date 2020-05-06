@@ -270,10 +270,11 @@ function getColumnChartOption(xaxisData, legend) {
     return option;
 }
 
-function getYoYMonths() {
+function getYoYMonths(shitMonthes) {
     var dateOfLastYear = new Date();
     var currentDate = new Date();
-    dateOfLastYear.setMonth(dateOfLastYear.getMonth() - 11);
+    //include the current month.
+    dateOfLastYear.setMonth(dateOfLastYear.getMonth() - shitMonthes + 1);
 
     var dates = [];
     while (dateOfLastYear <= currentDate){
@@ -305,7 +306,7 @@ function applySystemDateFormat() {
                 Accept: "application/json; charset=utf-8",
                 Authorization: 'Bearer ' + token
             },
-            url: baseUrl + "/api/GeneralObject/FindServiceObjectsByFilter/AppConfig/"
+            url: baseUrl + "/api/GeneralObject/FindSysObjectsByFilter/AppConfig/"
                 + ["dateTimeFormat"].join(),
             dataType: "json",
             success: function (data) {

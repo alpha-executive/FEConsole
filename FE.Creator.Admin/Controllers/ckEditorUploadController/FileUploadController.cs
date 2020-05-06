@@ -28,6 +28,7 @@ namespace FE.Creator.Admin.Controllers.ckEditorUploadController
         }
 
         [HttpPost]
+        [RequestSizeLimit(1024 * 1024 * 100)]
         // post: Upload File
         public async Task<ActionResult> CKEditorUpload(IFormFile upload)
         {
@@ -53,6 +54,7 @@ namespace FE.Creator.Admin.Controllers.ckEditorUploadController
         }
 
         [HttpPost]
+        [RequestSizeLimit(1024 * 1024 * 100)]
         public async Task<JsonResult> CKImageUpload(IFormFile upload)
         {
             if (upload != null)

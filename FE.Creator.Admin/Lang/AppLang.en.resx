@@ -694,6 +694,12 @@
   <data name="IMAGEMGR_VIEW_MORE_IMGS" xml:space="preserve">
     <value>View More Images</value>
   </data>
+  <data name="IMG_SHOW_NEXT" xml:space="preserve">
+    <value>Next Page</value>
+  </data>
+  <data name="IMG_SHOW_PREV" xml:space="preserve">
+    <value>Previous Page</value>
+  </data>
   <data name="INDEX_ABOUT" xml:space="preserve">
     <value>About</value>
   </data>

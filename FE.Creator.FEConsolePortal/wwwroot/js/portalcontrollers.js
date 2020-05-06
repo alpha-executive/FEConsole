@@ -81,7 +81,7 @@
 
         vm.pager = {};  //for page purpose.
         vm.onPageClick = onPageClick;
-        vm.pageSize = 10;
+        vm.pageSize = bookListPageSize || 5;
         vm.books = [];
 
         vm.reCalculatePager = function (pageIndex) {
@@ -153,7 +153,7 @@
 
         vm.pager = {};  //for page purpose.
         vm.onPageClick = onPageClick;
-        vm.pageSize = 10;
+        vm.pageSize = articleListPageSize || 5;
         vm.articles = [];
 
 
@@ -225,7 +225,7 @@
 
         vm.pager = {};  //for page purpose.
         vm.onPageClick = onPageClick;
-        vm.pageSize = 10;
+        vm.pageSize = imageListPageSize || 6;
         vm.images = [];
 
         vm.reCalculatePager = function (pageIndex) {
@@ -256,8 +256,9 @@
             ).then(function (txtdata) {
                  var data = JSON.parse(txtdata);
                  vm.images.splice(0, vm.images.length);
-                 if (Array.isArray(data) && data.length > 0) {
-                     for (var i = 0; i < data.length; i++) {
+                if (Array.isArray(data) && data.length > 0) {
+                    var displayImagesCount = data.length < vm.pageSize ? data.length : vm.pageSize;
+                    for (var i = 0; i < displayImagesCount; i++) {
                          var image = objectUtilService.parseServiceObject(data[i]);
 
                          vm.images.push({
@@ -306,7 +307,7 @@
 
         vm.pager = {};  //for page purpose.
         vm.onPageClick = onPageClick;
-        vm.pageSize = 10;
+        vm.pageSize = fileListPageSize || 5;
         vm.documents = [];
 
         vm.reCalculatePager = function (pageIndex) {

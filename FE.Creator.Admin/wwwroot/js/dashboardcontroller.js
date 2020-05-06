@@ -4,8 +4,8 @@
      .module('ngObjectRepository')
        .controller("DashboardController", DashboardController);
 
-    DashboardController.$inject = ["$scope", "ObjectRepositoryDataService", "objectUtilService", "UserFactory"];
-    function DashboardController($scope, ObjectRepositoryDataService, objectUtilService, UserFactory) {
+    DashboardController.$inject = ["$scope", "$filter", "ObjectRepositoryDataService", "objectUtilService", "UserFactory", "Lightbox"];
+    function DashboardController($scope, $filter, ObjectRepositoryDataService, objectUtilService, UserFactory, Lightbox) {
         var vm = this;
         vm.objectDefinitions = [];
         vm.totalPhotosCount = 0;
@@ -111,10 +111,14 @@
              });
         }
 
+        vm.viewImageLightBox = function (index) {
+            Lightbox.openModal(vm.images, index);
+        }
+
         vm.reloadImages = function () {
             return ObjectRepositoryDataService.getServiceObjectsWithFilters(
                  "Photos",
-                 ["imageFile"].join(),
+                 ["imageDesc", "imageFile"].join(),
                  1,
                  vm.imagePageSize,
                  null
@@ -123,7 +127,12 @@
                  if (Array.isArray(data) && data.length > 0) {
                      for (var i = 0; i < data.length; i++) {
                          var image = objectUtilService.parseServiceObject(data[i]);
-                         vm.images.push(image);
+                         vm.images.push({
+                             objectID: image.objectID,
+                             url: $filter('fullUrl')(image.properties.imageFile.fileUrl),
+                             caption: image.properties.imageDesc.value,
+                             objectName: image.objectName
+                         });
                      }
                  }
                  return vm.images;
@@ -187,7 +196,7 @@ $(document).ready(function () {
             dataType: "json",
             success: function (data) {
                 if (Array.isArray(data) && data.length > 0) {
-                    var option = getColumnChartOption(getYoYMonths(), [AppLang.INDEX_REPORT_NAME_POST, AppLang.INDEX_REPORT_NAME_DIARY, AppLang.INDEX_REPORT_NAME_BOOK]);
+                    var option = getColumnChartOption(getYoYMonths(12), [AppLang.INDEX_REPORT_NAME_POST, AppLang.INDEX_REPORT_NAME_DIARY, AppLang.INDEX_REPORT_NAME_BOOK]);
                     option.title.text = AppLang.INDEX_YOY_STATICS_REPORT;
                     option.title.subtext = AppLang.INDEX_SUBTXT_PBD;
                     option.series.push({
@@ -242,7 +251,7 @@ $(document).ready(function () {
             dataType: "json",
             success: function (data) {
                 if (Array.isArray(data) && data.length > 0) {
-                    var option = getColumnChartOption(getYoYMonths(), [AppLang.INDEX_REPORT_NAME_IMGS]);
+                    var option = getColumnChartOption(getYoYMonths(12), [AppLang.INDEX_REPORT_NAME_IMGS]);
                     option.title.text = AppLang.INDEX_YOY_STATICS_REPORT;
                     option.title.subtext = AppLang.INDEX_SUBTXT_IMG;
                     option.series.push({

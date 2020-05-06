@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
@@ -15,6 +14,10 @@ using Microsoft.Net.Http.Headers;
 using Microsoft.Extensions.Logging;
 using System.Threading;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Diagnostics;
+using FE.Creator.FEConsole.Shared.Models;
+using Microsoft.AspNetCore.Mvc.Localization;
+using Microsoft.Extensions.Localization;
 
 namespace FE.Creator.FEConsolePortal
 {
@@ -24,13 +27,16 @@ namespace FE.Creator.FEConsolePortal
         private readonly IConfiguration _configuration;
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly ILogger<HomeController> _logger = null;
+        IStringLocalizer<ConsolePortal> _localResource = null;
         public HomeController(IConfiguration configuration,
             IHttpClientFactory httpClientFactory,
+            IStringLocalizer<ConsolePortal> localResource,
             ILogger<HomeController> logger)
         {
             this._configuration = configuration;
             this._httpClientFactory = httpClientFactory;
             this._logger = logger;
+            this._localResource = localResource;
         }
 
         [HttpGet]
@@ -38,9 +44,15 @@ namespace FE.Creator.FEConsolePortal
         {
             return await Task.Run<FileResult>(() =>
             {
-                //portal do not need the base webapi.
-                var globalJs = string.Format("var baseUrl = '{0}';", string.Empty);
-                byte[] jsContent = UTF8Encoding.UTF8.GetBytes(globalJs);
+                //portal do not need the base webapi baseUrl
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.AppendLine(string.Format("var baseUrl = '{0}';", string.Empty));
+                stringBuilder.AppendLine(string.Format("var bookListPageSize = {0};", HttpContext.GetConfigValue<int>("SiteSettings:DisplaySetting:BookListPageSize")));
+                stringBuilder.AppendLine(string.Format("var fileListPageSize = {0};", HttpContext.GetConfigValue<int>("SiteSettings:DisplaySetting:FileListPageSize")));
+                stringBuilder.AppendLine(string.Format("var articleListPageSize = {0};", HttpContext.GetConfigValue<int>("SiteSettings:DisplaySetting:ArticleListPageSize")));
+                stringBuilder.AppendLine(string.Format("var imageListPageSize = {0};", HttpContext.GetConfigValue<int>("SiteSettings:DisplaySetting:ImageListPageSize")));
+
+                byte[] jsContent = UTF8Encoding.UTF8.GetBytes(stringBuilder.ToString());
                 var jsFile = new FileContentResult(jsContent, new MediaTypeHeaderValue("text/javascript"));
 
                 return jsFile;
@@ -63,6 +75,31 @@ namespace FE.Creator.FEConsolePortal
             string flxSliderView = await PortalFlexSlider();
             return View(nameof(Index), flxSliderView);
         }
+
+
+        public async Task<ActionResult> Error()
+        {
+            var exceptionHandlerPathFeature =
+                            HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+
+            if (!string.IsNullOrEmpty(exceptionHandlerPathFeature?.Error.Message))
+            {
+                _logger.LogError(exceptionHandlerPathFeature?.Error.Message);
+                AppEventModel errEvent = new AppEventModel();
+                errEvent.EventTitle = _localResource["ERROR_PORTAL_ERROR"];
+                errEvent.EventDetails = _localResource["ERROR_SERVER_ERROR_BODY", exceptionHandlerPathFeature?.Error.Message];
+                errEvent.EventOwner = HttpContext.GetConfigValue<string>("SiteSettings:AdminUser");
+                errEvent.EventLevel = AppEventModel.EnumEventLevel.Error;
+
+                var client = _httpClientFactory.CreateClient("client");
+                var baseUrl = HttpContext.WebApiBaseUrl();
+
+                await client.LogEvent(baseUrl, errEvent);
+            }
+
+            return View();
+        }
+
 
         public PartialViewResult AngularLightBoxTemplate()
         {

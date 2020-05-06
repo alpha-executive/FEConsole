@@ -1,6 +1,11 @@
 ﻿@using Microsoft.AspNetCore.Mvc.Localization
 
 @inject IHtmlLocalizer<AppLang> AppLangResource
+@{ 
+    var uploadSetting = Context.GetFileUploadSetting();
+    var maxImageFileSize = uploadSetting.MaxImageSize;
+    var allowedFileExtensions = uploadSetting.AllowedImageExtensions;
+}
 <div class="box box-primary" ng-init="ctrl.init(CurrentUserProfileId)" ng-controller="GeneralContactProfileController as ctrl">
     <div class="box-body box-profile" ng-if="!ctrl.isEditBasicInfo">
         <div ng-if="ctrl.basicinfo.properties.Image.fileUrl == null" class="profile-user-img img-responsive img-circle">
@@ -75,14 +80,21 @@
                 </label>
                 <div class="col-sm-10">
                     <div class="form-control">
-                        <input type="radio" ng-model="ctrl.basicinfo.properties.gender.value" ng-value="0" ng-checked="ctrl.basicinfo.properties.gender.value == 0" /> @AppLangResource["PROFILE_MALE"]
-                        <input type="radio" ng-model="ctrl.basicinfo.properties.gender.value" ng-value="1" ng-checked="ctrl.basicinfo.properties.gender.value == 1" /> @AppLangResource["PROFILE_FEMALE"]
+                        <div class="checkbox icheck">
+                            <input type="radio" ng-model="ctrl.basicinfo.properties.gender.value" ng-value="0" ng-checked="ctrl.basicinfo.properties.gender.value == 0" /> @AppLangResource["PROFILE_MALE"]
+                        </div>
+                        <div class="checkbox icheck">
+                            <input type="radio" ng-model="ctrl.basicinfo.properties.gender.value" ng-value="1" ng-checked="ctrl.basicinfo.properties.gender.value == 1" /> @AppLangResource["PROFILE_FEMALE"]
+                        </div>
                     </div>
-                </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button class="btn btn-warning" type="file" ngf-select="ctrl.uploadFiles($file, $invalidFiles,ctrl.basicinfo.properties.Image)" ngf-max-height="1000" ngf-max-size="10MB">
+                    <button class="btn btn-warning" type="file" 
+                            ngf-select="ctrl.uploadFiles($file, $invalidFiles,ctrl.basicinfo.properties.Image)" 
+                            ngf-max-size="@maxImageFileSize" 
+                            ngf-accept="'@allowedFileExtensions'" 
+                            ngf-pattern="'@allowedFileExtensions'">
                         <i class="fa fa-upload"></i> @AppLangResource["PROFILE_BTN_UPLOADIMG"] <i class="fa fa-refresh fa-spin text-green" ng-if="ctrl.f.showprogress"></i>
 
                     </button><span class="message">{{ctrl.errorMsg}}</span>
@@ -106,13 +118,7 @@
                         <button class="btn btn-box-tool" type="button" ng-click="ctrl.cancelUserInfoEdit()"><i class="fa fa-close "></i> @AppLangResource["COMMON_BTN_CANCEL"]</button>
                 </li>
             </ul>
-            <script type="text/javascript">
-                $(function () {
-                    $(".field-datepicker").datepicker({
-                        autoclose: true
-                    })
-                });
-            </script>
+            <script type="text/javascript" src="~/js/applydatepicker.js" asp-append-version="true"></script>
         </div>
     </form>
     <!-- /.box-body -->

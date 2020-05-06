@@ -5,9 +5,9 @@
        .module('ngObjectRepository')
         .controller("ImagesController", ImagesController);
 
-    ImagesController.$inject = ["$scope", "$q", "ObjectRepositoryDataService", "Notification", "PagerService", "objectUtilService", "Upload", "UserFactory", "API_BASEURL"];
+    ImagesController.$inject = ["$scope", "$q", "$filter", "ObjectRepositoryDataService", "Notification", "PagerService", "objectUtilService", "Upload", "UserFactory", "API_BASEURL", "Lightbox"];
 
-    function ImagesController($scope, $q, ObjectRepositoryDataService, Notification, PagerService, objectUtilService, Upload, UserFactory, API_BASEURL) {
+    function ImagesController($scope, $q, $filter, ObjectRepositoryDataService, Notification, PagerService, objectUtilService, Upload, UserFactory, API_BASEURL, Lightbox) {
         var vm = this;
         vm.DEFAULT_IMAGE_album = 0;
         vm.displayMode = "imageList";
@@ -16,6 +16,7 @@
         vm.editingImageObject = null;
         vm.editingalbumObject = null;
         vm.images = [];
+        vm.lightboxImages = [];
         vm.imageRows = [];
         vm.albums = [];
         vm.pager = {};
@@ -305,16 +306,31 @@
 
                         //if it's a new add operation.
                         //edit an image in album will always goes to else branch.
-                        if ((vm.editingImageObject.objectID == null || vm.editingImageObject.objectID == 0)
+                        if ((vm.editingImageObject.objectID == null
+                            || vm.editingImageObject.objectID == 0
+                            || typeof (vm.editingImageObject.objectID) === 'undefined')
                             && vm.images.length >= vm.pager.pageSize) {
-                            //redirect to the first page.
+                            //redirect to the first page if the total image count is greater than page size.
+                            //this could display the new added image.
                             onPageChange(1);
                         }
                         else {
                             var index = vm.images.indexOf(vm.editingImageObject);
+                            //replace
                             if (index >= 0) {
                                 vm.images.splice(index, 1, tmpimg);
+                            }//insert
+                            else {
+                                vm.images.splice(0, 0, tmpimg);
                             }
+
+                            //lightbox image support
+                            vm.lightboxImages.push({
+                                objectID: tmpimg.objectID,
+                                url: $filter('fullUrl')(tmpimg.properties.imageFile.fileUrl),
+                                caption: tmpimg.properties.imageDesc.value
+                            })
+
                             sliceImages(vm.images);
                         }
 
@@ -602,9 +618,21 @@
                 console.error(error);
                 imgSpin.find("p").text(AppLang.IMAGEMGR_VIEW_LOAD_ERROR);
             }
-            downloadImage.src = "/home/fwddownload/" + encodeURIComponent(img.properties.imageFile.fileUrl);
+            downloadImage.src = $filter('fullUrl')(img.properties.imageFile.fileUrl);
             vm.viewingImage = img;
             $('#viewImageModal').modal('show');
+        }
+
+        vm.viewImageLightBox = function (img) {
+            var currIndex = -1;
+            for (var i = 0; i < vm.lightboxImages.length; i++) {
+                if (vm.lightboxImages[i].objectID == img.objectID) {
+                    currIndex = i;
+                    break;
+                }
+            }
+
+            Lightbox.openModal(vm.lightboxImages, currIndex);
         }
 
         vm.addImages2album = function () {
@@ -623,12 +651,19 @@
                  pageIndex,
                  pageSize,
                  filter
-             ).then(function (data) {
+            ).then(function (data) {
+                 //clear the editing images and lightbox image.
                  vm.images.splice(0, vm.images.length);
+                 vm.lightboxImages.splice(0, vm.images.length);
                  if (Array.isArray(data) && data.length > 0) {
                      for (var i = 0; i < data.length; i++) {
                          var image = objectUtilService.parseServiceObject(data[i]);
                          vm.images.push(image);
+                         vm.lightboxImages.push({
+                             objectID: image.objectID,
+                             url: $filter('fullUrl')(image.properties.imageFile.fileUrl),
+                             caption: image.properties.imageDesc.value
+                         })
                      }
                  }
 

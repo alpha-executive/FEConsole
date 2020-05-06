@@ -15,7 +15,7 @@ namespace FE.Creator.FEConsolePortal.Models
             get
             {
                 var currentUri = this._context.Request.Host;
-                string hostAndPort = string.Format("{0}://{0}{1}", 
+                string hostAndPort = string.Format("{0}://{1}{2}", 
                         this._context.Request.Scheme,
                         currentUri.Host,
                         (currentUri.Port == 80 || currentUri.Port == 443) 

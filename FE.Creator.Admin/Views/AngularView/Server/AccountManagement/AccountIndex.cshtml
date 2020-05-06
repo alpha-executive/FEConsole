@@ -86,9 +86,9 @@
                     </label>
                     <div class="col-sm-10">
                         <div class="form-control">
-                            <input type="radio" ng-model="ctrl.currentAccountRecord.properties.accountType.value" ng-value="0" ng-checked="ctrl.currentAccountRecord.properties.accountType.value == 0" /> @AppLangResource["ACCOUNTMGR_RDO_INTERNET"]
-                            <input type="radio" ng-model="ctrl.currentAccountRecord.properties.accountType.value" ng-value="1" ng-checked="ctrl.currentAccountRecord.properties.accountType.value == 1" /> @AppLangResource["ACCOUNTMGR_RDO_BANK"]
-                            <input type="radio" ng-model="ctrl.currentAccountRecord.properties.accountType.value" ng-value="2" ng-checked="ctrl.currentAccountRecord.properties.accountType.value == 2" /> @AppLangResource["ACCOUNTMGR_RDO_DEVICES"]
+                            <input icheck name="accounttype" type="radio" ng-model="ctrl.currentAccountRecord.properties.accountType.value" value="0" /> @AppLangResource["ACCOUNTMGR_RDO_INTERNET"]
+                            <input icheck name="accounttype" type="radio" ng-model="ctrl.currentAccountRecord.properties.accountType.value" value="1" /> @AppLangResource["ACCOUNTMGR_RDO_BANK"]
+                            <input icheck name="accounttype" type="radio" ng-model="ctrl.currentAccountRecord.properties.accountType.value" value="2" /> @AppLangResource["ACCOUNTMGR_RDO_DEVICES"]
                         </div>
                     </div>
                 </div>
@@ -121,5 +121,5 @@
 </div>
 </div>
 @section Scripts{
-    <script type="text/javascript" src="~/js/accountrecordscontroller.js"></script>
+    <script type="text/javascript" src="~/js/accountrecordscontroller.js" asp-append-version="true"></script>
 }

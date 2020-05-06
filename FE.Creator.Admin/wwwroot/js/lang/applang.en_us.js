@@ -29,7 +29,7 @@
     INDEX_REPORT_NAME_TARGET: "Target",
     INDEX_REPORT_NAME_TASK: "Task",
     INDEX_PROVIDER_MESSAGE_FMT: "You have {0} messages",
-    INDEX_EVENT_COUNTER_MSG_FMT: "You have {0} latest events", 
+    INDEX_EVENT_COUNTER_MSG_FMT: "You have {0} more latest events", 
     INDEX_TASK_FMT : "You have {0} more tasks",
     BOOK_INDEX_ROOT_FOLDER: "Home",
     BOOK_INDEX_NEW_FOLDER: "New Folder",

@@ -117,17 +117,41 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ERROR_NOT_FOUND" xml:space="preserve">
+    <value>哎呀！没有找到相关内容。</value>
+  </data>
+  <data name="ERROR_NOT_FOUND_DESC" xml:space="preserve">
+    <value>在系统中找不到你要找的信息，你也可以&lt;a href="/"&gt;返回到系统首页&lt;/a&gt;</value>
+  </data>
+  <data name="ERROR_PORTAL_ERROR" xml:space="preserve">
+    <value>FEConsole 门户站点发生错误。</value>
+  </data>
+  <data name="ERROR_SERVER_ERROR" xml:space="preserve">
+    <value>应用服务器错误</value>
+  </data>
+  <data name="ERROR_SERVER_ERROR_BODY" xml:space="preserve">
+    <value>详细错误：{0}</value>
+  </data>
+  <data name="ERROR_SERVER_ERROR_DESC" xml:space="preserve">
+    <value>应用服务器发生了未知错误。</value>
+  </data>
+  <data name="ERROR_TITLE" xml:space="preserve">
+    <value>出错啦</value>
+  </data>
   <data name="PORTAL_BOOK_DESC" xml:space="preserve">
     <value>武装你的思维</value>
   </data>
   <data name="PORTAL_BOOK_TITLE" xml:space="preserve">
     <value>书本</value>
   </data>
+  <data name="PORTAL_COPY" xml:space="preserve">
+    <value>转载</value>
+  </data>
   <data name="PORTAL_DOCUMENTS_DESC" xml:space="preserve">
     <value>共享你的内容</value>
   </data>
   <data name="PORTAL_DOCUMENTS_TITLE" xml:space="preserve">
-    <value>文档</value>
+    <value>文件</value>
   </data>
   <data name="PORTAL_FOOTER_ABOUT" xml:space="preserve">
     <value>关于应用程序</value>
@@ -182,6 +206,9 @@
   </data>
   <data name="PORTAL_MENU_POST" xml:space="preserve">
     <value>文章</value>
+  </data>
+  <data name="PORTAL_ORIGINAL" xml:space="preserve">
+    <value>原创</value>
   </data>
   <data name="PORTAL_POST_DESC" xml:space="preserve">
     <value>分享你的见解</value>

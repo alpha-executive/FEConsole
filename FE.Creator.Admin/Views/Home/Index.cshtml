@@ -105,7 +105,7 @@
                                         </a>
                                     </td>
                                     <td><span class="text-muted label label-warning">{{post.createdBy}}</span></td>
-                                    <td><span class="text-muted label label-primary"><i class="fa fa-clock-o"></i> {{post.created | dateformatFilter : 'MMM Do YYYY'}}</span></td>
+                                    <td><span class="text-muted label label-primary"><i class="fa fa-clock-o"></i> {{post.updated | dateformatFilter : 'MMM Do YYYY'}}</span></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -158,7 +158,7 @@
                             <div class="col-md-2 margin-bottom" ng-repeat="img in ctrl.images">
                                 <div class="image-card">
                                     <div class="image-wrapper">
-                                        <img class="img-responsive" style="width:100%; max-height:150px; border-radius:5px;" ng-src="{{img.properties.imageFile.fileUrl | fullUrl}}?thumbinal=true" alt="{{img.objectName}}">
+                                        <img class="img-responsive" style="width:100%; max-height:150px; border-radius:5px;" ng-src="{{img.url}}" alt="{{img.objectName}}" ng-click="ctrl.viewImageLightBox($index)" />
                                     </div>
                                 </div>
                             </div>
@@ -180,7 +180,7 @@
     </div>
 </div>
 @section Scripts{
-    <script type="text/javascript" src="~/js/apputilities.js"></script>
-    <script type="text/javascript" src="~/js/dashboardcontroller.js"></script>
     <script type="text/javascript" src="~/lib/adminlte-2.3.6/plugins/echarts/echarts.min.js"></script>
+    <script type="text/javascript" src="~/js/apputilities.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/dashboardcontroller.js" asp-append-version="true"></script>
 }

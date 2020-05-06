@@ -6,7 +6,6 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using FE.Creator.FEConsole.Shared.Models;
-using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.Extensions.FileProviders;
 using FE.Creator.AspNetCoreUtil;
 using System.IO;
@@ -16,18 +15,19 @@ using Microsoft.AspNetCore.Authentication;
 using IdentityModel.Client;
 using System.Web;
 using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.Extensions.Localization;
 
 namespace FE.Creator.Admin.Controllers
 {
     public class HomeController : BaseController
     {
         private readonly IHttpClientFactory _httpClientFactory;
-        private readonly IHtmlLocalizer<AppLang> _sharedResource;
+        private readonly IStringLocalizer<AppLang> _sharedResource;
         private readonly IFileProvider _fileProvider;
         ILogger<HomeController> logger = null;
         public HomeController(IHttpClientFactory httpClientFactory,
             IFileProvider fileProvider,
-            IHtmlLocalizer<AppLang> sharedResource,
+            IStringLocalizer<AppLang> sharedResource,
             ILogger<HomeController> logger,
             IServiceProvider serviceProvider):base(serviceProvider) {
             this._httpClientFactory = httpClientFactory;
@@ -47,9 +47,10 @@ namespace FE.Creator.Admin.Controllers
 
             if (!string.IsNullOrEmpty(exceptionHandlerPathFeature?.Error.Message))
             {
+                logger.LogError(exceptionHandlerPathFeature?.Error.Message);
                 AppEventModel errEvent = new AppEventModel();
-                errEvent.EventTitle = _sharedResource["ERROR_SERVER_ERROR"].Value;
-                errEvent.EventDetails = _sharedResource["ERROR_SERVER_ERROR_BODY", exceptionHandlerPathFeature?.Error.Message].Value;
+                errEvent.EventTitle = _sharedResource["ERROR_SERVER_ERROR"];
+                errEvent.EventDetails = _sharedResource["ERROR_SERVER_ERROR_BODY", exceptionHandlerPathFeature?.Error.Message];
                 errEvent.EventOwner = HttpContext.GetLoginUser();
                 errEvent.EventLevel = AppEventModel.EnumEventLevel.Error;
 
@@ -238,7 +239,7 @@ namespace FE.Creator.Admin.Controllers
         [AutoValidateAntiforgeryToken]
         public  ActionResult LogOff()
         {
-           return SignOut("cookies", "oidc");
+           return SignOut("Cookies", "oidc");
         }
     }
 }

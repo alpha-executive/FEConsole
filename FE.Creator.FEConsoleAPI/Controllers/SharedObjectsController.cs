@@ -63,9 +63,7 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
             }
 
             int objDefId = objDef.ObjectDefinitionID;
-            List<ServiceObject> svcObjLists = GetSharedObjects(properties,    
-                                                                page,
-                                                                pageSize, 
+            List<ServiceObject> svcObjLists = GetSharedObjects(properties,     
                                                                 objDefId);
             if(svcObjLists　!= null && svcObjLists.Count > 0)
             {
@@ -84,13 +82,13 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
             return NotFound();
         }
 
-        private List<ServiceObject> GetSharedObjects(string[] properties, int page, int pageSize, int objDefId)
+        private List<ServiceObject> GetSharedObjects(string[] properties, int objDefId)
         {
             var svcObjLists = objectService.GetServiceObjects(
                 objDefId,
                 properties,
-                page,
-                pageSize,
+                1,
+                int.MaxValue,
                 null);
 
             return svcObjLists;
@@ -110,8 +108,6 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
             }
             int objDefId = objDef.ObjectDefinitionID;
             List<ServiceObject> svcObjLists = GetSharedObjects(new string[] { shareFieldName },
-                                                              1,
-                                                              int.MaxValue,
                                                               objDefId);
 
             if (svcObjLists != null && svcObjLists.Count > 0)

@@ -74,5 +74,19 @@ namespace FE.Creator.AspNetCoreUtil
 
             return config["SiteSettings:FEconsoleApiUrl"];
         }
+
+        public static string FEPortalUrl(this HttpContext httpContext)
+        {
+            var config = httpContext.RequestServices.GetRequiredService<IConfiguration>();
+
+            return config["SiteSettings:FEPortalUrl"];
+        }
+
+        public static T GetConfigValue<T>(this HttpContext httpContext, string configKeyPath)
+        {
+            var config = httpContext.RequestServices.GetRequiredService<IConfiguration>();
+
+            return config.GetValue<T>(configKeyPath);
+        }
     }
 }

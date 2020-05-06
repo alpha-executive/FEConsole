@@ -2,6 +2,8 @@
 @inject IHtmlLocalizer<AppLang> AppLangResource
 @{
     ViewBag.Title = "Objects Management";
+    var uploadSetting = Context.GetFileUploadSetting();
+    var maxAttachmentFileSize = uploadSetting.MaxAttachmentSize;
 }
 <div ng-app="ngObjectRepository">
     <div class="row" ng-controller="LicenseController as ctrl">
@@ -12,8 +14,10 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <button class="btn btn-warning" type="file" ngf-select="ctrl.uploadFiles($file, $invalidFiles)" ngf-max-size="10MB">
-                        <i class="fa fa-upload"></i> @AppLangResource["LICMGR_BTN_UPLOADLIC"] <i class="fa fa - refresh fa - spin text - green" ng-if="ctrl.f.showprogress"></i>
+                    <button class="btn btn-warning" type="file" 
+                            ngf-select="ctrl.uploadFiles($file, $invalidFiles)" 
+                            ngf-max-size="@maxAttachmentFileSize">
+                        <i class="fa fa-upload"></i> @AppLangResource["LICMGR_BTN_UPLOADLIC"] <i class="fa fa-refresh fa-spin text-green" ng-if="ctrl.f.showprogress"></i>
 
                     </button><span class="message">{{ctrl.errorMsg}}</span>
                 </div>
@@ -50,5 +54,5 @@
     </div>
 </div>
 @section Scripts {
-    <script type="text/javascript" src="~/js/licensecontroller.js"></script>
+    <script type="text/javascript" src="~/js/licensecontroller.js" asp-append-version="true"></script>
 }

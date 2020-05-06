@@ -15,8 +15,6 @@ using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using FE.Creator.FEConsole.Shared.Models;
-using System.Net.Http;
-using System.Net;
 using FE.Creator.FEConsole.Shared.Services.FileStorage;
 using Microsoft.Extensions.Configuration;
 
@@ -24,7 +22,6 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
 {
     public class LicenseController : FEAPIBaseController
     {
-        private static string SYS_RSA_PUBLIC_KEY = "BgIAAACkAABSU0ExAAQAAAEAAQBPkHSfs7Ukfng9Dz4EZZ1bDw5wCo4zKglQDlzOx01/b69bvLqxg2COkfKpegMJH8uDSGd8fvSSBKoWFu1RGnTomNUMHB7FRrbDAYQ0VAyUNfUcrZps8YlqgAjFGt3pF5GSoT7vGVVt3dKaRinvcPmlF3mk9qM/DHtqPfp4oA2Hqw==";
         private static string SYS_LANG_CHINESE = "zh-CN";
         private static string SYS_LANG_ENGLISH = "en-US";
         private static string SYS_DEFAULT_DATEFORMAT = "MM/dd/yyyy";
@@ -186,7 +183,7 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
             logger.LogDebug("End ResolveEntity");
         }
 
-        private void ProcessConfig(string config)
+        private async Task ProcessConfig(string config)
         {
             XDocument configDoc = XDocument.Parse(config);
             XElement configElement = configDoc.Descendants("config").FirstOrDefault();
@@ -197,7 +194,7 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
                 {
                     foreach (XElement entity in configElement.Descendants("entity"))
                     {
-                        ResolveEntity(groupId, entity);
+                        await ResolveEntity(groupId, entity);
                     }
                 }
             }
@@ -214,11 +211,11 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
 
                 logger.LogDebug("productKey = " + productKey);
                 byte[] contentToVerified = UTF8Encoding.UTF8.GetBytes(grantlist);
-
-                logger.LogDebug("SYS_RSA_PUBLIC_KEY = " + SYS_RSA_PUBLIC_KEY);
+                string publicKey = configuration["SiteSettings:Security:PublicKey"];
+                logger.LogDebug("publicKey = " + publicKey);
                 bool isValid = cryptoGraphysvc.VerifySignedHash(contentToVerified,
                     Convert.FromBase64String(productKey),
-                    SYS_RSA_PUBLIC_KEY);
+                    publicKey);
 
                 logger.LogWarning(string.Format("Product Key is Valid ? {0}", isValid));
 
@@ -367,7 +364,7 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
             {
                 string configureContent = ReadResourceContent(f.FileUrl);
                 logger.LogDebug(string.Format("configure content = {0}", configureContent));
-                ProcessConfig(configureContent);
+                await ProcessConfig(configureContent);
             }
 
             await UpdateSystemConfig(license);
@@ -495,7 +492,7 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
             grandListElement.Add(new XAttribute("version", "1.0.0.0"));
 
             byte[] signedData = cryptoGraphysvc.HashAndSignBytes(Encoding.UTF8.GetBytes(grandListElement.ToString()),
-                    configuration["SiteSettings:PrivateKey"]);
+                    configuration["SiteSettings:Security:PrivateKey"]);
             var productKeyElment = new XElement("productkey",
                     Convert.ToBase64String(signedData));
 
