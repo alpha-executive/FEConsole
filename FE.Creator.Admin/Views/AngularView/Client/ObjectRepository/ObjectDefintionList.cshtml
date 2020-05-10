@@ -1,13 +1,13 @@
 ﻿@using Microsoft.AspNetCore.Mvc.Localization
 @inject IHtmlLocalizer<AppLang> AppLangResource
-<div class="col-md-4" ng-repeat="def in ObjectDefintions">
+<div class="col-md-4" ng-repeat="def in ctrl.ObjectDefintions">
     <div class="box box-success collapsed-box">
         <div class="box-header with-border">
             <h3 class="box-title"><i class="fa fa-table"></i>  {{def.objectDefinitionName}}</h3>
             <div class="box-tools pull-right">
-                <a href="/objdefs/{{groupId}}/{{def.objectDefinitionID}}/edit" class="btn btn-box-tool">
+                <button ng-click="ctrl.editObjectDefinition(def)" class="btn btn-box-tool">
                     <i class="fa fa-edit"></i> @AppLangResource["COMMON_BTN_EDIT"]
-                </a>
+                </button>
                 <button type="button" class="btn btn-box-tool" data-widget="collapse">
                     <i class="fa fa-expand"></i>
                 </button>
@@ -28,12 +28,12 @@
         <!-- /.box-body -->
         <div class="box-footer">
             <div class="box-tools">
-                <button class="btn btn-box-tool" ng-click="deleteObjectDefintion(def.objectDefinitionID)">
+                <button class="btn btn-box-tool" ng-click="ctrl.deleteObjectDefintion(def.objectDefinitionID)">
                     <i class="fa fa-trash"></i> @AppLangResource["COMMON_BTN_DELETE"]
                 </button>
-                <a href="/objdefs/{{groupId}}/{{def.objectDefinitionID}}/edit" class="btn btn-box-tool">
+                <button ng-click="ctrl.editObjectDefinition(def)" class="btn btn-box-tool">
                     <i class="fa fa-edit"></i> @AppLangResource["COMMON_BTN_EDIT"]
-                </a>
+                </button>
             </div>
         </div>
     </div>

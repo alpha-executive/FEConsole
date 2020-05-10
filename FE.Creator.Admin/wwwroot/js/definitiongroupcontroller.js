@@ -1,165 +1,109 @@
 ﻿(function () {
     "use strict";
     angular
-         .module('ngObjectRepository')
-         .controller("editObjectDefinitionGroupController", editObjectDefinitionGroupController)
-         .config(function ($routeProvider, $locationProvider) {
-             $routeProvider
-              .when('/defgrps/:groupId', {
-                  templateUrl: '/ngView/ObjectRepository/ObjectDefinitionGroupEdit',
-                  controller: 'editObjectDefinitionGroupController',
-              })
-              .when('/defgrps/:iscreate/:groupId',{
-                  templateUrl: '/ngView/ObjectRepository/ObjectDefinitionGroupEdit',
-                  controller: 'editObjectDefinitionGroupController',
-              })
-             .when('/defgrps', {
-                 template: "<object-definition-group-list></object-definition-group-list>"
-             })
-             .otherwise('/defgrps');
+        .module('ngObjectRepository')
+        .controller("editObjectDefinitionGroupController", editObjectDefinitionGroupController);
 
-             // configure html5 to get links working on jsfiddle
-             $locationProvider.html5Mode({
-                 enabled: true,
-                 requireBase: false
-             });
-         });
-
-    editObjectDefinitionGroupController.$inject = ["$scope", "$route", "$routeParams", "$location", "ObjectRepositoryDataService", "Notification", "UserFactory"];
+    editObjectDefinitionGroupController.$inject = ["$scope", "$rootScope", "ObjectRepositoryDataService", "Notification", "UserFactory"];
     /*controller*/
-    function editObjectDefinitionGroupController($scope, $route, $routeParams, $location, ObjectRepositoryDataService, Notification, UserFactory) {
-        var scopeContext = $scope;
-        scopeContext.$route = $route;
-        scopeContext.$location = $location;
-        scopeContext.$routeParams = $routeParams;
-
+    function editObjectDefinitionGroupController($scope, $rootScope, ObjectRepositoryDataService, Notification, UserFactory) {
+        var scopeContext = this;
         scopeContext.currentGroup = {};
         scopeContext.SaveChange = SaveChange;
-
+        scopeContext.DefinitionGroups = [];
+        scopeContext.DeleteGroup = DeleteGroup;
+        scopeContext.EditGroup = EditGroup;
+        scopeContext.SetEdit = SetEdit;
+        scopeContext.ShowObjDefinition = ShowObjDefinition;
+        scopeContext.showDefinitionGroupView = true;
+        scopeContext.showEditView = false;
 
         UserFactory.getAccessToken()
             .then(function (response) {
-                //if it's update.
-                if ($routeParams.iscreate != null && $routeParams.iscreate == "true") {
-                    LoadParentGroup();
-                }
-                else {
-                    Initialze();
-                }
+                Initialze();
+               
                 return response;
             });
         
+        function Initialze() {
+            ObjectRepositoryDataService.getObjectDefinitionGroups(null)
+                .then(function (data) {
+                    scopeContext.DefinitionGroups = data;
+
+                    return scopeContext.DefinitionGroups;
+                });
+        }
+
+
+        function ShowObjDefinition(group) {
+            //fire the onshowtable event, which will be handle in ObjectDefinitionController.
+            $rootScope.$broadcast('showtable', group);
+            scopeContext.showDefinitionGroupView = false;
+        }
+
+        function EditGroup(group) {
+            scopeContext.showEditView = true;
+           
+            if (typeof group !== 'undefined') {
+                scopeContext.currentGroup = group;
+            }
+            else {
+                //new add
+                scopeContext.currentGroup = {};
+            }
+        }
+
+        function SetEdit(isEdit) {
+            scopeContext.showEditView = isEdit;
+        }
+
+        function DeleteGroup(group) {
+            try {
+                ObjectRepositoryDataService
+                    .deleteDefinitionGroup(group.groupID)
+                    .then(function (data) {
+                        var index = scopeContext.DefinitionGroups.indexOf(group);
+                        if (index >= 0) {
+                            scopeContext.DefinitionGroups.splice(index, 1);
+                        }
+                        return data;
+                    })
+               
+            }
+            catch (e) { }
+        }
 
         function SaveChange() {
             try{
                 ObjectRepositoryDataService.createOrUpdateDefinitionGroup(scopeContext.currentGroup.groupID,
                     scopeContext.currentGroup)
                     .then(function(data){
-                            Notification.success({
-                                message: 'Succeed Update the Definition Group!',
+                        Notification.success({
+                                message: AppLang.COMMON_EDIT_SAVE_SUCCESS,
                                 delay: 3000,
                                 positionY: 'bottom',
                                 positionX: 'right',
                                 title: 'Success',
-                            });
+                        });
+
                             //for create, we will update the currentGroup model.
-                            if (scopeContext.currentGroup.groupID == null)
+                            if (scopeContext.currentGroup.groupID == null) {
                                 scopeContext.currentGroup = data;
+                                scopeContext.DefinitionGroups.push(data);
+                            }
+                                   
                         });
             }
             catch(e)
             {
                 Notification.error({
-                    message: "Failed to update the Definition Group" + e,
+                    message: AppLang.COMMON_EDIT_SAVE_FAILED,
                     delay: 5000,
                     positionY: 'bottom',
                     positionX: 'right',
-                    title: 'Error'
+                    title: AppLang.COMMON_DLG_TITLE_ERROR
                 });
             }
         }
-
-        function LoadParentGroup() {
-            return ObjectRepositoryDataService.getObjectDefinitionGroup($routeParams.groupId)
-                       .then(function (data) {
-                           scopeContext.currentGroup.parentGroup = data;
-
-                           return scopeContext.currentGroup;
-                       });
-        }
-
-        function Initialze() {
-            return ObjectRepositoryDataService.getObjectDefinitionGroup($routeParams.groupId)
-                        .then(function (data) {
-                            scopeContext.currentGroup = data;
-
-                            return scopeContext.currentGroup;
-                        });
-        }
-    }
-
-
-    /*directive*/
-    angular
-        .module('ngObjectRepository')
-        .directive("objectDefinitionGroupList", objectDefinitionGroupList)
-        .directive("objectDefinitionGroup", objectDefinitionGroup);
-
-    function objectDefinitionGroup() {
-        return {
-            require: '^^objectDefinitionGroupList',
-            restrict: "E",
-            scope: {
-                currentGroup: "=group",
-                onDelete: "&",
-                drillDown: "&"
-            },
-            templateUrl: "/ngView/ObjectRepository/ObjectDefinitionGroup"
-        };
-    }
-
-    function objectDefinitionGroupList()
-    {
-        return {
-            restrict: "E",
-            controller: ["$scope", "$route", "$routeParams", "$location", "ObjectRepositoryDataService", "UserFactory",
-                function ($scope, $route, $routeParams, $location, ObjectRepositoryDataService, UserFactory) {
-                var dfContext = $scope;
-                dfContext.DefinitionGroups = [];
-                dfContext.parentGroupID = -1;
-                dfContext.DeleteGroup = function (group) {
-                    try {
-                        ObjectRepositoryDataService.deleteDefinitionGroup(group.groupID);
-                        var index = dfContext.DefinitionGroups.indexOf(group);
-                        if (index >= 0) {
-                            dfContext.DefinitionGroups.splice(index, 1);
-                        }
-                    }
-                    catch (e) { }
-                };
-
-                dfContext.DrillDown = function (group) {
-                    dfContext.parentGroupID = group.groupID;
-                    Activate(group.groupID);
-                };
-
-                UserFactory.getAccessToken()
-                    .then(function (response) {
-                        Activate(null);
-                        return response;
-                    });
-
-                function Activate(parentGroupId) {
-                    return ObjectRepositoryDataService.getObjectDefinitionGroups(parentGroupId)
-                                .then(function (data) {
-                                    dfContext.DefinitionGroups = data;
-
-                                    return dfContext.DefinitionGroups;
-                                });
-                }
-            }],
-            transclude: true,
-            templateUrl: "/ngView/ObjectRepository/ObjectDefinitionGroupList"
-        };
     }
 })();

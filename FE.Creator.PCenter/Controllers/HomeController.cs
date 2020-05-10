@@ -7,9 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.Extensions.Configuration;
-/* using Microsoft.AspNetCore.Identity; */
 using System.Net.Http;
-using System.Security.Claims;
 using FE.Creator.PCenter.CutomProvider;
 using FE.Creator.PCenter.Models;
 using IdentityModel.Client;
@@ -17,6 +15,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using FE.Creator.AspNetCoreUtil;
 
 namespace FE.Creator.PCenter {
     [AutoValidateAntiforgeryToken]
@@ -149,13 +148,17 @@ namespace FE.Creator.PCenter {
             return  LocalRedirect(redirectUrl);
         } */
 
+        [HttpPost]    
         public IActionResult Login (string returnUrl) {
-            string redirectUrl = Url.Action (nameof (LoginCallback), "Home", new { returnUrl = returnUrl });
-            var externalOptions = new AuthenticationProperties () {
+            //string redirectUrl = string.IsNullOrEmpty(returnUrl) ? "~/" : returnUrl;
+            //return LocalRedirect(redirectUrl);
+            string redirectUrl = Url.Action(nameof(LoginCallback), "Home", new { returnUrl = returnUrl });
+            var externalOptions = new AuthenticationProperties()
+            {
                 RedirectUri = redirectUrl
             };
 
-            return Challenge (externalOptions);
+            return Challenge(externalOptions);
         }
 
         private async Task<UserInfoResponse> GetLoginUserProfile () {
@@ -173,21 +176,8 @@ namespace FE.Creator.PCenter {
             return response;
         }
 
-        public async Task<IActionResult> LoginCallback (string returnUrl) {
+        public IActionResult LoginCallback (string returnUrl) {
             string redirectUrl = string.IsNullOrEmpty (returnUrl) ? "~/" : returnUrl;
-            var response = await GetLoginUserProfile ();
-        var authServerUrl = _configuration.GetSection ("Authentication:IdentityServer")
-                .GetValue<string> ("Url");
-            //login failed, clear the current login session.
-            string userName = response.TryGet ("name");
-            string email = response.TryGet ("email");
-            if (!string.IsNullOrEmpty (email)) {
-                HttpContext.SetLoginUserProfile (userName, email);
-                logger.LogDebug ($"User {userName} is login");
-            } else {
-                logger.LogWarning ("Failed to retrive login user's profile");
-                return await Logout ();
-            }
 
             return LocalRedirect (redirectUrl);
         }
@@ -222,15 +212,12 @@ namespace FE.Creator.PCenter {
             return Ok ();
         }
 
-        public async Task<IActionResult> Logout () {
-            /*  if(_signInManager.IsSignedIn(User)){
-                 await _signInManager.SignOutAsync();
-             } */
-            await HttpContext.SignOutAsync ("Cookies");
-            await HttpContext.SignOutAsync ("oidc");
-            HttpContext.ClearLoginUserProfile ();
-            //SignOut("Cookies", "oidc");
-            return RedirectToAction ("Index");
+        [Authorize]
+        [HttpPost]
+        public IActionResult Logout () {
+            //var callbackUrl = Url.Action(nameof(Index), "Home", values: null, protocol: Request.Scheme);
+            //var logoutPropeties = new AuthenticationProperties { RedirectUri = callbackUrl };
+            return SignOut("Cookies", "oidc");
         }
     }
 }

@@ -1,28 +1,37 @@
 ﻿@model LoggedOutViewModel
-
-@{ 
+@using Microsoft.AspNetCore.Mvc.Localization
+@using FE.Creator.IdentityServer
+@inject IHtmlLocalizer<SharedLangResource> SharedResource
+@{
     // set this so the layout rendering sees an anonymous user
     ViewData["signed-out"] = true;
 }
-
-<div class="page-header logged-out">
-    <h1>
-        Logout
-        <small>You are now logged out</small>
-    </h1>
-
-    @if (Model.PostLogoutRedirectUri != null)
-    {
-        <div>
-            Click <a class="PostLogoutRedirectUri" href="@Model.PostLogoutRedirectUri">here</a> to return to the
-            <span>@Model.ClientName</span> application.
+<div class="panel margin">
+    <div class="panel-body">
+        <div class="page-header logged-out">
+            <h1>
+                <img class="icon" src="~/icon.png">
+                @SharedResource["Logout"]
+                <small>@SharedResource["You are now logged out"]</small>
+            </h1>
         </div>
-    }
+        <div class="row">
+            <div class="col-md-12">
 
-    @if (Model.SignOutIframeUrl != null)
-    {
-        <iframe width="0" height="0" class="signout" src="@Model.SignOutIframeUrl"></iframe>
-    }
+                @if (Model.PostLogoutRedirectUri != null)
+                {
+                <div>
+                    @SharedResource["Click <a class=\"PostLogoutRedirectUri\" href=\"{0}\">here</a> to return to the<span>{1}</span> application.", Model.PostLogoutRedirectUri, Model.ClientName]
+                </div>
+                }
+
+                @if (Model.SignOutIframeUrl != null)
+                {
+                    <iframe width="0" height="0" class="signout" src="@Model.SignOutIframeUrl"></iframe>
+                }
+            </div>
+        </div>
+    </div>
 </div>
 
 @section scripts

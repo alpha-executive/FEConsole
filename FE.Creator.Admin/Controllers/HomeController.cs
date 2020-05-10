@@ -66,20 +66,20 @@ namespace FE.Creator.Admin.Controllers
         public ActionResult About()
         {
             logger.LogDebug(string.Format("{0} access the About page", User.Identity.Name));
-            return View();
+            return View("~/Views/AngularView/Server/About/About.cshtml");
         }
 
         public async Task<ActionResult> Help()
         {
             logger.LogDebug(string.Format("{0} access the Help page", User.Identity.Name));
-
+            string chineseHelp = "~/Views/AngularView/Server/Help/Help_ZH_CN.cshtml";
             string lang = await GetSysConfiguredLanguage();
 
             if (!string.IsNullOrEmpty(lang))
             {
                 if ("zh-CN".Equals(lang, StringComparison.InvariantCultureIgnoreCase))
                 {
-                    return View("Help_ZH_CN");
+                    return View(chineseHelp);
                 }
             }
             else
@@ -87,11 +87,11 @@ namespace FE.Creator.Admin.Controllers
                 //if language is not set in appsettings, apply chinese language if it's in chinese environment.
                 if (Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName.Equals("zh-CN", StringComparison.InvariantCultureIgnoreCase))
                 {
-                    return View("Help_ZH_CN");
+                    return View(chineseHelp);
                 }
             }
 
-            return View("Help");
+            return View("~/Views/AngularView/Server/Help/Help.cshtml");
         }
 
         private async Task<string> GetSysConfiguredLanguage()

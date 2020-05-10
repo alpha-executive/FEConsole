@@ -393,6 +393,9 @@
   <data name="DATA_CUST_ADVANCED_PROPERTY" xml:space="preserve">
     <value>Custom Properties</value>
   </data>
+  <data name="DATA_CUST_BACKTODGROUP" xml:space="preserve">
+    <value>Back to Table Group</value>
+  </data>
   <data name="DATA_CUST_BACKTOLIST" xml:space="preserve">
     <value>Back to List</value>
   </data>

@@ -3,10 +3,55 @@
 @{
     ViewBag.Title = AppLangResource["DATA_CUST_TABLEGROUP"];
 }
-<div ng-app="ngObjectRepository">
-    <div ng-view></div>
-</div>
-
-@section Scripts {
-    <script type="text/javascript" src="~/js/definitiongroupcontroller.js" asp-append-version="true"></script>
-}
+    <div ng-app="ngObjectRepository">
+        <div ng-controller="editObjectDefinitionGroupController as ctrl">
+            <div ng-if="ctrl.showDefinitionGroupView">
+                <div class="row" ng-if="ctrl.showEditView === false">
+                    <div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="grp in ctrl.DefinitionGroups">
+                        @await Html.PartialAsync("~/Views/AngularView/Client/ObjectRepository/ObjectDefinitionGroup.cshtml")
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box bg-green">
+                            <!-- Apply any bg-* class to to the icon to color it -->
+                            <button ng-click="ctrl.EditGroup()" class="info-box-icon"><i class="fa fa-plus"></i></button>
+                            <div class="info-box-content">
+                                <span class="info-box-text">@AppLangResource["COMMON_BTN_ADD"]</span>
+                            </div><!-- /.info-box-content -->
+                        </div><!-- /.info-box -->
+                    </div>
+                </div>
+                <div class="row" ng-if="ctrl.showEditView === true">
+                    @await Html.PartialAsync("~/Views/AngularView/Client/ObjectRepository/ObjectDefinitionGroupEdit.cshtml")
+                </div>
+            </div>
+        </div>
+        <div ng-controller="ObjectDefinitionController as ctrl">
+            <div class="box box-primary" ng-if="ctrl.showDefinitionView">
+                <div class="box-header with-border">
+                    <h3 class="box-title">@AppLangResource["DATA_CUST_TABLES_IN_GRP"]</h3>
+                    <div class="box-tools pull-right">
+                        <div class="btn-group">
+                            <a dynamic-load href="/ngview/Index/ObjectRepository/ObjectDefinitionGroupIndex" class="btn btn-box-tool"><i class="fa fa-database"></i> @AppLangResource["DATA_CUST_BACKTOLIST"]</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row" ng-if="ctrl.isEditView === false">
+                        @await Html.PartialAsync("~/Views/AngularView/Client/ObjectRepository/ObjectDefintionList.cshtml")
+                    </div>
+                    <div class="row" ng-if="ctrl.isEditView === true">
+                        @await Html.PartialAsync("~/Views/AngularView/Client/ObjectRepository/ObjectDefintionEdit.cshtml")
+                    </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <div class="box-tools pull-right">
+                        <div class="btn-group">
+                            <a dynamic-load href="/ngview/Index/ObjectRepository/ObjectDefinitionGroupIndex" class="btn btn-box-tool"><i class="fa fa-database"></i> @AppLangResource["DATA_CUST_BACKTOLIST"]</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

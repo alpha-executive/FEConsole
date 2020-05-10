@@ -74,7 +74,7 @@
                                 <br />
                                 <br />
                                 <div class="info-box" ng-if="ctrl.currentEditingDocument.properties.documentFile.fileName != null">
-                                    <a class="info-box-icon bg-aqua" href="{{ctrl.currentEditingDocument.properties.documentFile.fileUrl | fullUrl}}"><i class="fa fa-cloud-download"></i></a>
+                                    <a download-file class="info-box-icon bg-aqua" href="{{ctrl.currentEditingDocument.properties.documentFile.fileUrl | fullUrl}}"><i class="fa fa-cloud-download"></i></a>
                                     <div class="info-box-content text-black">
                                         <span class="info-box-text">{{ ctrl.currentEditingDocument.properties.documentFile.fileName }}</span>
                                         <span class="info-box-number">{{ctrl.currentEditingDocument.properties.documentFile.fileSize}} KB</span>
@@ -147,13 +147,13 @@
                             </td>
                         </tr>
                         <tr ng-repeat="doc in ctrl.documents | filter: ctrl.searchText">
-                            <td><a class="btn btn-flat" href="{{doc.properties.documentFile.fileUrl | fullUrl}}"><i class="fa text-primary {{doc.properties.documentFile | checkFileType}}"></i> {{doc.objectName}}</a></td>
+                            <td><a download-file class="btn btn-flat" href="{{doc.properties.documentFile.fileUrl | fullUrl}}"><i class="fa text-primary {{doc.properties.documentFile | checkFileType}}"></i> {{doc.objectName}}</a></td>
                             <td>{{doc.updated}}</td>
                             <td>{{doc.objectOwner}}</td>
                             <td>{{doc.properties.documentFile.fileSize}}</td>
                             <td>
                                 <div class="btn-group pull-right">
-                                    <a class="btn btn-info btn-flat btn-xs" href="{{doc.properties.documentFile.fileUrl | fullUrl}}"><i class="fa fa-cloud-download"></i></a>
+                                    <a download-file class="btn btn-info btn-flat btn-xs" href="{{doc.properties.documentFile.fileUrl | fullUrl}}"><i class="fa fa-cloud-download"></i></a>
                                     <button class="btn btn-primary btn-flat btn-xs" type="button" ng-click="ctrl.documentEditing(doc)"><i class="fa fa-pencil"></i></button>
                                     <button class="btn btn-warning btn-flat btn-xs" type="button" ng-click="ctrl.documentDelete(doc)"><i class="fa fa-trash"></i></button>
                                 </div>
@@ -178,14 +178,14 @@
                         </div>
                     </li>
                     <li ng-repeat="doc in ctrl.documents | filter: ctrl.searchText">
-                        <a class="mailbox-attachment-icon" href="{{doc.properties.documentFile.fileUrl | fullUrl}}"><i class="fa text-primary {{doc.properties.documentFile | checkFileType}}"></i></a>
+                        <a download-file class="mailbox-attachment-icon" href="{{doc.properties.documentFile.fileUrl | fullUrl}}"><i class="fa text-primary {{doc.properties.documentFile | checkFileType}}"></i></a>
                         <div class="mailbox-attachment-info">
                             <a class="mailbox-attachment-name" href="javascript:void(0);">{{doc.objectName}}</a>
                             <span class="mailbox-attachment-size">
                                 {{doc.updated}}
                             </span>
                             <span class="mailbox-attachment-size">
-                                <a class="btn btn-default btn-xs pull-right" href="{{doc.properties.documentFile.fileUrl | fullUrl}}"><i class="fa fa-cloud-download"></i></a>
+                                <a download-file class="btn btn-default btn-xs pull-right" href="{{doc.properties.documentFile.fileUrl | fullUrl}}"><i class="fa fa-cloud-download"></i></a>
                                 <button class="btn btn-default btn-xs pull-right" type="button" ng-click="ctrl.documentEditing(doc)"><i class="fa fa-pencil"></i></button>
                                 <button class="btn btn-default btn-xs pull-right" type="button" ng-click="ctrl.documentDelete(doc)"><i class="fa fa-trash"></i></button>
                             </span>
@@ -224,6 +224,3 @@
         </div>
     </div>
 </div>
-@section Scripts {
-    <script type="text/javascript" src="~/js/documentcontroller.js"></script>
-}

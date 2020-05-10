@@ -17,6 +17,9 @@
     <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FE.Creator.AspNetCoreUtil\FE.Creator.AspNetCoreUtil.csproj" />
+  </ItemGroup>
 
   <PropertyGroup>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>

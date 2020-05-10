@@ -1,12 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Mvc.Localization
 @inject IHtmlLocalizer<AppLang> AppLangResource
-<div class="alert alert-dismissible" ng-class="CurrMessageClass" ng-show="ShowWarningMsg">
-    <button class="close" aria-hidden="true" type="button" ng-click="ShowWarningMsg=false">×</button>
-    <h4>
-        <i class="icon fa fa-warning"></i> @AppLangResource["DATA_CUST_UPDATE_RESULTS"]
-    </h4>
-    {{ UpdateMessage }}
-</div>
 <div class="box box-primary">
     <div class="box-header with-border">
         <h3 class="box-title">@AppLangResource["DATA_CUST_TABLEGROUP"]</h3>
@@ -19,21 +12,21 @@
                 <label for="groupName">
                     @AppLangResource["DATA_CUST_TABLE_GRPNAME"]
                 </label>
-                <input class="form-control" id="groupName" type="text" ng-model="currentGroup.groupName" placeholder="Enter Group Name">
+                <input class="form-control" id="groupName" type="text" ng-model="ctrl.currentGroup.groupName" placeholder="Enter Group Name">
             </div>
             <div class="form-group">
                 <label for="groupKey">
                     @AppLangResource["DATA_CUST_TABLE_GRPKEY"]
                 </label>
-                <input class="form-control" id="groupKey" type="text" ng-model="currentGroup.groupKey" placeholder="Enter Group Key">
+                <input class="form-control" id="groupKey" type="text" ng-model="ctrl.currentGroup.groupKey" placeholder="Enter Group Key">
             </div>
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-            <button class="btn btn-primary" type="submit" ng-click="SaveChange()">
+            <button class="btn btn-primary" type="submit" ng-click="ctrl.SaveChange()">
                 @AppLangResource["COMMON_BTN_SAVE"]
             </button>
-            <a class="btn btn-primary" href="/defgrps">@AppLangResource["CONTACTS_BTN_RETURNTOLIST"]</a>
+            <button class="btn btn-primary" ng-click="ctrl.SetEdit(false)">@AppLangResource["CONTACTS_BTN_RETURNTOLIST"]</button>
         </div>
     </form>
 </div>

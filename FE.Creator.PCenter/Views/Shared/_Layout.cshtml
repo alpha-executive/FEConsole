@@ -8,21 +8,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
-
-    <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-    </environment>
-    <environment exclude="Development">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-    </environment>
-    <link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css">
-    <link rel="stylesheet" type="text/css" href="css/coreui-icons-brand.min.css">
-    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-    <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
-    <link rel="stylesheet" type="text/css" href="css/animate.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css" asp-append-version="true">
+    <link rel="stylesheet" type="text/css" href="css/coreui-icons-brand.min.css" asp-append-version="true">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" asp-append-version="true">
+    <link rel="stylesheet" type="text/css" href="css/animate.css" asp-append-version="true">
+    <link rel="stylesheet" type="text/css" href="css/style.css" asp-append-version="true">
 </head>
 <body>
     <div class="loader"></div>
@@ -40,7 +31,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-                <a class="navbar-brand" href="#">FE<span class="logo-dec">TECH</span>HUB</a>
+                <a class="navbar-brand" href="#">FE<span class="logo-dec">TECH</span>LAB</a>
               </div>
               <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
@@ -51,7 +42,9 @@
                   <li class=""><a href="#contact">@SharedResource["Contact Us"]</a></li>
                   @if(Context.IsUserLogin()){
                     <li class="">
-                        <a href="/home/logout"><i class="fa fa-user"></i> @SharedResource["Logout"]</a>
+                        <form asp-controller="Home" asp-action="Logout" method="post">
+                            <button type="submit" class="btn-login"><i class="fa fa-user"></i> @SharedResource["Logout"]</button>
+                        </form>
                     </li>
                   }
                   else {
@@ -133,10 +126,10 @@
                 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
         </script>
     </environment>
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/wow.js"></script>
-    <script src="js/jquery.bxslider.min.js"></script>
-    <script src="js/custom.js"></script>
+    <script src="js/jquery.easing.min.js" asp-append-version="true"></script>
+    <script src="js/wow.js" asp-append-version="true"></script>
+    <script src="js/jquery.bxslider.min.js" asp-append-version="true"></script>
+    <script src="js/custom.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

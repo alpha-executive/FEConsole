@@ -5,15 +5,14 @@ using Microsoft.AspNetCore.Antiforgery;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Mvc.Razor;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
-using System.Threading.Tasks;
 using IdentityModel.AspNetCore.AccessTokenManagement;
 using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Authentication.OAuth.Claims;
+using IdentityModel;
 
 namespace coreaspnet
 {
@@ -74,25 +73,6 @@ namespace coreaspnet
                 client.Timeout = TimeSpan.FromSeconds(60);
             });
 
-
-            //Authenticate support
-            /*services.AddDefaultIdentity<IdentityUser>()
-                     .AddDefaultTokenProviders();
-            services.AddSingleton<IUserStore<IdentityUser>, ExternalLoginServiceClientStore>();
-        
-            services.AddAuthentication()
-                    .AddMicrosoftAccount(microsoftOptions =>   //microsoft
-                    {
-                        IConfigurationSection authSection = Configuration.GetSection("Authentication:Microsoft");
-                        microsoftOptions.ClientId = authSection["externalauth-microsoft-clientid"];
-                        microsoftOptions.ClientSecret = authSection["externalauth-microsoft-secret"];
-                    })
-                    .AddGoogle(googleOptions => {
-                        IConfigurationSection authSection = Configuration.GetSection("Authentication:Google");
-                        googleOptions.ClientId = authSection["externalauth-google-clientid"];
-                        googleOptions.ClientSecret = authSection["externalauth-google-secret"];
-                    }); */
-
             services.AddAuthentication(options =>
             {
                 options.DefaultScheme =  "Cookies";
@@ -101,7 +81,6 @@ namespace coreaspnet
             .AddCookie("Cookies")
             .AddOpenIdConnect("oidc", "Identity Server4", options =>
             {
-
                 options.Authority = Configuration.GetSection("Authentication:IdentityServer")
                                    .GetValue<string>("Url");
                 options.RequireHttpsMetadata = false;
@@ -111,13 +90,17 @@ namespace coreaspnet
                 options.ClientSecret = Configuration.GetSection("Authentication:IdentityServer")
                                     .GetValue<string>("ClientSecret");
                 options.ResponseType = Configuration.GetSection("Authentication:IdentityServer")
-                                    .GetValue<string>("code");
-
+                                    .GetValue<string>("ResponseType");
                 options.SaveTokens = true;
+                options.SignInScheme = "Cookies";
 
                 options.Scope.Add("profile");
                 options.Scope.Add("email");
                 options.Scope.Add("offline_access");
+
+                options.ClaimActions.Add(new JsonKeyClaimAction(JwtClaimTypes.Name, null, JwtClaimTypes.Name));
+                options.ClaimActions.Add(new JsonKeyClaimAction(JwtClaimTypes.Email, null, JwtClaimTypes.Email));
+                options.GetClaimsFromUserInfoEndpoint = true;
 
             });
             services.AddControllersWithViews();

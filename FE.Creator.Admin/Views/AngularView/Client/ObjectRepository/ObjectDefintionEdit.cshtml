@@ -4,12 +4,12 @@
     <div class="box box-success box-solid">
         <div class="box-header with-border">
             <h3 class="box-title">
-                <i class="fa fa-table"></i> @AppLangResource["DATA_CUST_EDITTABLE"]-{{CurrentObjectDefinition.objectDefinitionName}}
+                <i class="fa fa-table"></i> @AppLangResource["DATA_CUST_EDITTABLE"]-{{ctrl.CurrentObjectDefinition.objectDefinitionName}}
             </h3>
             <div class="box-tools pull-right">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-box-tool" ng-click="saveChanges()"><i class="fa fa-save"></i> @AppLangResource["COMMON_BTN_SAVE"]</button>
-                    <a class="btn btn-box-tool" href="/objdefs/{{groupId}}"><i class="fa fa-mail-reply"></i> @AppLangResource["DATA_CUST_BACKTOLIST"]</a>
+                    <button type="button" class="btn btn-box-tool" ng-click="ctrl.saveChanges()"><i class="fa fa-save"></i> @AppLangResource["COMMON_BTN_SAVE"]</button>
+                    <a class="btn btn-box-tool" ng-click="ctrl.setEdit(false)"><i class="fa fa-mail-reply"></i> @AppLangResource["DATA_CUST_BACKTOLIST"]</a>
                 </div>
             </div>
         </div>
@@ -21,12 +21,12 @@
                     <div class="box-body">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-star-o text-yellow"></i></span>
-                        <input type="text" class="form-control" placeholder="@AppLangResource["CUST_DATA_TABLE_NAME"]" ng-model="CurrentObjectDefinition.objectDefinitionName">
+                        <input type="text" class="form-control" placeholder="@AppLangResource["CUST_DATA_TABLE_NAME"]" ng-model="ctrl.CurrentObjectDefinition.objectDefinitionName">
                     </div>
                     <br />
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-star-o text-yellow"></i></span>
-                        <input type="text" class="form-control" placeholder="@AppLangResource["CUST_DATA_TABLE_KEY"]" ng-model="CurrentObjectDefinition.objectDefinitionKey">
+                        <input type="text" class="form-control" placeholder="@AppLangResource["CUST_DATA_TABLE_KEY"]" ng-model="ctrl.CurrentObjectDefinition.objectDefinitionKey">
                     </div>
                 </div>
             </div>
@@ -41,16 +41,16 @@
                                 <span class="sr-only"> @AppLangResource["DATA_CUST_TOGGLE_DROPDOWN"]</span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a ng-click="addPrimaryField(0)"> @AppLangResource["DATA_CUST_FIELD_STRING"]</a></li>
-                                <li><a ng-click="addPrimaryField(1)"> @AppLangResource["DATA_CUST_FIELD_INTEGER"]</a></li>
-                                <li><a ng-click="addPrimaryField(2)"> @AppLangResource["DATA_CUST_FIELD_BIGINTEGER"]</a></li>
-                                <li><a ng-click="addPrimaryField(3)"> @AppLangResource["DATA_CUST_FIELD_DATETIME"]</a></li>
-                                <li><a ng-click="addPrimaryField(4)"> @AppLangResource["DATA_CUST_FIELD_NUMBER"]</a></li>
+                                <li><a ng-click="ctrl.addPrimaryField(0)"> @AppLangResource["DATA_CUST_FIELD_STRING"]</a></li>
+                                <li><a ng-click="ctrl.addPrimaryField(1)"> @AppLangResource["DATA_CUST_FIELD_INTEGER"]</a></li>
+                                <li><a ng-click="ctrl.addPrimaryField(2)"> @AppLangResource["DATA_CUST_FIELD_BIGINTEGER"]</a></li>
+                                <li><a ng-click="ctrl.addPrimaryField(3)"> @AppLangResource["DATA_CUST_FIELD_DATETIME"]</a></li>
+                                <li><a ng-click="ctrl.addPrimaryField(4)"> @AppLangResource["DATA_CUST_FIELD_NUMBER"]</a></li>
                                 @*<li><a ng-click="addPrimaryField(5)">Binary Field</a></li>*@
-                                <li><a ng-click="addFileUploadField()">@AppLangResource["DATA_CUST_FIELD_FILE"]</a></li>
-                                <li><a ng-click="addObjectReferenceField()">@AppLangResource["DATA_CUST_FIELD_REFERNCE"]</a></li>
+                                <li><a ng-click="ctrl.addFileUploadField()">@AppLangResource["DATA_CUST_FIELD_FILE"]</a></li>
+                                <li><a ng-click="ctrl.addObjectReferenceField()">@AppLangResource["DATA_CUST_FIELD_REFERNCE"]</a></li>
                                 <li>
-                                    <a ng-click="addSingleSelectionField()">
+                                    <a ng-click="ctrl.addSingleSelectionField()">
                                         @AppLangResource["DATA_CUST_FIELD_SINGLE_CHOICE"]
                                     </a>
                                 </li>
@@ -61,7 +61,7 @@
                 <div class="box-body">
                     <div class="box-group" id="accordion">
                         <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
-                        <div class="panel box box-default" ng-repeat="fld in CurrentObjectDefinition.objectFields">
+                        <div class="panel box box-default" ng-repeat="fld in ctrl.CurrentObjectDefinition.objectFields">
                             <div class="box-header with-border">
                                 <h4 class="box-title">
                                     <span data-toggle="collapse" style="cursor:pointer;" data-parent="#accordion" href="#collapseItem_{{$index}}" aria-expanded="{{$first}}">
@@ -70,13 +70,13 @@
                                 </h4>
                                 <div class="box-tools pull-right">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-box-tool" ng-click="deleteObjectDefinitionField(fld)"><i class="fa fa-trash"></i> @AppLangResource["COMMON_BTN_DELETE"]</button>
+                                        <button type="button" class="btn btn-box-tool" ng-click="ctrl.deleteObjectDefinitionField(fld)"><i class="fa fa-trash"></i> @AppLangResource["COMMON_BTN_DELETE"]</button>
                                     </div>
                                 </div>
                             </div>
                             <div id="collapseItem_{{$index}}" class="panel-collapse collapse {{$first? 'in' : ''}}" aria-expanded="{{$first}}">
                                 <div class="box-body">
-                                    <div ng-include="getFieldTemplateUrl(fld.generalObjectDefinitionFiledType)"></div>
+                                    <div ng-include="ctrl.getFieldTemplateUrl(fld.generalObjectDefinitionFiledType)"></div>
                                 </div>
                             </div>
                         </div>
@@ -89,10 +89,10 @@
         <div class="box-footer">
             <div class="box-tools pull-right">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-box-tool" ng-click="saveChanges()">
+                    <button type="button" class="btn btn-box-tool" ng-click="ctrl.saveChanges()">
                         <i class="fa fa-save"></i> @AppLangResource["COMMON_BTN_SAVE"]
                     </button>
-                    <a class="btn btn-box-tool" href="/objdefs/{{groupId}}"><i class="fa fa-mail-reply"></i> @AppLangResource["DATA_CUST_BACKTOLIST"]</a>
+                    <button class="btn btn-box-tool" ng-click="ctrl.setEdit(false)"><i class="fa fa-mail-reply"></i> @AppLangResource["DATA_CUST_BACKTOLIST"]</button>
                 </div>
             </div>
         </div>

@@ -151,6 +151,23 @@
         };
     }); 
 
+    ngapp.directive("downloadFile", function () {
+        return {
+            link: function (scope, element) {
+                element.on("click", function (e) {
+                    e.preventDefault();
+                    var url = element.attr("href");
+
+                    if ($("#downloader").length) {
+                        $("#downloader").attr('src', url);
+                    } else {
+                        $('<iframe>', { id: 'downloader', src: url }).hide().appendTo('body');
+                    }
+                })
+            }
+        }
+    });
+
     ngapp.directive('icheck', function ($timeout, $parse) {
             return {
                 require: 'ngModel',
@@ -194,5 +211,40 @@
                     });
                 }
             };
-        });
+    });
+
+
+    ngapp.directive("dynamicLoad", function ($compile) {
+        return {
+            link: function (scope, element) {
+                element.on("click", function (e) {
+                    e.preventDefault();
+                    var href = element.attr("href");
+                    $.ajax({
+                        url: href,
+                        success: function (data) {
+                            scope.$apply(function () {
+                                //create an angular element. (this is still our "view")
+                                var el = angular.element(data);
+                                //append our view to the element of the directive.
+                                var elem = angular.element("#maincontent");
+                                //clear the content.
+                                elem.empty();
+                                //append new content.
+                                elem.append(el);
+
+                                //compile the view into a function.
+                                var compiled = $compile(el);
+
+                                //bind our view to the scope!
+                                compiled(scope);
+                            })
+                        }
+                    });
+                });
+            }
+        }
+    });
+
+
 })();

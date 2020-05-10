@@ -79,6 +79,7 @@ namespace FE.Creator.Admin
                options.ResponseType = Configuration.GetSection("Authentication:IdentityServer")
                                    .GetValue<string>("ResponseType");
 
+               options.SignInScheme = "Cookies";
                options.SaveTokens = true;
 
                options.Scope.Add("profile");

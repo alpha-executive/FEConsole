@@ -390,6 +390,9 @@
   <data name="DATA_CUST_ADVANCED_PROPERTY" xml:space="preserve">
     <value>自定义属性</value>
   </data>
+  <data name="DATA_CUST_BACKTODGROUP" xml:space="preserve">
+    <value>返回到数据表分组</value>
+  </data>
   <data name="DATA_CUST_BACKTOLIST" xml:space="preserve">
     <value>返回到列表</value>
   </data>
@@ -457,13 +460,13 @@
     <value>请选择一个自定义表</value>
   </data>
   <data name="DATA_CUST_TABLE" xml:space="preserve">
-    <value>自定义数据表定义</value>
+    <value>数据表定义</value>
   </data>
   <data name="DATA_CUST_TABLEGROUP" xml:space="preserve">
-    <value>自定义数据表分组</value>
+    <value>数据表分组</value>
   </data>
   <data name="DATA_CUST_TABLES_IN_GRP" xml:space="preserve">
-    <value>分组中的自定义数据表</value>
+    <value>分组中的数据表</value>
   </data>
   <data name="DATA_CUST_TABLE_CREATED" xml:space="preserve">
     <value>创建时间</value>
@@ -472,7 +475,7 @@
     <value>创建人</value>
   </data>
   <data name="DATA_CUST_TABLE_DATA" xml:space="preserve">
-    <value>自定义数据表数据</value>
+    <value>数据表数据</value>
   </data>
   <data name="DATA_CUST_TABLE_GRPKEY" xml:space="preserve">
     <value>数据表分组编码</value>

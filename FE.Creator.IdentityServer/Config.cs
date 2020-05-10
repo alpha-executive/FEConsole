@@ -38,14 +38,11 @@ namespace FE.Creator.IdentityServer
                               {
                                   Client bindClient = new Client();
                                   client.Bind(bindClient);
-
                                   if (bindClient.AllowedGrantTypes.Contains(GrantType.AuthorizationCode))
                                   {
                                       bindClient.RefreshTokenExpiration = TokenExpiration.Sliding;
                                       bindClient.RefreshTokenUsage = TokenUsage.ReUse;
-                                  }
-
-                                  //bindClient.AllowedGrantTypes = GrantTypes.Code;
+                                  }                                  
                                   return bindClient;
                               });
 

@@ -129,6 +129,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>取消</value>
   </data>
+  <data name="Click &lt;a class=&quot;PostLogoutRedirectUri&quot; href=&quot;{0}&quot;&gt;here&lt;/a&gt; to return to the&lt;span&gt;{1}&lt;/span&gt; application." xml:space="preserve">
+    <value>您可以点击&lt;a class="PostLogoutRedirectUri" href="{0}"&gt;这里&lt;/a&gt;返回到&lt;span&gt;{1}&lt;/span&gt;。</value>
+  </data>
   <data name="Create user or login failed" xml:space="preserve">
     <value>创建用户或登录失败。</value>
   </data>
@@ -158,6 +161,9 @@
   </data>
   <data name="LoginName" xml:space="preserve">
     <value>账号</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>退出登录</value>
   </data>
   <data name="Once complete, you may close this tab" xml:space="preserve">
     <value>跳转完成后， 您可能需要关闭当前窗口。</value>
@@ -197,6 +203,9 @@
   </data>
   <data name="You are now being returned to the application." xml:space="preserve">
     <value>您将转回到您访问的应用。</value>
+  </data>
+  <data name="You are now logged out" xml:space="preserve">
+    <value>您现在已经退出登录。</value>
   </data>
   <data name="You do not have access to that resource." xml:space="preserve">
     <value>你没有被授权访问本资源！</value>

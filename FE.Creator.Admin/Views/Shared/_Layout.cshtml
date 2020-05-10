@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>@ViewBag.Title - @AppLangResource["LAYOUT_ADMIN_CONSOLE"]</title>
+    <title>FECONSOLE - @AppLangResource["LAYOUT_ADMIN_CONSOLE"]</title>
     <link rel="stylesheet" type="text/css" href="~/lib/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="~/lib/adminlte-2.3.6/plugins/morris/morris.css">
     <link rel="stylesheet" type="text/css" href="~/lib/adminlte-2.3.6/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
@@ -24,7 +24,7 @@
     <link rel="stylesheet" type="text/css" href="~/lib/adminlte-2.3.6/dist/css/AdminLTE.min.css">
     <link rel="stylesheet" type="text/css" href="~/lib/adminlte-2.3.6/dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet" type="text/css" href="~/lib/adminlte-2.3.6/plugins/ckeditor/plugins/codesnippet/lib/highlight/styles/vs.css">
-
+    <link rel="stylesheet" type="text/css" href="~/lib/lightbox/css/angular-bootstrap-lightbox.min.css" />
     <link rel="stylesheet" type="text/css" href="~/lib/bootstrap/css/weather-icons.min.css">
     <link rel="stylesheet" type="text/css" href="~/lib/bootstrap/css/weather-icons-wind.min.css">
 
@@ -61,11 +61,12 @@
     <script type="text/javascript" src="~/lib/adminlte-2.3.6/plugins/fastclick/fastclick.js"></script>
     <script type="text/javascript" src="~/lib/adminlte-2.3.6/plugins/pace/pace.min.js"></script>
     <script type="text/javascript" src="~/lib/adminlte-2.3.6/plugins/iCheck/icheck.min.js"></script>
-    <link href="~/lib/lightbox/css/angular-bootstrap-lightbox.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/lib/adminlte-2.3.6/plugins/echarts/echarts.min.js"></script>
 
     <script type="text/javascript" src="~/lib/adminlte-2.3.6/plugins/ckeditor/ckeditor.js"></script>
     <script type="text/javascript" src="~/lib/adminlte-2.3.6/plugins/ckeditor/adapters/jquery.js"></script>
-    <script type="text/javascript" src="~/lib/adminlte-2.3.6/dist/js/app.js"></script>
+    <script type="text/javascript" src="~/lib/adminlte-2.3.6/plugins/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js"></script>
+    <script type="text/javascript" src="~/lib/adminlte-2.3.6/dist/js/app.js" asp-append-version="true"></script>
 
     <script type="text/javascript" src="~/lib/angularjs/angular.min.js"></script>
     <script type="text/javascript" src="~/lib/angularjs/angular-sanitize.min.js"></script>
@@ -80,19 +81,37 @@
 
     <script type="text/javascript" src="~/lib/ui-bootstrap/ui-bootstrap-tpls-1.3.2.js"></script>
     <script type="text/javascript" src="~/lib/lightbox/js/angular-bootstrap-lightbox.min.js"></script>
-    <script type="text/javascript" src="~/js/objectrepository.js"></script>
-    <script type="text/javascript" src="~/js/oauthauthentication.js"></script>
-    <script type="text/javascript" src="~/js/dataservice.js"></script>
-    <script type="text/javascript" src="~/js/pageservice.js"></script>
+    <script type="text/javascript" src="~/js/objectrepository.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/oauthauthentication.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/dataservice.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/apputilities.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/pageservice.js" asp-append-version="true"></script>
     <script type="text/javascript" src="~/js/objectutilservice.js" asp-append-version="true"></script>
     <script type="text/javascript" src="~/js/usersimpleprofile.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/bookscontroller.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/imagescontroller.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/systemevent.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/appsettingscontroller.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/usercontroller.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/taskcontroller.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/userprofilecontroller.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/diarycontroller.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/articlecontroller.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/documentcontroller.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/contactcontroller.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/accountrecordscontroller.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/generalobjectcontroller.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/definitiongroupcontroller.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/objectdefinitioncontroller.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/licensecontroller.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/dashboardcontroller.js" asp-append-version="true"></script>
 </head>
-<body class="hold-transition skin-blue-light sidebar-mini sidebar-collapse">
+<body class="hold-transition skin-blue-light sidebar-mini sidebar-collapse" ng-app="ngObjectRepository">
     <!-- Site wrapper -->
     <div class="wrapper">
         <header class="main-header">
             <!-- Logo -->
-            <a href="/" class="logo">
+            <a dynamic-load href="/ngview/Index/Dashboard/DashboardIndex" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>FE</b>A</span>
                 <!-- logo for regular state and mobile devices -->
@@ -137,7 +156,7 @@
                                     <ul class="menu">
                                     </ul>
                                 </li>
-                                <li class="footer"><a href="/ngview/Index/Settings/SystemEventIndex">@AppLangResource["APPEVENT_VIEW_ALL_EVENTS"]</a></li>
+                                <li class="footer"><a dynamic-load href="/ngview/Index/Settings/SystemEventIndex">@AppLangResource["APPEVENT_VIEW_ALL_EVENTS"]</a></li>
                             </ul>
                         </li>
                         <!-- Tasks: style can be found in dropdown.less -->
@@ -154,7 +173,7 @@
                                     </ul>
                                 </li>
                                 <li class="footer">
-                                    <a href="/ngview/Index/Efficiency/TaskIndex">@AppLangResource["TASKMGR_VIEW_ALL_TASK"]</a>
+                                    <a dynamic-load href="/ngview/Index/Efficiency/TaskIndex">@AppLangResource["TASKMGR_VIEW_ALL_TASK"]</a>
                                 </li>
                             </ul>
                         </li>
@@ -177,7 +196,7 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="/ngView/Index/SystemUsers/UserProfileIndex" class="btn btn-default btn-flat" id="loginUserProfileLink">@AppLangResource["LAYOUT_PROFILE"]</a>
+                                        <a dynamic-load href="/ngView/Index/SystemUsers/UserProfileIndex" class="btn btn-default btn-flat" id="loginUserProfileLink">@AppLangResource["LAYOUT_PROFILE"]</a>
                                     </div>
                                     <div class="pull-right">
                                         @using (Html.BeginForm("LogOff", "Home", FormMethod.Post, new { role = "form" }))
@@ -192,7 +211,7 @@
                         </li>
                         <!-- Control Sidebar Toggle Button -->
                         <li>
-                            <a href="/ngview/Index/Settings/AppSettingsIndex"><i class="fa fa-gears"></i></a>
+                            <a dynamic-load href="/ngview/Index/Settings/AppSettingsIndex"><i class="fa fa-gears"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -224,14 +243,14 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="/ngview/Index/Settings/SystemEventIndex"><i class="fa fa-bell"></i>@AppLangResource["APPEVENT_TITLE"]</a></li>
-                            <li><a href="/ngview/Index/Settings/AppSettingsIndex"><i class="fa fa-gears"></i>@AppLangResource["LAYOUT_SYSTEM_SETTINGS"]</a></li>
-                            <li>
-                                <a href="/ngview/Index/SystemUsers/UsersIndex">
+                            <li><a dynamic-load href="/ngview/Index/Settings/SystemEventIndex"><i class="fa fa-bell"></i>@AppLangResource["APPEVENT_TITLE"]</a></li>
+                            <li><a dynamic-load href="/ngview/Index/Settings/AppSettingsIndex"><i class="fa fa-gears"></i>@AppLangResource["LAYOUT_SYSTEM_SETTINGS"]</a></li>
+                            @*<li>
+                                <a dynamic-load href="/ngview/Index/SystemUsers/UsersIndex">
                                     <i class="fa fa-users"></i>@AppLangResource["LAYOUT_NAV_USRMGR"]
                                 </a>
-                            </li>
-                            <li><a href="/ngview/Index/LicenseManagement/LicenseIndex"><i class="fa fa-balance-scale"></i>@AppLangResource["LAYOUT_NAV_LICENSE"]</a></li>
+                            </li>*@
+                            <li><a dynamic-load href="/ngview/Index/LicenseManagement/LicenseIndex"><i class="fa fa-balance-scale"></i>@AppLangResource["LAYOUT_NAV_LICENSE"]</a></li>
                         </ul>
                     </li>
                     <li>
@@ -241,7 +260,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/ngview/Index/Photos/PhotoIndex">
+                        <a dynamic-load href="/ngview/Index/Photos/PhotoIndex">
                             <i class="fa fa-image"></i>
                             <span>@AppLangResource["LAYOUT_NAV_PHOTOS"]</span>
                         </a>
@@ -254,31 +273,31 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="/ngview/Index/Efficiency/TaskIndex"><i class="fa fa-tasks"></i> @AppLangResource["LAYOUT_NAV_TASKMGR"]</a></li>
-                            <li><a href="/ngview/Index/Efficiency/DiaryIndex"><i class="fa fa-edit"></i> @AppLangResource["LAYOUT_NAV_DIARY"]</a></li>
-                            <li><a href="/ngview/Index/Efficiency/ArticleIndex"><i class="fa fa-lightbulb-o"></i> @AppLangResource["LAYOUT_NAV_POSTS"]</a></li>
+                            <li><a dynamic-load href="/ngview/Index/Efficiency/TaskIndex"><i class="fa fa-tasks"></i> @AppLangResource["LAYOUT_NAV_TASKMGR"]</a></li>
+                            <li><a dynamic-load href="/ngview/Index/Efficiency/DiaryIndex"><i class="fa fa-edit"></i> @AppLangResource["LAYOUT_NAV_DIARY"]</a></li>
+                            <li><a dynamic-load href="/ngview/Index/Efficiency/ArticleIndex"><i class="fa fa-lightbulb-o"></i> @AppLangResource["LAYOUT_NAV_POSTS"]</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="/ngview/Index/Books/BookIndex">
+                        <a dynamic-load href="/ngview/Index/Books/BookIndex">
                             <i class="fa fa-book"></i>
                             <span>@AppLangResource["LAYOUT_NAV_BOOKS"]</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/ngview/Index/Documents/DocumentIndex">
+                        <a dynamic-load href="/ngview/Index/Documents/DocumentIndex">
                             <i class="fa fa-folder"></i>
                             <span>@AppLangResource["LAYOUT_NAV_DOCUMENTS"]</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/ngview/Index/Contacts/ContactsIndex">
+                        <a dynamic-load href="/ngview/Index/Contacts/ContactsIndex">
                             <i class="fa fa-phone-square"></i>
                             <span>@AppLangResource["LAYOUT_NAV_CONTACTS"]</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/ngview/Index/AccountManagement/AccountIndex">
+                        <a dynamic-load href="/ngview/Index/AccountManagement/AccountIndex">
                             <i class="fa fa-expeditedssl"></i>
                             <span>@AppLangResource["LAYOUT_NAV_ACTMGR"]</span>
                         </a>
@@ -292,19 +311,18 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="/ngview/Index/ObjectRepository/ObjectDefinitionGroupIndex"><i class="fa fa-object-group"></i> @AppLangResource["DATA_CUST_TABLEGROUP"]</a></li>
-                            <li><a href="/ngview/Index/ObjectRepository/ObjectDefinitionIndex"><i class="fa fa-table"></i> @AppLangResource["DATA_CUST_TABLE"]</a></li>
-                            <li><a href="/ngview/Index/ObjectRepository/GeneralObjectIndex"><i class="fa fa-opera"></i> @AppLangResource["DATA_CUST_TABLE_DATA"]</a></li>
+                            <li><a dynamic-load href="/ngview/Index/ObjectRepository/ObjectDefinitionGroupIndex"><i class="fa fa-database"></i> @AppLangResource["DATA_CUST_TABLEGROUP"]</a></li>
+                            <li><a dynamic-load href="/ngview/Index/ObjectRepository/GeneralObjectIndex"><i class="fa fa-table"></i> @AppLangResource["DATA_CUST_TABLE_DATA"]</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="/Home/Help">
+                        <a dynamic-load href="/Home/Help">
                             <i class="fa fa-question-circle"></i>
                             <span>@AppLangResource["INDEX_HELP"]</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/Home/About">
+                        <a dynamic-load href="/Home/About">
                             <i class="fa fa-info-circle"></i>
                             <span>@AppLangResource["INDEX_ABOUT"]</span>
                         </a>
@@ -319,12 +337,12 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    @ViewBag.Title - @AppLangResource["LAYOUT_ADMIN_CONSOLE"]
+                    FECONSOLE - @AppLangResource["LAYOUT_ADMIN_CONSOLE"]
                     <small>@AppLangResource["LAYOUT_SUBTITLE"]</small>
                 </h1>
             </section>
             <!-- Main content -->
-            <section class="content">
+            <section class="content" id="maincontent">
                 @RenderBody()
             </section>
             <!-- /.content -->
@@ -338,9 +356,6 @@
         </footer>
     </div>
     @RenderSection("scripts", required: false)
-    <script type="text/javascript">
-        // To make Pace works on Ajax calls
-        $(document).ajaxStart(function () { Pace.restart(); });
-    </script>
+    <script type="text/javascript" src="~/js/startpace.js" asp-append-version="true"></script>
 </body>
 </html>
