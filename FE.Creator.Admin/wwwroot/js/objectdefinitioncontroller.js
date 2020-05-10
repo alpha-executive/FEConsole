@@ -26,11 +26,11 @@
         };
     });
 
-    ObjectDefinitionController.$inject = ["$scope", "ObjectRepositoryDataService", "UserFactory"];
+    ObjectDefinitionController.$inject = ["$scope", "ObjectRepositoryDataService", "UserFactory", "Notification"];
     //ObjectDefintionListController.$inject = ["$scope", "$route", "$routeParams", "$location", "ObjectRepositoryDataService", "UserFactory"];
     //ObjectDefintionEditController.$inject = ["$scope", "$route", "$routeParams", "$location", "ObjectRepositoryDataService", "Notification", "UserFactory"];
 
-    function ObjectDefinitionController($scope, ObjectRepositoryDataService, UserFactory) {
+    function ObjectDefinitionController($scope, ObjectRepositoryDataService, UserFactory, Notification) {
         var scopeContext = this;
         scopeContext.ObjectDefintions = [];
         
@@ -90,16 +90,12 @@
                 this.CurrentObjectDefinition = definition;
             }
             else {
-                if (scopeContext.CurrentObjectDefinition == null
-                    || scopeContext.CurrentObjectDefinition == "") {
-                    scopeContext.CurrentObjectDefinition = {};
-                }
-
+                scopeContext.CurrentObjectDefinition = {};
                 if (scopeContext.CurrentObjectDefinition.objectFields == null) {
                     scopeContext.CurrentObjectDefinition.objectFields = new Array();
                 }
 
-                scopeContext.CurrentObjectDefinition.objectDefinitionGroupID = scopeContext.groupId;
+                scopeContext.CurrentObjectDefinition.objectDefinitionGroupID = scopeContext.currentObjectDefinitionGroup.groupID;
             }
         }
 
@@ -139,7 +135,7 @@
                 objectDefinitionFieldKey: AppLang.DATA_CUST_FIELD_OBJ_REF_KEY,
                 generalObjectDefinitionFiledType: 1
             };
-            scopeContext.CurrentObjectDefinition.push(field);
+            scopeContext.CurrentObjectDefinition.objectFields.push(field);
         }
 
         function addSingleSelectionField() {
@@ -148,7 +144,7 @@
                 objectDefinitionFieldKey: AppLang.DATA_CUST_FIELD_SL_KEY,
                 generalObjectDefinitionFiledType: 2
             };
-            scopeContext.CurrentObjectDefinition.push(field);
+            scopeContext.CurrentObjectDefinition.objectFields.push(field);
         }
 
         function deleteSingleSelectionItem(field, item) {
@@ -227,6 +223,11 @@
                             positionX: 'right',
                             title: AppLang.COMMON_DLG_TITLE_WARN,
                         });
+
+                        if (scopeContext.CurrentObjectDefinition.objectDefinitionID == null) {
+                            scopeContext.ObjectDefintions.push(data);
+                            scopeContext.CurrentObjectDefinition = data;
+                        }
                     });
             }
             catch (e) {
