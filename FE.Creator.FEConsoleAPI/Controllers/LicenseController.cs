@@ -488,7 +488,7 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
             XDocument licenseDocument = new XDocument();
 
             XElement grandListElement = new XElement("grantlist", modules.ToArray());
-            grandListElement.Add(new XAttribute("expireddate", DateTime.Now.AddYears(1).ToString("yyyy/MM/dd")));
+            grandListElement.Add(new XAttribute("expireddate", DateTime.Now.AddYears(1).ToString("MM/dd/yyyy")));
             grandListElement.Add(new XAttribute("version", "1.0.0.0"));
 
             byte[] signedData = cryptoGraphysvc.HashAndSignBytes(Encoding.UTF8.GetBytes(grandListElement.ToString()),

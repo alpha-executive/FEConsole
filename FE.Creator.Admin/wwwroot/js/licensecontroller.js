@@ -27,7 +27,7 @@
 
                 file.upload = Upload.upload({
                     url: vm.baseUrl + '/api/License',
-                    data: { file: file }
+                    data: { licenseFile: file }
                 });
 
                 file.upload.then(function (response) {
