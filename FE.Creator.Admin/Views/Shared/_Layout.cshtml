@@ -3,6 +3,7 @@
 @{
     var baseUrl = Context.WebApiBaseUrl();
     var fePortalUrl = Context.FEPortalUrl();
+    var locale = Context.GetCurrentCulture();
 }
 <!DOCTYPE html>
 <html>
@@ -36,8 +37,8 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 
-    <script type="text/javascript" src='@Url.Action("GlobalJSVariableFile","Home")'></script>
-    <script type="text/javascript" src='@Url.Action("LocalizationJS","Home")'></script>
+    <script type="text/javascript" src='/home/globaljsvariablefile?@Guid.NewGuid().ToString()'></script>
+    <script type="text/javascript" src="/home/localizationjs?locale=@locale"></script>
 
     <script type="text/javascript" src="~/lib/modernizr/modernizr-2.6.2.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

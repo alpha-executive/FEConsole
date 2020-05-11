@@ -69,15 +69,17 @@ namespace FE.Creator.Admin.Controllers
             return View("~/Views/AngularView/Server/About/About.cshtml");
         }
 
-        public async Task<ActionResult> Help()
+        public ActionResult Help()
         {
             logger.LogDebug(string.Format("{0} access the Help page", User.Identity.Name));
             string chineseHelp = "~/Views/AngularView/Server/Help/Help_ZH_CN.cshtml";
-            string lang = await GetSysConfiguredLanguage();
+            string lang = HttpContext.GetCurrentCulture();
+            //await GetSysConfiguredLanguage();
 
             if (!string.IsNullOrEmpty(lang))
             {
-                if ("zh-CN".Equals(lang, StringComparison.InvariantCultureIgnoreCase))
+                if ("zh-CN".Equals(lang, StringComparison.InvariantCultureIgnoreCase)
+                    || "zh".Equals(lang, StringComparison.InvariantCultureIgnoreCase))
                 {
                     return View(chineseHelp);
                 }
@@ -85,7 +87,9 @@ namespace FE.Creator.Admin.Controllers
             else
             {
                 //if language is not set in appsettings, apply chinese language if it's in chinese environment.
-                if (Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName.Equals("zh-CN", StringComparison.InvariantCultureIgnoreCase))
+                var threadLocale = Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName;
+                if (threadLocale.Equals("zh-CN", StringComparison.InvariantCultureIgnoreCase)
+                    || threadLocale.Equals("zh", StringComparison.InvariantCultureIgnoreCase))
                 {
                     return View(chineseHelp);
                 }
@@ -94,6 +98,7 @@ namespace FE.Creator.Admin.Controllers
             return View("~/Views/AngularView/Server/Help/Help.cshtml");
         }
 
+      
         private async Task<string> GetSysConfiguredLanguage()
         {
             var client = _httpClientFactory.CreateClient("client");
@@ -104,15 +109,15 @@ namespace FE.Creator.Admin.Controllers
             return lang;
         }
 
-        protected async Task<FileResult> getLanguageJSFilePath()
+        protected FileResult getLanguageJSFilePath(string lang)
         {
             string enUsPath = _fileProvider.GetFileInfo(Path.Combine("js", "lang", "applang.en_us.js")).PhysicalPath;
             string zhCNPath = _fileProvider.GetFileInfo(Path.Combine("js", "lang", "applang.zh_cn.js")).PhysicalPath;
 
-            string lang = await GetSysConfiguredLanguage();
             if (!string.IsNullOrEmpty(lang))
             {
-                if ("zh-CN".Equals(lang, StringComparison.InvariantCultureIgnoreCase))
+                if ("zh-CN".Equals(lang, StringComparison.InvariantCultureIgnoreCase)
+                    ||"zh".Equals(lang, StringComparison.InvariantCultureIgnoreCase))
                 {
                     return new PhysicalFileResult(zhCNPath, new MediaTypeHeaderValue("text/javascript"));
                 }
@@ -120,7 +125,9 @@ namespace FE.Creator.Admin.Controllers
             else
             {
                 //if language is not set in appsettings, apply chinese language if it's in chinese environment.
-                if (Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName.Equals("zh-CN", StringComparison.InvariantCultureIgnoreCase))
+                var threadLocale = Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName;
+                if (threadLocale.Equals("zh-CN", StringComparison.InvariantCultureIgnoreCase)
+                    || threadLocale.Equals("zh", StringComparison.InvariantCultureIgnoreCase))
                 {
                     return new PhysicalFileResult(zhCNPath, new MediaTypeHeaderValue("text/javascript"));
                 }
@@ -130,9 +137,9 @@ namespace FE.Creator.Admin.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> LocalizationJS()
+        public ActionResult LocalizationJS(string locale)
         {
-            var fileResult = await getLanguageJSFilePath();
+            var fileResult = getLanguageJSFilePath(locale);
 
             return fileResult;
         }

@@ -105,34 +105,40 @@ namespace FE.Creator.Admin
                 options.DefaultRequestCulture = new RequestCulture("en");
                 options.SupportedCultures = supportedCultures;
                 options.SupportedUICultures = supportedCultures;
-
-                options.AddInitialRequestCultureProvider(new CustomRequestCultureProvider(async context =>
+                //clear the default culture provider.
+                options.RequestCultureProviders.Insert(0, new CustomRequestCultureProvider(async context =>
                 {
-                    var httpFactory = context.RequestServices.GetRequiredService<IHttpClientFactory>();
-                    HttpClient client = httpFactory != null ?
-                                                httpFactory.CreateClient("client") : new HttpClient();
-                    string baseUrl = Configuration["SiteSettings:FEconsoleApiUrl"];
-
-                    var token = await context.GetTokenAsync("access_token");
-                    client.SetBearerToken(token);
-                    var lang = await client.GetSysConfiguredLanguage(baseUrl, null);
-                    if (!string.IsNullOrEmpty(lang))
+                    try
                     {
-                        if ("zh-CN".Equals(lang, StringComparison.InvariantCultureIgnoreCase))
+                        var httpFactory = context.RequestServices.GetRequiredService<IHttpClientFactory>();
+                        HttpClient client = httpFactory != null ?
+                                                    httpFactory.CreateClient("client") : new HttpClient();
+                        string baseUrl = Configuration["SiteSettings:FEconsoleApiUrl"];
+
+                        var token = await context.GetTokenAsync("access_token");
+                        client.SetBearerToken(token);
+                        var lang = await client.GetSysConfiguredLanguage(baseUrl, null);
+                        if (!string.IsNullOrEmpty(lang))
                         {
-                            return new ProviderCultureResult("zh");
-                        }
-                        else
-                        {
-                            return new ProviderCultureResult("en");
+                            if ("zh-CN".Equals(lang, StringComparison.InvariantCultureIgnoreCase))
+                            {
+                                return new ProviderCultureResult("zh");
+                            }
+                            else
+                            {
+                                return new ProviderCultureResult("en");
+                            }
                         }
                     }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
 
-                    var requestCulture = context.Features.Get<IRequestCultureFeature>();
+                    //var requestCulture = context.Features.Get<IRequestCultureFeature>();
                     // fail back to the request culture.
-                    return new ProviderCultureResult(requestCulture != null ?
-                        requestCulture.RequestCulture.UICulture.Name
-                        : "en");
+                    //return new ProviderCultureResult("en");
+                    return null;
                 }));
             });
 

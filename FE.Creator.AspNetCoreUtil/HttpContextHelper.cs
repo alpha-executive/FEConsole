@@ -4,8 +4,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
-using System.Collections.Generic;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Localization;
+using System.Threading;
 
 namespace FE.Creator.AspNetCoreUtil
 {
@@ -45,6 +46,17 @@ namespace FE.Creator.AspNetCoreUtil
 
             return string.Empty;
         }
+
+        public static string GetCurrentCulture(this HttpContext httpContext)
+        {
+            var rqf = httpContext.Features.Get<IRequestCultureFeature>();
+            // Culture contains the information of the requested culture
+            var culture = rqf.RequestCulture.Culture;
+
+            return culture != null ? culture.Name :
+                        Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
+        }
+
 
         public static string GetLoginUserEmail(this HttpContext httpContext)
         {
