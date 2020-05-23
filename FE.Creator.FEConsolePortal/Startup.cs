@@ -1,27 +1,32 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Threading.Tasks;
-using IdentityModel.AspNetCore.AccessTokenManagement;
+using System.Net.Http;
 using IdentityModel.Client;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using FE.Creator.AspNetCoreUtil;
+using IdentityModel.AspNetCore.AccessTokenManagement;
+using FE.Creator.FEConsole.Shared.Models;
+using Microsoft.AspNetCore.HttpOverrides;
+using System.Net;
 
 namespace FE.Creator.FEConsolePortal
 {
     public class Startup
     {
+        ReverseProxyConfig reverseProxyConfig = null;
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            reverseProxyConfig = new ReverseProxyConfig();
+            configuration.GetSection("SiteSettings:ReverseProxy")
+                         .Bind(reverseProxyConfig);
         }
 
         public IConfiguration Configuration { get; }
@@ -30,6 +35,30 @@ namespace FE.Creator.FEConsolePortal
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            if (reverseProxyConfig?.Enabled == true)
+            {
+                services.Configure<ForwardedHeadersOptions>(options =>
+                {
+                    foreach (var ip in reverseProxyConfig.AllowedIPAddress)
+                    {
+                        options.KnownProxies.Add(IPAddress.Parse(ip));
+                    }
+                });
+            }
+
+            services.AddAccessTokenManagement(options =>
+            {
+                options.Client.Clients.Add("identityserver", new ClientCredentialsTokenRequest
+                {
+                    Address = Configuration["Authentication:IdentityServer:TokenEndPoint"],
+                    ClientId = Configuration["Authentication:IdentityServer:ClientId"],
+                    ClientSecret = Configuration["Authentication:IdentityServer:ClientSecret"],
+                    Scope = "feconsoleapi"
+                });
+            });
+            services.AddHttpClient("client")
+                    .AddHttpMessageHandler<ClientAccessTokenHandler>();
 
             services.AddLocalization(options => options.ResourcesPath = "Lang");
             services.Configure<RequestLocalizationOptions>(options =>
@@ -43,24 +72,43 @@ namespace FE.Creator.FEConsolePortal
                 options.DefaultRequestCulture = new RequestCulture("en");
                 options.SupportedCultures = supportedCultures;
                 options.SupportedUICultures = supportedCultures;
-            });
 
-            services.AddAccessTokenManagement(options =>
-            {
-                options.Client.Clients.Add("identityserver", new ClientCredentialsTokenRequest
+                //clear the default culture provider.
+                options.RequestCultureProviders.Insert(0, new CustomRequestCultureProvider(async context =>
                 {
-                    Address = Configuration["Authentication:IdentityServer:TokenEndPoint"],
-                    ClientId = Configuration["Authentication:IdentityServer:ClientId"],
-                    ClientSecret = Configuration["Authentication:IdentityServer:ClientSecret"],
-                    Scope = "feconsoleapi"
-                });
-            });
+                    try
+                    {
+                        var httpFactory = context.RequestServices.GetRequiredService<IHttpClientFactory>();
+                        HttpClient client = httpFactory != null ?
+                                                    httpFactory.CreateClient("client") : new HttpClient();
+                        string baseUrl = Configuration["SiteSettings:FEconsoleApiUrl"];
 
-            services.AddClientAccessTokenClient("client", configureClient: client =>
-            {
-                client.BaseAddress = new Uri("https://demo.identityserver.io/api/");
-            });
+                        //var token = await context.GetTokenAsync("access_token");
+                        //client.SetBearerToken(token);
+                        var lang = await client.GetSysConfiguredLanguage(baseUrl, null);
+                        if (!string.IsNullOrEmpty(lang))
+                        {
+                            if ("zh-CN".Equals(lang, StringComparison.InvariantCultureIgnoreCase))
+                            {
+                                return new ProviderCultureResult("zh");
+                            }
+                            else
+                            {
+                                return new ProviderCultureResult("en");
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
 
+                    //var requestCulture = context.Features.Get<IRequestCultureFeature>();
+                    // fail back to the request culture.
+                    //return new ProviderCultureResult("en");
+                    return null;
+                }));
+            });
 
             services.AddMvc()
            .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix);
@@ -85,6 +133,15 @@ namespace FE.Creator.FEConsolePortal
 
             app.UseRouting();
             app.UseRequestLocalization();
+
+            if (reverseProxyConfig?.Enabled == true)
+            {
+                app.UseForwardedHeaders(new ForwardedHeadersOptions
+                {
+                    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+                });
+            }
+
             app.UseAuthentication();
             app.UseAuthorization();
 

@@ -18,18 +18,25 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authentication.OAuth.Claims;
 using IdentityModel;
 using FE.Creator.AspNetCoreUtil;
+using FE.Creator.FEConsole.Shared.Models;
+using Microsoft.AspNetCore.HttpOverrides;
+using System.Net;
 
 namespace FE.Creator.Admin
 {
     public class Startup
     {
         IWebHostEnvironment _env = null;
+        ReverseProxyConfig reverseProxyConfig = null;
 
         public Startup(IConfiguration configuration,
             IWebHostEnvironment env)
         {
             this._env = env;
             Configuration = configuration;
+            reverseProxyConfig = new ReverseProxyConfig();
+            configuration.GetSection("SiteSettings:ReverseProxy")
+                         .Bind(reverseProxyConfig);
         }
 
         public IConfiguration Configuration { get; }
@@ -43,6 +50,16 @@ namespace FE.Creator.Admin
             var physicalProvider = _env.WebRootFileProvider;
             services.AddSingleton<IFileProvider>(physicalProvider);
 
+            if(reverseProxyConfig?.Enabled == true)
+            {
+                services.Configure<ForwardedHeadersOptions>(options =>
+                {
+                    foreach(var ip in reverseProxyConfig.AllowedIPAddress)
+                    {
+                        options.KnownProxies.Add(IPAddress.Parse(ip));
+                    }
+                });
+            }
 
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
             services.AddHttpClient("client")
@@ -167,6 +184,15 @@ namespace FE.Creator.Admin
             app.UseStaticFiles();
             app.UseRouting();
             app.UseRequestLocalization();
+
+            if (reverseProxyConfig?.Enabled == true)
+            {
+                app.UseForwardedHeaders(new ForwardedHeadersOptions
+                {
+                    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+                });
+            }
+
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>

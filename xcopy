@@ -1,0 +1,5 @@
+
+C:\WorkSpace\PlayGround\startnetcore>dotnet FE.Creator.IdentityServer.dll --urls="https://*:5002" 
+
+C:\WorkSpace\PlayGround\startnetcore>pause
+Press any key to continue . . . 

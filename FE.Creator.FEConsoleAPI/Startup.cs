@@ -1,19 +1,18 @@
 using System;
 using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Net;
 using FE.Creator.Cryptography;
+using FE.Creator.FEConsole.Shared.Models;
 using FE.Creator.FEConsole.Shared.Models.FileStorage;
 using FE.Creator.FEConsole.Shared.Services.Cryptography;
 using FE.Creator.FEConsole.Shared.Services.FileStorage;
 using FE.Creator.FEConsoleAPI.MVCExtension;
 using FE.Creator.FileStorage;
 using FE.Creator.ObjectRepository;
-using IdentityModel.AspNetCore.AccessTokenManagement;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,9 +23,13 @@ namespace FE.Creator.FEConsoleAPI
     public class Startup
     {
         private static readonly string FEAPIAllowSpecificOrigins = "_FEAPIAllowSpecificOrigins";
+        ReverseProxyConfig reverseProxyConfig = null;
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            reverseProxyConfig = new ReverseProxyConfig();
+            configuration.GetSection("SiteSettings:ReverseProxy")
+                         .Bind(reverseProxyConfig);
         }
 
         public IConfiguration Configuration { get; }
@@ -77,6 +80,18 @@ namespace FE.Creator.FEConsoleAPI
                                         .WithOrigins(cors.ToArray());
                                   });
             });
+
+            if (reverseProxyConfig?.Enabled == true)
+            {
+                services.Configure<ForwardedHeadersOptions>(options =>
+                {
+                    foreach (var ip in reverseProxyConfig.AllowedIPAddress)
+                    {
+                        options.KnownProxies.Add(IPAddress.Parse(ip));
+                    }
+                });
+            }
+
 
             services.AddAuthentication("Bearer")
              .AddJwtBearer("Bearer", options =>
@@ -141,6 +156,13 @@ namespace FE.Creator.FEConsoleAPI
 
             app.UseCors(FEAPIAllowSpecificOrigins);
 
+            if (reverseProxyConfig?.Enabled == true)
+            {
+                app.UseForwardedHeaders(new ForwardedHeadersOptions
+                {
+                    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+                });
+            }
 
             app.UseAuthentication();
             app.UseAuthorization();

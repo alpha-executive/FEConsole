@@ -1,10 +1,12 @@
 ﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
+using FE.Creator.FEConsole.Shared.Models;
 using FE.Creator.IdentityServer.Data;
 using FE.Creator.IdentityServer.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
@@ -13,11 +15,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Net;
 
 namespace FE.Creator.IdentityServer
 {
     public class Startup
     {
+        ReverseProxyConfig reverseProxyConfig = null;
         public IWebHostEnvironment Environment { get; }
         public IConfiguration Configuration { get; }
 
@@ -25,11 +29,25 @@ namespace FE.Creator.IdentityServer
         {
             Environment = environment;
             Configuration = configuration;
+            reverseProxyConfig = new ReverseProxyConfig();
+            configuration.GetSection("SiteSettings:ReverseProxy")
+                         .Bind(reverseProxyConfig);
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            if (reverseProxyConfig?.Enabled == true)
+            {
+                services.Configure<ForwardedHeadersOptions>(options =>
+                {
+                    foreach (var ip in reverseProxyConfig.AllowedIPAddress)
+                    {
+                        options.KnownProxies.Add(IPAddress.Parse(ip));
+                    }
+                });
+            }
 
             // configures IIS out-of-proc settings (see https://github.com/aspnet/AspNetCore/issues/14882)
             services.Configure<IISOptions>(iis =>
@@ -128,6 +146,15 @@ namespace FE.Creator.IdentityServer
             app.UseRouting();
             app.UseRequestLocalization();
             app.UseIdentityServer();
+
+            if (reverseProxyConfig?.Enabled == true)
+            {
+                app.UseForwardedHeaders(new ForwardedHeadersOptions
+                {
+                    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+                });
+            }
+
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {

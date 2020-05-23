@@ -59,20 +59,21 @@ namespace FE.Creator.FEConsolePortal
             });
         }
 
-        protected async Task<string> getAppSettingsLang()
+        protected string getAppSettingsLang()
         {
-            var client = _httpClientFactory.CreateClient("client");
-            /*var token = await HttpContext.GetClientAccessTokenAsync();
-            client.SetBearerToken(token);*/
-            string lang = await client.GetSysConfiguredLanguage(HttpContext.WebApiBaseUrl(), this._logger);
-            
+            //var client = _httpClientFactory.CreateClient("client");
+            ///*var token = await HttpContext.GetClientAccessTokenAsync();
+            //client.SetBearerToken(token);*/
+            //string lang = await client.GetSysConfiguredLanguage(HttpContext.WebApiBaseUrl(), this._logger);
+            var lang = HttpContext.GetCurrentCulture();
+
             return lang;
         }
 
         // GET: Portal/PortalHome
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            string flxSliderView = await PortalFlexSlider();
+            string flxSliderView = PortalFlexSlider();
             return View(nameof(Index), flxSliderView);
         }
 
@@ -459,13 +460,14 @@ namespace FE.Creator.FEConsolePortal
             return result;
         }
 
-        public async Task<string> PortalFlexSlider()
+        public string PortalFlexSlider()
         {
-            string lang = await getAppSettingsLang();
+            string lang = getAppSettingsLang();
 
             if (!string.IsNullOrEmpty(lang))
             {
-                if ("zh-CN".Equals(lang, StringComparison.InvariantCultureIgnoreCase))
+                if ("zh-CN".Equals(lang, StringComparison.InvariantCultureIgnoreCase)
+                    || "zh".Equals(lang, StringComparison.InvariantCultureIgnoreCase))
                 {
                     return "PortalFlexSlider_ZH_CN";
                 }
@@ -473,7 +475,9 @@ namespace FE.Creator.FEConsolePortal
             else
             {
                 //if language is not set in appsettings, apply chinese language if it's in chinese environment.
-                if (Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName.Equals("zh-CN", StringComparison.InvariantCultureIgnoreCase))
+                var threadCulture = Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName;
+                if (threadCulture.Equals("zh-CN", StringComparison.InvariantCultureIgnoreCase)
+                    || threadCulture.Equals("zh", StringComparison.InvariantCultureIgnoreCase))
                 {
                     return "PortalFlexSlider_ZH_CN";
                 }
