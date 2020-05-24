@@ -5,9 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\css\" />
+      <None Include="wwwroot\*" />
   </ItemGroup>
-
+  
   <ItemGroup>
     <PackageReference Include="IdentityModel.AspNetCore" Version="1.0.0-rc.3" />
   </ItemGroup>

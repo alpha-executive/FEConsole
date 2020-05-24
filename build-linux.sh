@@ -46,6 +46,10 @@ function cleanpublishdir()
 function deploystartupscript(){
   local platform=$1
   cp -f linux-scripts/quickstart.sh fepublish/$platform
+  cp -f linux-scripts/install_as_service.sh  fepublish/$platform
+  cp -f linux-scripts/stop_service.sh fepublish/$platform
+  cp -f linux-scripts/uninstall_services.sh fepublish/$platform
+  cp -rf linux-scripts/systemdservice fepublish/$platform
 }
 
 function generatepackage()
@@ -66,6 +70,11 @@ function finalizepackages()
 {
    platform=$1
    tar -czvf fepublish/feconsole_$platform.tar.gz -C fepublish/$platform .
+}
+
+function deployinstallscript()
+{
+  cp -f linux-scripts/install.sh fepublish/
 }
 
 buildproject "linux-x64"
@@ -101,3 +110,5 @@ echo "database done"
 generatepackage "linux-arm64/publish/*" "linux-arm64"
 deploystartupscript "linux-arm64"
 finalizepackages "linux-arm64"
+
+deployinstallscript
