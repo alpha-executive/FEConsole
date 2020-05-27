@@ -29,6 +29,8 @@ namespace FE.Creator.Admin
         IWebHostEnvironment _env = null;
         ReverseProxyConfig reverseProxyConfig = null;
 
+        private static readonly string FEAPIAllowSpecificOrigins = "_FEAPIAllowSpecificOrigins";
+
         public Startup(IConfiguration configuration,
             IWebHostEnvironment env)
         {
@@ -60,6 +62,21 @@ namespace FE.Creator.Admin
                     }
                 });
             }
+
+
+            services.AddCors(options =>
+            {
+                List<string> cors = new List<string>();
+                Configuration.Bind("SiteSettings:CORS", cors);
+                options.AddPolicy(name: FEAPIAllowSpecificOrigins,
+                                  builder =>
+                                  {
+                                      builder
+                                        .AllowAnyMethod()
+                                        .AllowAnyHeader()
+                                        .WithOrigins(cors.ToArray());
+                                  });
+            });
 
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
             services.AddHttpClient("client")
