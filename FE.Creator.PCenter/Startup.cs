@@ -118,10 +118,15 @@ namespace coreaspnet
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                app.UseHsts();
+
+                bool forceHttps = Configuration.GetValue<bool>("SiteSettings:ForceHttps");
+                if(forceHttps)
+                {
+                    app.UseHsts();
+                    app.UseHttpsRedirection();
+                }
             }
 
-            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseSession();

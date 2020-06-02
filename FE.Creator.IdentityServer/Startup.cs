@@ -139,6 +139,12 @@ namespace FE.Creator.IdentityServer
             else
             {
                 app.UseExceptionHandler("/Home/Error");
+                bool forceHttps = Configuration.GetValue<bool>("SiteSettings:ForceHttps");
+                if(forceHttps)
+                {
+                    app.UseHsts();
+                    app.UseHttpsRedirection();
+                }
             }
 
             app.UseStaticFiles();

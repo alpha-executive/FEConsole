@@ -98,7 +98,8 @@ namespace FE.Creator.FEConsoleAPI
              {
                  options.Authority = Configuration.GetSection("Authentication:IdentityServer")
                                    .GetValue<string>("Url");
-                 options.RequireHttpsMetadata = true;
+                 options.RequireHttpsMetadata = Configuration.GetSection("Authentication:IdentityServer")
+                                   .GetValue<bool>("RequireHttpsMetadata");
 
                  options.Audience = "feconsoleapi";
              });
@@ -148,9 +149,14 @@ namespace FE.Creator.FEConsoleAPI
             else
             {
                 app.UseExceptionHandler("/Error");
-                app.UseHsts();
+
+                bool forceHttps = Configuration.GetValue<bool>("SiteSettings:ForceHttps");
+                if(forceHttps)
+                {
+                    app.UseHsts();
+                    app.UseHttpsRedirection();
+                }
             }
-            app.UseHttpsRedirection();
 
             app.UseRouting();
 

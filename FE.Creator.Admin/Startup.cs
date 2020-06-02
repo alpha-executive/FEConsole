@@ -104,7 +104,8 @@ namespace FE.Creator.Admin
            {
                options.Authority = Configuration.GetSection("Authentication:IdentityServer")
                                    .GetValue<string>("Url");
-               options.RequireHttpsMetadata = true;
+               options.RequireHttpsMetadata = Configuration.GetSection("Authentication:IdentityServer")
+                                   .GetValue<bool>("RequireHttpsMetadata");
 
                options.ClientId = Configuration.GetSection("Authentication:IdentityServer")
                                    .GetValue<string>("ClientId");
@@ -184,6 +185,7 @@ namespace FE.Creator.Admin
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
+            
             if (env.IsDevelopment())
             {
                 logger.LogInformation("Developer Exception page is Used.");
@@ -194,10 +196,16 @@ namespace FE.Creator.Admin
             {
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
+                bool forceHttps = Configuration.GetValue<bool>("SiteSettings:ForceHttps");
+                if(forceHttps)
+                {
+                    app.UseHsts();
+                    app.UseHttpsRedirection();
+                }
+                
                 logger.LogInformation("Working in Production Mode.");
             }
-            app.UseHttpsRedirection();
+
             app.UseStaticFiles();
             app.UseRouting();
             app.UseRequestLocalization();
