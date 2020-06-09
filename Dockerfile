@@ -1,16 +1,18 @@
 
 #build stage
-FROM golang:alpine AS builder
-WORKDIR /go/src/app
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
+WORKDIR /app
+COPY *.sln .
 COPY . .
-RUN apk add --no-cache git
-RUN go get -d -v ./...
-RUN go install -v ./...
+RUN dotnet restore
 
-#final stage
-FROM alpine:latest
-RUN apk --no-cache add ca-certificates
-COPY --from=builder /go/bin/app /app
-ENTRYPOINT ./app
-LABEL Name=startnetcore Version=0.0.1
-EXPOSE 3000
+# copy everything else and build app
+WORKDIR /app/FE.Creator.FEConsolePortal
+RUN dotnet publish -c Release -o out
+
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 AS runtime
+WORKDIR /app
+COPY --from=build /app/FE.Creator.FEConsolePortal/out ./
+ENTRYPOINT ["dotnet", "FE.Creator.FEConsolePortal.dll"]
+
+
