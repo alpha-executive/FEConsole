@@ -8,7 +8,7 @@ RUN dotnet restore
 
 # copy everything else and build app
 WORKDIR /app/FE.Creator.FEConsoleAPI
-RUN dotnet publish -c Release -o out && rm -f out/*.json
+RUN dotnet publish -c Release -o out && rm -f out/appsettings*.json
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 AS runtime
 WORKDIR /app
