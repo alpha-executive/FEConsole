@@ -8,11 +8,11 @@ RUN dotnet restore
 
 # copy everything else and build app
 WORKDIR /app/FE.Creator.FEConsoleAPI
-RUN dotnet publish -c Release -o out
+RUN dotnet publish -c Release -o out && rm -f out/*.json
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 AS runtime
 WORKDIR /app
 COPY --from=build /app/FE.Creator.FEConsoleAPI/out ./
-ENTRYPOINT ["dotnet", "FE.Creator.FE.Creator.FEConsoleAPI.dll"]
+ENTRYPOINT ["dotnet", "FE.Creator.FEConsoleAPI.dll"]
 
 

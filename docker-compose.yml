@@ -1,8 +1,39 @@
-version: '2.1'
+version: '3.8'
 
 services:
-  startnetcore:
-    image: FE.Creator.PCenter
-    build: .
+  fewebapi:
+    image: feconsole-webai
+    configs:
+      - source: fewebapi-appsettings
+        target: /app/appsettings.Production.json
+        mode: 0444
+     # uncomment this if need https certificate
+     # - source: feconsole-cert
+     #   target: /app/cert/feconsole.pfx
+     #   mode: 0444
+    volumes:
+       - type: volume
+         source: appdata
+         target: /app/appdata
+       - type: volume
+         source: dbdata
+         target: /app/db
+    networks:
+        - feconsole-vnet
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Production"
+    deploy:
+      replicas: 1
     ports:
-      - 3000:3000
+      - 8091:8091
+    configs:
+      fewebapi-appsettings:
+        file: DockerFiles/appsettings/FEConsoleAPI.appsettings.json
+volumes:
+    appdata:
+        external: true
+   dbdata:
+        external: true
+networks:
+  feconsole-vnet:
+    external: true
