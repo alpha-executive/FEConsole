@@ -26,9 +26,61 @@ services:
       replicas: 1
     ports:
       - 8091:8091
+  feidentity:
+    image: feidentityserver
+    configs:
+      - source: feidentity-appsettings
+        target: /app/appsettings.json
+        mode: 0444
+    volumes:
+      - type: volume
+        source: dbdata
+        target: /app/db
+    environment:
+      - "ASPNETCORE_ENVIRONMENT=Production"
+    deploy:
+       replicas: 1
+    networks:
+      - feconsole-vnet
+    ports:
+      - 8092:8092
+  feadmin:
+    image: feconsole-admin
+    configs:
+      - source: feadmin-appsettings
+        target: /app/appsettings.json
+        mode: 0444  
+    environment:
+      - "ASPNETCORE_ENVIRONMENT=Production"
+    networks:
+      - feconsole-vnet
+    deploy:
+      replicas: 1
+    ports:
+      - 8090:8090
+  feportal:
+    image: feconsole-portal
+    configs:
+      - source: feportal-appsettings
+        target: /app/appsettings.json
+        mode: 0444
+    environment:
+       - "ASPNETCORE_ENVIRONMENT=Production"
+    networks:
+      - feconsole-vnet
+    deploy:
+      replicas: 1
+    ports:
+      - 8093:8093
 configs:
       fewebapi-appsettings:
         file: DockerFiles/appsettings/FEConsoleAPI.appsettings.json
+      feadmin-appsettings:
+        file: DockerFiles/appsettings/FEAdmin.appsettings.json
+      feidentity-appsettings:
+        file: DockerFiles/appsettings/IdentityServer.appsettings.json
+      feportal-appsettings:
+        file: DockerFiles/appsettings/FEPortal.appsettings.json
 volumes:
    appdata:
         external: true

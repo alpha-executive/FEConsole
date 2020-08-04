@@ -1,0 +1,46 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "Kestrel": {
+    "Endpoints": {
+      "Http": {
+        "Url": "http://*:8093"
+      }
+    }
+  },  
+  "AllowedHosts": "*",
+  "SiteSettings": {
+    "ForceHttps": false,
+    "FEconsoleApiUrl": "http://dockerhostnode:8091",
+    "DisplaySetting": {
+      "ShowArticleList": true,
+      "ShowBookList": true,
+      "ShowFileList": true,
+      "ShowImageList": true,
+      "ShowFlexSlider": true,
+      "ImageListPageSize": 6,
+      "BookListPageSize": 5,
+      "FileListPageSize": 5,
+      "ArticleListPageSize": 5
+    },
+    "DonateUrl": "https://www.fetechlab.com/#donate",
+    "AdminUser": "admin@fetechlab.com",
+    "ReverseProxy": {
+      "Enabled": true,
+      "AllowedIPAddress": [ "dockerhostnode" ]
+    }
+  },
+  "Authentication": {
+    "IdentityServer": {
+      "TokenEndPoint": "http://dockerhostnode:8092/connect/token",
+      "ClientId": "feconsoleportal",
+      "ClientSecret": "fetechhub@passw0rd",
+      "RequireHttpsMetadata": false
+    }
+  }
+}

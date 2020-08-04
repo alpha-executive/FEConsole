@@ -1,0 +1,44 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "Kestrel": {
+    "Endpoints": {
+      "Http": {
+        "Url": "http://*:8090"
+      }
+    }
+  },  
+  "AllowedHosts": "*",
+  "SiteSettings": {
+    "FEconsoleApiUrl": "http://dockerhostnode:8091",
+    "FEPortalUrl":  "http://dockerhostnode:8093",
+    "CORS": [  "http://dockerhostnode:8091" ],
+    "ForceHttps": false,
+    "FileUploadSetting": {
+      "MaxFileSize": "2048MB",
+      "MaxImageSize": "50MB",
+      "AllowedImageExtensions": ".jpg,.jpeg,.png,.gif,.tif,.bmp,.ico,.svg",
+      "MaxAttachmentSize": "100MB",
+      "MaxBookSize": "100MB",
+      "AllowedBookExtensions": ".pdf,.docx,.doc,.ppt,.pptx,.xsl,.xslx,.txt,.md,.epub,.html"
+    },
+    "ReverseProxy": {
+      "Enabled": true,
+      "AllowedIPAddress": ["dockerhostnode"]
+    }
+  },
+  "Authentication": {
+    "IdentityServer": {
+      "Url": "http://dockerhostnode:8092",
+      "ClientId": "feconsole",
+      "ClientSecret": "fetechhub@passw0rd",
+      "ResponseType": "code",
+      "RequireHttpsMetadata": true
+    }
+  }
+}
