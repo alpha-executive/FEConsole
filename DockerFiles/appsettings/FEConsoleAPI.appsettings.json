@@ -27,7 +27,7 @@
       "CacheSize": 100,
       "AbsoluteExpiration": 30
     },
-    "CORS": [ "http://dockerhostnode:8090" ],
+    "CORS": [ "http://feconsole_feadmin:8090" ],
     "Security": {
       "PublicKey": "BgIAAACkAABSU0ExAAQAAAEAAQBPkHSfs7Ukfng9Dz4EZZ1bDw5wCo4zKglQDlzOx01/b69bvLqxg2COkfKpegMJH8uDSGd8fvSSBKoWFu1RGnTomNUMHB7FRrbDAYQ0VAyUNfUcrZps8YlqgAjFGt3pF5GSoT7vGVVt3dKaRinvcPmlF3mk9qM/DHtqPfp4oA2Hqw==",
       "PrivateKey": "BwIAAACkAABSU0EyAAQAAAEAAQBPkHSfs7Ukfng9Dz4EZZ1bDw5wCo4zKglQDlzOx01/b69bvLqxg2COkfKpegMJH8uDSGd8fvSSBKoWFu1RGnTomNUMHB7FRrbDAYQ0VAyUNfUcrZps8YlqgAjFGt3pF5GSoT7vGVVt3dKaRinvcPmlF3mk9qM/DHtqPfp4oA2HqyWjUmP2vM4Rr8CemR3F9sBcGqm1OVKoJDhpbrnybIuyWbfbyZfPrMo0TUe9O1BONxilbQODYXFcSAUj1YFpW+pjxeRqnuJwqmR4aXEhX2WcVlM2fPUm3vsC6Bh09UDqHHbDnwRNzevWlaUH+FzyNUbnts2bGyKN1ijdAupYP167sZVhFoaCjv3zfRMjVIqikopfCnfH+8ViXMs8yH7qqkX5Z+TfsUzOtddG2d6cOgKqp+JcgLmoYxxyUrzDg8FwyZ8HYK+XBBh8TdTyfBTMpgi31LZLjEHhOcKlSxpoUTLPR/ex28+XCEAcM6D0Fbb/RQJ6FhF1hUQgdY6SMhjkja4EiZjJrks8xn6N3FK0KOFLOUqBgo1zlZ3/boKC5vRtvX7qBMOjY6wcOfM7ecPP4unuR3f0LPIA5m9/X/nlSDOGyZKFoACVBvbCZTRLSqw22bj+y3wO9ii7BaHTVQcwRDDOS5JZh/w04gdgFQLSExjmr1gdMqGNEywEPJ0zPoGdohiwPyVA76RzbRfZDmKPLao2EUXJGjK09NKoEo1GTjnTzW99ruSt8dQ+lcCvjfsY87th6Q4vomdxjbA4T+SWRBk="
@@ -49,12 +49,12 @@
     },
     "ReverseProxy": {
       "Enabled": false,
-      "AllowedIPAddress": ["dockerhostnode"]
+      "AllowedIPAddress": ["node1"]
     }
   },
   "Authentication": {
     "IdentityServer": {
-      "Url": "http://dockerhostnode:8092",
+      "Url": "http://feconsole_feidentity:8092",
       "RequireHttpsMetadata": false
     }
   }

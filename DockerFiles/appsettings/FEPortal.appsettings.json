@@ -16,7 +16,7 @@
   "AllowedHosts": "*",
   "SiteSettings": {
     "ForceHttps": false,
-    "FEconsoleApiUrl": "http://dockerhostnode:8091",
+    "FEconsoleApiUrl": "http://feconsole_fewebapi:8091",
     "DisplaySetting": {
       "ShowArticleList": true,
       "ShowBookList": true,
@@ -31,13 +31,13 @@
     "DonateUrl": "https://www.fetechlab.com/#donate",
     "AdminUser": "admin@fetechlab.com",
     "ReverseProxy": {
-      "Enabled": true,
-      "AllowedIPAddress": [ "dockerhostnode" ]
+      "Enabled": false,
+      "AllowedIPAddress": [ "node1" ]
     }
   },
   "Authentication": {
     "IdentityServer": {
-      "TokenEndPoint": "http://dockerhostnode:8092/connect/token",
+      "TokenEndPoint": "http://feconsole_feidentity:8092/connect/token",
       "ClientId": "feconsoleportal",
       "ClientSecret": "fetechhub@passw0rd",
       "RequireHttpsMetadata": false

@@ -15,9 +15,9 @@
   },  
   "AllowedHosts": "*",
   "SiteSettings": {
-    "FEconsoleApiUrl": "http://dockerhostnode:8091",
-    "FEPortalUrl":  "http://dockerhostnode:8093",
-    "CORS": [  "http://dockerhostnode:8091" ],
+    "FEconsoleApiUrl": "http://feconsole_fewebapi:8091",
+    "FEPortalUrl":  "http://feconsole_feportal:8093",
+    "CORS": [  "http://feconsole_fewebapi:8091" ],
     "ForceHttps": false,
     "FileUploadSetting": {
       "MaxFileSize": "2048MB",
@@ -29,16 +29,16 @@
     },
     "ReverseProxy": {
       "Enabled": true,
-      "AllowedIPAddress": ["dockerhostnode"]
+      "AllowedIPAddress": ["node1"]
     }
   },
   "Authentication": {
     "IdentityServer": {
-      "Url": "http://dockerhostnode:8092",
+      "Url": "http://feconsole_feidentity:8092",
       "ClientId": "feconsole",
       "ClientSecret": "fetechhub@passw0rd",
       "ResponseType": "code",
-      "RequireHttpsMetadata": true
+      "RequireHttpsMetadata": false
     }
   }
 }
