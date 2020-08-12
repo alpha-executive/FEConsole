@@ -325,7 +325,13 @@ namespace FE.Creator.FEConsoleAPI
             {
                 _logger.LogDebug("about to validate the token on remote identity server.");
                 var client = new HttpClient();
-                var disco = await client.GetDiscoveryDocumentAsync(_authServerUrl);
+                var discoRequest = new DiscoveryDocumentRequest(){
+                   Address = _authServerUrl,
+                    Policy = new DiscoveryPolicy(){
+                        RequireHttps = false
+                    }
+                };
+                var disco = await client.GetDiscoveryDocumentAsync(discoRequest);
 
                 client.SetBearerToken(token);
                 var response = await client.GetUserInfoAsync(new UserInfoRequest
