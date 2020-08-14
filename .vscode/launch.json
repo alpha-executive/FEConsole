@@ -49,6 +49,35 @@
             }
         },
         {
+            "name": ".NET Core FECOnsole WEBAPI (web)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/FE.Creator.FEConsoleAPI/bin/Debug/netcoreapp3.1/FE.Creator.FEConsoleAPI.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/FE.Creator.FEConsoleAPI",
+            "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart",
+            "launchBrowser": {
+                "enabled": true,
+                "args": "${auto-detect-url}",
+                "windows": {
+                    "command": "cmd.exe",
+                    "args": "/C start ${auto-detect-url}"
+                },
+                "osx": {
+                    "command": "open"
+                },
+                "linux": {
+                    "command": "xdg-open"
+                }
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "HttpProd"
+            }
+        },
+        {
             "name": ".NET Core Attach",
             "type": "coreclr",
             "request": "attach",
