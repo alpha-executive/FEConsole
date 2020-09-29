@@ -9,7 +9,9 @@
   </ItemGroup>
  -->
   <ItemGroup>
-    <PackageReference Include="BuildBundlerMinifier" Version="3.2.447" />
+      <None Include="wwwroot\*" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="IdentityModel.AspNetCore" Version="1.0.0-rc.3" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="3.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.MicrosoftAccount" Version="3.1.2" />

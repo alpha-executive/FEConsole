@@ -9,11 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
-    <link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css" asp-append-version="true">
-    <link rel="stylesheet" type="text/css" href="css/coreui-icons-brand.min.css" asp-append-version="true">
-    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" asp-append-version="true">
-    <link rel="stylesheet" type="text/css" href="css/animate.css" asp-append-version="true">
-    <link rel="stylesheet" type="text/css" href="css/style.css" asp-append-version="true">
+    <link rel="stylesheet" type="text/css" href="~/css/jquery.bxslider.css" asp-append-version="true">
+    <link rel="stylesheet" type="text/css" href="~/css/coreui-icons-brand.min.css" asp-append-version="true">
+    <link rel="stylesheet" type="text/css" href="~/css/font-awesome.min.css" asp-append-version="true">
+    <link rel="stylesheet" type="text/css" href="~/css/animate.css" asp-append-version="true">
+    <link rel="stylesheet" type="text/css" href="~/css/style.css" asp-append-version="true">
 </head>
 <body>
     <div class="loader"></div>
@@ -108,10 +108,10 @@
       </footer>
     </div>
 
-    <environment include="Development">
+    <!--<environment include="Development">-->
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-    </environment>
+    <!--</environment>
     <environment exclude="Development">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
                 asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
@@ -125,11 +125,11 @@
                 crossorigin="anonymous"
                 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
         </script>
-    </environment>
-    <script src="js/jquery.easing.min.js" asp-append-version="true"></script>
-    <script src="js/wow.js" asp-append-version="true"></script>
-    <script src="js/jquery.bxslider.min.js" asp-append-version="true"></script>
-    <script src="js/custom.js" asp-append-version="true"></script>
+    </environment>-->
+    <script src="~/js/jquery.easing.min.js" asp-append-version="true"></script>
+    <script src="~/js/wow.js" asp-append-version="true"></script>
+    <script src="~/js/jquery.bxslider.min.js" asp-append-version="true"></script>
+    <script src="~/js/custom.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
