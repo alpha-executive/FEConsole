@@ -183,58 +183,49 @@
   <data name="Get The FEConsole that is right for you" xml:space="preserve">
     <value>获取适合您的FEConsole版本</value>
   </data>
-  <data name="Supported on Windows, Linux and MacOS" xml:space="preserve">
-    <value>支持Windows, Linux和MacOS等操作系统</value>
-  </data>
-  <data name="Quick start and easy deploy" xml:space="preserve">
-    <value>容易部署，快速上手</value>
+  <data name="Supported on Windows 10, Windows Server 2012 or above platform" xml:space="preserve">
+    <value>支持Windows 10, Windows Server 2012以上操作系统</value>
   </data>
   <data name="Run on Local and Cloud" xml:space="preserve">
-    <value>可以在本地或云环境中运行</value>
+    <value>支持本地和云环境中部署</value>
   </data>
   <data name="Free and Open Source" xml:space="preserve">
     <value>开源免费</value>
   </data>
   <data name="Running on the .NET Core" xml:space="preserve">
-    <value>基于.NET Core平台运行</value>
+    <value>基于.NET Core平台</value>
   </data>
   <data name="Download" xml:space="preserve">
     <value>立即下载</value>
   </data>
-  <data name="Supported on Windows" xml:space="preserve">
-    <value>支持Windows系统</value>
+  <data name="Supported on Linux platform, Ubuntu 18.04 LTS is recommended" xml:space="preserve">
+    <value>支持主流Linux系统, 推荐Ubuntu 18.04 LTS</value>
   </data>
   <data name="All features available" xml:space="preserve">
     <value>所有功能都可用</value>
   </data>
-  <data name="Easy to deploy on IIS" xml:space="preserve">
-    <value>容易在IIS上部署</value>
-  </data>
-  <data name="Running on the .NET Framework" xml:space="preserve">
-    <value>基于.NET Framework平台</value>
-  </data>
-  <data name="Quick start" xml:space="preserve">
+  <data name="Quick start, Easy to Use" xml:space="preserve">
     <value>快速启动容易上手</value>
   </data>
   <data name="Container based" xml:space="preserve">
     <value>基于容器技术</value>
   </data>
-  <data name="Running on the Docker container" xml:space="preserve">
-    <value>在Docker容器中运行</value>
+  <data name="Cluster deploy with Docker Swarm and Kubernetes" xml:space="preserve">
+    <value>可以用Docker swarm和Kubernetes进行集群部署</value>
   </data>
-   <data name="Keep in touch with us" xml:space="preserve">
+  <data name="Keep in touch with us" xml:space="preserve">
     <value>联系我们</value>
   </data>
-   <data name="Please contact us if you want further technical support about the application on this platform." xml:space="preserve">
+  <data name="Please contact us if you want further technical support about the application on this platform." xml:space="preserve">
     <value>对于本平台上的任意系统应用，如果您想进一步得到专业的技术支持，请联系我们。</value>
   </data>
-   <data name="Beijing, China" xml:space="preserve">
+  <data name="Beijing, China" xml:space="preserve">
     <value>中国北京</value>
   </data>
-   <data name="Send" xml:space="preserve">
+  <data name="Send" xml:space="preserve">
     <value>发送</value>
   </data>
-   <data name="Power the Platform with your Donation" xml:space="preserve">
+  <data name="Power the Platform with your Donation" xml:space="preserve">
     <value>助力平台成长</value>
   </data>
   <data name="Your donation helps The FETECH ensure its community-driven software remains available to users at absolutely no cost. &lt;br /&gt; Thank you in advance for your generosity!" xml:space="preserve">
@@ -275,5 +266,8 @@
   </data>
   <data name="We are sorry, something error happened, please try again later." xml:space="preserve">
     <value>很抱歉，系统出错了，稍候请重试！</value>
+  </data>
+  <data name="Docker is Supported" xml:space="preserve">
+    <value>支持Docker</value>
   </data>
 </root>
