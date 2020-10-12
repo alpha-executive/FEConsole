@@ -98,8 +98,10 @@ namespace FE.Creator.FEConsoleAPI
              {
                  options.Authority = Configuration.GetSection("Authentication:IdentityServer")
                                    .GetValue<string>("Url");
-                 options.RequireHttpsMetadata = Configuration.GetSection("Authentication:IdentityServer")
-                                   .GetValue<bool>("RequireHttpsMetadata");
+                 //options.RequireHttpsMetadata = Configuration.GetSection("Authentication:IdentityServer")
+                    //               .GetValue<bool>("RequireHttpsMetadata");
+
+                 options.RequireHttpsMetadata = false;
 
                  options.Audience = "feconsoleapi";
              });
@@ -145,6 +147,7 @@ namespace FE.Creator.FEConsoleAPI
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseHsts();
             }
             else
             {
@@ -153,11 +156,11 @@ namespace FE.Creator.FEConsoleAPI
                 bool forceHttps = Configuration.GetValue<bool>("SiteSettings:ForceHttps");
                 if(forceHttps)
                 {
-                    app.UseHsts();
-                    app.UseHttpsRedirection();
+                    app.UseHsts();        
                 }
             }
 
+            app.UseHttpsRedirection();
             app.UseRouting();
 
             app.UseCors(FEAPIAllowSpecificOrigins);

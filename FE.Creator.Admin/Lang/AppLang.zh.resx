@@ -763,13 +763,13 @@
     <value>管理控制台</value>
   </data>
   <data name="LAYOUT_COMPANY" xml:space="preserve">
-    <value>FE Contributes Space</value>
+    <value>FETECHLAB</value>
   </data>
   <data name="LAYOUT_CONSOLE" xml:space="preserve">
     <value>控制台</value>
   </data>
   <data name="LAYOUT_COPYRIGHT" xml:space="preserve">
-    <value>版权所有 2016</value>
+    <value>版权所有 2020</value>
   </data>
   <data name="LAYOUT_COPYRIGHT_STR" xml:space="preserve">
     <value>All rights reserved.</value>

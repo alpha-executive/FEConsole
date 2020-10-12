@@ -767,13 +767,13 @@
     <value>Admin Console</value>
   </data>
   <data name="LAYOUT_COMPANY" xml:space="preserve">
-    <value>FE Contributes Space</value>
+    <value>FETECHLAB</value>
   </data>
   <data name="LAYOUT_CONSOLE" xml:space="preserve">
     <value>Console</value>
   </data>
   <data name="LAYOUT_COPYRIGHT" xml:space="preserve">
-    <value>Copyright &amp;copy; 2016</value>
+    <value>Copyright &amp;copy; 2020</value>
   </data>
   <data name="LAYOUT_COPYRIGHT_STR" xml:space="preserve">
     <value>All rights reserved.</value>
