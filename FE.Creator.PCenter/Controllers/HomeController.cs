@@ -16,6 +16,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using FE.Creator.AspNetCoreUtil;
+using FE.Creator.FEConsole.Shared.Models;
+using Newtonsoft.Json;
 
 namespace FE.Creator.PCenter {
     [AutoValidateAntiforgeryToken]
@@ -183,28 +185,38 @@ namespace FE.Creator.PCenter {
         }
         public async Task<bool> SendMessageToServer(string subject, string message){
 
-            //var token = await HttpContext.GetUserAccessTokenAsync ();
+            var token = await HttpContext.GetUserAccessTokenAsync();
             var client = this._httpClientFactory.CreateClient("client");
+            client.SetBearerToken(token);
             var messageServerUrl = _configuration.GetSection ("SiteSettings:Products:FEConsole")
                                 .GetValue<string>("feconsoleApiUrl");
-            var sendData = new FormUrlEncodedContent(new[]
-                            {
-                                new KeyValuePair<string, string>("username", HttpContext.GetLoginUserDisplayName ()), 
-                                new KeyValuePair<string, string>("email", HttpContext.GetLoginUserEmail ()),
-                                new KeyValuePair<string, string>("subject", subject),
-                                new KeyValuePair<string, string>("message", message)
-                            });
+
+            var sendData = new AppEventModel();
+            sendData.EventTitle = subject;
+            sendData.EventDetails = message;
+            sendData.EventLevel = AppEventModel.EnumEventLevel.Warning;
+            sendData.EventOwner = string.Format("{0}-{1}", HttpContext.GetLoginUserDisplayName(), 
+                        HttpContext.GetLoginUserEmail());
             
-            var response = await client.PostAsync(messageServerUrl, sendData);
+            string content = JsonConvert.SerializeObject(sendData);
+            StringContent reqContent = new StringContent(content);
+            reqContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            var response = await client.PostAsync(messageServerUrl, reqContent);
+
             return response.IsSuccessStatusCode;
         } 
+        
         [HttpPost]
         [Authorize]
         public async Task<IActionResult> SendMessage (ContactMessage formData) {
             //var applicationUser = await _userManager.GetUserAsync(User);
             if (HttpContext.IsUserLogin ()) {
                 logger.LogDebug (HttpContext.GetLoginUserDisplayName () + "is sending message to server.");
-                await SendMessageToServer(formData.Subject, formData.Message);
+                bool result = await SendMessageToServer(formData.Subject, formData.Message);
+
+                if(!result)
+                    return Error();
+                    
             } else {
                 logger.LogError ("Not allowed to send message when a user is not login");
             }

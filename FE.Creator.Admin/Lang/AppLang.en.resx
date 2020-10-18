@@ -171,6 +171,25 @@
   <data name="ABOUT_WHYFECONSOLE" xml:space="preserve">
     <value>Why FEConsole</value>
   </data>
+   <data name="ABOUT_DONATE" xml:space="preserve">
+    <value>Donate</value>
+  </data>
+  <data name="ABOUT_DONATION" xml:space="preserve">
+    <value>Power the Platform with your Donation</value>
+  </data>
+  <data name="ABOUT_DONATION_CONTENT" xml:space="preserve">
+    <value>Your donation helps The FETECHLAB ensure its community-driven software remains available to users at absolutely no cost.
+Thank you in advance for your generosity!</value>
+  </data>
+   <data name="DONATE_WEIXIN" xml:space="preserve">
+    <value>WeiXin</value>
+  </data>
+   <data name="DONATE_ALIPAY" xml:space="preserve">
+    <value>Alipay</value>
+  </data>
+   <data name="DONATE_PAYPAL" xml:space="preserve">
+    <value>Paypal</value>
+  </data>
   <data name="ACCOUNTMGR_ATTENTION" xml:space="preserve">
     <value>Attention</value>
   </data>

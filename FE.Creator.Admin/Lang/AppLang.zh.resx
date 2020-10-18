@@ -163,10 +163,29 @@
     <value>关于</value>
   </data>
   <data name="ABOUT_WHYDESC" xml:space="preserve">
-    <value>FEConsol 建立初衷是打造一款统一的个人用户应用，以便更好的保护和组织用户的私人信息、组织珍贵记忆以及所学知识。对于那些有志于终生学习的用户,FEConsole 也是一个很好的帮手。分享同样是系统的一个重要功能， 你可以分享一篇文章， 一本书籍或者一些照片， 让所有的朋友们一起来分享你的快乐时光。</value>
+    <value>FEConsole建立初衷是打造一款统一的个人用户应用，以便更好的保护和组织用户的私人信息、组织珍贵记忆以及所学知识。对于那些有志于终生学习的用户,FEConsole也是一个很好的帮手。分享同样是系统的一个重要功能， 你可以分享一篇文章， 一本书籍或者一些照片， 让所有的朋友们一起来分享你的快乐时光。</value>
   </data>
   <data name="ABOUT_WHYFECONSOLE" xml:space="preserve">
     <value>FEConsole简介</value>
+  </data>
+  <data name="ABOUT_DONATE" xml:space="preserve">
+    <value>捐赠</value>
+  </data>
+  <data name="ABOUT_DONATION" xml:space="preserve">
+    <value>助力平台成长</value>
+  </data>
+  <data name="ABOUT_DONATION_CONTENT" xml:space="preserve">
+    <value>热切希望您能捐赠FETECHLAB平台，您的捐赠是我们这个社区驱动的组织为用户持续提供永久免费软件的动力。
+提前感谢您的慷慨！</value>
+  </data>
+   <data name="DONATE_WEIXIN" xml:space="preserve">
+    <value>微信</value>
+  </data>
+   <data name="DONATE_ALIPAY" xml:space="preserve">
+    <value>支付宝</value>
+  </data>
+   <data name="DONATE_PAYPAL" xml:space="preserve">
+    <value>Paypal</value>
   </data>
   <data name="ACCOUNTMGR_ATTENTION" xml:space="preserve">
     <value>注意</value>

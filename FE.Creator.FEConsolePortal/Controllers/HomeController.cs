@@ -278,7 +278,7 @@ namespace FE.Creator.FEConsolePortal
                     "Books",
                     "bookSharedLevel",
                     new string[] {
-                         "bookFile",
+                        "bookFile",
                         "bookDesc",
                         "bookAuthor",
                         "bookVersion",

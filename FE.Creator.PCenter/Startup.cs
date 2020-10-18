@@ -97,6 +97,7 @@ namespace coreaspnet
                 options.Scope.Add("profile");
                 options.Scope.Add("email");
                 options.Scope.Add("offline_access");
+                options.Scope.Add("feconsoleapi");
 
                 options.ClaimActions.Add(new JsonKeyClaimAction(JwtClaimTypes.Name, null, JwtClaimTypes.Name));
                 options.ClaimActions.Add(new JsonKeyClaimAction(JwtClaimTypes.Email, null, JwtClaimTypes.Email));

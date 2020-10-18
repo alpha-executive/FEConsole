@@ -149,7 +149,7 @@ namespace FE.Creator.Admin.Controllers
         {
            return await Task.Run<FileResult>(() =>
             {
-                var globalJs = string.Format("var baseUrl = '{0}';", HttpContext.WebApiBaseUrl());
+                var globalJs = string.Format("var baseUrl = '{0}';", HttpContext.WebApiBaseExternalUrl());
                 byte[] jsContent = UTF8Encoding.UTF8.GetBytes(globalJs);
                 var jsFile = new FileContentResult(jsContent, new MediaTypeHeaderValue("text/javascript"));
 

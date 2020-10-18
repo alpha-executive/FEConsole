@@ -87,4 +87,45 @@
             <!-- /.box-body -->
         </div>
     </div>
+
+    <!-- Donate -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title"><i class="fa fa-heart"></i>  @AppLangResource["ABOUT_DONATE"]</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="box-header text-center"><h2>@AppLangResource["ABOUT_DONATION"]</h2></div>
+                    <div class="box-body box-profile text-center">
+                        <p>
+                            @AppLangResource["ABOUT_DONATION_CONTENT"]
+                        </p>
+                    </div>
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr>
+                                <th class="text-center">@AppLangResource["DONATE_WEIXIN"]</th>
+                                <th class="text-center">@AppLangResource["DONATE_ALIPAY"]</th>
+                                <th class="text-center">@AppLangResource["DONATE_PAYPAL"]</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="@Url.Content("~/img/wechatpay.png")" class="img-responsive center-block wechatpay">
+                                </td>
+                                <td>
+                                    <img src="@Url.Content("~/img/alipay.png")" class="img-responsive center-block alipay"> 
+                                </td>
+                                 <td>
+                                    <a class="label label-warning margin" href="https://www.fetechlab.com/Home/PaypalPay"><i class="fa fa-heart"></i> @AppLangResource["DONATE_PAYPAL"]</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+    </div>
 </div>

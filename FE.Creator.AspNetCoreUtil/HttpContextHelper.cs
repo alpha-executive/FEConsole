@@ -87,6 +87,13 @@ namespace FE.Creator.AspNetCoreUtil
             return config["SiteSettings:FEconsoleApiUrl"];
         }
 
+        public static string WebApiBaseExternalUrl(this HttpContext httpContext)
+        {
+            var config = httpContext.RequestServices.GetRequiredService<IConfiguration>();
+
+            return config["SiteSettings:FEconsoleApiExternalUrl"];
+        }
+
         public static string FEPortalUrl(this HttpContext httpContext)
         {
             var config = httpContext.RequestServices.GetRequiredService<IConfiguration>();

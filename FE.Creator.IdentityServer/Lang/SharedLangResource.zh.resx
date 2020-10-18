@@ -195,8 +195,8 @@
   <data name="User Name" xml:space="preserve">
     <value>用户名</value>
   </data>
-  <data name="Would you like to logout of FETECHHUB Identity Server?" xml:space="preserve">
-    <value>确定要从FETECHHUB平台注销登录？</value>
+  <data name="Would you like to logout of FETECHLAB Identity Server?" xml:space="preserve">
+    <value>确定要从FETECHLAB平台注销登录？</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>是的</value>
