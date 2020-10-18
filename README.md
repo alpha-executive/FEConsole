@@ -8,7 +8,7 @@ Paypal:
 https://www.fetechlab.com/Home/PaypalPay
 
 Alipay:
-![Alipay](./FE.Creator.PCenter/wwwroot/images/alipay.png){width: 256px}
+![](https://github.com/alpha-executive/FEConsole/tree/master/FE.Creator.PCenter/wwwroot/images/alipay.png){width: 256px}
 
 Weixin:
-![Weixin](./FE.Creator.PCenter/wwwroot/images/wechatpay.png){width: 256px}
+![](https://github.com/alpha-executive/FEConsole/tree/master/FE.Creator.PCenter/wwwroot/images/wechatpay.png){width: 256px}
