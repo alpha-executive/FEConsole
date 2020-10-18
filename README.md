@@ -6,3 +6,9 @@ dotnet core project for FEConsole application
 # Power the Platform with your Donation
 Paypal:
 https://www.fetechlab.com/Home/PaypalPay
+
+Alipay:
+![](/./FE.Creator.PCenter/wwwroot/images/alipay.png){width: 256px}
+
+Weixin:
+![](/./FE.Creator.PCenter/wwwroot/images/wechatpay.png){width: 256px}
