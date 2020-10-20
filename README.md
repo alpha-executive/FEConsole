@@ -4,7 +4,8 @@ dotnet core project for FEConsole application
 
 FEConsole is a easy to use web application, it is in purpose of protecting and organizing your personal information, valuable memories, knowlege in one place! FEConsole is also a greate helper for those who are willing to learn and improve themself all their lives.
 
-# Check out the FEConsole application for free, then you can:
+Check out the FEConsole application for free, then you can:
+
 Create Post: Speak out to the public
 
 Manage Image: Manage and share images you love most
