@@ -193,10 +193,11 @@ namespace FE.Creator.PCenter {
 
             var sendData = new AppEventModel();
             sendData.EventTitle = subject;
-            sendData.EventDetails = message;
+            sendData.EventDetails = string.Format("{0}===>{1}", 
+                HttpContext.GetLoginUserDisplayName(), 
+                message);
             sendData.EventLevel = AppEventModel.EnumEventLevel.Warning;
-            sendData.EventOwner = string.Format("{0}-{1}", HttpContext.GetLoginUserDisplayName(), 
-                        HttpContext.GetLoginUserEmail());
+            sendData.EventOwner = HttpContext.GetLoginUserEmail() ?? HttpContext.GetLoginUserDisplayName();
             
             string content = JsonConvert.SerializeObject(sendData);
             StringContent reqContent = new StringContent(content);

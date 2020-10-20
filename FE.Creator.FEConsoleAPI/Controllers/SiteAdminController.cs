@@ -60,6 +60,21 @@ namespace FE.Creator.FEConsoleAPI.Controllers
         [HttpPost]
         public async Task<bool> SendMessage(AppEventModel message)
         {
+            try
+            {
+                await SendMailMessage(message);
+            }
+            catch (System.Exception)
+            {
+                message.EventOwner = this._configuration.GetValue<string>("SiteSettings:SuperAdmin");
+                await LogEvent(message);
+            }
+            
+            return true;
+        }
+
+        private async Task SendMailMessage(AppEventModel message)
+        {
             var config = this._configuration.GetSection("SiteSettings:MailConfig");
 
             var mailServer = config.GetValue<String>("SMTPServer");
@@ -67,19 +82,20 @@ namespace FE.Creator.FEConsoleAPI.Controllers
             var mailSender = config.GetValue<String>("Sender");
             var mailSenderPassword = config.GetValue<string>("SenderPassword");
             var mailReceiver = config.GetValue<string>("Receiver");
+            bool useSSL = config.GetValue<bool>("UseSsl");
 
             var mailMessage = new MimeMessage();
             var sender = new MailboxAddress("Notifier", mailSender);
-            
+
             logger.LogInformation(mailServer);
             logger.LogInformation(mailPort.ToString());
             logger.LogInformation(mailSender);
             logger.LogInformation(mailReceiver);
-            
+
             mailMessage.Sender = sender;
             mailMessage.Subject = message.EventTitle;
             mailMessage.From.Add(sender);
-        
+
             StringBuilder builder = new StringBuilder();
             builder.AppendLine("<div>");
             builder.AppendLine(string.Format("<h1>{0}</h1>", message.EventTitle));
@@ -88,19 +104,22 @@ namespace FE.Creator.FEConsoleAPI.Controllers
             builder.AppendLine("</div>");
             mailMessage.To.Add(new MailboxAddress("Support", mailReceiver));
 
-            mailMessage.Body = new TextPart(TextFormat.Html) { Text =  builder.ToString()};
+            mailMessage.Body = new TextPart(TextFormat.Html) { Text = builder.ToString() };
 
-            using(var mailClient = new MailKit.Net.Smtp.SmtpClient())
+            using (var mailClient = new MailKit.Net.Smtp.SmtpClient())
             {
                 mailClient.MessageSent += (sender, args) => { logger.LogInformation("mail sent by :" + sender); };
-                //mailClient.ServerCertificateValidationCallback = (s, c, h, e) => true;
-                await mailClient.ConnectAsync(mailServer, mailPort, SecureSocketOptions.None);
+                if(useSSL){
+                    mailClient.ServerCertificateValidationCallback = (s, c, h, e) => true;
+                    await mailClient.ConnectAsync(mailServer, mailPort, SecureSocketOptions.Auto);
+                }
+                else{
+                     await mailClient.ConnectAsync(mailServer, mailPort, SecureSocketOptions.None);
+                }
                 await mailClient.AuthenticateAsync(mailSender, mailSenderPassword);
                 await mailClient.SendAsync(mailMessage);
                 await mailClient.DisconnectAsync(true);
             }
-
-            return true;
         }
 
         [Route("[action]")]

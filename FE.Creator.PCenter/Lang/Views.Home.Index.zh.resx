@@ -198,6 +198,9 @@
   <data name="Download" xml:space="preserve">
     <value>立即下载</value>
   </data>
+  <data name="Documentation" xml:space="preserve">
+    <value>文档</value>
+  </data>
   <data name="Supported on Linux platform, Ubuntu 18.04 LTS is recommended" xml:space="preserve">
     <value>支持主流Linux系统, 推荐Ubuntu 18.04 LTS</value>
   </data>
