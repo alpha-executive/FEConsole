@@ -1,2 +1,2 @@
-dotnet FE.Creator.IdentityServer.dll --urls="https://*:5002"
+dotnet FE.Creator.IdentityServer.dll --urls="https://*:8092"
 pause

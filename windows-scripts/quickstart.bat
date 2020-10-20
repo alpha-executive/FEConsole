@@ -1,28 +1,29 @@
+set ASPNETCORE_ENVIRONMENT=HttpProd
 @echo off
 pushd .
 echo "starting feconsle admin..."
 cd feconsoleadmin
-start /B dotnet FE.Creator.Admin.dll --urls="https://*:9080"
+start /B dotnet FE.Creator.Admin.dll --urls="https://*:8090"
 popd
 
 pushd .
 echo "starting feconsle api..."
 cd feconsoleapi
-start /B dotnet FE.Creator.FEConsoleAPI.dll --urls="https://*:5001"
+start /B dotnet FE.Creator.FEConsoleAPI.dll --urls="https://*:8091"
 popd
 
 pushd .
 echo "starting feconsle portal..."
 cd feconsoleportal
-start /B dotnet FE.Creator.FEConsolePortal.dll --urls="https://*"
+start /B dotnet FE.Creator.FEConsolePortal.dll --urls="https://*:8093"
 popd
 
 pushd .
 echo "starting feconsle identity server..."
 cd feidentityserver
-start /B dotnet FE.Creator.IdentityServer.dll --urls="https://*:5002"
+start /B dotnet FE.Creator.IdentityServer.dll --urls="https://*:8092"
 popd
 
-start https://localhost:9080
+start https://localhost:8090
 
 pause

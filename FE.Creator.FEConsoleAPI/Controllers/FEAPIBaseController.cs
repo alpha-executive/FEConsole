@@ -387,7 +387,8 @@ namespace FE.Creator.FEConsoleAPI
 
         protected async Task<int> LogAppEvent(IObjectService objectService, AppEventModel logEvent)
         {
-            string owner = await GetLoginUser();
+            string owner = logEvent.EventSource == AppEventModel.EventSourceEnum.Portal ? "portal" 
+                :  await GetLoginUser();
             ServiceObject svObject = new ServiceObject();
             svObject.ObjectName = "System Event";
             svObject.ObjectOwner = owner;
@@ -443,6 +444,16 @@ namespace FE.Creator.FEConsoleAPI
                 {
                     PrimeDataType = PrimeFieldDataType.String,
                     Value = owner
+                }
+            });
+
+            svObject.Properties.Add(new ObjectKeyValuePair()
+            {
+                KeyName = "eventSource",
+                Value = new PrimeObjectField()
+                {
+                    PrimeDataType = PrimeFieldDataType.Integer,
+                    Value = (int)logEvent.EventSource
                 }
             });
 

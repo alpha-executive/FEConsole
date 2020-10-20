@@ -14,6 +14,14 @@ namespace FE.Creator.FEConsole.Shared.Models
             Information = 2
         }
 
+
+        public enum EventSourceEnum 
+        { 
+            Portal,
+            Console
+        }
+
+        public AppEventModel() { EventSource = EventSourceEnum.Console; }
         public string EventTitle { get; set; }
 
         public string EventDetails { get; set; }
@@ -23,5 +31,10 @@ namespace FE.Creator.FEConsole.Shared.Models
         public EnumEventLevel EventLevel { get; set; }
 
         public string EventOwner { get; set; }
+
+        public EventSourceEnum EventSource
+        {
+            get;set;
+        }
     }
 }

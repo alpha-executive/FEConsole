@@ -98,10 +98,10 @@ namespace FE.Creator.FEConsoleAPI
              {
                  options.Authority = Configuration.GetSection("Authentication:IdentityServer")
                                    .GetValue<string>("Url");
-                 //options.RequireHttpsMetadata = Configuration.GetSection("Authentication:IdentityServer")
-                    //               .GetValue<bool>("RequireHttpsMetadata");
+                 options.RequireHttpsMetadata = Configuration.GetSection("Authentication:IdentityServer")
+                                   .GetValue<bool>("RequireHttpsMetadata");
 
-                 options.RequireHttpsMetadata = false;
+                 //options.RequireHttpsMetadata = false;
 
                  options.Audience = "feconsoleapi";
              });

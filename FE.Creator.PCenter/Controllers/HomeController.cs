@@ -198,7 +198,8 @@ namespace FE.Creator.PCenter {
                 message);
             sendData.EventLevel = AppEventModel.EnumEventLevel.Warning;
             sendData.EventOwner = HttpContext.GetLoginUserEmail() ?? HttpContext.GetLoginUserDisplayName();
-            
+            sendData.EventSource = AppEventModel.EventSourceEnum.Portal;
+
             string content = JsonConvert.SerializeObject(sendData);
             StringContent reqContent = new StringContent(content);
             reqContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");

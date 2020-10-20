@@ -91,6 +91,7 @@ namespace FE.Creator.FEConsolePortal
                 errEvent.EventDetails = _localResource["ERROR_SERVER_ERROR_BODY", exceptionHandlerPathFeature?.Error.Message];
                 errEvent.EventOwner = HttpContext.GetConfigValue<string>("SiteSettings:AdminUser");
                 errEvent.EventLevel = AppEventModel.EnumEventLevel.Error;
+                errEvent.EventSource = AppEventModel.EventSourceEnum.Portal;
 
                 var client = _httpClientFactory.CreateClient("client");
                 var baseUrl = HttpContext.WebApiBaseUrl();

@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Net.Http.Headers;
 using Newtonsoft.Json.Serialization;
+using System.IO;
 
 namespace FE.Creator.AspNetCoreUtil
 {
@@ -161,24 +162,31 @@ namespace FE.Creator.AspNetCoreUtil
             return contentDisposition != null
                     && !string.IsNullOrEmpty(contentDisposition.FileName);
         }
+
+        private static string ExtractFileNameFromUrl(string url)
+        {
+            if (string.IsNullOrEmpty(url))
+                return string.Empty;
+
+
+            string lastPath = url.Substring(url.LastIndexOf('/') + 1);
+
+            return lastPath.LastIndexOf("?") > 0 ? lastPath.Substring(0, lastPath.IndexOf("?"))
+                : lastPath;
+        }
         public static async Task<FileResult> DownloadFile(this HttpClient httpClient, string apiBaseUri, string fwdUrl)
         {
             string requestUri = string.Format("{0}{1}", apiBaseUri, fwdUrl);
-            var response = await httpClient.GetAsync(requestUri);
+            var stream = await httpClient.GetStreamAsync(requestUri);
 
-            if (response.IsSuccessStatusCode
-                && IsDownloadableFile(response.Content.Headers.ContentDisposition))
+            string fileName = ExtractFileNameFromUrl(fwdUrl);
+            
+            string mediaType = GetFileMediaType(Path.GetExtension(fileName));
+            return new FileStreamResult(stream,
+                new MediaTypeHeaderValue(mediaType))
             {
-               var stream = await response.Content.ReadAsStreamAsync();
-               var fileResult = new FileStreamResult(stream,
-                   new MediaTypeHeaderValue(response.Content.Headers.ContentType.MediaType));
-
-               fileResult.FileDownloadName = System.Web.HttpUtility.UrlDecode(response.Content.Headers.ContentDisposition.FileName);
-                
-               return fileResult;
-            }
-
-            return null;
+                FileDownloadName = fileName
+            };
         }
 
         public static async Task<FileResult> DownloadSharedObjectFile(this HttpClient httpClient, 
@@ -189,7 +197,7 @@ namespace FE.Creator.AspNetCoreUtil
           bool thumbinal,
           ILogger logger)
         {
-            string requestUri = string.Format("{0}/{1}/{2}/{3}/{4}", 
+            string requestUri = string.Format("{0}/{1}/{2}/{3}/{4}",
                                                 apiBaseUri,
                                                 "api/SharedObjects/DownloadSharedObjectFile",
                                                 objectId,
@@ -204,21 +212,25 @@ namespace FE.Creator.AspNetCoreUtil
                        apiBaseUri,
                        objectId,
                        shareFieldName,
-                       new string[] { filePropertyName },
+                       new string[] { filePropertyName, shareFieldName },
                        logger
                    );
             var article = JsonConvert.DeserializeObject<SimpleServiceObject>(svStr);
             var fileFiled = article.GetPropertyValue<FileFiledValue>(filePropertyName);
 
             var stream = await httpClient.GetStreamAsync(requestUri);
-
-            var mediaType = ".png".Equals(fileFiled.fileExtension) ? "image/png" 
-                                : "application/octet-stream";
+            string mediaType = GetFileMediaType(fileFiled.fileExtension);
 
             return new FileStreamResult(stream, new MediaTypeHeaderValue(mediaType))
             {
                 FileDownloadName = fileFiled.fileName
             };
+        }
+
+        private static string GetFileMediaType(string extension)
+        {
+            return ".png".Equals(extension, StringComparison.InvariantCultureIgnoreCase) ? "image/png"
+                                : "application/octet-stream";
         }
 
         public static async Task<string> GetSharedServiceObjects(this HttpClient httpClient, 

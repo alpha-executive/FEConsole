@@ -167,6 +167,7 @@ namespace FE.Creator.Admin.Controllers
             var token = await HttpContext.GetUserAccessTokenAsync();
             client.SetBearerToken(token);
             var fwdUrl = HttpUtility.UrlDecode(url);
+           
             var fileResult = await client.DownloadFile(HttpContext.WebApiBaseUrl(), fwdUrl);
 
             return fileResult;

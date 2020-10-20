@@ -18,7 +18,8 @@
       <property name="eventDetails" key="FE_COL_SYS_EVT_DETAILS" type="String" displayOrder="2"></property>
       <property name="eventDateTime" key="FE_COL_SYS_EVT_DATETIME" type="Datetime" displayOrder="3"></property>
       <property name="eventLevel" key="FE_COL_SYS_EVT_LEVEL" type="Integer" displayOrder="4"></property>
-      <property name="eventOwner" key="FE_COL_SYS_EVT_OWNER" type="String" displayOrder="5"></property>
+	  <property name="eventSource" key="FE_COL_SYS_EVT_SOURCE" type="Integer" displayOrder="5"></property>
+      <property name="eventOwner" key="FE_COL_SYS_EVT_OWNER" type="String" displayOrder="6"></property>
     </properties>
   </entity>
 </config>

@@ -1,2 +1,2 @@
-dotnet FE.Creator.Admin.dll --urls="https://*:9080"
+dotnet FE.Creator.Admin.dll --urls="https://*:8090"
 pause

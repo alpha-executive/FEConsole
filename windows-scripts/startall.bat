@@ -1,3 +1,4 @@
+set ASPNETCORE_ENVIRONMENT=HttpProd
 pushd .
 echo "starting feconsle admin..."
 cd feconsoleadmin
