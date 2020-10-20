@@ -182,11 +182,12 @@ namespace FE.Creator.AspNetCoreUtil
         }
 
         public static async Task<FileResult> DownloadSharedObjectFile(this HttpClient httpClient, 
-          string objectId,
+          int objectId,
           string apiBaseUri,
           string filePropertyName,
           string shareFieldName,
-          bool thumbinal)
+          bool thumbinal,
+          ILogger logger)
         {
             string requestUri = string.Format("{0}/{1}/{2}/{3}/{4}", 
                                                 apiBaseUri,
@@ -199,20 +200,25 @@ namespace FE.Creator.AspNetCoreUtil
                 requestUri = string.Format("{0}?thumbinal=true", requestUri);
             }
 
-            var response = await httpClient.GetAsync(requestUri);
-            if (response.IsSuccessStatusCode
-                && IsDownloadableFile(response.Content.Headers.ContentDisposition))
+            var svStr = await httpClient.GetSharedServiceObjectById(
+                       apiBaseUri,
+                       objectId,
+                       shareFieldName,
+                       new string[] { filePropertyName },
+                       logger
+                   );
+            var article = JsonConvert.DeserializeObject<SimpleServiceObject>(svStr);
+            var fileFiled = article.GetPropertyValue<FileFiledValue>(filePropertyName);
+
+            var stream = await httpClient.GetStreamAsync(requestUri);
+
+            var mediaType = ".png".Equals(fileFiled.fileExtension) ? "image/png" 
+                                : "application/octet-stream";
+
+            return new FileStreamResult(stream, new MediaTypeHeaderValue(mediaType))
             {
-                var stream = await response.Content.ReadAsStreamAsync();
-                var fileResult = new FileStreamResult(stream,
-                    new MediaTypeHeaderValue(response.Content.Headers.ContentType.MediaType));
-
-                fileResult.FileDownloadName = System.Web.HttpUtility.UrlDecode(response.Content.Headers.ContentDisposition.FileName);
-
-                return fileResult;
-            }
-
-            return null;
+                FileDownloadName = fileFiled.fileName
+            };
         }
 
         public static async Task<string> GetSharedServiceObjects(this HttpClient httpClient, 

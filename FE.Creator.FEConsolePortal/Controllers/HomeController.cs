@@ -114,7 +114,7 @@ namespace FE.Creator.FEConsolePortal
         /// <param name="Id"></param>
         /// <returns></returns>
         [HttpGet("/[controller]/[action]/{Id}")]
-        public async Task<FileResult> DownloadSharedDocument(string Id)
+        public async Task<FileResult> DownloadSharedDocument(int Id)
         {
             var client = _httpClientFactory.CreateClient("client");
             /*var token = await HttpContext.GetClientAccessTokenAsync();
@@ -124,7 +124,8 @@ namespace FE.Creator.FEConsolePortal
                 HttpContext.WebApiBaseUrl(),
                 "documentFile",
                 "documentSharedLevel",
-                false);
+                false,
+                this._logger);
         }
 
         /// <summary>
@@ -135,7 +136,7 @@ namespace FE.Creator.FEConsolePortal
         /// <param name="thumbinal"></param>
         /// <returns></returns>
         [HttpGet("/[controller]/[action]/{Id}")]
-        public async Task<FileResult> DownloadSharedBook(string Id, bool thumbinal = false)
+        public async Task<FileResult> DownloadSharedBook(int Id, bool thumbinal = false)
         {
             var client = _httpClientFactory.CreateClient("client");
 
@@ -143,7 +144,8 @@ namespace FE.Creator.FEConsolePortal
                 HttpContext.WebApiBaseUrl(),
                 "bookFile",
                 "bookSharedLevel",
-                thumbinal);
+                thumbinal,
+                this._logger);
         }
 
         /// <summary>
@@ -154,7 +156,7 @@ namespace FE.Creator.FEConsolePortal
         /// <param name="thumbinal"></param>
         /// <returns></returns>
         [HttpGet("/[controller]/[action]/{Id}")]
-        public async Task<FileResult> DownloadSharedImage(string Id, bool thumbinal = false)
+        public async Task<FileResult> DownloadSharedImage(int Id, bool thumbinal = false)
         {
             var client = _httpClientFactory.CreateClient("client");
             /*var token = await HttpContext.GetClientAccessTokenAsync();
@@ -164,7 +166,8 @@ namespace FE.Creator.FEConsolePortal
                 HttpContext.WebApiBaseUrl(),
                 "imageFile",
                 "imageSharedLevel",
-                thumbinal);
+                thumbinal,
+                this._logger);
         }
 
         /// <summary>
@@ -173,7 +176,7 @@ namespace FE.Creator.FEConsolePortal
         /// <param name="Id"></param>
         /// <returns></returns>
         [HttpGet("/[controller]/[action]/{Id}")]
-        public async Task<FileResult> DownloadArticleImage(string Id)
+        public async Task<FileResult> DownloadArticleImage(int Id)
         {
             var client = _httpClientFactory.CreateClient("client");
             /*var token = await HttpContext.GetClientAccessTokenAsync();
@@ -183,7 +186,8 @@ namespace FE.Creator.FEConsolePortal
                 HttpContext.WebApiBaseUrl(),
                 "articleImage",
                 "articleSharedLevel",
-                 false);
+                 false,
+                 this._logger);
         }
 
         /// <summary>

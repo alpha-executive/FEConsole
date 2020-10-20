@@ -6,7 +6,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
 
-namespace FE.Creator.FEConsolePortal.Models
+namespace FE.Creator.FEConsole.Shared.Models
 {
     public class FileFiledValue
     {
