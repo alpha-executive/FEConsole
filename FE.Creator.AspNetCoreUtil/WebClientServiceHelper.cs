@@ -215,8 +215,8 @@ namespace FE.Creator.AspNetCoreUtil
                        new string[] { filePropertyName, shareFieldName },
                        logger
                    );
-            var article = JsonConvert.DeserializeObject<SimpleServiceObject>(svStr);
-            var fileFiled = article.GetPropertyValue<FileFiledValue>(filePropertyName);
+            var fileObject = JsonConvert.DeserializeObject<SimpleServiceObject>(svStr);
+            var fileFiled = fileObject.GetPropertyFileValue(filePropertyName);
 
             var stream = await httpClient.GetStreamAsync(requestUri);
             string mediaType = GetFileMediaType(fileFiled.fileExtension);
