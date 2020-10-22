@@ -33,12 +33,13 @@ namespace coreaspnet
         public void ConfigureServices(IServiceCollection services)
         {
             //var logger = _loggerFactory.CreateLogger<Startup>();
-          /*   services.Configure<CookiePolicyOptions>(options =>
-            {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None; 
-            }); */
+           // services.Configure<CookiePolicyOptions>(options =>
+           //{
+           //     // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+           //     options.CheckConsentNeeded = context => true;
+           //    options.MinimumSameSitePolicy = SameSiteMode.None;
+           //    options.Secure = CookieSecurePolicy.SameAsRequest;
+           //});
 
             //XSRF support in angular
             services.AddAntiforgery(options=> options.HeaderName = XSRF_TOKEN);
@@ -83,7 +84,8 @@ namespace coreaspnet
             {
                 options.Authority = Configuration.GetSection("Authentication:IdentityServer")
                                    .GetValue<string>("Url");
-                options.RequireHttpsMetadata = false;
+                options.RequireHttpsMetadata = Configuration.GetSection("Authentication:IdentityServer")
+                                   .GetValue<bool>("RequireHttpsMetadata");
 
                 options.ClientId = Configuration.GetSection("Authentication:IdentityServer")
                                     .GetValue<string>("ClientId");
