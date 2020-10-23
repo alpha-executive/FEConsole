@@ -7,6 +7,7 @@ using FE.Creator.ObjectRepository.ServiceModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -56,13 +57,18 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
             this._permittedExtensions = permittedExts.ToArray();
         }
 
-        private string getContentType(string format)
+        private string getContentType(string fileName)
         {
-            if(".png".Equals(format, StringComparison.InvariantCultureIgnoreCase))
+            string mimeType = "application/octet-stream";
+            new FileExtensionContentTypeProvider().TryGetContentType(fileName, out mimeType);
+
+            if (string.IsNullOrEmpty(mimeType))
             {
-                return "image/png";
+                mimeType = "application/octet-stream";
             }
-            return "application/octet-stream";
+
+            return mimeType;
+            //return "application/octet-stream";
         }
         private string GetFileFriendlyName(string uniqueFileName, string usrProvidedFName)
         {
@@ -76,11 +82,11 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
             return !string.IsNullOrEmpty(usrProvidedFName) ? HttpUtility.UrlEncode(usrProvidedFName)
                 : usrProvidedFName;
         }
-        private string GetFileFormat(string fileFriendlyName)
-        {
-            return string.IsNullOrEmpty(fileFriendlyName) ? "unknown" 
-                : Path.GetExtension(fileFriendlyName);
-        }
+        //private string GetFileFormat(string fileFriendlyName)
+        //{
+        //    return string.IsNullOrEmpty(fileFriendlyName) ? "unknown" 
+        //        : Path.GetExtension(fileFriendlyName);
+        //}
         /// <summary>
         /// GET /api/Files/DownloadFile/{0}/{1}/
         /// </summary>
@@ -138,7 +144,7 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
             string fileFriendlyName = GetFileFriendlyName(fileUniqueName, fileDisplayName);
             var stream = storageService.GetFileContentStream(fileUniqueName);
 
-            return File(stream, getContentType(null),
+            return File(stream, getContentType(fileFriendlyName),
                fileFriendlyName ?? "download.bin");
         }
 
@@ -151,8 +157,9 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
             {
                 logger.LogDebug("content found on the server storage.");
                 // Serve the file to the client
-                result = new FileContentResult(content, getContentType(null));
-                result.FileDownloadName = string.IsNullOrEmpty(fileDisplayName) ? fileUniqueName : fileDisplayName;
+                string fileName = string.IsNullOrEmpty(fileDisplayName) ? fileUniqueName : fileDisplayName;
+                result = new FileContentResult(content, getContentType(fileName));
+                result.FileDownloadName = fileName;
             }
             else
             {
@@ -172,10 +179,11 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
             if(content != null)
             {
                 logger.LogDebug("found content on server storage.");
-                string format = GetFileFormat(fileDisplayName);
-                result = new FileContentResult(content, getContentType(format));
-                result.FileDownloadName = string.IsNullOrEmpty(fileDisplayName) ? "file_thumb.bin" 
+                //string format = GetFileFormat(fileDisplayName);
+                string fileName = string.IsNullOrEmpty(fileDisplayName) ? "file_thumb.bin"
                                                 : Path.GetFileNameWithoutExtension(fileDisplayName) + ".bin";
+                result = new FileContentResult(content, getContentType(fileName));
+                result.FileDownloadName = fileName;
             }
 
             logger.LogDebug("End GetFileThumbinal");

@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Net.Http.Headers;
 using Newtonsoft.Json.Serialization;
 using System.IO;
+using Microsoft.AspNetCore.StaticFiles;
 
 namespace FE.Creator.AspNetCoreUtil
 {
@@ -181,7 +182,7 @@ namespace FE.Creator.AspNetCoreUtil
 
             string fileName = ExtractFileNameFromUrl(fwdUrl);
             
-            string mediaType = GetFileMediaType(Path.GetExtension(fileName));
+            string mediaType = GetFileMediaType(fileName);
             return new FileStreamResult(stream,
                 new MediaTypeHeaderValue(mediaType))
             {
@@ -219,7 +220,7 @@ namespace FE.Creator.AspNetCoreUtil
             var fileFiled = fileObject.GetPropertyFileValue(filePropertyName);
 
             var stream = await httpClient.GetStreamAsync(requestUri);
-            string mediaType = GetFileMediaType(fileFiled.fileExtension);
+            string mediaType = GetFileMediaType(fileFiled.fileName);
 
             return new FileStreamResult(stream, new MediaTypeHeaderValue(mediaType))
             {
@@ -227,10 +228,17 @@ namespace FE.Creator.AspNetCoreUtil
             };
         }
 
-        private static string GetFileMediaType(string extension)
+        private static string GetFileMediaType(string fileName)
         {
-            return ".png".Equals(extension, StringComparison.InvariantCultureIgnoreCase) ? "image/png"
-                                : "application/octet-stream";
+            string mimeType =  "application/octet-stream";
+            new FileExtensionContentTypeProvider().TryGetContentType(fileName, out mimeType);
+
+            if (string.IsNullOrEmpty(mimeType))
+            {
+                mimeType = "application/octet-stream";
+            }
+
+            return mimeType;
         }
 
         public static async Task<string> GetSharedServiceObjects(this HttpClient httpClient, 

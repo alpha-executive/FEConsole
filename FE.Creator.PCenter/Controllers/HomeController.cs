@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using FE.Creator.AspNetCoreUtil;
 using FE.Creator.FEConsole.Shared.Models;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.StaticFiles;
 
 namespace FE.Creator.PCenter {
     [AutoValidateAntiforgeryToken]
@@ -83,7 +84,9 @@ namespace FE.Creator.PCenter {
                 logger.LogDebug ($"wechatBRCode configured as: ${fileName}");
             }
 
-            FileResult result = new VirtualFileResult (fileName, "application/image");
+            string mimeType = "application/image";
+            new FileExtensionContentTypeProvider().TryGetContentType(fileName, out mimeType);
+            FileResult result = new VirtualFileResult (fileName, mimeType);
 
             return await Task.FromResult (result);
         }
