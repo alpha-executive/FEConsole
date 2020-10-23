@@ -208,7 +208,10 @@ namespace FE.Creator.Admin
             }
 
             app.UseStaticFiles();
-            app.UseCookiePolicy(new CookiePolicyOptions() { Secure = CookieSecurePolicy.Always });
+            var cookiePolicyValue = Configuration.GetValue<string>("SiteSettings:CookieSecurePolicy");
+            app.UseCookiePolicy(new CookiePolicyOptions() { Secure = Enum.Parse<CookieSecurePolicy>(cookiePolicyValue) });
+
+            //app.UseCookiePolicy(new CookiePolicyOptions() { Secure = CookieSecurePolicy.Always });
             app.UseRouting();
             app.UseRequestLocalization();
 

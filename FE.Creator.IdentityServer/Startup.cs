@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Net;
@@ -157,7 +158,9 @@ namespace FE.Creator.IdentityServer
             }
 
             app.UseStaticFiles();
-            app.UseCookiePolicy(new CookiePolicyOptions() { Secure = CookieSecurePolicy.Always });
+            var cookiePolicyValue = Configuration.GetValue<string>("SiteSettings:CookieSecurePolicy");
+            app.UseCookiePolicy(new CookiePolicyOptions() { Secure = Enum.Parse<CookieSecurePolicy>(cookiePolicyValue) });
+
             app.UseRouting();
             app.UseRequestLocalization();
             if (reverseProxyConfig?.Enabled == true)
