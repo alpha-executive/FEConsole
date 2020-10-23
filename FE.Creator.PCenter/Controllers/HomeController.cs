@@ -108,6 +108,37 @@ namespace FE.Creator.PCenter {
             return result;
         }
 
+        [Route("/[controller]/[action]/{product}")]
+        [HttpPost]
+        [Authorize]
+        public async Task<FileResult> DownloadLicense(string product)
+        {
+            FileResult result = null;
+            try
+            {
+                var configSection = _configuration.GetSection("SiteSettings:Products:FEConsole");
+                var token = await HttpContext.GetUserAccessTokenAsync();
+                var client = this._httpClientFactory.CreateClient("client");
+                client.SetBearerToken(token);
+                var apiServerUrl = _configuration.GetSection("SiteSettings:Products:FEConsole")
+                                    .GetValue<string>("feconsoleApiUrl");
+
+                var serviceUrl = apiServerUrl.EndsWith("/") ? string.Format("{0}{1}", apiServerUrl, "license/downloadlicense")
+                                            : string.Format("{0}{1}", apiServerUrl, "/license/downloadlicense");
+
+                UriBuilder builder = new UriBuilder(serviceUrl);
+                var downloadStream = await client.GetStreamAsync(builder.Uri);
+                result = new FileStreamResult(downloadStream, "application/xml");
+                result.FileDownloadName = $"{product}-license.lic";
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
+
         [ResponseCache (Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error () {
             return View (new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
@@ -183,13 +214,19 @@ namespace FE.Creator.PCenter {
 
             return LocalRedirect (redirectUrl);
         }
+
+
+
         public async Task<bool> SendMessageToServer(string subject, string message){
 
             var token = await HttpContext.GetUserAccessTokenAsync();
             var client = this._httpClientFactory.CreateClient("client");
             client.SetBearerToken(token);
-            var messageServerUrl = _configuration.GetSection ("SiteSettings:Products:FEConsole")
-                                .GetValue<string>("feconsoleApiUrl");
+            var apiServerUrl = _configuration.GetSection("SiteSettings:Products:FEConsole")
+                                   .GetValue<string>("feconsoleApiUrl");
+
+            var messageServerUrl = apiServerUrl.EndsWith("/") ? string.Format("{0}{1}", apiServerUrl, "SiteAdmin/SendMessage")
+                                        : string.Format("{0}{1}", apiServerUrl, "/SiteAdmin/SendMessage");
 
             var sendData = new AppEventModel();
             sendData.EventTitle = subject;

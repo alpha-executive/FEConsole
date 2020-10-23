@@ -273,4 +273,10 @@
   <data name="Docker is Supported" xml:space="preserve">
     <value>支持Docker</value>
   </data>
+  <data name="download license" xml:space="preserve">
+    <value>下载授权文件</value>
+  </data>
+  <data name="Sign-in to get a free license" xml:space="preserve">
+    <value>登录后免费获取授权文件</value>
+  </data>
 </root>

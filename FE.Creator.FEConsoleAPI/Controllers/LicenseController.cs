@@ -501,8 +501,7 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
                         productKeyElment);
             licenseDocument.Add(rootElment);
 
-
-            string license = licenseDocument.ToString();
+            string license = licenseDocument.ToString(SaveOptions.DisableFormatting);
             var licenseFile = new FileContentResult(Encoding.UTF8.GetBytes(license)
                 , "application/xml");
             licenseFile.FileDownloadName = "license.lic";

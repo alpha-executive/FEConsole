@@ -6,6 +6,7 @@ using FE.Creator.IdentityServer.Data;
 using FE.Creator.IdentityServer.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Razor;
@@ -37,6 +38,14 @@ namespace FE.Creator.IdentityServer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.Configure<CookiePolicyOptions>(options =>
+           {
+                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+               options.CheckConsentNeeded = context => true;
+               options.MinimumSameSitePolicy = SameSiteMode.None;
+               options.Secure = CookieSecurePolicy.Always;
+           });
 
             if (reverseProxyConfig?.Enabled == true)
             {
@@ -148,11 +157,9 @@ namespace FE.Creator.IdentityServer
             }
 
             app.UseStaticFiles();
-
+            app.UseCookiePolicy(new CookiePolicyOptions() { Secure = CookieSecurePolicy.Always });
             app.UseRouting();
             app.UseRequestLocalization();
-            app.UseIdentityServer();
-
             if (reverseProxyConfig?.Enabled == true)
             {
                 app.UseForwardedHeaders(new ForwardedHeadersOptions
@@ -160,7 +167,9 @@ namespace FE.Creator.IdentityServer
                     ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
                 });
             }
+            app.UseIdentityServer();
 
+        
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {

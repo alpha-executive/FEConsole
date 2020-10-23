@@ -21,6 +21,7 @@ using FE.Creator.AspNetCoreUtil;
 using FE.Creator.FEConsole.Shared.Models;
 using Microsoft.AspNetCore.HttpOverrides;
 using System.Net;
+using Microsoft.AspNetCore.Http;
 
 namespace FE.Creator.Admin
 {
@@ -207,6 +208,7 @@ namespace FE.Creator.Admin
             }
 
             app.UseStaticFiles();
+            app.UseCookiePolicy(new CookiePolicyOptions() { Secure = CookieSecurePolicy.Always });
             app.UseRouting();
             app.UseRequestLocalization();
 

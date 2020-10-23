@@ -13,6 +13,9 @@ using IdentityModel.AspNetCore.AccessTokenManagement;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Authentication.OAuth.Claims;
 using IdentityModel;
+using FE.Creator.FEConsole.Shared.Models;
+using System.Net;
+using Microsoft.AspNetCore.HttpOverrides;
 
 namespace coreaspnet
 {
@@ -21,10 +24,13 @@ namespace coreaspnet
         private static readonly string XSRF_TOKEN = "X-XSRF-TOKEN";
         private static readonly string CLIENT_XSRF_TOKEN_KEY = "XSRF-TOKEN";
         private  readonly IConfiguration _configuration = null;
-
+        ReverseProxyConfig reverseProxyConfig = null;
         public Startup(IConfiguration configuration)
         {
             _configuration = configuration;
+            reverseProxyConfig = new ReverseProxyConfig();
+            configuration.GetSection("SiteSettings:ReverseProxy")
+                         .Bind(reverseProxyConfig);
         }
 
         public IConfiguration Configuration { get {return _configuration;} }
@@ -51,7 +57,18 @@ namespace coreaspnet
             /* services.AddSingleton<IObjectService, DefaultObjectService>();
             logger.LogInformation("IObjectService is added to as singleton service");
  */
-             services.Configure<RequestLocalizationOptions>(options =>
+            if (reverseProxyConfig?.Enabled == true)
+            {
+                services.Configure<ForwardedHeadersOptions>(options =>
+                {
+                    foreach (var ip in reverseProxyConfig.AllowedIPAddress)
+                    {
+                        options.KnownProxies.Add(IPAddress.Parse(ip));
+                    }
+                });
+            }
+
+            services.Configure<RequestLocalizationOptions>(options =>
             {
                 var supportedCultures = new List<CultureInfo>
                     {
@@ -131,12 +148,20 @@ namespace coreaspnet
             }
 
             app.UseStaticFiles();
-            app.UseCookiePolicy();
+            app.UseCookiePolicy(new CookiePolicyOptions() { Secure = CookieSecurePolicy.Always });
             app.UseSession();
             app.UseRequestLocalization();
 
             app.UseRouting();
-           
+
+            if (reverseProxyConfig?.Enabled == true)
+            {
+                app.UseForwardedHeaders(new ForwardedHeadersOptions
+                {
+                    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+                });
+            }
+
             app.UseAuthentication();
             app.UseAuthorization();
 
