@@ -109,22 +109,20 @@ namespace FE.Creator.PCenter {
         }
 
         [Route("/[controller]/[action]/{product}")]
-        [HttpPost]
         [Authorize]
         public async Task<FileResult> DownloadLicense(string product)
         {
             FileResult result = null;
             try
             {
-                var configSection = _configuration.GetSection("SiteSettings:Products:FEConsole");
                 var token = await HttpContext.GetUserAccessTokenAsync();
                 var client = this._httpClientFactory.CreateClient("client");
                 client.SetBearerToken(token);
                 var apiServerUrl = _configuration.GetSection("SiteSettings:Products:FEConsole")
                                     .GetValue<string>("feconsoleApiUrl");
 
-                var serviceUrl = apiServerUrl.EndsWith("/") ? string.Format("{0}{1}", apiServerUrl, "license/downloadlicense")
-                                            : string.Format("{0}{1}", apiServerUrl, "/license/downloadlicense");
+                var serviceUrl = apiServerUrl.EndsWith("/") ? string.Format("{0}{1}", apiServerUrl, "api/license/downloadlicense")
+                                            : string.Format("{0}{1}", apiServerUrl, "/api/license/downloadlicense");
 
                 UriBuilder builder = new UriBuilder(serviceUrl);
                 var downloadStream = await client.GetStreamAsync(builder.Uri);
@@ -225,8 +223,8 @@ namespace FE.Creator.PCenter {
             var apiServerUrl = _configuration.GetSection("SiteSettings:Products:FEConsole")
                                    .GetValue<string>("feconsoleApiUrl");
 
-            var messageServerUrl = apiServerUrl.EndsWith("/") ? string.Format("{0}{1}", apiServerUrl, "SiteAdmin/SendMessage")
-                                        : string.Format("{0}{1}", apiServerUrl, "/SiteAdmin/SendMessage");
+            var messageServerUrl = apiServerUrl.EndsWith("/") ? string.Format("{0}{1}", apiServerUrl, "api/SiteAdmin/SendMessage")
+                                        : string.Format("{0}{1}", apiServerUrl, "/api/SiteAdmin/SendMessage");
 
             var sendData = new AppEventModel();
             sendData.EventTitle = subject;

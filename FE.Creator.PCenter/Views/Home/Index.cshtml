@@ -141,18 +141,13 @@
                         <div class="form-group">
                             <input type="hidden" name="returnUrl" id="returnUrl" value="/#download" />
                             <span><i class="fa fa-warning warning"></i> @IndexPageResource["Sign-in to get a free license"]</span>
-                            <button type="submit" class="label label-warning"><i class="fa fa-sign-in primary"></i> @ResourceString["Login"]</button>
+                            <button type="submit" class="btn btn-primary btn-submit"><i class="fa fa-sign-in primary"></i> @ResourceString["Login"]</button>
                         </div>
                     </form>
                 }
                 else
                 {
-                    <form asp-controller="Home" asp-action="DownloadLicense" method="post">
-                        <div class="form-group">
-                            <input type="hidden" name="product" id="product" value="feconsole" />
-                            <button type="submit" class="label label-warning"><i class="fa fa-sign-in primary"></i> @ResourceString["download license"]</button>
-                        </div>
-                    </form>
+                     <a href="/home/downloadlicense/feconsole" class="label label-warning"><i class="fa fa-sign-in primary"></i> @ResourceString["download license"]</a>
                 }
             </div>
         </div>

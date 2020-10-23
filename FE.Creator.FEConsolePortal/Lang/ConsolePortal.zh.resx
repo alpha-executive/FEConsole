@@ -157,7 +157,7 @@
     <value>关于应用程序</value>
   </data>
   <data name="PORTAL_FOOTER_ABOUT_DESC" xml:space="preserve">
-    <value>FEConsol 建立初衷是打造一款统一的个人用户应用，以便更好的保护和组织用户的私人信息、组织珍贵记忆以及所学知识。分享同样是系统的一个重要功能， 你可以分享一篇文章， 一本书籍或者一些照片， 让所有的朋友们一起来分享你的快乐时光。</value>
+    <value>FEConsole建立初衷是打造一款统一的个人用户应用，以便更好的保护用户的私人信息、珍贵记忆以及所学知识。分享同样是系统的一个重要功能， 你可以分享一篇文章， 一本书籍或者一些照片， 让所有的朋友们一起来分享你的快乐时光。</value>
   </data>
   <data name="PORTAL_FOOTER_CONTACTUS" xml:space="preserve">
     <value>联系我们</value>
@@ -169,7 +169,7 @@
     <value>捐赠</value>
   </data>
   <data name="PORTAL_FOOTER_DONATE_DESC" xml:space="preserve">
-    <value>FEConsole 应用期待您的捐赠以变得更完善！</value>
+    <value>FEConsole应用期待您的捐赠以变得更完善！</value>
   </data>
   <data name="PORTAL_FOOTER_DONATE_LINK" xml:space="preserve">
     <value>点此链接捐赠</value>
