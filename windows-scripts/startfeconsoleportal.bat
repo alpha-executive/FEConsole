@@ -1,2 +1,2 @@
-dotnet FE.Creator.FEConsolePortal.dll --urls="http://*:8093"
+dotnet FE.Creator.FEConsolePortal.dll --urls="https://*:8093"
 pause

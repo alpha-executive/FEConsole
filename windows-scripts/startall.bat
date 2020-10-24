@@ -23,4 +23,4 @@ cd feidentityserver
 start /B startfeidentityserver.bat
 popd
 
-start http://localhost:8090
+start https://localhost:8090
