@@ -25,7 +25,7 @@ Paypal:
 https://www.fetechlab.com/Home/PaypalPay
 
 Alipay:
-![](https://feconsole.fetechlab.com:8090/img/alipay.png)
+![](https://feconsole.fetechlab.com/img/alipay.png)
 
 Weixin:
-![](https://feconsole.fetechlab.com:8090/img/wechatpay.png)
+![](https://feconsole.fetechlab.com/img/wechatpay.png)
