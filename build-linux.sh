@@ -63,6 +63,21 @@ function generatepackage()
   cp -rf ./FE.Creator.Admin/bin/Release/netcoreapp3.1/$platformpath fepublish/$platform/feconsoleadmin
   cp -rf ./FE.Creator.FEConsolePortal/bin/Release/netcoreapp3.1/$platformpath fepublish/$platform/feconsoleportal
 
+  echo "clean up appsettings files..."
+  rm -f fepublish/$platform/feconsoleapi/appsettings.HttpProd.json
+  rm -f fepublish/$platform/feconsoleapi/appsettings.Production.json
+  rm -f fepublish/$platform/feconsoleapi/appsettings.Development.json
+
+  rm -f fepublish/$platform/feidentityserver/appsettings.HttpProd.json
+  rm -f fepublish/$platform/feidentityserver/appsettings.Production.json
+
+  rm -f fepublish/$platform/feconsoleadmin/appsettings.HttpProd.json
+  rm -f fepublish/$platform/feconsoleadmin/appsettings.Production.json
+  rm -f fepublish/$platform/feconsoleadmin/appsettings.Development.json
+
+  rm -f fepublish/$platform/feconsoleportal/appsettings.HttpProd.json
+  rm -f fepublish/$platform/feconsoleportal/appsettings.Production.json
+  rm -f fepublish/$platform/feconsoleportal/appsettings.Development.json
   return 0
 }
 

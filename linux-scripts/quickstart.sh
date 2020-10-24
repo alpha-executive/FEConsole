@@ -13,7 +13,7 @@ function startapp()
 
    return 0
 }
-export ASPNETCORE_ENVIRONMENT="HttpProd"
+export ASPNETCORE_ENVIRONMENT="LocalProd"
 startapp "feidentityserver" "FE.Creator.IdentityServer.dll"
 startapp "feconsoleapi" "FE.Creator.FEConsoleAPI.dll"
 startapp "feconsoleadmin" "FE.Creator.Admin.dll"
