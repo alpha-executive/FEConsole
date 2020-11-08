@@ -206,7 +206,7 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
             {
                 logger.LogDebug("Start IsValidLicense");
                 XDocument licenseDoc = XDocument.Load(new StringReader(license));
-                string grantlist = licenseDoc.Descendants("grantlist").FirstOrDefault().ToString();
+                string grantlist = licenseDoc.Descendants("grantlist").FirstOrDefault().ToString(SaveOptions.DisableFormatting);
                 string productKey = licenseDoc.Descendants("productkey").FirstOrDefault().Value;
 
                 logger.LogDebug("productKey = " + productKey);
@@ -491,7 +491,7 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
             grandListElement.Add(new XAttribute("expireddate", DateTime.Now.AddYears(1).ToString("MM/dd/yyyy")));
             grandListElement.Add(new XAttribute("version", "1.0.0.0"));
 
-            byte[] signedData = cryptoGraphysvc.HashAndSignBytes(Encoding.UTF8.GetBytes(grandListElement.ToString()),
+            byte[] signedData = cryptoGraphysvc.HashAndSignBytes(Encoding.UTF8.GetBytes(grandListElement.ToString(SaveOptions.DisableFormatting)),
                     configuration["SiteSettings:Security:PrivateKey"]);
             var productKeyElment = new XElement("productkey",
                     Convert.ToBase64String(signedData));
@@ -501,10 +501,10 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
                         productKeyElment);
             licenseDocument.Add(rootElment);
 
-            string license = licenseDocument.ToString(SaveOptions.DisableFormatting);
+            string license = licenseDocument.ToString();
             var licenseFile = new FileContentResult(Encoding.UTF8.GetBytes(license)
                 , "application/xml");
-            licenseFile.FileDownloadName = "license.lic";
+            licenseFile.FileDownloadName = "license.xml";
 
             return licenseFile;
         }

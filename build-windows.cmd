@@ -41,10 +41,10 @@ echo "deploy database"
 xcopy /Y /Q fetechhub_identityserver.db fepublish\windows\feidentityserver
 
 echo "deploy certificate key"
-REM xcopy /Y /Q "localhost.pfx" "fepublish\windows\feconsoleadmin"
-REM xcopy /Y /Q "localhost.pfx" "fepublish\windows\feconsoleapi"
-REM xcopy /Y /Q "localhost.pfx" "fepublish\windows\feconsoleportal"
-REM xcopy /Y /Q "localhost.pfx" "fepublish\windows\feidentityserver"
+xcopy /Y /Q "localhost.pfx" "fepublish\windows\feconsoleadmin"
+xcopy /Y /Q "localhost.pfx" "fepublish\windows\feconsoleapi"
+xcopy /Y /Q "localhost.pfx" "fepublish\windows\feconsoleportal"
+xcopy /Y /Q "localhost.pfx" "fepublish\windows\feidentityserver"
 
 echo "deploy startup scripts"
 xcopy /Y /Q "windows-scripts\startfeconsoleadmin.bat" "fepublish\windows\feconsoleadmin"
