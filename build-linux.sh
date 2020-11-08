@@ -20,11 +20,11 @@ function copycert()
 {
   platformpath=$1
   echo "deploy certificate key to $platformpath..."
-  cp -f ./localhost.pfx ./FE.Creator.FEConsoleAPI/bin/Release/netcoreapp3.1/$platformpath
-  cp -f ./localhost.pfx ./FE.Creator.IdentityServer/bin/Release/netcoreapp3.1/$platformpath
-  cp -f ./localhost.pfx ./FE.Creator.Admin/bin/Release/netcoreapp3.1/$platformpath
-  cp -f ./localhost.pfx ./FE.Creator.FEConsolePortal/bin/Release/netcoreapp3.1/$platformpath
-  cp -f ./localhost.pfx ./FE.Creator.PCenter/bin/Release/netcoreapp3.1/$platformpath
+  cp -f ./linux-scripts/localhost.pfx ./FE.Creator.FEConsoleAPI/bin/Release/netcoreapp3.1/$platformpath
+  cp -f ./linux-scripts/localhost.pfx ./FE.Creator.IdentityServer/bin/Release/netcoreapp3.1/$platformpath
+  cp -f ./linux-scripts/localhost.pfx ./FE.Creator.Admin/bin/Release/netcoreapp3.1/$platformpath
+  cp -f ./linux-scripts/localhost.pfx ./FE.Creator.FEConsolePortal/bin/Release/netcoreapp3.1/$platformpath
+  cp -f ./linux-scripts/localhost.pfx ./FE.Creator.PCenter/bin/Release/netcoreapp3.1/$platformpath
 
   echo "certificate deployed"
   return 0
@@ -67,17 +67,21 @@ function generatepackage()
   rm -f fepublish/$platform/feconsoleapi/appsettings.HttpProd.json
   rm -f fepublish/$platform/feconsoleapi/appsettings.Production.json
   rm -f fepublish/$platform/feconsoleapi/appsettings.Development.json
+  #rm -f fepublish/$platform/feconsoleapi/appsettings.json
 
   rm -f fepublish/$platform/feidentityserver/appsettings.HttpProd.json
   rm -f fepublish/$platform/feidentityserver/appsettings.Production.json
+  rm -f fepublish/$platform/feidentityserver/appsettings.json
 
   rm -f fepublish/$platform/feconsoleadmin/appsettings.HttpProd.json
   rm -f fepublish/$platform/feconsoleadmin/appsettings.Production.json
   rm -f fepublish/$platform/feconsoleadmin/appsettings.Development.json
-
+  rm -f fepublish/$platform/feconsoleadmin/appsettings.json
+  
   rm -f fepublish/$platform/feconsoleportal/appsettings.HttpProd.json
   rm -f fepublish/$platform/feconsoleportal/appsettings.Production.json
   rm -f fepublish/$platform/feconsoleportal/appsettings.Development.json
+  rm -f fepublish/$platform/feconsoleportal/appsettings.json
   return 0
 }
 
@@ -90,6 +94,7 @@ function finalizepackages()
 function deployinstallscript()
 {
   cp -f linux-scripts/install.sh fepublish/
+  cp -f linux-scripts/localhost.crt fepublish/
 }
 
 buildproject "linux-x64"
