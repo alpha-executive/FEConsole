@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Http;
 using FE.Creator.FEConsole.Shared.Models;
 using FE.Creator.FEConsole.Shared.Services.FileStorage;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Localization;
 
 namespace FE.Creator.FEConsoleAPI.ApiControllers
 {
@@ -255,6 +256,16 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
             logger.LogDebug(string.Format("svObject.ObjectDefinitionId = {0}", svObject.ObjectDefinitionId));
             logger.LogDebug(string.Format("svObject.ObjectOwner = {0}", svObject.ObjectOwner));
 
+            var rqf = Request.HttpContext.Features.Get<IRequestCultureFeature>();
+            // Culture contains the information of the requested culture
+            var culture = rqf?.RequestCulture?.Culture?.Name;
+
+            if(culture == null || culture == "")
+            {
+                culture = System.Threading.Thread.CurrentThread.CurrentUICulture?.Name;
+            }
+
+            logger.LogDebug(culture);
             //language
             svObject.Properties.Add(new ObjectKeyValuePair()
             {
@@ -262,8 +273,8 @@ namespace FE.Creator.FEConsoleAPI.ApiControllers
                 Value = new PrimeObjectField()
                 {
                     PrimeDataType = PrimeFieldDataType.String,
-                    Value = System.Threading.Thread.CurrentThread.CurrentUICulture
-                    .TwoLetterISOLanguageName
+                    Value = culture
+                    .ToLower()
                     .Equals(SYS_LANG_CHINESE, StringComparison.InvariantCultureIgnoreCase) ? SYS_LANG_CHINESE : SYS_LANG_ENGLISH
                 }
             });
