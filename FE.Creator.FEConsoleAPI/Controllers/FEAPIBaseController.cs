@@ -38,6 +38,7 @@ namespace FE.Creator.FEConsoleAPI
         private readonly ILogger _logger = null;
         private readonly IServiceProvider _provider = null;
         private readonly string _authServerUrl = null;
+        private readonly bool   _requireHttps = false;
         private readonly ISHAService _shaService = null;
         private readonly int _cacheSize = 0;
         private readonly int _cacheExpired = 1;
@@ -54,6 +55,8 @@ namespace FE.Creator.FEConsoleAPI
             this._shaService = this._provider.GetRequiredService<ISHAService>();
             this._cacheSize = Configuration.GetValue<int>("SiteSettings:Cache:CacheSize");
             this._cacheExpired = Configuration.GetValue<int>("SiteSettings:Cache:AbsoluteExpiration");
+            this._requireHttps = Configuration.GetSection("Authentication:IdentityServer")
+                                               .GetValue<bool>("RequireHttpsMetadata");
         }
 
 
@@ -326,9 +329,9 @@ namespace FE.Creator.FEConsoleAPI
                 _logger.LogDebug("about to validate the token on remote identity server.");
                 var client = new HttpClient();
                 var discoRequest = new DiscoveryDocumentRequest(){
-                   Address = _authServerUrl,
+                   Address = this._authServerUrl,
                     Policy = new DiscoveryPolicy(){
-                        RequireHttps = false
+                        RequireHttps = this._requireHttps
                     }
                 };
                 var disco = await client.GetDiscoveryDocumentAsync(discoRequest);

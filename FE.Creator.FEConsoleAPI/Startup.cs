@@ -101,11 +101,6 @@ namespace FE.Creator.FEConsoleAPI
                  options.RequireHttpsMetadata = Configuration.GetSection("Authentication:IdentityServer")
                                    .GetValue<bool>("RequireHttpsMetadata");
 
-                 options.MetadataAddress = options.Authority.EndsWith("/") ? string.Format("{0}{1}", options.Authority,
-                     ".well-known/openid-configuration") : string.Format("{0}/{1}", options.Authority, ".well-known/openid-configuration");
-                 options.Configuration = new Microsoft.IdentityModel.Protocols.OpenIdConnect.OpenIdConnectConfiguration();
-                 //options.RequireHttpsMetadata = false;
-
                  options.Audience = "feconsoleapi";
              });
 
