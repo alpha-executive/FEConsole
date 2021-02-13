@@ -351,12 +351,15 @@ namespace IdentityServer4.Quickstart.UI
                 }).ToList();
 
             var allowLocal = true;
+            var allowLocalUserRegister = true;
             if (context?.ClientId != null)
             {
                 var client = await _clientStore.FindEnabledClientByIdAsync(context.ClientId);
                 if (client != null)
                 {
                     allowLocal = client.EnableLocalLogin;
+                    allowLocalUserRegister = client.Properties.ContainsKey("EnableLocalUserRegister")
+                                                            && client.Properties["EnableLocalUserRegister"].Equals("true", StringComparison.InvariantCultureIgnoreCase);
 
                     if (client.IdentityProviderRestrictions != null && client.IdentityProviderRestrictions.Any())
                     {
@@ -370,6 +373,7 @@ namespace IdentityServer4.Quickstart.UI
                 AllowRememberLogin = AccountOptions.AllowRememberLogin,
                 EnableLocalLogin = allowLocal && AccountOptions.AllowLocalLogin,
                 ReturnUrl = returnUrl,
+                EnableLocalUserRegister = allowLocalUserRegister,
                 Username = context?.LoginHint,
                 ExternalProviders = providers.ToArray()
             };

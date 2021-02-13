@@ -80,7 +80,11 @@
                                 <div class="form-group text-center">
                                     <button name="button" value="login" class="btn btn-success">@SharedResource["Login"]</button>
                                     <button name="button" value="cancel" class="btn btn-default">@SharedResource["Cancel"]</button>
-                                    <a href='@Url.Action("Register", new { returnUrl = Model.ReturnUrl })' class="btn btn-default">@SharedResource["Register"]</a>
+
+                                    @if (Model.EnableLocalUserRegister)
+                                    {
+                                        <a href='@Url.Action("Register", new { returnUrl = Model.ReturnUrl })' class="btn btn-default">@SharedResource["Register"]</a>
+                                    }
                                 </div>
                             </div>
                             <!-- /.col -->

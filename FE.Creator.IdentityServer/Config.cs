@@ -38,6 +38,7 @@ namespace FE.Creator.IdentityServer
                               {
                                   Client bindClient = new Client();
                                   client.Bind(bindClient);
+                                  
                                   if (bindClient.AllowedGrantTypes.Contains(GrantType.AuthorizationCode))
                                   {
                                       bindClient.RefreshTokenExpiration = TokenExpiration.Sliding;
