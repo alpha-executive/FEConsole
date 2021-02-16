@@ -40,13 +40,14 @@ namespace FE.Creator.IdentityServer
         {
             services.AddControllersWithViews();
 
+            var cookiePolicyValue = Configuration.GetValue<string>("SiteSettings:CookieSecurePolicy");
             services.Configure<CookiePolicyOptions>(options =>
-           {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-               options.CheckConsentNeeded = context => true;
-               options.MinimumSameSitePolicy = SameSiteMode.None;
-               options.Secure = CookieSecurePolicy.Always;
-           });
+               {
+                    // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+                   options.CheckConsentNeeded = context => true;
+                   options.MinimumSameSitePolicy = SameSiteMode.None;
+                   options.Secure = Enum.Parse<CookieSecurePolicy>(cookiePolicyValue);
+               });
 
             if (reverseProxyConfig?.Enabled == true)
             {
@@ -98,29 +99,40 @@ namespace FE.Creator.IdentityServer
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
 
-            services.AddAuthentication()
-                .AddMicrosoftAccount("Microsoft", microsoftOptions =>
+
+            var authBuilder = services.AddAuthentication();
+            IConfigurationSection microsoftAuthSection = Configuration.GetSection("Authentication:Microsoft");
+            if(microsoftAuthSection.Exists())
+            {
+                authBuilder.AddMicrosoftAccount("Microsoft", microsoftOptions =>
                 {
                     //microsoftOptions.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
-                    IConfigurationSection authSection = Configuration.GetSection("Authentication:Microsoft");
-                    microsoftOptions.ClientId = authSection["externalauth-microsoft-clientid"];
-                    microsoftOptions.ClientSecret = authSection["externalauth-microsoft-secret"];
-                })
-                .AddGoogle("Google", googleOptions =>
+                    microsoftOptions.ClientId = microsoftAuthSection["externalauth-microsoft-clientid"];
+                    microsoftOptions.ClientSecret = microsoftAuthSection["externalauth-microsoft-secret"];
+                });
+            }
+
+            IConfigurationSection googleAuthSection = Configuration.GetSection("Authentication:Google");
+            if(googleAuthSection.Exists())
+            {
+                authBuilder.AddGoogle("Google", googleOptions =>
                 {
                     //googleOptions.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
-                    IConfigurationSection authSection = Configuration.GetSection("Authentication:Google");
-                    googleOptions.ClientId = authSection["externalauth-google-clientid"];
-                    googleOptions.ClientSecret = authSection["externalauth-google-secret"];
-                })
-                .AddGitHub("Github", githubOptions => {
-                    IConfigurationSection authSection = Configuration.GetSection("Authentication:Github");
-                    githubOptions.ClientId = authSection["externalauth-github-clientid"];
-                    githubOptions.ClientSecret = authSection["externalauth-github-secret"];
+                    googleOptions.ClientId = googleAuthSection["externalauth-google-clientid"];
+                    googleOptions.ClientSecret = googleAuthSection["externalauth-google-secret"];
+                });
+            }
+
+            IConfigurationSection gitHubAuthSection = Configuration.GetSection("Authentication:Github");
+            if (googleAuthSection.Exists())
+            {
+                authBuilder.AddGitHub("Github", githubOptions => {
+                    githubOptions.ClientId = gitHubAuthSection["externalauth-github-clientid"];
+                    githubOptions.ClientSecret = gitHubAuthSection["externalauth-github-secret"];
                     githubOptions.Scope.Add("read:user");
                     githubOptions.Scope.Add("user:email");
                 });
-
+            }
 
             //Localization support.
             services.AddLocalization(options => options.ResourcesPath = "Lang");

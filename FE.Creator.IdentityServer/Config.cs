@@ -5,6 +5,7 @@
 using IdentityModel;
 using IdentityServer4.Models;
 using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -33,6 +34,9 @@ namespace FE.Creator.IdentityServer
             };
         public static IEnumerable<Client> Clients(IConfigurationSection section)
         {
+            //the way to get a IdentityServer4 Secret
+            //Console.WriteLine("password".Sha256());
+
             var sectionClients = section.GetChildren()
                                         .Select(client =>
                               {
