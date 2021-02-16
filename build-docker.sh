@@ -22,6 +22,6 @@ function deploydockerfiles()
    cp docker-scripts/setupconfig.sh fepublish/docker-swarm/setupconfig.sh
 }
 
-#builddockerimages()
+builddockerimages
 cleanpublishdir
 deploydockerfiles
